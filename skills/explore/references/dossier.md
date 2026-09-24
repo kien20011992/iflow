@@ -25,16 +25,21 @@ materially misleading.
 
 Checkpoint when any of these occurs:
 
-- a layer has been delivered and the map beneath it has changed;
-- a major zone has been explored to a useful conclusion;
+- a zone has been explored to a useful conclusion;
 - evidence materially reframes the original question;
-- the user confirms an important need, choice, constraint, or conclusion;
+- the user confirms a constraint, decision, or conclusion that changes the map
+  or what the handoff will carry;
 - the discussion is about to descend into a substantially different zone;
 - the exploration is pausing, handing off, or finishing.
 
-Do not checkpoint for greetings, minor corrections, isolated examples, or
-routine follow-up questions. A material correction to the dossier itself is an
-exception and must be recorded immediately.
+Delivering a layer or adding a zone to the map is not a milestone by itself;
+it waits for the next one. Do not checkpoint for greetings, minor
+corrections, isolated examples, routine follow-up questions, or small
+confirmations. A material correction to the dossier itself is the exception
+and is recorded immediately.
+
+Say where the dossier is when it is created and at handoff. Do not announce
+routine checkpoints.
 
 ## Update as an integrated document
 
@@ -50,8 +55,8 @@ At every checkpoint:
 5. Keep confirmed user needs distinct from expert recommendations and from
    open hypotheses.
 6. Record enough continuation state for a new agent to resume without the chat.
-7. Re-read the result and resolve internal contradictions before announcing
-   the checkpoint.
+7. Re-read the result and resolve internal contradictions before treating
+   the checkpoint as complete.
 
 A conclusion that depends on an unconfirmed assumption must carry that
 assumption inline where the conclusion is stated, not only where the
@@ -76,13 +81,18 @@ updated: <YYYY-MM-DD>
 ```
 
 Use only `active` or `ready` for status. Keep `active` until the user confirms
-that the dossier is an adequate handoff for the next step.
+that the dossier is an adequate handoff for the next step; a direct request to
+hand off, finish, or mark it ready is that confirmation.
 
-Before setting `status: ready`, enumerate every user-owned unknown and every
-load-bearing inference still unconfirmed, and put each one to the user
-individually. Whatever the user does not confirm stays flagged, and every
-conclusion depending on it is marked blocked. Documents produced downstream
-must import these flags, never strip them.
+In the handoff response, set `status: ready` and present the unconfirmed
+inferences that a conclusion or a downstream step depends on as one compact
+batch — the only place several questions share a message. Do not wait for
+another reply, do not ask one by one, and do not put the whole ledger to the
+user. Whatever the user does not confirm stays flagged, and every conclusion
+depending on it stays marked blocked; `ready` with flags and intentionally
+open questions is normal. If the user answers the batch later, record the
+confirmations and clear the flags. Documents produced downstream must import
+these flags, never strip them.
 
 ## Required information
 
@@ -158,7 +168,7 @@ Separate:
 
 Never promote an inference or recommendation into a confirmed need.
 
-### Open frontier
+### Open questions
 
 List unresolved zones, missing evidence, and what each could change. Name the
 single question currently blocking the most conclusions and who owns the
@@ -186,8 +196,8 @@ with every unconfirmed flag carried along.
 
 ## Quality test
 
-Before announcing a checkpoint, verify that a fresh agent could answer all of
-these from the dossier alone:
+Before treating a checkpoint as complete, verify that a fresh agent could
+answer all of these from the dossier alone:
 
 - What is being explored, and through which expert lens?
 - What does the user need this for, and what decision is waiting on it?

@@ -2,14 +2,16 @@
 name: explore
 description: >-
   Explore vague ideas and unfamiliar topics layer by layer with a domain
-  expert. Each exchange delivers one complete unit of understanding — a direct,
-  committed answer plus a map of the zones beneath it — and descends only where
-  the user calls. Decisions are put to the user only once every branch's
-  meaning, costs, and reversibility are on the table. Use when the user wants
-  to genuinely understand a subject before deciding anything, and a one-shot
-  answer would either drown them or force uninformed choices. Do not use for
-  simple factual lookups, already-scoped implementation, or requests that only
-  require executing a known task.
+  expert. Each teaching layer delivers one complete unit of understanding — a
+  direct, committed synthesis plus a map of the zones beneath it — and the
+  exploration descends only where the user calls; between layers a turn may
+  clarify, correct, connect, or ask one consequential question. Decisions are
+  put to the user only once every branch's meaning, costs, and reversibility
+  are on the table. Use when the user wants to genuinely understand a subject
+  before deciding anything, and a one-shot answer would either drown them or
+  force uninformed choices. Do not use for simple factual lookups,
+  already-scoped implementation, or requests that only require executing a
+  known task.
 ---
 
 # Explore, layer by layer
@@ -42,45 +44,56 @@ method for the rest of the conversation, not just the next answer.
 
 ## The layer
 
-Every substantive response is one layer:
+A layer is one unit of understanding, cut by subject rather than by length:
+everything the unit needs — mechanism, numbers, a concrete example — belongs
+in the same response, however long; what belongs to a different subject goes
+to the map, however short the response would otherwise be. A teaching layer has
+three parts:
 
-1. Answer the question actually asked, directly and with commitment — one
-   reasoned position, never a menu; researched rather than recalled when the
-   claim is consequential.
-2. Map the territory beneath: one or two lines per zone — what it is, which
-   decision it feeds, what ignoring it costs. Do not dig until called.
-3. Close with the position line: the path down to here, the zones still
-   unexplored with the decision each feeds, and which descent you recommend
-   first — load-bearing zones first, the ones whose outcome could change or
-   kill the whole undertaking. The user overrides freely.
+1. The answer to the question actually asked, direct and committed: lead with
+   your best current reading, researched rather than recalled when the claim
+   is consequential. Where rival readings exist and would change the user's
+   decision, name them ranked behind the lead — never an unranked list for
+   the user to sort.
+2. The map beneath it: one or two lines per zone — what it is, which decision
+   it feeds, what ignoring it costs. Do not dig until called.
+3. Where we stand: the path down to here, the zones still open with the
+   decision each feeds, and which descent you recommend first — before the
+   rest, the zones whose outcome could change or kill the whole undertaking.
+   The user overrides freely.
 
-Cut layers by subject, not by length: everything one unit of understanding
-needs — mechanism, numbers, a concrete example — belongs in the same
-response, however long; what belongs to a different subject goes to the map,
-however short the response would otherwise be. A layer is finished when the
-user can either make the decision it feeds, or choose the next descent
-knowing why.
+Not every turn is a layer. Correcting a misreading, asking one question,
+offering a counter-example, connecting two things the user just saw,
+confirming that the picture changed — each is a complete turn on its own,
+with no map and no closing position. Restate where we stand after a layer,
+when the map has changed, or when the user has lost the thread; not
+otherwise.
 
-The map lives in the dossier and the position line is read from it, so the
-two never quietly diverge; when digging reveals a new zone, add it to the map
-out loud.
+A layer is finished when the user can either make the decision it feeds, or
+choose the next descent knowing why. The map lives in the dossier and the
+closing position is read from it, so the two never quietly diverge; when
+digging reveals a new zone, say so and add it to the map.
 
 ## Questions
 
 Prefer asking to guessing: whenever the user's view would settle something
-you would otherwise assume, ask — freely. But the ground must predate the
-question. Ask only about what an earlier turn has already explained, and only
-for what the user alone knows. One question per message; let the answer shape
-the next. Options are welcome shorthand for facts the user owns ("is the land
-already yours, or to be bought?"), never a substitute for teaching.
+you would otherwise assume, ask — freely. Two kinds of question, two rules. A
+fact of the user's situation — is the land already theirs or to be bought, is
+this a real decision or a hypothetical — may be asked at any time, including
+before the first layer, when the answer would move the seat or the map. A
+judgment about the subject may be asked only after the concept it rests on
+has been taught. Options are welcome shorthand for the first kind, never a
+substitute for teaching in the second. One question per message; let the
+answer shape the next. The single exception is the handoff batch described in
+the dossier reference.
 
-A decision needs every branch dressed: what it means, what choosing it costs
-and gains, how reversible it is. Lay the fork out in one exchange and request
-the call only afterwards; if any branch's consequences cannot yet be stated,
-the layer is not finished — keep teaching. There is no duty to force a
-decision: when the fork is ready, say so in the position line and let the
-user take it when they choose. What is forbidden is deciding silently for
-them, or asking before the ground is laid.
+A decision needs every branch laid out in full: what it means, what choosing
+it costs and gains, how reversible it is. Lay the fork out in one exchange and
+request the call only afterwards; if any branch's consequences cannot yet be
+stated, the layer is not finished — keep teaching. There is no duty to force
+a decision: when the fork is ready, say so when you state where we stand and
+let the user take it when they choose. What is forbidden is deciding silently
+for them, or asking before the ground is laid.
 
 When a layer's conclusion will carry later layers, get it confirmed in one
 line before building on it — these confirmations are the only thing that
@@ -94,10 +107,10 @@ never ahead of it.
 ## Language
 
 Write at the vocabulary the user's own messages demonstrate, and let it rise
-as the layers do. A term of art may appear only after it is bought:
+as the layers do. A term of art may appear only after it has been
 introduced once in plain words, then reused verbatim — rotating synonyms
-drowns beginners. When a bought term returns after a long gap, re-anchor it
-in half a line. Teaching the domain's words is part of the teaching: by the
+drowns beginners. When a term returns after a long gap, re-anchor it in half
+a line. Teaching the domain's words is part of the teaching: by the
 end, the user should command enough of the domain's language to face its
 practitioners.
 
@@ -114,7 +127,8 @@ and do not quietly turn hypotheses into requirements.
 The dossier is the exploration's memory and its evidence ledger. Before
 creating, updating, resuming, or finishing one, read
 [references/dossier.md](references/dossier.md) and follow it: checkpoint at
-milestones without asking, announcing the path in a line; on resume, read it
-first and continue without re-asking what it records. Evidence hygiene —
+milestones without asking; say where the file is when you create it and when
+you finish, not at every save; on resume, read it first and continue without
+re-asking what it records. Evidence hygiene —
 source tiers, verbatim number checks, assumption flags — lives there, not
 here.
