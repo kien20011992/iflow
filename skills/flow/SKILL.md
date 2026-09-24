@@ -1,0 +1,270 @@
+---
+name: flow
+description: >-
+  Shapes a large or ambiguous undertaking into user-approved vertical
+  slices, then executes them sequentially — build slices through native plan
+  mode, research slices into finished documents — with durable state in
+  docs/shape/<topic>/shape.md. Use when the requested work is too broad,
+  multi-part, or unsettled to plan honestly in one pass, and when resuming
+  work already tracked in docs/shape/*/shape.md. Not for a single task one
+  native plan can cover, and not for pure understanding with no repo
+  deliverable — that is i:explore.
+argument-hint: "<topic to shape, or dossier to resume>"
+allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/check-dossier.sh *), Bash(${CLAUDE_SKILL_DIR}/scripts/check-pointers.sh), Bash(${CLAUDE_SKILL_DIR}/scripts/check-pointers.sh *)
+---
+
+# i:flow — shape, then slice
+
+Two layers. The Shape layer turns a large or ambiguous request into a
+user-approved table of vertical slices; the slice loop executes the slices
+one by one until done. Core invariant: **facts live in files, not in
+conversational memory** — during Shape they live in the working draft
+(the native plan file itself, including its "Research notes" — never a
+second draft file alongside it), after the table is approved they live in
+the dossier, and research notes become `docs/research/<topic-slug>/*.md`
+files at dossier birth.
+
+Language: protocol skeletons — file names, section headers, status labels,
+this skill's own files — are English. Document CONTENT (prose inside
+dossiers and research notes) and every word spoken to the user follow the
+user's language. A sentence the user has to look up is a failed sentence:
+the protocol's private vocabulary — terms like Charter, birth checklist,
+ripe, finding, Mid-flight, and zone codes — belongs in the files; to the
+user, say the plain thing instead, or introduce the term right where it is
+first used.
+
+Agents: the few rules for putting one to work — never passing a `name`,
+condensed returns that land in files, the ≤3 ceiling — live in
+[references/agents.md](references/agents.md). Read it in the turn you are
+actually about to spawn something, in either layer — not at session start,
+where there may be nothing to spawn at all.
+
+Each rule has exactly one home and every other place points at it. After
+editing this skill's own files, run
+`${CLAUDE_SKILL_DIR}/scripts/check-pointers.sh` — it catches pointers left
+aiming at a file or section that no longer exists.
+
+## The dossier
+
+A topic's dossier lives at `docs/shape/<topic-slug>/`: `shape.md` plus one
+`slice-NN-<name>.md` per slice. What `shape.md` is authoritative for, its
+templates, the label contract table, the birth checklist, and the quality
+test all live in
+[references/state.md](references/state.md) — read it before first creating
+or updating a dossier in a session.
+
+Resolve in this order: the user names a dossier → the dossier active in the
+conversation → a `docs/shape/*/shape.md` matching the topic → none yet:
+attempt draft recovery (see "Draft recovery" in
+[references/shape.md](references/shape.md)), else start Shape fresh.
+
+If shape.md already exists: read it and continue from the next-action line
+it records. Never re-ask what it already records; never make the user
+re-approve what was approved.
+
+## Layer 1 — Shape
+
+A new topic enters Shape. Before anything else, read
+[references/shape.md](references/shape.md) and follow its three stages —
+it owns the plan-file conventions, the two run paths (plan mode /
+no-plan-mode), the stage rules, and decision rights.
+
+If mid-Shape the need collapses to pure understanding with no repo
+deliverable, hand off to i:explore instead of shaping.
+
+The moment the slice table passes its gate: create the dossier per the
+birth checklist in [references/state.md](references/state.md), then enter
+the slice loop within the same turn.
+
+## Layer 2 — the slice loop
+
+Invariants:
+
+1. Re-read shape.md before starting and right after finishing each slice.
+2. Update the current-slice and next-action lines in shape.md the moment
+   the next action changes, not at slice end. The next-action line is one
+   runnable imperative sentence. Once the dossier stops changing — after a
+   lone edit, or at the end of a burst of them such as the birth
+   checklist — run `${CLAUDE_SKILL_DIR}/scripts/check-dossier.sh
+   <dossier-dir>` and fix what it reports. One run per burst, in the
+   foreground: it is read-only and returns in well under a second, so
+   backgrounding it only risks losing the answer.
+3. Mirror the slice table into the todo list so the user sees progress;
+   shape.md stays the single source of truth — on divergence, shape.md
+   wins.
+4. Work only the chosen slice. A finding belonging to another slice gets
+   one line in that slice file's "Pending notes"; one belonging to no
+   slice gets one line in shape.md's "Explored zones" — nothing may drop.
+   Then return.
+5. Verification evidence (scripts, screenshots, command output) must live
+   inside the repo — e.g. `docs/shape/<topic-slug>/evidence/` — never in a
+   session scratchpad, which dies with the session.
+
+**The approval gate.** Every plan i:flow puts to the user — the slice table
+that closes Shape, and each build slice's plan — passes the plan-mode
+approval button when plan mode is in use, and one `AskUserQuestion` on the
+plan's own content when it is not. Nothing else about the cycle changes
+with the path. This is the only definition of the gate; everywhere else
+points here.
+
+**Build slices** run a plan cycle:
+
+1. `EnterPlanMode` when plan mode is in use; explore only within the
+   slice's scope (deep code reading happens now, not earlier); reconcile
+   against the slice's Charter and "Pending notes". Heavy reading may be
+   delegated to Explore agents under
+   [references/agents.md](references/agents.md) — returns condensed, their
+   count declared in "Result"; writing code is never delegated: the main
+   agent owns every edit.
+2. Write the plan. Every plan put to the gate must have as its FIRST step:
+   record a 3–7 line summary of the approved plan (what changes, proven by
+   what at which boundary, deliberately skipping what) into the slice
+   file's "Approved plan" section; and as its LAST step, in the user's
+   language, all four of: run the review gate if this slice changed code,
+   write the slice's "Result", update shape.md (mark slice NN done, set the
+   next action to the next slice), then re-read shape.md — and
+   `${CLAUDE_SKILL_DIR}/SKILL.md` too if the conversation has been
+   compacted since it was last read, or the slice cycle cannot be recited
+   from memory; when unsure, read it — and start that slice per this
+   skill.
+   A slice that changes code lists in its plan the tests covering that
+   change; a repo with no test command of its own gets one built by the
+   same plan.
+3. After approval: verify with real commands, checked against the slice
+   file's "Approved plan" section, not against memory. When the proof
+   boundary is the running app, `/run` is that command.
+   When the repo has a test command, the proof includes one run of the
+   whole suite; a red suite is a failed proof. A red this slice's own
+   change caused is fixed here, a red in a test i:test wrote takes the
+   rule in "Tests from i:test", any other red takes invariant 4 and stays
+   in the suite only by the user order in "Tests from i:test". A red this
+   slice caused whose cause the failure output and the change just made do
+   not explain goes to `/i:debug <the red output · the proof it breaks>`
+   before any fix: it proves the cause, changes nothing, and the fix stays
+   here under the approved plan. This is the only home of the whole-suite
+   rule and of the i:debug lane; everywhere else points here.
+   Running a suite that already exists is this cycle's own work with the
+   project's runner, never a trip through i:test.
+4. Review gate — only when the slice changed code (dossier files and
+   research documents are not code): run `/code-review` at level medium
+   over the files this slice touched. That skill forks its own reviewer,
+   so wrapping it in an agent buys nothing — the gate is ONE review job,
+   not one agent. Reconciling the
+   findings against the slice file's "Approved plan" is the main agent's
+   own work: it is the one that knows what was approved.
+   Findings inside this slice's Charter are fixed here and re-verified;
+   any other finding takes an existing lane (invariant 4, or Mid-flight
+   decisions when it departs from the approved plan). A gate that could
+   not run is recorded in "Result" and does not block the slice.
+5. Write the "Result" section: pass or not, evidence as commands + key
+   output, the review gate's outcome when the gate applied — the paths
+   handed to it as well as what came back (findings, clean, or could not
+   run), so a later reader can judge the coverage — and divergence from
+   the approved plan.
+
+**Research slices** skip plan mode: explore deeply within the slice's
+scope; confer with the user only on something that would change the
+slice's Charter or the document's main conclusion; then write the finished
+document into the slice file. Source discipline per "Research-slice source
+discipline" in [references/state.md](references/state.md). A research
+slice may delegate per formed question, under the rules in
+[references/agents.md](references/agents.md).
+
+**Auto-advance** — finishing a slice does not end the turn. After the
+slice's "Result" section is written (or once the research document is
+complete): update shape.md, announce in exactly one line, then start the
+next slice in the same turn — even when that means another trip through
+the approval gate (its prompt is a legitimate gate, not a bug). Stop only
+when a user decision is needed, a report you commissioned has not come
+back yet, or every slice is done. Research documents need no user approval
+before advancing — the one-line announcement with the file path suffices;
+feedback arriving later follows Mid-flight decisions.
+
+Context health: if context has been compacted and the next slice is large,
+offer a new session in one sentence (the resume hook re-points the
+dossier), without pressing.
+
+## Mid-flight decisions
+
+An explicit order is a decision; a question or praise is not. Write the
+decision into shape.md first, touch code after. If the decision changes
+the slice table: rebuild the table from the current shape, re-submit it
+for approval, then continue.
+
+## Redoing a slice
+
+Charter still right but the result overturned → mark the row "needs-redo":
+the slice reruns the full cycle of its type; the reason goes into "Pending
+notes"; loop-owned sections ("Approved plan", "Result") get fresh entries
+suffixed "(take 2)", old ones stay as history. Charter wrong → not a redo:
+retire NN (its row keeps status "retired") and cut a new slice with a new
+number per the NN identity rules in
+[references/state.md](references/state.md); name the retired slice in the
+decision line.
+
+Marking "needs-redo" changes the slice table, so it passes the Mid-flight
+gate: a user order is a decision; if the model detects it itself, present
+the evidence and re-submit the table. Finished slices that depend on it
+(naming it in their "Needs first" column) do not flip automatically — list
+each with a judgment of whether it is affected in the same re-submission;
+those that flip also get "needs-redo" and rerun in the original order.
+
+## Tests from i:test
+
+i:test writes NEW independent coverage: it locks the contract as its
+oracle in a context that never saw the code being written, then proves it
+in the project's own runner. Call it only when the user asks for
+independent tests, when an approved plan's verification needs coverage that
+does not exist yet, or when a slice needs E2E, contract or adversarial
+proof nothing covers. Never to run tests that already exist, never for a
+document-only slice, never as an automatic second pass over verification
+that already proved the slice.
+
+The handoff is one plain sentence, not a schema: the slice and its dossier
+path, the focus, the constraints, and that "Locked picture", "Decisions"
+and the slice's Charter are the oracle. Before the call, write every
+decision changed in this conversation into the dossier: i:test runs in a
+fresh fork and reads only the dossier and its arguments. What comes back — boundary, oracle
+sources, the tests added, the command and its observed result, verified
+invariants, gaps, findings — is condensed into the slice's "Result"; the
+next action stays this flow's own call. i:test edits neither the dossier
+nor product code, and it names its tests by the project's own convention
+rather than a marker of its own, so "Result" is where they are on record —
+and each such test names its oracle source in its docstring or an adjacent
+comment, which is
+what identifies one that no "Result" claims.
+
+A red this flow cannot attribute — no "Result" claims it and this slice's
+own change never touched it — is judged against the contract before it is
+filed anywhere: an unattributable red is more often one of those tests than
+a broken one; when that judgement leaves the cause unexplained, take the
+i:debug lane, per step 3 of the build cycle.
+
+A red in one of those tests is a finding about the product, not a broken
+test — equally so for a run the user commissioned in a separate session, in
+parallel with development. Inside the current slice's Charter: fix the code
+and re-verify. Outside it: the finding takes the lane of invariant 4, and
+the test is skipped — the runner's own skip marker, never a throwaway
+command-line flag — with a reason pointing at the line just written.
+Leaving any red open on purpose — one of those tests or any other — takes
+a user order (a Mid-flight decision) and skips the test the same way. Those
+skips are this flow's only edits to such a test: never delete it, never
+loosen its assertion. A
+harness or contract gap i:test reported, for coverage the slice required,
+blocks calling that slice a pass.
+
+## Finishing
+
+Before closing: one more whole-suite run, per step 3 of the build cycle.
+A red suite means not done — each red takes its lane there, and a slice
+already reading done that has to carry a fix goes through "needs-redo"
+above.
+Finishing resumes once the suite is clean.
+
+When every slice reads done: set the overall status line in shape.md to
+done and summarize — each slice, its product, file paths, what was
+deliberately left open. When the program changed code, close with one
+line: the program has not passed `/security-review`, run it BEFORE
+pushing — its scope is everything since origin's default branch, so a
+hole spanning two slices is invisible to any single slice's gate. This
+is the end-of-program announcement.

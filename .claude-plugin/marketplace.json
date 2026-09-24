@@ -1,0 +1,14 @@
+{
+  "name": "iflow",
+  "description": "Personal Claude Code skills: i:flow, i:debug, i:test, i:explore, i:gamify",
+  "owner": {
+    "name": "kiennt"
+  },
+  "plugins": [
+    {
+      "name": "i",
+      "source": "./",
+      "description": "i:flow, i:debug, i:test, i:explore, i:gamify"
+    }
+  ]
+}

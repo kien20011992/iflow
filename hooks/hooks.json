@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact|fork",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "IFLOW_SKILL_DIR=\"${CLAUDE_PLUGIN_ROOT}/skills/flow\" bash \"${CLAUDE_PLUGIN_ROOT}/hooks/iflow-resume.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
