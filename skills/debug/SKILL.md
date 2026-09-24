@@ -74,13 +74,15 @@ own runner → end with the resume call; never sweep the repository for
 something wrong.
 
 Reproduction and both tests run only where they are reversible and isolated —
-never on a live system or a shared dataset. Instruments are the target's own:
-its runner, its logs, the record its process already keeps; `/run` when the
-boundary is the app. `git bisect run` with the reproduction command is the
-measurement on the time axis — always in a separate `git worktree`, removed
-before the report. That worktree carries none of the main tree's installed
-dependencies or build output, so the command must go red on the bad end and
-green on the good end inside it before the bisect starts.
+never on a live system or a shared dataset. Instruments are the target's own
+first: its runner, its logs, the record its process already keeps; `/run`
+when the boundary is the app. A profiler, debugger, tracer or sanitizer when
+those cannot separate the hypotheses that remain. `git bisect run` with the
+reproduction command is the measurement on the time axis — always in a
+separate `git worktree`, removed before the report. That worktree carries
+none of the main tree's installed dependencies or build output, so the
+command must go red on the bad end and green on the good end inside it
+before the bisect starts.
 
 ## Prove it in both directions
 
@@ -105,14 +107,14 @@ again.
 
 Changing the target in order to measure is an instrument, not a fix:
 allowed, and put back before the report. Before the first change, record
-`git rev-parse HEAD`, `git status --porcelain` and `git diff`; at report
-time all three must match, and that match is the evidence that the target
-stands as it was found. Put back means reversing this run's own edits:
-`git checkout`, `git restore` and `git stash` also take the caller's
-uncommitted hunks in that file, so they are never the way back, and a file
-this run did not change is never restored. Reversal is an exact-match edit
-whose old text is what this run inserted: a file that no longer matches is
-reported under Working tree, never overwritten.
+`git rev-parse HEAD`, `git status --porcelain`, `git diff` and
+`git diff --cached`; at report time all four must match, and that match is
+the evidence that the target stands as it was found. Put back means
+reversing this run's own edits: `git checkout`, `git restore` and `git stash`
+also take the caller's uncommitted hunks in that file, so they are never the
+way back, and a file this run did not change is never restored. Reversal is
+an exact-match edit whose old text is what this run inserted: a file that no
+longer matches is reported under Working tree, never overwritten.
 
 ## Report
 
