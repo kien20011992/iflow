@@ -49,13 +49,20 @@ else
   esac
 fi
 
-# Slice-table rows: "| NN | ... | status |" — status is the last cell.
-rows=$(awk -F'|' '/^\|[ \t]*[0-9][0-9][ \t]*\|/ {
+# Slice-table rows: "| NN | ... | status |" below the 'Overall status:' line —
+# status is the last cell; tables in the body above it are the reader's.
+rows=$(awk -F'|' -v lab="$L_STATUS" 'index($0, lab)==1 {seen=1}
+  seen && /^\|[ \t]*[0-9][0-9][ \t]*\|/ {
   nn=$2; st=$(NF-1)
   # a dossier may bold or backtick its cell values — strip decoration
   gsub(/^[ \t*`]+|[ \t*`]+$/, "", nn); gsub(/^[ \t*`]+|[ \t*`]+$/, "", st)
   print nn "\t" st
 }' "$f")
+
+# Rows only above the status line would pass unchecked — say so instead.
+if [ -z "$rows" ] && awk -v lab="$L_STATUS" 'index($0, lab)==1 {exit} /^\|[ \t]*[0-9][0-9][ \t]*\|/ {found=1} END {exit !found}' "$f"; then
+  say "slice table sits above '$L_STATUS'; it belongs in the state block below it"
+fi
 
 dups=$(printf '%s\n' "$rows" | awk -F'\t' '$1!="" {c[$1]++} END {for (n in c) if (c[n]>1) printf "%s ", n}')
 [ -n "$dups" ] && say "duplicate slice numbers in the table: $dups"

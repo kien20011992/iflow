@@ -39,8 +39,9 @@ is read.
 
 - **Source** — a commitment that already exists: the sentence the caller
   states, docs, a schema, an API contract, the written description of a
-  process, a test that was green, an i:flow dossier's "Locked picture". Never
-  how the target behaves today, never what merely seems reasonable. A crash,
+  process, a test that was green, an i:flow dossier's picture (the body of
+  its shape.md). Never how the target behaves today, never what merely
+  seems reasonable. A crash,
   a hang, data loss, or an unhandled error the target itself raises is a
   defect without any of those.
 - **Precedence** — the caller's sentence outranks every other commitment;
@@ -145,9 +146,10 @@ of what was tried.
 The same defect seen elsewhere gets one line; fixing those is the caller's
 decision.
 
-Called from i:flow, read the dossier the caller names — "Current slice",
-"Locked picture", "Decisions" and the active "## Charter" — for the
-commitment, and return these same lines.
+Called from i:flow, read the dossier the caller names — its
+`Current slice:` line, the picture and decisions in its shape.md's body,
+and the active slice's charter (what its slice file states first) — for
+the commitment, and return these same items.
 
 ## Never
 

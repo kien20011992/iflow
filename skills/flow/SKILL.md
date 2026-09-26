@@ -19,19 +19,20 @@ Two layers. The Shape layer turns a large or ambiguous request into a
 user-approved table of vertical slices; the slice loop executes the slices
 one by one until done. Core invariant: **facts live in files, not in
 conversational memory** — during Shape they live in the working draft
-(the native plan file itself, including its "Research notes" — never a
+(the native plan file itself, including its research notes — never a
 second draft file alongside it), after the table is approved they live in
 the dossier, and research notes become `docs/research/<topic-slug>/*.md`
 files at dossier birth.
 
-Language: protocol skeletons — file names, section headers, status labels,
-this skill's own files — are English. Document CONTENT (prose inside
-dossiers and research notes) and every word spoken to the user follow the
-user's language. A sentence the user has to look up is a failed sentence:
-the protocol's private vocabulary — terms like Charter, birth checklist,
-ripe, finding, Mid-flight, and zone codes — belongs in the files; to the
-user, say the plain thing instead, or introduce the term right where it is
-first used.
+Language: protocol skeletons — file names, the state-block labels in
+references/state.md §2, this skill's own files — are English. Everything
+else a document holds, headings included, and every word spoken to the
+user follow the user's language. A sentence the user has to look up is a
+failed sentence: the protocol's private vocabulary — terms like slice,
+Charter, birth checklist, ripe, finding, Mid-flight, and zone codes —
+stays in this skill's own files and the state block; in documents and in
+chat, say the plain thing instead, or introduce the term right where it
+is first used.
 
 Agents: the few rules for putting one to work — never passing a `name`,
 condensed returns that land in files, the ≤3 ceiling — live in
@@ -93,8 +94,8 @@ Invariants:
    shape.md stays the single source of truth — on divergence, shape.md
    wins.
 4. Work only the chosen slice. A finding belonging to another slice gets
-   one line in that slice file's "Pending notes"; one belonging to no
-   slice gets one line in shape.md's "Explored zones" — nothing may drop.
+   one line in that slice file's notes; one belonging to no slice gets
+   one line in shape.md's section on what was explored — nothing may drop.
    Then return.
 5. Verification evidence (scripts, screenshots, command output) must live
    inside the repo — e.g. `docs/shape/<topic-slug>/evidence/` — never in a
@@ -111,17 +112,17 @@ points here.
 
 1. `EnterPlanMode` when plan mode is in use; explore only within the
    slice's scope (deep code reading happens now, not earlier); reconcile
-   against the slice's Charter and "Pending notes". Heavy reading may be
+   against the slice's charter and notes. Heavy reading may be
    delegated to Explore agents under
    [references/agents.md](references/agents.md) — returns condensed, their
-   count declared in "Result"; writing code is never delegated: the main
+   count declared in the result; writing code is never delegated: the main
    agent owns every edit.
 2. Write the plan. Every plan put to the gate must have as its FIRST step:
    record a 3–7 line summary of the approved plan (what changes, proven by
    what at which boundary, deliberately skipping what) into the slice
-   file's "Approved plan" section; and as its LAST step, in the user's
+   file's approved-plan section; and as its LAST step, in the user's
    language, all four of: run the review gate if this slice changed code,
-   write the slice's "Result", update shape.md (mark slice NN done, set the
+   write the slice's result, update shape.md (mark slice NN done, set the
    next action to the next slice), then re-read shape.md — and
    `${CLAUDE_SKILL_DIR}/SKILL.md` too if the conversation has been
    compacted since it was last read, or the slice cycle cannot be recited
@@ -131,7 +132,7 @@ points here.
    change; a repo with no test command of its own gets one built by the
    same plan.
 3. After approval: verify with real commands, checked against the slice
-   file's "Approved plan" section, not against memory. When the proof
+   file's approved-plan section, not against memory. When the proof
    boundary is the running app, `/run` is that command.
    When the repo has a test command, the proof includes one run of the
    whole suite; a red suite is a failed proof. A red this slice's own
@@ -150,13 +151,13 @@ points here.
    over the files this slice touched. That skill forks its own reviewer,
    so wrapping it in an agent buys nothing — the gate is ONE review job,
    not one agent. Reconciling the
-   findings against the slice file's "Approved plan" is the main agent's
+   findings against the slice file's approved plan is the main agent's
    own work: it is the one that knows what was approved.
    Findings inside this slice's Charter are fixed here and re-verified;
    any other finding takes an existing lane (invariant 4, or Mid-flight
    decisions when it departs from the approved plan). A gate that could
-   not run is recorded in "Result" and does not block the slice.
-5. Write the "Result" section: pass or not, evidence as commands + key
+   not run is recorded in the result and does not block the slice.
+5. Write the result section: pass or not, evidence as commands + key
    output, the review gate's outcome when the gate applied — the paths
    handed to it as well as what came back (findings, clean, or could not
    run), so a later reader can judge the coverage — and divergence from
@@ -171,7 +172,7 @@ slice may delegate per formed question, under the rules in
 [references/agents.md](references/agents.md).
 
 **Auto-advance** — finishing a slice does not end the turn. After the
-slice's "Result" section is written (or once the research document is
+slice's result section is written (or once the research document is
 complete): update shape.md, announce in exactly one line, then start the
 next slice in the same turn — even when that means another trip through
 the approval gate (its prompt is a legitimate gate, not a bug). Stop only
@@ -194,9 +195,9 @@ for approval, then continue.
 ## Redoing a slice
 
 Charter still right but the result overturned → mark the row "needs-redo":
-the slice reruns the full cycle of its type; the reason goes into "Pending
-notes"; loop-owned sections ("Approved plan", "Result") get fresh entries
-suffixed "(take 2)", old ones stay as history. Charter wrong → not a redo:
+the slice reruns the full cycle of its type; the reason goes into the
+notes; loop-owned sections (approved plan, result) get fresh entries
+headed as a second attempt, old ones stay as history. Charter wrong → not a redo:
 retire NN (its row keeps status "retired") and cut a new slice with a new
 number per the NN identity rules in
 [references/state.md](references/state.md); name the retired slice in the
@@ -221,20 +222,20 @@ document-only slice, never as an automatic second pass over verification
 that already proved the slice.
 
 The handoff is one plain sentence, not a schema: the slice and its dossier
-path, the focus, the constraints, and that "Locked picture", "Decisions"
-and the slice's Charter are the oracle. Before the call, write every
+path, the focus, the constraints, and that the dossier's picture and
+decisions and the slice's charter are the oracle. Before the call, write every
 decision changed in this conversation into the dossier: i:test runs in a
 fresh fork and reads only the dossier and its arguments. What comes back — boundary, oracle
 sources, the tests added, the command and its observed result, verified
-invariants, gaps, findings — is condensed into the slice's "Result"; the
+invariants, gaps, findings — is condensed into the slice's result; the
 next action stays this flow's own call. i:test edits neither the dossier
 nor product code, and it names its tests by the project's own convention
-rather than a marker of its own, so "Result" is where they are on record —
+rather than a marker of its own, so the result is where they are on record —
 and each such test names its oracle source in its docstring or an adjacent
 comment, which is
-what identifies one that no "Result" claims.
+what identifies one that no result claims.
 
-A red this flow cannot attribute — no "Result" claims it and this slice's
+A red this flow cannot attribute — no result claims it and this slice's
 own change never touched it — is judged against the contract before it is
 filed anywhere: an unattributable red is more often one of those tests than
 a broken one; when that judgement leaves the cause unexplained, take the
@@ -263,7 +264,8 @@ Finishing resumes once the suite is clean.
 
 When every slice reads done: set the overall status line in shape.md to
 done and summarize — each slice, its product, file paths, what was
-deliberately left open. When the program changed code, close with one
+deliberately left open — at the top of shape.md's body, above the
+picture. When the program changed code, close with one
 line: the program has not passed `/security-review`, run it BEFORE
 pushing — its scope is everything since origin's default branch, so a
 hole spanning two slices is invisible to any single slice's gate. This

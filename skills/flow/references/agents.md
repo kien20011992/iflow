@@ -12,7 +12,7 @@ you are about to spawn one.
   dumps.
 - No agent's output may live only in the conversation: the substance of
   every return lands in the file its work fed — a research note, a
-  "Result" section, the map. Raw agent output is never pasted into
+  result section, the map. Raw agent output is never pasted into
   user-facing documents. Never instruct an agent to read the i:flow skill
   files.
 - At most 3 agents per fan-out, and 0 is the correct number when the

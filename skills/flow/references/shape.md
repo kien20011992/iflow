@@ -14,11 +14,12 @@ starts only when the user has locked the previous one.
 ## 0. Working draft and the two run paths
 
 The plan file is Shape's accumulating draft. It opens with
-`# Shape: <topic>` and one `Repo: <repo path>` line; its body holds the
-picture draft, the zone map (each zone carrying its state and, once one
-exists, its leaning), a "Research notes" section (one subsection per
-researched zone), and a "Decisions" section written the moment each
-decision settles.
+`# Shape: <topic>` and one `Repo: <repo path>` line, which Draft recovery
+greps. Its body puts the reader's part first — the picture draft, from
+stage 3 the slice table and run order, and the decisions, each written
+the moment it settles — and the working part last: the research notes
+(one subsection per researched zone), then the zone map (each zone with
+its state and, once one exists, its leaning).
 
 **Draft recovery** (when no dossier exists): grep `^# Shape:` in
 `~/.claude/plans/*.md`, keep those whose `Repo:` line matches the current
@@ -26,11 +27,11 @@ repo, then keep only those whose `# Shape:` topic is the topic at hand.
 Exactly one survivor is the draft; several, or a survivor you are unsure
 of, is one `AskUserQuestion` naming each candidate plus "none of these" —
 recency alone must never pick, or a same-repo draft on another topic
-imports its Decisions into this one. No survivor means Shape starts fresh,
+imports its decisions into this one. No survivor means Shape starts fresh,
 in silence: candidates the topic filter already threw out are not worth a
 question — asking whether to recover a draft on another subject wastes the
 user's turn.
-If one is chosen: copy its "Decisions" and "Research notes" sections into
+If one is chosen: copy its decisions and research notes into
 this session's draft and bring the old zone map along as a starting point.
 A previous session's leanings are not state — re-confirm
 each with the user as it gets used; research notes are distilled fact —
@@ -45,7 +46,8 @@ unavailable — Shape still runs all three stages with these substitutions
 | Thing | Plan-mode path | No-plan-mode path |
 |---|---|---|
 | Working draft | native plan file | `docs/shape/<slug>/shape.md`, born from the first exploration round; its next-action line reads "Continue Shape: …" |
-| Research notes | subsections of the draft's "Research notes" | `docs/research/<topic-slug>/<zone-slug>.md` files, written directly |
+| Research notes | subsections of the draft's research notes | `docs/research/<topic-slug>/<zone-slug>.md` files, written directly |
+| Zone map | last in the plan file | in shape.md's state block until birth |
 | Recovered draft sections | copied into the plan file | materialized straight into the docs files above |
 
 Leanings inside a draft shape.md follow the same re-confirm rule as
@@ -56,6 +58,12 @@ recovered drafts.
 Work as two partners: the picture sharpens through two-way discussion, not
 through a chain of rounds the model runs by itself; research via subagents
 and the web serves the discussion, never substitutes for it.
+
+**An i:explore dossier first.** Before the opening round, read the
+i:explore dossier on this topic in `docs/research/*/explore.md`, if one
+clearly matches (ask when several fit). Its confirmed findings seed the
+picture draft; whatever it flags as unconfirmed enters the draft as a
+leaning to re-confirm, as in Draft recovery — never as a decision.
 
 **Opening round** produces two things: a draft of the picture, however
 rough, and the **zone map** — the essential axes the picture cannot stand
@@ -132,7 +140,7 @@ bare options without reasoning that dump the burden of choice on the user.
 pushes back, adds constraints only they know. A ripe zone is not locked on
 the spot: its product is understanding plus a reasoned leaning, spoken
 aloud into the zone's map entry, waiting for the decision session. Before
-the session, only these paths enter "Decisions": (1) an explicit user
+the session, only these paths enter the decisions: (1) an explicit user
 order; (2) a choice the user raised themselves — discuss it right there,
 lock it if they want; (3) a blocking decision — blocking means a NAMED zone
 cannot present its material until this one settles (merely swinging a later
@@ -174,7 +182,7 @@ The session gathers the leanings and only now adjudicates — eliminating,
 ranking, weaving them on the concrete problem: ask via `AskUserQuestion` in
 batches (at most four questions per call); the branches are the options
 already discussed, the recommended option first with its context-anchored
-reason; outcomes go into "Decisions". If the user rejects a recommendation
+reason; outcomes go into the decisions. If the user rejects a recommendation
 mid-session, reopen that zone under stage-1 rules, then resume; recorded
 decisions stand, except any whose premise the new outcome invalidates —
 re-ask those.
@@ -204,11 +212,12 @@ have "discover itself" as its goal — a research slice is valid once its
 question has taken shape. (3) every dependency names a real slice and the
 graph has no cycles. (4) value test — every build slice names an outcome
 observable from outside its own code: something the user sees, or a system
-behaviour you can command. One that cannot is an enabler: write `enabler`
-in its goal cell — never in the status cell, whose values are a label
-contract — and give the reason it cannot ride inside a vertical increment
-in the slice file's Charter, not in the table cell — a reason needs a
-sentence, and a table cell cannot hold one.
+behaviour you can command. One that cannot is an enabler: say so in plain
+words in its goal cell — groundwork the user will not see by itself —
+never in the status cell, whose values are a label contract; give the
+reason it cannot ride inside a vertical increment in the slice file's
+charter, not in the table cell — a reason needs a sentence, and a table
+cell cannot hold one.
 
 Submit the plan — the locked picture + the slice table + the run order —
 through the approval gate defined in SKILL.md's Layer 2. Right after the
@@ -230,7 +239,7 @@ Questions run in two registers, with no cap on count:
   not yet laid means keep discussing instead of asking.
 - **Delegation.** The user may delegate a zone for the model to decide —
   answers like "whichever", "you pick" ARE delegation, never an understood
-  zone. The delegation is itself a decision, recorded in "Decisions"; a
+  zone. The delegation is itself a decision, recorded in the decisions; a
   delegated zone is decided by the model at the decision session, announced
   in the closing summary block, never re-asked.
 - **Direct confirmation.** Affirmative words in the user's language ("ok",

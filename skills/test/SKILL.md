@@ -50,12 +50,13 @@ sources · observable response · final state · must-not-change effects ·
 repeat-call semantics · isolation constraints · explicit exclusions ·
 contract gaps.
 
-Oracle, in priority: the user's acceptance criteria → the dossier's "Locked
-picture" and "Decisions" and the active slice's "## Charter" → public docs,
-schemas, APIs and exported contracts. Never an oracle: implementation
-bodies, diff hunks, current runtime behaviour, a snapshot the run records,
-"Approved plan", "Result", "Pending notes", code comments. Where the
-contract is silent, report a contract gap: never invent an expected result,
+Oracle, in priority: the user's acceptance criteria → the dossier's
+picture and decisions (shape.md's body) and the active slice's charter
+(what its slice file states first) → public docs, schemas, APIs and
+exported contracts. Never an oracle: implementation bodies, diff hunks,
+current runtime behaviour, a snapshot the run records, the slice file's
+approved plan, result and notes, code comments. Where the contract is
+silent, report a contract gap: never invent an expected result,
 never assume every invalid input owes a typed error, and write
 characterization tests only on request.
 
@@ -163,7 +164,8 @@ gaps · Findings. Oracle sources states "no user acceptance criteria were
 supplied to this fork" when the arguments carried none; if the dossier or
 public contract does not cover the scope either, that is a contract gap.
 
-Called from i:flow, read "Current slice", the active slice-table row, "Locked
-picture", "Decisions" and the active "## Charter", and return those same
-lines. i:flow owns the dossier and the next action: never edit a dossier,
-never touch product code.
+Called from i:flow, read the `Current slice:` line and the active
+slice-table row (shape.md's closing state block), the picture, the
+decisions and the active charter, and return those same items. i:flow
+owns the dossier and the next action: never edit a dossier, never touch
+product code.
