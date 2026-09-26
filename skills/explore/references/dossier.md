@@ -11,11 +11,12 @@ Use the first applicable choice:
 
 1. Reuse the dossier path explicitly supplied by the user.
 2. Reuse the active dossier already established in the conversation.
-3. Search `docs/ambient/*/explore.md` for an active dossier matching the topic.
+3. Search `docs/research/*/explore.md` for an active dossier matching the topic.
    Reuse a single clear match. Ask only when several plausible matches make the
    choice unsafe.
 4. At the first milestone, create
-   `docs/ambient/<concise-topic-slug>/explore.md`.
+   `docs/research/<concise-topic-slug>/explore.md`, beside any research notes
+   i:flow keeps on the same topic.
 
 Use a stable, lowercase, hyphenated topic slug. Do not rename the dossier when
 the title evolves unless the user requests it or the original path becomes
@@ -72,7 +73,7 @@ Begin with this YAML frontmatter:
 
 ```yaml
 ---
-ambient_step: explore
+skill: explore
 topic: <current human-readable topic>
 primary_domain: <primary domain>
 status: active
@@ -96,108 +97,80 @@ these flags, never strip them.
 
 ## Required information
 
-Keep these information roles, adapting headings to the subject when natural:
+The user reads this file first, without the chat; a future agent resumes
+from it second. So the body comes first and one compact state block comes
+last. Each piece of state lives fully in exactly one section; other sections
+may point to it or state its consequence, never reproduce it. Keep these
+roles, in this order, with headings adapted to the subject:
 
-### Current position
+### What the user now understands
 
-Provide a compact cold-start block near the top:
+The body of the document and the first thing after the title. The teaching
+and research in the order it was delivered, each part under a heading that
+says what it is about: explanations, comparisons, examples, trade-offs,
+failure modes, and the uncertainty needed to understand the subject without
+the chat. A short clarifying turn that taught something — a term, a
+distinction — is recorded too, under the part it belongs to. This is the
+exploration's product; never cut it to a quota.
 
-- current focus and the layer most recently delivered;
-- expert lens;
-- what the user needs this for and what decision waits on it;
-- what has been confirmed;
-- working hypotheses or recommendations not yet confirmed;
-- the map of zones still open, and which decision each feeds;
-- the best next descent point.
+### What changed along the way
 
-### The user and their need
-
-Record what is known about the person, kept separate from what is known about
-the subject:
-
-- what they intend to do with the understanding;
-- the decision waiting on it, if any;
-- what they already knew coming in, and the vocabulary they use;
-- the resolution they work at — whole landscape or the detail of one part;
-- correction signals received, and how the reading of their need changed.
-
-Mark each item as confirmed by the user or inferred by the expert, and never
-silently promote an inference. A fresh agent that restores only the subject
-matter will reproduce whatever mismatch made the correction necessary.
-
-### Framed idea or question
-
-State the evolved question and why it is being explored. Preserve important
-changes from the original framing.
-
-### Knowledge map
-
-Show the zones and how they relate: which decision each feeds, which have been
-descended into, which remain closed and why. Include only zones that are
-relevant, explored, or intentionally queued.
-
-### Developed understanding
-
-Write the substantive teaching and research developed so far, organized by the
-layers actually delivered. Preserve explanations, comparisons, examples,
-trade-offs, failure modes, and uncertainty needed to understand the subject
-without the chat.
-
-### Discussion synthesis
-
-Record the questions that materially changed or deepened the exploration and
-the resulting understanding. Summarize the reasoning; do not reproduce turns.
-
-### Corrections and evolution
-
-Record discarded misconceptions, overturned assumptions, meaningful
-disagreements, and why the understanding changed. Omit trivial wording fixes.
-
-This section is append-mostly: a recorded correction signal is never deleted
-or weakened by a later rewrite. Losing it re-instates the original misreading
-in every future session.
-
-### Emerging needs
-
-Separate:
-
-- needs explicitly confirmed by the user;
-- needs still being inferred or tested;
-- expert recommendations and their rationale;
-- rejected or deferred directions and why.
-
-Never promote an inference or recommendation into a confirmed need.
+Only the questions, disagreements, and discoveries that changed the framing,
+the map, or a conclusion — and why. Do not summarize every exchange. This
+section is append-mostly: a recorded correction signal is never deleted or
+weakened by a later rewrite, because losing it re-instates the original
+misreading in every future session.
 
 ### Open questions
 
-List unresolved zones, missing evidence, and what each could change. Name the
-single question currently blocking the most conclusions and who owns the
-answer. Identify the recommended next descent when appropriate.
+Unresolved zones, missing evidence, and unconfirmed inferences, each with
+what it could change and who owns the answer. Name the single question
+currently blocking the most conclusions. This is the working queue and the
+fence that keeps an unknown from becoming a fact.
 
 ### Sources
 
-Link directly to the important sources. For each source, state what it
-supports, record the access date when freshness matters, and tier it:
-official, primary, secondary, or listing-grade.
+An appendix. Link the sources that matter; for each, state what it supports,
+the access date when freshness matters, and its tier: official, primary,
+secondary, or listing-grade. A number that carries a conclusion must be
+verified verbatim against a primary source, or corroborated by two
+independent sources; otherwise it is an estimate and is labeled as one here
+and wherever it is repeated. Keep known conflicts visible, and distinguish
+source evidence from expert synthesis. When nothing was checked, say so in
+one line rather than omitting the section.
 
-A number that carries a conclusion must be verified verbatim against a primary
-source, or corroborated by two independent sources. A figure that has only
-passed through a summarizer or a single secondary source is an estimate and
-must be labeled as one — in the dossier and wherever it is repeated. Keep
-known conflicts or limitations visible, and distinguish source evidence from
-expert synthesis.
+### State for the next session
 
-### Downstream handoff
+The agent's block, last in the file and compact. Three parts:
 
-While active, explain what later steps could already use and what remains too
-uncertain. When ready, state the informed needs, conclusions, constraints,
-evidence base, and intentionally open questions that the next step receives —
-with every unconfirmed flag carried along.
+**Where we are.** Four lines, each a pointer, none a copy: the evolved
+question and the expert lens serving it; the decision waiting on the
+exploration and whether it is on the table yet; `status` (`active` or
+`ready`), the most recently delivered part, and the recommended next descent;
+the flags downstream must carry, by reference to the open questions. Do not
+list here what was delivered, what may be relied on, or what is still open —
+each already lives in its own section.
+
+**Who the user is.** Kept separate from the subject, each item marked
+confirmed by the user or inferred by the expert, never silently promoted:
+what they intend to do with the understanding and the decision waiting on
+it; what they knew coming in, the vocabulary they use, the resolution they
+work at; needs — confirmed, still inferred, recommended by the expert with
+rationale, rejected or deferred and why; correction signals received and how
+the reading of their need changed. A fresh agent that restores only the
+subject matter will reproduce whatever mismatch made a correction necessary.
+
+**The map.** The single place a zone's status lives. One table row per zone
+that is relevant, explored, or intentionally queued: the decision it feeds,
+its status (open, in progress, closed), a one-line verdict pointing to its
+part of the body, and the open dependency blocking it, if any. Do not
+restate the body here.
 
 ## Quality test
 
-Before treating a checkpoint as complete, verify that a fresh agent could
-answer all of these from the dossier alone:
+Before treating a checkpoint as complete, verify that the user could read
+the body cold and act on it, and that a fresh agent could answer all of
+these from the dossier alone:
 
 - What is being explored, and through which expert lens?
 - What does the user need this for, and what decision is waiting on it?
