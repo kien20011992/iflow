@@ -42,7 +42,7 @@ the user keeps their games and use that path for the whole run.
 | `gamemaster.md` | narrator only | the hidden plan: every quest, dungeon and level tied to a real sub-skill and a measurable sign, the referee rules, and the **vocabulary table** — the one place every name of this game is declared |
 | `slate/` | build mode; play mode runs it | the game's machine: data, the scoring engine that turns the rules of `gamemaster.md` into code, and the source of the playable page that the player actually plays in — the page scores instantly, the narrator only reads its results. `slate/` is the skill's fixed directory name; the page's name inside the game is the concept's own |
 | `tools.md` | the user as designer | what the machine is made of and how to refresh it, plus whatever is still only proposed |
-| `gamemaster/` | build mode only | the design dossier: `plan.md` (state, the five explored axes, the skill map, decisions) and, from stage 3 on, the slice table and slice files |
+| `gamemaster/` | build mode; the user reads `plan.md` | `plan.md`: a body for the user (axes, skill map, concept, decisions, one section per built part), then a state block — status, next step, slice table — always last |
 
 The player follows `world.md` and the narrator's voice; the narrator opens
 the rest when the game says so. Player-facing files are pure game: no
@@ -58,8 +58,8 @@ and the player never copies numbers into chat. A game that is only files
 plus a chat is the previous version of this skill, and the user found it
 "giống hệt ver trước, chẳng có tí sáng tạo hay tự động gì". Only when
 nothing about the pursuit can be computed does the game fall back to
-files and reported numbers — then `plan.md` carries the line `Máy: không —
-<why>` under "Sân luyện", and `run-check.sh` stops asking for `slate/` and
+files and reported numbers — then `plan.md`'s state block carries the line
+`Máy: không — <why>`, and `run-check.sh` stops asking for `slate/` and
 `boss/`. How
 the machine is built — the scoring engine, the page and its result
 contract — is in [references/slate.md](references/slate.md).
@@ -190,7 +190,7 @@ test and its tolerances, the session rules with the six known gaps
 answered, the progression of every dungeon with a blank row for later
 ones, the narrator's rules, the 32-condition checklist; explain it in
 plain words in at most fifteen lines and ask "duyệt hay chỉnh?" in words;
-adjust until approved; then write the game's slice table into `plan.md`
+adjust until approved; then write the game's slice table into `plan.md`'s state block
 (game-master plan · data + scoring engine · the playable page · dungeon 1 ·
 each further dungeon · tools · final check). Approving the plan is
 approving "the plan laid down from the start". The rules in
@@ -316,7 +316,9 @@ This file is English; the references are Vietnamese; the game's content
 follows the user's language. File names inside a game are the fixed English
 game terms of the table above, whatever the content language. Tell the user
 plain things: the words "trục", "bản đồ kỹ năng", "cổng duyệt" are this
-skill's own — say what they mean where they are first used.
+skill's own — say what they mean where they are first used. The body of
+`plan.md` is the user's: write it by `~/.claude/rules/docs.md`; slice,
+trục, cổng duyệt, giai đoạn live only in its state block.
 
 ## Report
 

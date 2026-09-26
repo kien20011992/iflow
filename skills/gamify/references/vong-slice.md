@@ -13,9 +13,8 @@ không phải bịa dần. Dựng dungeon 1 trước rồi mới nghĩ thang đo
 phiên bản trước làm, ra chặng chia đại. Nên duyệt gamemaster = duyệt kế
 hoạch, rồi mới có dungeon.
 
-**Luật viết.** Cả gamemaster.md lẫn lời trình cho người dùng theo luật
-"viết cho người hiểu" (SKILL.md): lời thường, tên riêng tiếng Anh có nửa
-câu giải nghĩa lần đầu, con số dồn vào bảng có câu dẫn.
+**Luật viết.** Cả gamemaster.md lẫn lời trình cho người dùng theo
+"Write for understanding" của SKILL.md.
 
 ## Vào giai đoạn
 
@@ -45,8 +44,8 @@ câu giải nghĩa lần đầu, con số dồn vào bảng có câu dẫn.
 
 ## Bảng slice của game (bước B)
 
-Ghi vào `plan.md`, mục `## Bảng slice`, mẫu cố định, không tự thêm loại
-slice khác:
+Ghi vào khối trạng thái ở cuối `plan.md` (mẫu ở `tim-hieu.md`), không vào
+thân bài; mẫu cố định, không tự thêm loại slice khác:
 
 | # | Slice | Dạy gì (dòng # bản đồ) | Hạn dự kiến | Trạng thái |
 |---|---|---|---|---|
@@ -60,13 +59,13 @@ slice khác:
 | 0N+2 | Kiểm cuối | — | — | todo |
 
 Hai slice máy (02, 03) chỉ bỏ khi việc thật không mô phỏng được từ dữ
-liệu — khi đó ghi dòng `Máy: không — <lý do>` vào mục Sân luyện của
+liệu — khi đó ghi dòng `Máy: không — <lý do>` vào khối trạng thái của
 plan.md (run-check.sh đọc dòng này để bỏ kiểm `slate/` và `boss/`), và
 dungeon chạy trên file + số báo tay.
 
 - Trạng thái: `todo` / `doing` / `done` / `needs-redo` / `retired`. Đúng
-  một slice `doing` mỗi lúc; hai dòng đầu của plan.md (`Trạng thái`, `Việc
-  kế tiếp`) trỏ vào slice đó.
+  một slice `doing` mỗi lúc; hai dòng `Trạng thái:`, `Việc kế tiếp:` của
+  plan.md trỏ vào slice đó.
 - Số slice là danh tính: thêm dungeon sau thì nối số mới, không chen, không
   đánh lại số.
 - Hạn dự kiến của dungeon = hạn ghi trong đường tiến trình của
@@ -118,9 +117,10 @@ Mỗi slice dungeon đi đúng năm bước:
    lượng)" ở số đã sửa; trình ≤ 5 dòng "đổi số nào, từ đâu ra", ghi một
    dòng Quyết định. Cấp đã cấp ở lần 0 theo ngưỡng cũ thì chấm lại theo
    ngưỡng mới ngay, vì luật "cấp không tụt" chỉ áp từ sau hiệu chỉnh.
-5. **Ghi** vào plan.md mục `## Slice NN — <tên>` với "Kế hoạch đã duyệt"
-   (3–5 dòng) và "Kết quả" (đạt/không, bằng chứng, lệch); đổi trạng thái;
-   `Việc kế tiếp` trỏ slice kế. Phiên bị cắt giữa slice thì lần sau đọc
+5. **Ghi** vào plan.md mục `## NN — <tên phần việc bằng lời thường>`, chèn
+   trước khối trạng thái, với "Kế hoạch đã duyệt" (3–5 dòng) và "Kết quả"
+   (đạt/không, bằng chứng, lệch) viết cho người chưa xem chat; đổi trạng
+   thái ở bảng trong khối cuối; `Việc kế tiếp` trỏ slice kế. Phiên bị cắt giữa slice thì lần sau đọc
    plan.md là biết đang ở bước mấy.
 
 ## Slice `tools.md` (sau dungeon cuối)
@@ -160,7 +160,7 @@ phiên chơi):
 6. `gamemaster.md` không còn số "(ước lượng)" nào chưa hiệu chỉnh sau bài
    kiểm cố định lần 0; còn thì liệt kê và ghi lý do.
 
-Đạt cả sáu → hai dòng đầu plan.md thành `Trạng thái: chơi được — hoàn tất`
+Đạt cả sáu → hai dòng trạng thái của plan.md thành `Trạng thái: chơi được — hoàn tất`
 / `Việc kế tiếp: chơi; sửa hay thêm dungeon gọi nhánh sửa`. Không đạt →
 điều nào không đạt thành một dòng Quyết định và slice liên quan
 `needs-redo`; kiểm cuối vẫn `todo`.

@@ -6,9 +6,7 @@ sau khi áp. Chép vào skill vì skill không được phụ thuộc file trong
 hai điều (A1, C2) cho bộ file v2. Nguồn gốc:
 `docs/research/cot-truyen-de-hieu/luat-van-phong.md`.
 
-Luật cốt lõi đứng trên cả 18 điều (SKILL.md, "Write for understanding"): tên
-riêng tiếng Anh nhưng không lạm dụng; mỗi tên lần đầu kèm nửa câu nó là gì;
-lời thường tiếng Việt mang phần còn lại.
+Luật cốt lõi đứng trên cả 18 điều: SKILL.md, "Write for understanding".
 
 ## A. Luật về hình dạng
 
@@ -32,9 +30,7 @@ lời thường tiếng Việt mang phần còn lại.
 
 ## B. Luật về câu chữ
 
-**B1. Câu đủ chủ ngữ vị ngữ, một tầng.** Không nhãn IN HOA + dấu hai chấm + cụm cụt. Không gạch ngang dài chen giữa chủ ngữ và vị ngữ. Quá 30 chữ chưa có dấu chấm thì tách.
-- Sai: *"Lượt hỏng — vấp ở chỗ không đoán, hoặc dưới 90% chính xác — thì được gõ lại đúng đề đó ở nhịp chậm với lời đoán mới, ngay lượt kế."*
-- Đúng: *"Một lượt bị coi là hỏng khi bạn vấp ở chỗ không đoán, hoặc chính xác dưới 90%. Bạn được gõ lại đúng đề đó ngay lượt kế, ở nhịp chậm, với lời đoán mới."*
+**B1. Câu chữ chung** (câu trọn, một tầng, không nhãn cụt) theo `~/.claude/rules/docs.md` và giọng trả lời trong chat; mục này không chép lại.
 
 **B2. Mỗi việc kèm "để làm gì" ngay tại chỗ.** Việc không có lý do thì người đọc hỏi "for what" và bỏ.
 - Sai: *"SỔ HIỂU BIẾT: một dòng 'Hôm nay hiểu ra …' cuối mỗi phiên, trong nhat-ky.md."*

@@ -39,7 +39,8 @@ dòng đó thì hỏi người chơi URL trang một lần và ghi vào đó.
 
 Không đọc: mọi file tham chiếu dựng game của skill này, `gamemaster/plan.md`
 (chỉ được **nối** một dòng vào mục `## Ghi chú từ phiên chơi` khi mục "Kết
-phiên" bảo; file chưa có mục đó thì thêm nó ở cuối file), `boss/` (không ai
+phiên" bảo; file chưa có mục đó thì thêm nó ngay trước khối trạng thái ở
+cuối file), `boss/` (không ai
 mở ngoài trang), `slate/` trừ `slate/data/ids.json` — bảng id mờ → đề thật,
 chỉ tra khi thật sự cần, và đề thật không bao giờ ghi vào file người chơi
 (ngày người chơi chơi thì ghi bình thường ở tiêu đề khối journal).
@@ -148,8 +149,9 @@ Chấm, cho mỗi doc `tests/<id>` chưa ghi vào `character.md`:
 3. Chiêu cuối (nếu game có, mục 3 nói) mở khi điều kiện ở mục 3 thoả trong
    **cùng một lần** đánh.
 4. Ghi: `character.md` dòng "Cấp" và "<bài kiểm> gần nhất" (ngày thật của
-   `at` + hai số mỗi chiêu, kiểu "23/09/2026 — <chiêu A> 60/40, <chiêu B>
-   50/25"); `character/main` bằng `update` với `if_version` (`levels`,
+   `at` + hai số mỗi chiêu, mỗi số kèm tên `world.md` dùng, kiểu
+   "23/09/2026 — <chiêu A> trúng 60 · không sót 40", không "60/40" trơ);
+   `character/main` bằng `update` với `if_version` (`levels`,
    `unlocked`, trường riêng khi đổi); `quests.md` đóng dòng lần 0, hay dòng
    "bài kiểm cuối vùng" nếu có.
 5. Nói một câu cấp, bằng tên chiêu và số cấp; không nói phần trăm trừ khi

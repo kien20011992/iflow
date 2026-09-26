@@ -28,16 +28,11 @@ thư viện. Không có hình dung thì đi **đường 1**: ba khung từ thư 
 Lệnh "không lấy gu người chơi" chỉ áp cho nguồn khi người dùng không đưa
 gì; người dùng đưa thì đó là quyết định của họ.
 
-**Luật cốt lõi khi viết — viết cho người hiểu.** Tên riêng dùng tiếng
-Anh theo phong cách khung, nhưng không lạm dụng: mỗi tên xuất hiện lần
-đầu kèm nửa câu nói nó là gì, còn lại là lời thường bằng ngôn ngữ người
-dùng. Một đoạn mà người đọc phải giữ trong đầu năm bảy cái tên mới theo
-được là đoạn viết sai, dù tên hay tới đâu. Áp cho bản tả concept, cho mọi
-file người chơi sau này, và cho lời người dẫn.
+**Luật viết:** "Write for understanding" của SKILL.md, áp cả cho bản tả concept.
 
 ## Vào giai đoạn
 
-- `plan.md` phải có mục "Bản đồ kỹ năng (đã duyệt …)". Không có thì quay
+- `plan.md` phải có bảng kỹ năng con "(đã duyệt <ngày>)". Không có thì quay
   về giai đoạn 1.
 - Đặt `Trạng thái: đang dựng — giai đoạn: concept`, `Việc kế tiếp: viết ba
   concept và đưa người dùng chọn`.
@@ -79,7 +74,7 @@ Người dùng bác cả ba, hay nói "cho cái khác", "không thích", "chán"
    phải mang" của thư viện. Hàng cấm không đổi.
 3. **Ghi vào `plan.md`** mục "Concept đã trình": thêm dòng "vòng N" với ba
    tên mới và một dòng nói vòng trước trượt ở đâu theo lời người dùng. Khi
-   khoá, dòng "Khung" ghi "<thể loại> — <game gốc> (ngoài thư viện)". Không
+   khoá, dòng "Dựa trên" ghi "<thể loại> — <game gốc>". Không
    tự thêm khung vào `thu-vien-khung.md`; thư viện chỉ đổi khi người dùng
    bảo.
 
@@ -181,17 +176,17 @@ Ca chạy thật cho thấy người dùng từ chối `AskUserQuestion` bốn l
 
 ## Ghi vào `plan.md`
 
-Nối vào cuối file:
+Chèn ngay trước khối trạng thái ở cuối file:
 
 ````markdown
 ## Concept đã trình (<ngày>)
 
-- <Tên A> — <khung hoặc "người dùng đưa">: <một dòng, và vì sao bị bác nếu bị bác>
+- <Tên A> — <kiểu game — game gốc, hoặc "ý của bạn">: <một dòng, và vì sao bị bác nếu bị bác>
 - …
 
 ## Concept đã khoá (<ngày>)
 
-- Khung: <tên khung — game gốc | "<thể loại> — <game gốc> (ngoài thư viện)" | "người dùng đưa" + cảm hứng>
+- Dựa trên: <tên khung — game gốc | "<thể loại> — <game gốc>" | "ý của bạn" + cảm hứng>
 - Tên: <tên concept>
 - Tông: <hai ba câu>
 - Vai: <tên, một câu>; Người dẫn: <tên, một câu>
@@ -199,8 +194,8 @@ Nối vào cuối file:
 - Chỉnh so với bản trình: <gì, hoặc "khoá nguyên">
 - Nhược điểm chấp nhận: <…>
 
-Bảng cái-này-là-cái-này (chuyển vào gamemaster.md ở giai đoạn slice; file
-người chơi không nhắc):
+Mỗi thứ trong game ứng với việc thật nào (bảng này chuyển vào
+gamemaster.md khi dựng; file người chơi không nhắc):
 
 | Yếu tố game | Dòng # bản đồ | Nước đi thật |
 |---|---|---|
@@ -208,7 +203,8 @@ người chơi không nhắc):
 Tiến trình sơ bộ: <danh sách dungeon/quest ↔ dòng #; boss = bộ đề niêm phong>
 ````
 
-Rồi: dòng Quyết định "<ngày> — Concept <tên> khoá; đổi concept = làm lại
-giai đoạn 2"; `Việc kế tiếp: bắt đầu giai đoạn slice`; và **đi tiếp giai
+Rồi: thêm tên game và một câu nó là gì vào đoạn mở đầu `plan.md`; dòng
+Quyết định "<ngày> — Concept <tên> khoá; đổi concept là chọn lại từ đầu";
+`Việc kế tiếp: bắt đầu giai đoạn slice`; và **đi tiếp giai
 đoạn 3** ngay trong cùng lượt chạy (SKILL.md, Stage 3) trừ khi người dùng
 bảo dừng.

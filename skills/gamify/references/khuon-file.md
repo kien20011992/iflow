@@ -17,8 +17,7 @@ từ game forex đầu tiên (trang "the Slate", người dẫn Ilo, lần chơi
 "đêm", bài kiểm Guardian, nơi trao chiêu Shrine, chiêu Sight / Lure) và chỉ
 là ví dụ.
 
-**Hai luật đứng trên khuôn.** (1) Viết cho người hiểu: tên riêng tiếng Anh,
-không lạm dụng, lần đầu kèm nửa câu nó là gì; lời thường mang phần còn lại.
+**Hai luật đứng trên khuôn.** (1) "Write for understanding" của SKILL.md.
 (2) File người chơi thuần game: không "ngoài đời là", không tên kỹ năng thật,
 không tên lĩnh vực; mỗi tên game kèm **việc tay trên trang**.
 
@@ -66,11 +65,11 @@ Câu dẫn một dòng rồi bảng: `Nhiệm vụ | Làm gì | Trạng thái (m
 
 ## `character.md`
 
-Bảng một cột giá trị: Tên (người chơi đặt ở lần chơi đầu hoặc "chưa nhớ"), Vùng, Ngày đầu (D0), Hạn vùng, Chiêu đã mở, Cấp từng chiêu, các bộ đếm mà bảng từ vựng khai báo (ví dụ forex: Chuỗi, Kill), Số lần chơi, `<bài kiểm>` gần nhất (ngày + điểm), `<phần thưởng cốt truyện>` đã có. Người dẫn ghi sau `<bài kiểm>` và khi qua vùng.
+Bảng một cột giá trị: Tên (người chơi đặt ở lần chơi đầu hoặc "chưa nhớ"), Vùng, Ngày đầu (D0), Hạn vùng, Chiêu đã mở, Cấp từng chiêu, các bộ đếm mà bảng từ vựng khai báo (ví dụ forex: Chuỗi, Kill), Số lần chơi, `<bài kiểm>` gần nhất (ngày + hai số có nhãn), `<phần thưởng cốt truyện>` đã có. Người dẫn ghi sau `<bài kiểm>` và khi qua vùng.
 
 ## `journal.md`
 
-Mở đầu hai câu: sổ này `<người dẫn>` ghi từ trang, bạn không phải chép; cuối mỗi vùng `<người dẫn>` đọc lại để kể bạn đã đi qua vùng đó thế nào (B2). Rồi mỗi lần chơi một khối, mẫu sinh từ bảng từ vựng và chép vào `gamemaster.md` mục 7:
+Mở đầu hai câu: sổ này `<người dẫn>` ghi từ trang, bạn không phải chép; cuối mỗi vùng `<người dẫn>` đọc lại để kể bạn đã đi qua vùng đó thế nào (B2). Thêm một câu nói số dạng a/b trong khối là trúng trên số đã đặt. Rồi mỗi lần chơi một khối, mẫu sinh từ bảng từ vựng và chép vào `gamemaster.md` mục 7:
 
 ````markdown
 ## <Lần chơi> N — <ngày thật> · <đề> <id mờ>

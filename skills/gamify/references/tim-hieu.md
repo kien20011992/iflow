@@ -132,7 +132,7 @@ thành người … / làm được …". Người dùng thường trả lời c
 ("kiếm 1000 USD/tháng"); khi đó hỏi lại một lần: đằng sau con số đó là năng
 lực gì.
 
-**Đóng:** khi có một câu đúng dạng. **Ghi:** một dòng ở đầu `plan.md`, và
+**Đóng:** khi có một câu đúng dạng. **Ghi:** dòng `Đích lớn:` ở đầu `plan.md`, và
 từ đây không nhắc lại ở bất kỳ file nào của game — nó là cái neo, được cất
 đi.
 
@@ -158,12 +158,12 @@ từ đây không nhắc lại ở bất kỳ file nào của game — nó là c
 6. **Tra cứu:** rút bản đồ theo trục 1, cột "dấu hiệu đo được" viết theo
    kênh báo cáo vừa đóng. Dùng web khi có; không có web thì viết từ hiểu
    biết của mô hình và ghi tầng "ước lượng" cho mọi dòng. Ghi bản nháp vào
-   `plan.md` dưới heading `## Bản đồ kỹ năng (chờ duyệt)` trước khi hỏi;
-   giai đoạn 2 chỉ mở khi heading đã đổi thành "(đã duyệt <ngày>)".
+   `plan.md` dưới heading `## Kỹ năng con cần luyện (chờ duyệt)` trước khi
+   hỏi; giai đoạn 2 chỉ mở khi heading đã đổi thành "(đã duyệt <ngày>)".
 7. **Lượt 3** — một `AskUserQuestion`, một câu: cổng duyệt bản đồ (duyệt
    nguyên / sửa / làm lại theo nguồn khác). Người dùng sửa → sửa rồi đưa
    lại một lần (lượt 4).
-8. Đổi heading thành `## Bản đồ kỹ năng (đã duyệt <ngày>)`, đổi `Việc kế tiếp:` thành "viết concept và
+8. Đổi heading thành `## Kỹ năng con cần luyện (đã duyệt <ngày>)`, đổi `Việc kế tiếp:` thành "viết concept và
    đưa người dùng chọn", rồi **đi tiếp giai đoạn 2** ngay trong cùng lượt
    chạy (SKILL.md, Stage 2) trừ khi người dùng bảo dừng.
 
@@ -172,20 +172,18 @@ thứ nên tra cứu, hoặc tra cứu thứ nên hỏi.
 
 ## Mẫu `gamemaster/plan.md`
 
-Hồ sơ thiết kế của game. Người chơi không mở; chế độ play không đọc. Hai
-dòng đầu là trạng thái máy đọc được; các giai đoạn sau nối thêm mục vào
-cuối file (bảng slice ở giai đoạn 3), không đổi hai dòng đầu trừ khi
-trạng thái đổi.
+Hồ sơ thiết kế; người chơi không mở, chế độ play chỉ chèn ghi chú. Người
+dùng được đưa đường dẫn file này (SKILL.md, Report): thân bài viết cho họ
+theo `~/.claude/rules/docs.md`, không slice, trục, cổng duyệt, giai đoạn,
+khung. Khối `## Trạng thái để làm tiếp` luôn là mục cuối, chỗ duy nhất ghi
+tiến độ; mục mới chèn ngay trước nó.
 
 ````markdown
 # Kế hoạch game — <tên việc thật>
 
-Trạng thái: đang dựng — giai đoạn: tìm hiểu
-Việc kế tiếp: <một câu mệnh lệnh, ví dụ "tra cứu bản đồ kỹ năng" hay "viết concept và đưa người dùng chọn">
+<hai ba câu cho người dùng mở lại file sau vài tuần: game luyện việc gì, cho ai; concept khoá rồi thì thêm tên game và một câu nó là gì>
 
-<!-- giai đoạn: tìm hiểu | concept | slice | chơi được -->
-
-Chân trời: <một câu, không tiền, không số — viết một lần, không nhắc lại ở file nào khác>
+Đích lớn: <một câu, không tiền, không số — viết một lần, không nhắc lại ở file nào khác>
 
 ## Người chơi
 
@@ -203,7 +201,7 @@ Chân trời: <một câu, không tiền, không số — viết một lần, kh
 - Kênh báo cáo: <người chơi gửi gì, dạng gì>
 - Chỉ tự khai (không làm điều kiện lên cấp): <dòng nào của bản đồ, hoặc "không có">
 
-## Bản đồ kỹ năng (đã duyệt <ngày>)
+## Kỹ năng con cần luyện (đã duyệt <ngày>)
 
 <câu dẫn: bảng này là gì, ai duyệt, dùng để suy ra gì>
 
@@ -223,4 +221,11 @@ Nguồn:
 ## Ghi chú từ phiên chơi
 
 <người dẫn (chế độ play) nối một dòng khi người chơi xin nới luật hay báo máy chấm lệch: ngày + lời họ; không sửa luật giữa vùng>
+
+## Trạng thái để làm tiếp
+
+Trạng thái: đang dựng — giai đoạn: tìm hiểu
+Việc kế tiếp: <một câu mệnh lệnh, ví dụ "tra cứu bản đồ kỹ năng" hay "viết concept và đưa người dùng chọn">
+
+<!-- giai đoạn: tìm hiểu | concept | slice | chơi được. Sau thêm: `Máy: không — <lý do>` (nếu có), bảng slice. -->
 ````
