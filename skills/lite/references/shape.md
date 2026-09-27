@@ -10,8 +10,8 @@ through the plan's first step, their light source discipline written out
 here; how-to detail goes to the deep read, unmade choices to the plan's
 assumptions; the opening round may split the map, deferring cheap and
 reversible zones to the plan's assumptions (state "deferred to the
-plan's assumptions"); a finished run retires its `Shape draft:` marker to
-`Shape draft done:`.
+plan's assumptions"); a finished run writes a completion block after the
+plan and retires its `Shape draft:` marker to `Shape draft done:`.
 
 Contents: 0. Working draft and the two run paths · 1. Stage 1 — explore the
 picture · 2. Stage 2 — decision session · 3. Stage 3 — one plan, no slices ·
@@ -30,7 +30,7 @@ line" below.
 The plan file is Shape's accumulating draft. Its title names the work in
 the user's own words, with no prefix. Its body puts the reader's part
 first — the picture draft,
-from stage 3 the plan itself,
+from stage 3 the plan itself, after the run its completion block,
 and the decisions, each written the moment it settles — and the working
 part last: the research notes (one subsection per researched zone), then
 the zone map (each zone with its state and, once one exists, its
@@ -56,9 +56,11 @@ imports its decisions into this one. No survivor means Shape starts fresh,
 in silence: candidates the topic filter already threw out are not worth a
 question — asking whether to recover a draft on another subject wastes the
 user's turn.
-If one is chosen: copy its decisions and research notes into
-this session's draft and bring the old zone map along as a starting point.
-A previous session's leanings are not state — re-confirm
+If one is chosen: copy its decisions and research notes into this
+session's draft, and bring its picture draft, zone map and — when stage 3
+had begun — its draft plan along as starting points, reconciled against
+the decisions. Previous leanings and every choice in a plan not approved
+at this run's gate remain assumptions, not decisions — re-confirm
 each with the user as it gets used; research notes are distilled fact —
 they carry over as-is, and map links to them keep working. Never keep
 working in the old plan file: two parallel drafts drift apart. Recovery is

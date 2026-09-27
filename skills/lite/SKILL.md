@@ -58,6 +58,16 @@ is the task.
 If mid-run the need collapses to pure understanding with no repo
 deliverable, hand off to i:explore instead.
 
+## After a compaction
+
+Before the next exchange, re-read this SKILL.md and the active plan file.
+If stages 1–2 are still running, also re-read
+[references/shape.md](references/shape.md). The compaction summary is a
+pointer, not a source of truth; facts live in those files. i:lite never
+has a dossier, so no resume hook fires: this rule is the only reload. If
+the draft's path was lost, recover it per "Draft recovery" in
+[references/shape.md](references/shape.md).
+
 ## Two lanes
 
 **Full lane** (default): stages 1–2 per
@@ -97,9 +107,9 @@ and their count goes in the report.
 **Too big for one plan?** When the picture shows work that will not finish
 in one session, or several increments each worth approving on its own, say
 so at the top of the plan with the reason and recommend `/i:flow`; the user
-decides at the gate. Handing over loses nothing: the plan file is i:flow's
-draft format, so i:flow's draft recovery picks up its decisions and
-research notes.
+decides at the gate. Handing over loses no decision, research note,
+picture or draft plan: the plan file is i:flow's draft format, and
+i:flow's draft recovery carries all four across.
 
 **Contents.** Written into the plan file right after the picture, ahead of
 the decisions — the draft order in references/shape.md §0 — in the user's
@@ -116,12 +126,18 @@ language:
 - The assumptions: every choice the user did not make explicitly — always
   present in the fast lane; in the full lane, for delegated zones and
   zones taken straight to the plan.
-- LAST step, in this order: run the review gate if code changed; then,
-  with proof and review complete, retire the draft's marker — its
-  `Shape draft: <topic>` line becomes `Shape draft done: <topic>`, which
-  draft recovery no longer matches, so a finished run stops being a
-  candidate while an interrupted one still is; then write the report — per
-  "Build and prove" and "The report" below.
+- LAST step, in this order: finish the proof; run and reconcile the
+  review gate if code changed; write the completion block into the plan
+  file right after the plan — its own heading in the user's language,
+  holding pass or not, the commands run with their key output, the review
+  gate's outcome, divergence from the approved plan, and the research
+  files written; then retire the draft's marker — its `Shape draft:
+  <topic>` line becomes `Shape draft done: <topic>`, which draft recovery
+  no longer matches, so a finished run stops being a candidate while an
+  interrupted one still is; then write the report in chat — per "Build
+  and prove" and "The report" below. Interrupted before the completion
+  block, the run stays recoverable; interrupted after it, the file already
+  holds the whole result.
 
 **The gate.** The plan passes the plan-mode approval button when plan mode
 is in use, and one `AskUserQuestion` on the plan's own content when it is
@@ -161,8 +177,10 @@ plan and pass the gate again.
 
 ## The report
 
-The run ends with one report in chat, in the user's language. Evidence
-lives here; there is no evidence directory in the repo.
+The run ends with one report in chat, in the user's language — the same
+facts as the plan file's completion block, which serves resume and audit
+while this report serves the user at the moment of completion. i:lite
+creates no dossier or evidence directory in the repo.
 
 - Pass or not.
 - Evidence: the commands run and their key output.
