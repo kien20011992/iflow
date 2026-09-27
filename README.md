@@ -1,10 +1,11 @@
 # iflow
 
-Claude Code plugin `i` — five skills, invoked as `/i:<name>`:
+Claude Code plugin `i` — six skills, invoked as `/i:<name>`:
 
 | Skill | Use it for |
 |---|---|
 | `i:flow` | Shape a large or unsettled undertaking into approved vertical slices, then run them; state lives in `docs/shape/<topic>/shape.md`. |
+| `i:lite` | Shape one unsettled task into a single plan, then build and prove it — no slices, no dossier; `/i:lite fast <task>` skips the shaping. User-invoked only. |
 | `i:debug` | Reproduce a defect and prove its cause from a fresh context; the fix stays with the caller. |
 | `i:test` | Write new tests at a public boundary, contract locked before the code is read. |
 | `i:explore` | Understand an unfamiliar topic layer by layer before deciding anything. |
