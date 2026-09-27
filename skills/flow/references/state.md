@@ -140,9 +140,11 @@ slices it needs first>
 
 ## <approved plan>
 
-<build: 3–7 lines, written right after the plan passes its gate: what
-changes, proven by what at which boundary, deliberately skipping what.
-Verification reads from here, not from memory.>
+<build, written right after the plan passes its gate: a 3–7 line summary
+— what changes, proven by what at which boundary, deliberately skipping
+what — followed by the plan's steps as a numbered list, one line each,
+never the plan's prose. Verification reads from here, not from memory; a
+session resuming mid-slice continues from these steps.>
 
 ## <result>
 

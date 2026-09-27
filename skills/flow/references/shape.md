@@ -37,8 +37,10 @@ imports its decisions into this one. No survivor means Shape starts fresh,
 in silence: candidates the topic filter already threw out are not worth a
 question — asking whether to recover a draft on another subject wastes the
 user's turn.
-If one is chosen: copy its decisions and research notes into
-this session's draft and bring the old zone map along as a starting point.
+If one is chosen: copy its decisions and research notes into this
+session's draft, and bring its picture draft, zone map and — when stage 3
+had begun — its unapproved slice table along as starting points,
+reconciled against the decisions.
 A previous session's leanings are not state — re-confirm
 each with the user as it gets used; research notes are distilled fact —
 they carry over as-is, and map links to them keep working. Never keep

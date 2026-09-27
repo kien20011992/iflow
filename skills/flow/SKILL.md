@@ -10,7 +10,6 @@ description: >-
   native plan can cover, and not for pure understanding with no repo
   deliverable — that is i:explore.
 argument-hint: "<topic to shape, or dossier to resume>"
-allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/check-dossier.sh *), Bash(${CLAUDE_SKILL_DIR}/scripts/check-pointers.sh), Bash(${CLAUDE_SKILL_DIR}/scripts/check-pointers.sh *)
 ---
 
 # i:flow — shape, then slice
@@ -140,9 +139,10 @@ points here.
    count declared in the result; writing code is never delegated: the main
    agent owns every edit.
 2. Write the plan. Every plan put to the gate must have as its FIRST step:
-   record a 3–7 line summary of the approved plan (what changes, proven by
-   what at which boundary, deliberately skipping what) into the slice
-   file's approved-plan section; and as its LAST step, in the user's
+   record into the slice file's approved-plan section a 3–7 line summary
+   of the approved plan (what changes, proven by what at which boundary,
+   deliberately skipping what) followed by the plan's steps as a numbered
+   list, one line each — never the plan's prose; and as its LAST step, in the user's
    language, all four of: run the review gate if this slice changed code,
    write the slice's result, update shape.md (mark slice NN done, set the
    next action to the next slice), then re-read shape.md — and, if
