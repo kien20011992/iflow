@@ -25,7 +25,8 @@ the dossier, and research notes become `docs/research/<topic-slug>/*.md`
 files at dossier birth.
 
 Language: protocol skeletons — file names, the state-block labels in
-references/state.md §2, this skill's own files — are English. Everything
+references/state.md §2 and the draft's two lines in references/shape.md §0,
+this skill's own files — are English. Everything
 else a document holds, headings included, and every word spoken to the
 user follow the user's language. A sentence the user has to look up is a
 failed sentence: the protocol's private vocabulary — terms like slice,
@@ -62,6 +63,27 @@ attempt draft recovery (see "Draft recovery" in
 If shape.md already exists: read it and continue from the next-action line
 it records. Never re-ask what it already records; never make the user
 re-approve what was approved.
+
+## After a compaction
+
+Whatever layer is running, before the next exchange re-read
+`${CLAUDE_SKILL_DIR}/SKILL.md`, the reference governing that layer, and
+the authoritative files for the active work:
+
+- during Shape: [references/shape.md](references/shape.md) and the
+  working draft;
+- while creating or repairing a dossier:
+  [references/state.md](references/state.md) and shape.md;
+- during a slice: shape.md and the current slice file.
+
+The compaction summary is a pointer, not a source of truth; facts live in
+those files. On the plan-mode Shape path no dossier exists yet, so the
+resume hook stays silent: this rule is the only reload. If the draft's
+path was lost, recover it per "Draft recovery" in
+[references/shape.md](references/shape.md).
+
+If the next slice is large, offer a new session in one sentence (the
+resume hook re-points the dossier), without pressing.
 
 ## Layer 1 — Shape
 
@@ -123,11 +145,11 @@ points here.
    file's approved-plan section; and as its LAST step, in the user's
    language, all four of: run the review gate if this slice changed code,
    write the slice's result, update shape.md (mark slice NN done, set the
-   next action to the next slice), then re-read shape.md — and
-   `${CLAUDE_SKILL_DIR}/SKILL.md` too if the conversation has been
-   compacted since it was last read, or the slice cycle cannot be recited
-   from memory; when unsure, read it — and start that slice per this
-   skill.
+   next action to the next slice), then re-read shape.md — and, if
+   the conversation has been compacted since `${CLAUDE_SKILL_DIR}/SKILL.md`
+   was last read, or the slice cycle cannot be recited from memory, follow
+   "After a compaction" above; when unsure, follow it — and start that
+   slice per this skill.
    A slice that changes code lists in its plan the tests covering that
    change; a repo with no test command of its own gets one built by the
    same plan.
@@ -180,10 +202,6 @@ when a user decision is needed, a report you commissioned has not come
 back yet, or every slice is done. Research documents need no user approval
 before advancing — the one-line announcement with the file path suffices;
 feedback arriving later follows Mid-flight decisions.
-
-Context health: if context has been compacted and the next slice is large,
-offer a new session in one sentence (the resume hook re-points the
-dossier), without pressing.
 
 ## Mid-flight decisions
 

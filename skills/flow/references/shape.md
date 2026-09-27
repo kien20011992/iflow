@@ -13,17 +13,23 @@ starts only when the user has locked the previous one.
 
 ## 0. Working draft and the two run paths
 
-The plan file is Shape's accumulating draft. It opens with
-`# Shape: <topic>` and one `Repo: <repo path>` line, which Draft recovery
-greps. Its body puts the reader's part first — the picture draft, from
-stage 3 the slice table and run order, and the decisions, each written
-the moment it settles — and the working part last: the research notes
-(one subsection per researched zone), then the zone map (each zone with
-its state and, once one exists, its leaning).
+The plan file is Shape's accumulating draft. Its title names the work in
+the user's own words, with no prefix. Its body puts the reader's part
+first — the picture draft,
+from stage 3 the slice table and run order,
+and the decisions, each written the moment it settles — and the working
+part last: the research notes (one subsection per researched zone), then
+the zone map (each zone with its state and, once one exists, its
+leaning). The state block for the next session closes the file, nothing
+after it: its own heading in the user's language, then exactly two lines,
+`Shape draft: <topic>` and, right below it, `Repo: <repo path>` — the only
+lines Draft recovery reads.
 
-**Draft recovery** (when no dossier exists): grep `^# Shape:` in
-`~/.claude/plans/*.md`, keep those whose `Repo:` line matches the current
-repo, then keep only those whose `# Shape:` topic is the topic at hand.
+**Draft recovery** (when no dossier exists): run
+`grep -A1 '^Shape draft: ' ~/.claude/plans/*.md` — each hit's next line
+is that draft's `Repo:`; a `Repo:` anywhere else in a file is prose. Keep
+the drafts whose `Repo:` matches the current repo, then keep only those
+whose `Shape draft:` topic is the topic at hand.
 Exactly one survivor is the draft; several, or a survivor you are unsure
 of, is one `AskUserQuestion` naming each candidate plus "none of these" —
 recency alone must never pick, or a same-repo draft on another topic
@@ -47,7 +53,7 @@ unavailable — Shape still runs all three stages with these substitutions
 |---|---|---|
 | Working draft | native plan file | `docs/shape/<slug>/shape.md`, born from the first exploration round; its next-action line reads "Continue Shape: …" |
 | Research notes | subsections of the draft's research notes | `docs/research/<topic-slug>/<zone-slug>.md` files, written directly |
-| Zone map | last in the plan file | in shape.md's state block until birth |
+| Zone map | last in the plan file's body | in shape.md's state block until birth |
 | Recovered draft sections | copied into the plan file | materialized straight into the docs files above |
 
 Leanings inside a draft shape.md follow the same re-confirm rule as
@@ -148,10 +154,14 @@ recommendation is not blocking); raise it early precisely because it
 blocks, ask for the call only after enough discussion; (4) the stall valve
 below.
 
-**Position line** ends every exchange: what changed in the picture, each
-zone's state (unopened / in discussion / understood-leaning-recorded /
-locked early / suspected out-of-scope), and a recommendation for what comes
-next — steering stays in the user's hands. "Understood" is a verdict on the
+**Position line** ends every exchange: what changed in the picture, the
+zones whose state changed this exchange, the zones still open with their
+state, and a recommendation for what comes next — steering stays in the
+user's hands. Zone states: unopened / in discussion /
+understood-leaning-recorded / locked early / suspected out-of-scope. Open
+means unopened, in discussion, or suspected out-of-scope and not yet
+confirmed; the settled zones live on the map, not in every line.
+"Understood" is a verdict on the
 exchange: a zone the user has not responded to on substance is at most "in
 discussion". A small topic whose few zones are already clear may have its
 opening round recommend going straight to the decision session.

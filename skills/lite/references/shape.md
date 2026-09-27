@@ -10,8 +10,7 @@ through the plan's first step, their light source discipline written out
 here; how-to detail goes to the deep read, unmade choices to the plan's
 assumptions; the opening round may split the map, deferring cheap and
 reversible zones to the plan's assumptions (state "deferred to the
-plan's assumptions"); the position line names only what changed and what
-is still open; a finished run retires its `Shape draft:` marker to
+plan's assumptions"); a finished run retires its `Shape draft:` marker to
 `Shape draft done:`.
 
 Contents: 0. Working draft and the two run paths · 1. Stage 1 — explore the
