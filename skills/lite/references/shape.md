@@ -86,6 +86,12 @@ Work as two partners: the picture sharpens through two-way discussion, not
 through a chain of rounds the model runs by itself; research via subagents
 and the web serves the discussion, never substitutes for it.
 
+**An i:explore dossier first.** Before the opening round, read the
+i:explore dossier on this topic in `docs/research/*/explore.md`, if one
+clearly matches (ask when several fit). Its confirmed findings seed the
+picture draft; whatever it flags as unconfirmed enters the draft as a
+leaning to re-confirm, as in Draft recovery — never as a decision.
+
 **Opening round** produces two things: a draft of the picture, however
 rough, and the **zone map** — the essential axes the picture cannot stand
 on until they settle (programming: architecture, stack, approach, scope;

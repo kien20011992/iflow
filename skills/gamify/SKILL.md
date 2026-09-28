@@ -14,6 +14,7 @@ description: >-
   building a video game as software (i:flow), or a discussion about why games
   are engaging (i:explore).
 argument-hint: "[<pursuit> | play <game-dir> | <game-dir> thêm dungeon: … | <game-dir> sửa: …]"
+disable-model-invocation: true
 ---
 
 # i:gamify — build the game, then run it

@@ -15,6 +15,7 @@ description: >-
   pure understanding with no repo deliverable (i:explore), a defect (i:debug)
   or new tests (i:test).
 argument-hint: "<topic to shape, or dossier to resume>"
+disable-model-invocation: true
 ---
 
 # i:flow — shape, then slice
@@ -99,6 +100,14 @@ no-plan-mode), the stage rules, and decision rights.
 If mid-Shape the need collapses to pure understanding with no repo
 deliverable, hand off to i:explore instead of shaping.
 
+**Too light for slices?** This skill is invoked by hand, so the opening
+round also weighs the request: when one plan covers it — one task, one
+deliverable, nothing worth approving on its own — say so in one line with
+the reason and recommend `/i:lite <task>` (`/i:lite fast` when the
+direction is already settled); the user decides. Handing over loses
+nothing: i:lite works from the same draft format. Say it once, at the
+opening round, never again mid-way.
+
 The moment the slice table passes its gate: create the dossier per the
 birth checklist in [references/state.md](references/state.md), then enter
 the slice loop within the same turn.
@@ -167,10 +176,11 @@ points here.
    rule in "Tests from i:test", any other red takes invariant 4 and stays
    in the suite only by the user order in "Tests from i:test". A red this
    slice caused whose cause the failure output and the change just made do
-   not explain goes to `/i:debug <the red output · the proof it breaks>`
-   before any fix: it proves the cause, changes nothing, and the fix stays
-   here under the approved plan. This is the only home of the whole-suite
-   rule and of the i:debug lane; everywhere else points here.
+   not explain goes to `/i:debug <the red output · the proof it breaks ·
+   the dossier's shape.md path · the active slice file>` before any fix: it
+   proves the cause, changes nothing, and the fix stays here under the
+   approved plan. This is the only home of the whole-suite rule and of the
+   i:debug lane; everywhere else points here.
    Running a suite that already exists is this cycle's own work with the
    project's runner, never a trip through i:test.
 4. Review gate — only when the slice changed code (dossier files and
@@ -187,8 +197,9 @@ points here.
 5. Write the result section: pass or not, evidence as commands + key
    output, the review gate's outcome when the gate applied — the paths
    handed to it as well as what came back (findings, clean, or could not
-   run), so a later reader can judge the coverage — and divergence from
-   the approved plan.
+   run), so a later reader can judge the coverage — divergence from the
+   approved plan, and, when this slice's proof went through i:debug, its
+   status, cause or gap, reproduction and decisive evidence.
 
 **Research slices** skip plan mode: explore deeply within the slice's
 scope; confer with the user only on something that would change the

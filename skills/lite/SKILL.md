@@ -1,12 +1,11 @@
 ---
 name: lite
 description: >-
-  Shapes one task whose direction is not yet settled into ONE consolidated
-  plan, then builds and proves it: i:flow's Shape stages 1–2 (zone map,
-  zone research, fresh-eyes pass, decision session) with no slices, never
-  writing docs/shape/. Research notes land in docs/research/. `fast` skips
-  stages 1–2 and goes straight to a plan whose assumptions are shown at the
-  gate. Invoked only by the user.
+  Shape one task whose direction is not settled yet: map the open
+  questions, research them, decide with you, then build and prove one
+  plan. No slices, no dossier; research notes go to docs/research/.
+  `fast` skips the shaping and goes straight to a plan that lists its
+  assumptions for you to veto at the gate.
 argument-hint: "[fast] <task>"
 disable-model-invocation: true
 ---
@@ -156,9 +155,9 @@ not. This is the only definition of the gate; everywhere else points here.
    proof on its own. A red run is a failed proof. A red this change caused
    is fixed here; when the failure output
    and the change just made do not explain it, it goes to
-   `/i:debug <the red output · the proof it breaks>` before any fix — that
-   skill proves the cause and changes nothing; the fix stays here under the
-   approved plan. A red this change did not cause is reported, not
+   `/i:debug <the red output · the proof it breaks · the active plan
+   file>` before any fix — that skill proves the cause and changes
+   nothing; the fix stays here under the approved plan. A red this change did not cause is reported, not
    touched. Running a suite that already exists is this skill's own work
    with the project's runner; independent new tests are `/i:test`'s, called
    by the user when they want them.
@@ -187,6 +186,8 @@ creates no dossier or evidence directory in the repo.
 - The review gate's outcome: the paths handed to it, and what came back —
   findings, clean, or could not run.
 - Divergence from the approved plan.
+- When the proof went through i:debug: its status, cause or gap,
+  reproduction and decisive evidence.
 - The research files written.
 
 When the run changed code, close with one line: this change has not passed

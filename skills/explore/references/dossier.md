@@ -144,27 +144,28 @@ one line rather than omitting the section.
 The agent's block, last in the file and compact. Three parts:
 
 **Where we are.** Four lines, each a pointer, none a copy: the evolved
-question and the expert lens serving it; the decision waiting on the
-exploration and whether it is on the table yet; `status` (`active` or
-`ready`), the most recently delivered part, and the recommended next descent;
-the flags downstream must carry, by reference to the open questions. Do not
-list here what was delivered, what may be relied on, or what is still open —
-each already lives in its own section.
+question and the expert lens serving it; the aim the exploration serves,
+and, when it is a decision, whether it is on the table yet; `status`
+(`active` or `ready`), the most recently delivered part, and the
+recommended next descent; the flags downstream must carry, by reference to
+the open questions. Do not list here what was delivered, what may be
+relied on, or what is still open — each already lives in its own section.
 
 **Who the user is.** Kept separate from the subject, each item marked
 confirmed by the user or inferred by the expert, never silently promoted:
-what they intend to do with the understanding and the decision waiting on
-it; what they knew coming in, the vocabulary they use, the resolution they
-work at; needs — confirmed, still inferred, recommended by the expert with
-rationale, rejected or deferred and why; correction signals received and how
-the reading of their need changed. A fresh agent that restores only the
-subject matter will reproduce whatever mismatch made a correction necessary.
+what they intend to do with the understanding and the aim it serves; what
+they knew coming in, the vocabulary they use, the resolution they work at;
+needs — confirmed, still inferred, recommended by the expert with
+rationale, rejected or deferred and why; correction signals received and
+how the reading of their need changed. A fresh agent that restores only the
+subject matter will reproduce whatever mismatch made a correction
+necessary.
 
 **The map.** The single place a zone's status lives. One table row per zone
-that is relevant, explored, or intentionally queued: the decision it feeds,
-its status (open, in progress, closed), a one-line verdict pointing to its
-part of the body, and the open dependency blocking it, if any. Do not
-restate the body here.
+that is relevant, explored, or intentionally queued: the aim it serves, its
+status (open, in progress, closed), a one-line verdict pointing to its part
+of the body, and the open dependency blocking it, if any. Do not restate
+the body here.
 
 ## Quality test
 
@@ -173,9 +174,10 @@ the body cold and act on it, and that a fresh agent could answer all of
 these from the dossier alone:
 
 - What is being explored, and through which expert lens?
-- What does the user need this for, and what decision is waiting on it?
-- Which layers has the user received, and what can they now decide that they
-  could not at the start?
+- What does the user need this for, and what aim is the exploration
+  serving?
+- Which layers has the user received, and what can they now decide or
+  understand that they could not before?
 - What has been confirmed, proposed, corrected, rejected, or left open?
 - Which evidence supports the important claims, and at what source tier?
 - Which single question is blocking the most conclusions, and who owns it?

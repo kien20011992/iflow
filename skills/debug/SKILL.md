@@ -44,7 +44,9 @@ what should have happened instead and where that expectation comes from; how
 often and under what conditions; when it last behaved correctly. That last
 point is the cheapest cut there is: the diff from then to now — the working
 tree against HEAD when the tree is dirty — is measured before anything else
-is read.
+is read. Unknown and never known good are themselves valid answers here:
+record `unknown` or `never known good` and go straight to reproduction —
+the temporal diff and bisect apply only once a measured good point exists.
 
 - **Source** — a commitment that already exists: the sentence the caller
   states, docs, a schema, an API contract, the written description of a
@@ -53,9 +55,13 @@ is read.
   seems reasonable. A crash,
   a hang, data loss, or an unhandled error the target itself raises is a
   defect without any of those.
-- **Precedence** — the caller's sentence outranks every other commitment;
-  docs, a schema or a contract outrank a test that was green. A commitment
-  overridden that way is named in the report.
+- **Precedence** — docs, a schema or a contract outrank a test that was
+  green. The caller's sentence outranks any of those only as an override:
+  it names the specific commitment and orders it replaced, ignored or
+  changed. A symptom report, a question, an assumption or a stated
+  expectation that conflicts with a higher commitment without naming and
+  rejecting it is evidence, not an override — that conflict is a Gap. A
+  commitment overridden this way is named in the report.
 - **Gap** — nothing states the correct behaviour, or a disagreement nothing
   above settles: name both sides. This run ends there, blocked, naming the
   exact `/i:debug <symptom · expectation>` call that resumes it, carrying
@@ -158,7 +164,9 @@ decision.
 Called from i:flow, read the dossier the caller names — its
 `Current slice:` line, the picture and decisions in its shape.md's body,
 and the active slice's charter (what its slice file states first) — for
-the commitment, and return these same items.
+the commitment, and return these same items. Called from i:lite, read the
+plan file the caller names the same way. Read only: this run never edits
+the dossier, the slice file or the plan file.
 
 ## Never
 

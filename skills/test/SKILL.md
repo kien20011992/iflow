@@ -121,8 +121,13 @@ default scheduler; go serial only for a genuinely shared resource, and say
 why. Use a fake clock, a fixed seed and a unique namespace wherever
 determinism needs them. Mock the external boundary, never the behaviour
 under test. No real credential, production service or shared dataset. A
-missing dependency or config is a blocker: report it with the smallest
-prerequisite, never install it. Placement and naming follow the project's
+dependency already pinned in the project's manifest and lockfile may be
+restored with the project's own recorded command (e.g. `npm ci`, `bundle
+install`, `poetry install`) through normal permission — never add a new
+dependency or framework, never edit a manifest or lockfile, never fetch
+from outside the repo's declared sources. Anything not already pinned, or
+missing config, is a blocker: report it with the smallest prerequisite,
+never install it. Placement and naming follow the project's
 convention — its lane for generated tests when it has one.
 Never delete or weaken an existing assertion. Extend an existing native
 table or parameterized case when it is the smallest coherent home;
