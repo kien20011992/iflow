@@ -30,6 +30,8 @@ hoạch, rồi mới có dungeon.
    tool; hỏi trước khi viết vì mỗi món chọn thành một luật trong file.
    Người dùng không trả lời thì ghi "không chọn" và đi tiếp.
 2. **Viết `docs/games/<slug>/gamemaster.md`** theo mẫu ở cuối file này.
+   Mục 9 của mẫu lấy từ mục "Ba mươi hai điều kiện thiết kế" của
+   [quy-trinh.md](quy-trinh.md): đọc mục đó trước khi điền.
    Mọi con số (ngưỡng, sai số, số đề, phút) phải có; số nào chưa có căn cứ
    thì ghi "(ước lượng — hiệu chỉnh sau bài kiểm lần 0)". Không để ô trống.
 3. **Trình cho người dùng bằng lớp 1, lời thường, tối đa 15 dòng:** lên

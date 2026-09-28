@@ -25,7 +25,18 @@ your defaults; where nothing is said, your defaults are right.
 This skill runs in the main conversation, never a forked context: it asks
 the user with `AskUserQuestion`, and a fork has no such tool. Do not add
 `context: fork` to the frontmatter. It never loads or reads another skill's
-files; what it needs is in its own `references/`.
+files; what it needs is in its own `references/`. The one exception: the
+skills the `Artifact` tool itself requires before a page is written
+(`artifact-design`, `artifact-capabilities`) are loaded exactly as that
+tool says — the page's shared record cannot be written without them.
+
+**After a compaction**, before the next exchange, re-read what the mode
+in progress runs on. Build mode: `${CLAUDE_SKILL_DIR}/SKILL.md`, the
+game's `gamemaster/plan.md`, and the reference of the stage in progress,
+as named under Build mode below. Play mode:
+[references/quan-tro.md](references/quan-tro.md) and only the game files
+it lets play mode read — never `gamemaster/plan.md`. The compaction
+summary is a pointer; the facts are in those files.
 
 ## Where a game lives
 

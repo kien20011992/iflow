@@ -23,12 +23,16 @@ the zone map (each zone with its state and, once one exists, its
 leaning). The state block for the next session closes the file, nothing
 after it: its own heading in the user's language, then exactly two lines,
 `Shape draft: <topic>` and, right below it, `Repo: <repo path>` — the only
-lines Draft recovery reads.
+lines Draft recovery reads. `<repo path>` is what
+`git rev-parse --show-toplevel` prints, or the working directory outside
+git, so a session opened in a subdirectory still finds the draft. Dossier
+birth (state.md §3) retires the first line to `Shape draft done: <topic>`,
+so only unfinished Shapes remain candidates.
 
 **Draft recovery** (when no dossier exists): run
 `grep -A1 '^Shape draft: ' ~/.claude/plans/*.md` — each hit's next line
 is that draft's `Repo:`; a `Repo:` anywhere else in a file is prose. Keep
-the drafts whose `Repo:` matches the current repo, then keep only those
+the drafts whose `Repo:` matches this session's `<repo path>`, then keep only those
 whose `Shape draft:` topic is the topic at hand.
 Exactly one survivor is the draft; several, or a survivor you are unsure
 of, is one `AskUserQuestion` naming each candidate plus "none of these" —

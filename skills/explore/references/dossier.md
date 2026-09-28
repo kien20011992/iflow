@@ -7,6 +7,11 @@ file for every update.
 
 ## Resolve the dossier
 
+`docs/research/` below is the one at the root of the current git
+repository. Outside a git repository, ask once where the user keeps
+explorations and use that directory for the whole conversation, so a
+later session opened elsewhere still finds the dossier.
+
 Use the first applicable choice:
 
 1. Reuse the dossier path explicitly supplied by the user.

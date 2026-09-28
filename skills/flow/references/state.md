@@ -63,6 +63,9 @@ consumers in the same commit — the checker fails loudly when they drift.
 5. Set `Next action:` to the first slice.
 6. Run `check-dossier.sh` on the dossier, then the quality test (§7),
    before leaving it.
+7. Retire the draft: its `Shape draft: <topic>` line becomes
+   `Shape draft done: <topic>`, the words i:lite uses, so no later draft
+   recovery offers a Shape whose program already has a dossier.
 
 ## 4. Template `docs/shape/<topic-slug>/shape.md`
 

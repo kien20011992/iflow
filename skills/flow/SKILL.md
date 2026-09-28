@@ -180,7 +180,10 @@ definition of the gate; everywhere else points here.
    file's approved-plan section, not against memory. When the proof
    boundary is the running app, `/run` is that command.
    When the repo has a test command, the proof includes one run of the
-   whole suite; a red suite is a failed proof. A red this slice's own
+   whole suite by default; a narrower run holds only when the approved
+   plan named it with what it leaves out and why — the user accepted that
+   at the gate, the model never narrows the proof on its own. A red run
+   is a failed proof. A red this slice's own
    change caused is fixed here, a red in a test i:test wrote takes the
    rule in "Tests from i:test", any other red takes invariant 4 and stays
    in the suite only by the user order in "Tests from i:test". A red this
@@ -299,7 +302,8 @@ blocks calling that slice a pass.
 
 ## Finishing
 
-Before closing: one more whole-suite run, per step 3 of the build cycle.
+Before closing: one more whole-suite run, never narrowed, per step 3 of
+the build cycle.
 A red suite means not done — each red takes its lane there, and a slice
 already reading done that has to carry a fix goes through "needs-redo"
 above.
