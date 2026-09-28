@@ -47,10 +47,11 @@ After editing this skill's own files, run
 The user's arguments: a first word `fast` selects the fast lane; the rest
 is the task.
 
-1. Enter `EnterPlanMode` unless plan mode is already on. Declined or
+1. Weigh the request first, per "Too big for one plan?" below.
+2. Enter `EnterPlanMode` unless plan mode is already on. Declined or
    unavailable → the no-plan-mode path under "The two run paths" in
    [references/shape.md](references/shape.md).
-2. Attempt draft recovery, then open the working draft — both per
+3. Attempt draft recovery, then open the working draft — both per
    "Working draft and the two run paths" in
    [references/shape.md](references/shape.md).
 
@@ -75,7 +76,7 @@ round. Its opening round may recommend going straight to the plan when the
 zones are already clear; the user decides.
 
 **Fast lane** (`fast`): stages 1–2 are skipped on the user's word, never on
-the model's. In order, inside plan mode:
+the model's. In order, before the gate:
 
 1. Scan the repo within the task's scope. Research only under the two
    conditions of "Zone research" in
@@ -103,10 +104,18 @@ delegated to Explore agents under
 [references/agents.md](references/agents.md); returns come back condensed,
 and their count goes in the report.
 
-**Too big for one plan?** When the picture shows work that will not finish
-in one session, or several increments each worth approving on its own, say
-so at the top of the plan with the reason and recommend `/i:flow`; the user
-decides at the gate. Handing over loses no decision, research note,
+**Too big for one plan?** Weighed twice, raised at most once per run.
+At the start, from the request alone — before plan mode, any reference or
+any scan: when the request itself names several increments each worth
+approving on its own, that turn is one line in the user's language, the
+reason and then `/i:flow <task>`. Nothing else, then stop for the user's
+call. Unsure means go on. At the plan: when the picture shows work that
+will not finish in one session, or several increments each worth
+approving on its own, say so at the top of the plan with the reason and
+recommend `/i:flow`; the user decides at the gate. A user who chose to
+stay with i:lite at the start has that choice written into the draft's
+decisions the moment the draft opens, so neither the plan nor a later
+session raises it again. Handing over loses no decision, research note,
 picture or draft plan: the plan file is i:flow's draft format, and
 i:flow's draft recovery carries all four across.
 
@@ -140,7 +149,11 @@ language:
 
 **The gate.** The plan passes the plan-mode approval button when plan mode
 is in use, and one `AskUserQuestion` on the plan's own content when it is
-not. This is the only definition of the gate; everywhere else points here.
+not. Until it passes, no implementation file — code, configuration,
+migration, test — is created or changed: the only writes are the working
+draft and, on the no-plan-mode path, its research-note files. Plan mode
+enforces this on its own path; on the other, only this rule does. This is
+the only definition of the gate; everywhere else points here.
 
 ## Build and prove
 
