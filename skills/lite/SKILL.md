@@ -113,8 +113,10 @@ call. Unsure means go on. At the plan: when the picture shows work that
 will not finish in one session, or several increments each worth
 approving on its own, say so at the top of the plan with the reason and
 recommend `/i:flow`; the user decides at the gate. A user who chose to
-stay with i:lite at the start has that choice written into the draft's
-decisions the moment the draft opens, so neither the plan nor a later
+stay with i:lite, at either check, has that choice written into the
+draft's decisions — at the start, the moment the draft opens; at the
+plan, right after the gate passes, since approving a plan that carries
+the recommendation is that choice — so neither this run nor a later
 session raises it again. Handing over loses no decision, research note,
 picture or draft plan: the plan file is i:flow's draft format, and
 i:flow's draft recovery carries all four across.
@@ -149,9 +151,10 @@ language:
 
 **The gate.** The plan passes the plan-mode approval button when plan mode
 is in use, and one `AskUserQuestion` on the plan's own content when it is
-not. Until it passes, no implementation file — code, configuration,
-migration, test — is created or changed: the only writes are the working
-draft and, on the no-plan-mode path, its research-note files. Plan mode
+not. Until it passes, the run is read-only: nothing is created, changed,
+installed, migrated or deployed — no file, dependency, database, external
+service or deployment — except the working draft and, on the
+no-plan-mode path, its research-note files. Plan mode
 enforces this on its own path; on the other, only this rule does. This is
 the only definition of the gate; everywhere else points here.
 

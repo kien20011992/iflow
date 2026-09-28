@@ -142,9 +142,10 @@ Invariants:
 **The approval gate.** Every plan i:flow puts to the user — the slice table
 that closes Shape, and each build slice's plan — passes the plan-mode
 approval button when plan mode is in use, and one `AskUserQuestion` on the
-plan's own content when it is not. Until a plan passes its gate, no
-implementation file for it — code, configuration, migration, test — is
-created or changed. The only writes meanwhile: during Shape, the working
+plan's own content when it is not. Until a plan passes its gate, work
+toward it is read-only: nothing is created, changed, installed, migrated
+or deployed — no file, dependency, database, external service or
+deployment. The only writes meanwhile: during Shape, the working
 draft and, on the no-plan-mode path, its research-note files; once the
 dossier exists, also the dossier's own files, as this skill directs. Plan
 mode enforces this on its own path; on the other, only this rule does.
