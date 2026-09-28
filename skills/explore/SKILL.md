@@ -1,17 +1,18 @@
 ---
 name: explore
 description: >-
-  Explore vague ideas and unfamiliar topics layer by layer with a domain
-  expert. Each teaching layer delivers one complete unit of understanding — a
-  direct, committed synthesis plus a map of the zones beneath it — and the
-  exploration descends only where the user calls; between layers a turn may
-  clarify, correct, connect, or ask one consequential question. Decisions are
-  put to the user only once every branch's meaning, costs, and reversibility
-  are on the table. Use when the user wants to genuinely understand a subject
-  before deciding anything, and a one-shot answer would either drown them or
-  force uninformed choices. Do not use for simple factual lookups,
-  already-scoped implementation, or requests that only require executing a
-  known task.
+  Explore a vague idea or an unfamiliar subject layer by layer with a domain
+  expert, as a dialogue, until the user understands it well enough to decide
+  for themselves. Use it whenever the user wants to understand before deciding
+  or acting, however terse: "khám phá X đi", "hãy cùng tôi tìm hiểu về …",
+  "tôi muốn hiểu … rồi mới tính", "cùng bàn về … xem sao", "tôi đang nghĩ đến
+  việc …" — life decisions (xây nhà, mua gì, sức khoẻ), a philosophy or way of
+  working, or a technical landscape (security posture, tooling choices) with
+  no repo deliverable yet — and when resuming an earlier exploration's
+  dossier. Prefer it over learn when the question is the user's own situation
+  or decision rather than a textbook concept to explain or drill, and over
+  deep-research when they want a dialogue, not a report to read. Not for a
+  factual lookup or work with a deliverable in the repo (i:flow).
 ---
 
 # Explore, layer by layer

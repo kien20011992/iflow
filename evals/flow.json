@@ -1,0 +1,82 @@
+[
+  {
+    "query": "ssh vào pserver, dockerize toàn bộ những gì đang chạy: api, worker sinh ảnh, postgres, redis, cron backup. Xong thì bỏ hẳn kiểu cài tay hiện tại.",
+    "should_trigger": true
+  },
+  {
+    "query": "Làm lại hoàn toàn phần onboarding của nym: màn nhập thông tin, đăng ký, email chào mừng, tracking sự kiện. Bản cũ vứt đi.",
+    "should_trigger": true
+  },
+  {
+    "query": "Vụ dọn bảo mật pserver hôm trước anh dừng sau khi gỡ postgres, giờ làm nốt những gì còn lại.",
+    "should_trigger": true
+  },
+  {
+    "query": "Gom dữ liệu người dùng đang rải ở neon, google sheet và mấy file json trong repo về một chỗ, migrate không được mất gì.",
+    "should_trigger": true
+  },
+  {
+    "query": "Viết vào docs trong repo bộ tài liệu bàn giao toàn bộ luồng sinh content của soulmate: đầu vào lấy từ đâu, prompt từng chương, format đầu ra, chỗ nào gọi openrouter.",
+    "should_trigger": true
+  },
+  {
+    "query": "Dựng cho anh một công cụ nội bộ theo dõi chi phí gen ảnh theo batch: dashboard, cảnh báo vượt ngân sách, đọc log từ worker. Hiện chưa có gì cả.",
+    "should_trigger": true
+  },
+  {
+    "query": "Landing của solis nội dung cũ, seo kém, ảnh nặng, chưa có blog. Làm lại toàn bộ cho anh.",
+    "should_trigger": true
+  },
+  {
+    "query": "Nâng cấp toàn diện repo dyno-solis-hacking-growth: nâng node, chuyển sang pnpm, tách module, thêm ci, dọn dependency thừa.",
+    "should_trigger": true
+  },
+  {
+    "query": "Move our auth off the custom JWT setup to a real identity provider across the api, the mobile app and the admin panel. Haven't picked a provider yet.",
+    "should_trigger": true
+  },
+  {
+    "query": "Research whether running our image generation workers on cheap GPU rentals beats the current provider, write it up in docs, then migrate if the numbers hold.",
+    "should_trigger": true
+  },
+  {
+    "query": "Thêm cho anh một cột đã thanh toán vào bảng orders: migration, model và api trả về, nhớ lên plan trước rồi hãy sửa.",
+    "should_trigger": false
+  },
+  {
+    "query": "Refactor gọn lại checkin.service cho anh: tách phần gọi face service ra một client riêng, giữ nguyên hành vi, test hiện tại chạy xanh là được.",
+    "should_trigger": false
+  },
+  {
+    "query": "Anh muốn hiểu thật kỹ event sourcing trước khi quyết định có áp dụng vào hệ thống đơn hàng hay không. Đi từng lớp một cho anh, chưa cần đụng gì vào repo cả.",
+    "should_trigger": false
+  },
+  {
+    "query": "Giải thích cho tôi từng bước docker networking hoạt động thế nào, bridge, host, overlay khác nhau ra sao, tôi cứ lẫn mãi mấy cái này.",
+    "should_trigger": false
+  },
+  {
+    "query": "Worker sinh ảnh cứ chạy được khoảng 30 ảnh là treo, không log lỗi gì, restart thì chạy tiếp. Điều tra cho anh nguyên nhân là gì, chưa cần sửa vội.",
+    "should_trigger": false
+  },
+  {
+    "query": "Viết bộ test contract cho toàn bộ route trong apps/api, chạy bằng runner của dự án, bao phủ cả các case lỗi 4xx.",
+    "should_trigger": false
+  },
+  {
+    "query": "Anh muốn luyện phương pháp giao dịch ICT trong 6 tháng tới, mỗi tối một buổi, biến nó thành trò chơi có nhiệm vụ và điểm để anh không bỏ cuộc giữa chừng.",
+    "should_trigger": false
+  },
+  {
+    "query": "Hướng đã rõ rồi: chuyển JOURNEY_PROMPT sang v4, cập nhật config, chạy lại script gen cho 3 user mẫu rồi deploy. Lên cho anh một plan duy nhất rồi làm luôn, không cần bàn thêm.",
+    "should_trigger": false
+  },
+  {
+    "query": "Review kỹ cho anh PR này trước khi merge, đặc biệt phần xử lý webhook thanh toán, xem có lỗ hổng hay case biên nào bỏ sót không.",
+    "should_trigger": false
+  },
+  {
+    "query": "Nghiên cứu giúp tôi thị trường app AI companion ở Đông Nam Á năm nay: đối thủ chính, mô hình giá, xu hướng, tổng hợp thành một báo cáo để tôi đọc.",
+    "should_trigger": false
+  }
+]

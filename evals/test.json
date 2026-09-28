@@ -1,0 +1,22 @@
+[
+  {"query": "unit src/services/voucher.service.ts và hàm applyCode với Redis mock", "should_trigger": true},
+  {"query": "integration report.service với Postgres test, cả phần lọc theo khoảng ngày", "should_trigger": true},
+  {"query": "contract API /api/admin/reports/* qua supertest với Auth mock", "should_trigger": true},
+  {"query": "retry src/jobs/syncAppsflyer.ts với AppsFlyer mock trả 429 hai lần rồi 200", "should_trigger": true},
+  {"query": "viết e2e luồng đổi voucher trên web admin bằng playwright: đăng nhập, tạo voucher, nhập 2 mã liên tiếp, kiểm tra điểm cộng dồn đúng, chạy xong xoá sạch dữ liệu", "should_trigger": true},
+  {"query": "Lỗi checkin bị ghi 2 bản ghi khi bấm liên tục anh fix rồi, giờ thêm test để nó không quay lại: bắn 2 request cùng lúc vào /api/checkin với MySQL test", "should_trigger": true},
+  {"query": "timekeeping sắp bàn giao mà gần như chưa có test, bạn tự xem service nào thiếu rồi viết test cho đủ luôn", "should_trigger": true},
+  {"query": "Viết test cho webhook RevenueCat ở src/webhooks/revenuecat.ts: sai chữ ký phải trả 401, gửi trùng event_id lần 2 thì không cộng thêm lượt, dùng DB test", "should_trigger": true},
+  {"query": "write tests for the whole src/billing module, whatever coverage it's missing, using the vitest setup we already have", "should_trigger": true},
+  {"query": "add unit tests for parseDeepLink in src/lib/deeplink.ts, include the ugly inputs: empty string, missing scheme, unicode query params", "should_trigger": true},
+  {"query": "contacts-api nên test những gì, unit hay integration nhiều hơn, mock tới đâu là vừa? chưa viết gì, bàn trước đã", "should_trigger": false},
+  {"query": "Lên test plan cho đợt release voucher tuần sau: case nào phải kiểm, kiểm tay hay tự động, tiêu chí nào thì được release", "should_trigger": false},
+  {"query": "chạy lại toàn bộ test xem còn xanh không", "should_trigger": false},
+  {"query": "chạy riêng file test/schedule.service.spec.ts cho tôi xem kết quả", "should_trigger": false},
+  {"query": "test integration payout.service lúc xanh lúc đỏ trên CI mà local chạy mãi vẫn pass, tìm nguyên nhân cho tôi", "should_trigger": false},
+  {"query": "review PR 57 giúp anh trước khi merge, xem phần test mới thêm có chỗ nào ẩu không", "should_trigger": false},
+  {"query": "vừa sửa xong màn đổi voucher, bật app lên nhập thử một mã xem chạy được chưa", "should_trigger": false},
+  {"query": "Nâng cấp toàn diện module báo cáo: chuyển sang Postgres, viết lại API export, thêm cache Redis, mỗi phần có test đầy đủ rồi mới deploy", "should_trigger": false},
+  {"query": "mấy test trong test/report.spec.ts đỏ hết sau khi đổi format ngày sang ISO, sửa lại test cho pass đi", "should_trigger": false},
+  {"query": "test tay endpoint /api/vouchers/redeem bằng curl với mã đã hết hạn, xem nó trả lỗi gì", "should_trigger": false}
+]

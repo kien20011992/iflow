@@ -1,0 +1,82 @@
+[
+  {
+    "query": "học swing trade theo sách Minervini, mỗi buổi luyện phải có nhiệm vụ có điểm cho đỡ chán",
+    "should_trigger": true
+  },
+  {
+    "query": "tập kéo xà từ 2 cái lên 15 cái, anh muốn tập kiểu chơi game lên cấp chứ tập chay nản lắm",
+    "should_trigger": true
+  },
+  {
+    "query": "muốn học tiếng Nhật lên N3 trước hè năm sau, đừng dạy kiểu giáo trình, biến nó thành game cho tôi cày",
+    "should_trigger": true
+  },
+  {
+    "query": "tập fingerstyle guitar nửa năm mà vẫn vấp, game hoá vụ luyện ngón giúp anh",
+    "should_trigger": true
+  },
+  {
+    "query": "trying to reach 1800 on lichess by next summer. make my tactics and endgame drills into a game with quests and levels",
+    "should_trigger": true
+  },
+  {
+    "query": "dựng cho tôi bãi luyện gõ Colemak lấy chữ từ báo thật, chấm tốc độ tự động, có màn có boss như chơi game, tôi cày vài tháng",
+    "should_trigger": true
+  },
+  {
+    "query": "play docs/games/tieng-trung-hsk4, hôm nay rảnh 20 phút",
+    "should_trigger": true
+  },
+  {
+    "query": "tối nay chơi tiếp Fretfall, hôm qua kẹt ở con boss thứ hai",
+    "should_trigger": true
+  },
+  {
+    "query": "game tiếng Nhật thêm cho tôi một dungeon kanji N3, với lại luật chấm đang dễ quá, siết lại",
+    "should_trigger": true
+  },
+  {
+    "query": "the typing game's second dungeon reads like a manual, i can't follow the story. rewrite it plainer and add a stage for numbers and symbols",
+    "should_trigger": true
+  },
+  {
+    "query": "order block với FVG của ICT khác nhau chỗ nào, đọc mãi vẫn lẫn, giải thích lại cho tôi",
+    "should_trigger": false
+  },
+  {
+    "query": "lên lộ trình học tiếng Hàn từ số 0 tới TOPIK 3 trong một năm, cái gì học trước cái gì học sau",
+    "should_trigger": false
+  },
+  {
+    "query": "cùng bàn xem vì sao người ta cày Liên Quân hàng giờ không chán, còn ngồi học 15 phút đã nản, game nó cuốn nhờ cái gì",
+    "should_trigger": false
+  },
+  {
+    "query": "viết con game gõ chữ bắn thiên thạch bằng Godot, có bảng xếp hạng online, làm xong đưa lên Steam bán",
+    "should_trigger": false
+  },
+  {
+    "query": "research các bài tập fingerstyle từ dễ tới khó rồi viết thành bộ tài liệu luyện tập trong docs/guitar, chia theo tuần",
+    "should_trigger": false
+  },
+  {
+    "query": "làm báo cáo thị trường game giáo dục Đông Nam Á 2026: quy mô, tăng trưởng, ai đang dẫn đầu, có trích nguồn",
+    "should_trigger": false
+  },
+  {
+    "query": "tối nay phỏng vấn, làm nhanh cho tôi bài quiz 10 câu từ vựng tiếng Anh chủ đề sân bay, chấm điểm luôn",
+    "should_trigger": false
+  },
+  {
+    "query": "làm app nhỏ theo dõi thói quen: mỗi ngày tick đọc sách, chạy bộ, thiền, có đếm chuỗi ngày và huy hiệu",
+    "should_trigger": false
+  },
+  {
+    "query": "chán quá, đánh với tôi một ván cờ vua đi, tôi cầm trắng, e4",
+    "should_trigger": false
+  },
+  {
+    "query": "biến việc dọn nhà chiều thứ bảy này thành trò chơi cho hai đứa nhỏ, có nhiệm vụ có điểm, xong thì đi ăn kem",
+    "should_trigger": false
+  }
+]

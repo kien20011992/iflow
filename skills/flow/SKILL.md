@@ -1,14 +1,19 @@
 ---
 name: flow
 description: >-
-  Shapes a large or ambiguous undertaking into user-approved vertical
-  slices, then executes them sequentially — build slices through native plan
-  mode, research slices into finished documents — with durable state in
-  docs/shape/<topic>/shape.md. Use when the requested work is too broad,
-  multi-part, or unsettled to plan honestly in one pass, and when resuming
-  work already tracked in docs/shape/*/shape.md. Not for a single task one
-  native plan can cover, and not for pure understanding with no repo
-  deliverable — that is i:explore.
+  Shape a large or still-unsettled undertaking into user-approved vertical
+  slices, then execute them one by one — code slices through plan mode,
+  research slices as documents in the repo — tracked in
+  docs/shape/<topic>/shape.md. Use it whenever the request spans several
+  coupled pieces or has no clear start yet, however terse: "review toàn bộ …
+  rồi tối ưu", "làm lại hoàn toàn / nâng cấp toàn diện X: a, b, c", "tìm mọi
+  cách để …", "research X rồi dựng thành tool/repo chạy được", "viết bộ tài
+  liệu về toàn bộ luồng …", a migration across api + app + admin — and
+  whenever the user resumes such work ("hôm trước dừng ở …, giờ làm nốt").
+  Prefer it over brainstorming when more than one deliverable is involved. Not
+  for a single task one plan covers (thêm một tính năng nhỏ, sửa một hàm),
+  pure understanding with no repo deliverable (i:explore), a defect (i:debug)
+  or new tests (i:test).
 argument-hint: "<topic to shape, or dossier to resume>"
 ---
 

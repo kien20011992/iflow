@@ -2,15 +2,17 @@
 name: gamify
 description: >-
   Turn one hard, long-haul pursuit — learning to trade, mastering a keyboard
-  layout, any skill that takes months — into a game that a Claude session runs
-  as game master and narrator. Build mode first explores the pursuit with the
-  user (skill map, player, practice ground, measures, horizon), then offers
-  three game concepts drawn from well-built reference games, then builds the
-  game in user-approved slices: the hidden game-master plan first, then one
-  playable dungeon at a time, then a tool proposal. Play mode leads the player
-  through a session. Use when the user names a difficult long-term pursuit and
-  wants it made playable, wants to play a game under docs/games/, or wants to
-  extend or fix one. Not for short tasks or pursuits with no learnable skill.
+  layout, any skill that takes months — into a game a Claude session runs as
+  game master and narrator. Build mode shapes the game with the user in
+  approved slices under docs/games/<slug>/; play mode runs one session. Use it
+  whenever the user names a skill they want to practise over months and wants
+  it to feel like a game, however terse: "học trading theo ICT", "luyện gõ
+  phím nhanh, làm thành game đi", "game hoá việc luyện X" — and for "play
+  <game-dir>", "chơi tiếp / tiếp tục <game>" (by directory or by the game's
+  own name), or fixing or extending one. Not for a short task, a pursuit with
+  no learnable skill, a study plan or tutoring without a game (learn),
+  building a video game as software (i:flow), or a discussion about why games
+  are engaging (i:explore).
 argument-hint: "[<pursuit> | play <game-dir> | <game-dir> thêm dungeon: … | <game-dir> sửa: …]"
 ---
 

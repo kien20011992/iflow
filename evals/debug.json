@@ -1,0 +1,22 @@
+[
+  {"query": "Check cho anh vì sao báo cáo doanh thu trên admin hôm qua ra 0 đồng, trong khi RevenueCat vẫn ghi nhận hơn 40 giao dịch.", "should_trigger": true},
+  {"query": "contacts-api keeps restarting under pm2 every few hours, exit code 137 in the logs. Why is this happening?", "should_trigger": true},
+  {"query": "Gõ tiếng Việt bằng fcitx5 trong WezTerm cứ bị lặp chữ cái đầu mỗi từ, sang Edge thì gõ bình thường. Do đâu vậy?", "should_trigger": true},
+  {"query": "Kiểm tra cho anh vì sao Edge cứ mở được tầm năm phút là tự tắt, không báo lỗi gì, mở lại thì mất hết tab.", "should_trigger": true},
+  {"query": "The refund webhook test passes locally but goes red on CI about half the time, same commit. Find out why.", "should_trigger": true},
+  {"query": "API tìm khách theo số điện thoại thường trả dưới nửa giây, mấy hôm nay nhiều lúc lên 6–7 giây dù traffic không tăng. Xem giúp anh chậm do đâu.", "should_trigger": true},
+  {"query": "Mấy user báo nạp tiền trên pay.icallme.vn bị trừ tiền ngân hàng rồi mà gói không lên, không phải ai cũng bị. Check cho anh lý do.", "should_trigger": true},
+  {"query": "Anh nghi do Redis đầy bộ nhớ nên phiên đăng nhập trên app cứ bị đá ra sau vài phút, kiểm tra xem có đúng do nó không.", "should_trigger": true},
+  {"query": "Từ hôm qua tự dưng app Android vừa mở đã văng ra ngoài, hôm kia build vẫn chạy ngon. Xem thay đổi nào làm nó hỏng.", "should_trigger": true},
+  {"query": "Điều tra xem vì sao job gen ảnh soulmate nam chạy báo xong hết mà thư mục output trống trơn, chạy nữ thì vẫn ra đủ ảnh.", "should_trigger": true},
+  {"query": "Trang đăng nhập admin bấm nút xong cứ quay vòng mãi không vào được, tìm ra lỗi rồi fix luôn cho anh, chiều nay còn demo.", "should_trigger": false},
+  {"query": "Docker compose build cứ fail ở bước cài dependency, sửa cho nó build được đi, anh đang cần chạy gấp.", "should_trigger": false},
+  {"query": "Giờ trong report lệch 7 tiếng là do hàm format ngày đang dùng UTC thay vì giờ Việt Nam, đổi lại chỗ đó giúp anh.", "should_trigger": false},
+  {"query": "Sao màn lịch sử giao dịch không có bộ lọc theo khoảng ngày nhỉ, kế toán cứ phải cuộn tay cả tháng, làm thêm cái đó đi.", "should_trigger": false},
+  {"query": "Review giúp anh diff nhánh feature/refund trước khi merge vào master, soi kỹ chỗ xử lý webhook với phần phân quyền.", "should_trigger": false},
+  {"query": "Anh muốn hiểu vì sao hồi trước face service lại được tách thành 5 instance chạy 5 port thay vì để sau một load balancer, cách đó được mất gì.", "should_trigger": false},
+  {"query": "Explain what a race condition actually is with an everyday example, I keep mixing it up with deadlock.", "should_trigger": false},
+  {"query": "Bug cộng điểm hai lần khi check-in anh vừa sửa xong rồi, viết thêm regression test để nó không quay lại nữa.", "should_trigger": false},
+  {"query": "Production sập rồi, contacts-api trả 502 toàn bộ từ mười phút trước, dẫn anh xử lý ngay và soạn thông báo gửi team.", "should_trigger": false},
+  {"query": "Rà soát rồi tối ưu hiệu năng toàn bộ api với app cho nhẹ hơn, sắp chạy quảng cáo lớn nên anh muốn chuẩn bị trước.", "should_trigger": false}
+]

@@ -1,0 +1,22 @@
+[
+  {"query": "Anh đang tính mua một mảnh đất ở quê để sau này về xây nhà, mà pháp lý với quy hoạch thì chưa biết gì. Hãy cùng anh tìm hiểu xem phải nắm những gì.", "should_trigger": true},
+  {"query": "Mấy tháng nay tôi hay tỉnh giấc lúc 3-4 giờ sáng rồi không ngủ lại được. Tôi muốn khám phá xem giấc ngủ nó chạy thế nào, mình đang lệch ở đâu.", "should_trigger": true},
+  {"query": "Con anh 4 tuổi, dạo này cứ đòi xem iPad, không cho là khóc ầm lên. Anh muốn cùng bàn xem chuyện màn hình với trẻ tầm tuổi này nên thế nào cho hợp.", "should_trigger": true},
+  {"query": "Vợ chồng tôi đang tính mua bảo hiểm nhân thọ cho cả nhà, nghe tư vấn viên nói xong lại càng rối. Tôi muốn hiểu mấy loại này khác nhau chỗ nào, loại nào hợp nhà mình.", "should_trigger": true},
+  {"query": "Dạo này làm việc cả ngày mà cuối tuần nhìn lại chẳng thấy ra được gì nhiều. Hãy cùng khám phá xem một người như tôi nên tổ chức thời gian làm việc thế nào.", "should_trigger": true},
+  {"query": "Tôi vừa thuê một con VPS để tự host vài dịch vụ cá nhân, ngoài đổi port SSH ra thì chưa biết gì về bảo mật. Cùng tôi tìm hiểu xem máy chủ kiểu này cần giữ an toàn tới mức nào.", "should_trigger": true},
+  {"query": "Tôi đang nghĩ đến chuyện chuyển team 4 người từ Trello sang Linear hoặc Jira vì sếp muốn quản lý chặt hơn. Mấy công cụ này hợp với kiểu làm việc nào thì tôi chưa hình dung được.", "should_trigger": true},
+  {"query": "App React Native của tôi đang lưu token đăng nhập trong AsyncStorage, nghe nói vậy là không an toàn. Tôi muốn hiểu chuyện giữ thông tin nhạy cảm trên điện thoại cho đúng rồi mới tính có sửa hay không.", "should_trigger": true},
+  {"query": "I'm thinking about moving my home lab off Proxmox onto plain Docker on a single box, but I honestly don't know what I'd be giving up. Can we dig into this together?", "should_trigger": true},
+  {"query": "My dad just got told he's prediabetic and the whole family is confused about what actually changes for him now. Help me get my head around it so we can sort out meals and checkups.", "should_trigger": true},
+  {"query": "Giải thích kiểu ELI5 giúp tôi Diffie-Hellman trao đổi khoá thế nào mà hai bên không cần gửi khoá cho nhau, đọc mấy lần vẫn không vào.", "should_trigger": false},
+  {"query": "Tôi cứ lẫn mãi giữa chỉ số đường huyết lúc đói với HbA1c, giảng lại cho tôi kèm ví dụ rồi đố vài câu xem đã nắm chưa.", "should_trigger": false},
+  {"query": "Tổng hợp giúp tôi các nghiên cứu gần đây về ảnh hưởng của màn hình với trẻ dưới 6 tuổi, viết thành một bản báo cáo có trích nguồn đầy đủ để vợ chồng tôi đọc.", "should_trigger": false},
+  {"query": "Research giúp tôi các giải pháp self-host thay Google Photos hiện nay như Immich, PhotoPrism, Ente, so sánh từ nhiều nguồn rồi viết thành một báo cáo hoàn chỉnh.", "should_trigger": false},
+  {"query": "Làm lại toàn bộ phần đăng nhập trong repo này: chuyển token sang secure storage ở app, thêm refresh token phía api, cập nhật luôn màn quản lý phiên bên admin.", "should_trigger": false},
+  {"query": "Trong repo infra, viết bộ script siết bảo mật cho VPS mới: SSH, firewall, fail2ban, backup tự động, kèm README để máy mới chạy một lệnh là xong.", "should_trigger": false},
+  {"query": "Ubuntu 24.04 LTS được hỗ trợ bảo mật chuẩn đến tháng mấy năm nào?", "should_trigger": false},
+  {"query": "Test đăng nhập trên CI cứ lúc xanh lúc đỏ từ khi đổi cách lưu token, chạy local thì lần nào cũng pass. Tìm nguyên nhân giúp tôi.", "should_trigger": false},
+  {"query": "Tôi cho rằng chuyện phải ngủ đủ 8 tiếng là thổi phồng, nhiều người ngủ 5 tiếng vẫn khoẻ re. Bạn thấy nhận định này đúng không, nói thẳng đi.", "should_trigger": false},
+  {"query": "Lên giúp tôi thực đơn 7 ngày cho bố bị tiền tiểu đường, mỗi ngày 3 bữa, món Việt dễ nấu, kèm danh sách đi chợ.", "should_trigger": false}
+]

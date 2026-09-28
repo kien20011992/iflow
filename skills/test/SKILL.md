@@ -1,16 +1,18 @@
 ---
 name: test
 description: >-
-  Write new tests that prove observable behaviour at a public boundary, from
-  a context that never saw the code being written: the contract is locked as
-  the oracle before the implementation is opened, the tests go into the
-  project's own runner, and the runner's real output is the evidence. Use
-  when the user asks to test, verify, or add regression coverage — unit,
-  integration, contract, E2E, property, retry — and when an approved i:flow
-  verification step needs new independent coverage. Not for rerunning an
-  existing suite, not for read-only diagnosis, and not merely because code
-  was just implemented. Runs in a fresh fork with no conversation history:
-  pass the scope, intent and every user-stated acceptance criterion in the
+  Write NEW tests that prove observable behaviour at a public boundary, in the
+  project's own runner, from a fresh context that never saw the code being
+  written. Use it whenever the user asks for tests to be written, however
+  terse: "unit src/utils và src/validators", "integration checkin.service với
+  MySQL test", "contract API toàn bộ route qua supertest", "retry <job> với
+  mock lỗi rồi thành công", "thêm regression test cho bug vừa sửa", "e2e luồng
+  đăng ký bằng playwright", "app sắp bàn giao mà chưa có test, viết cho đủ".
+  Prefer it over testing-strategy whenever tests are to be written, not only
+  planned. Not for rerunning an existing suite, a red or flaky test to
+  diagnose (i:debug), a review sweep (code-review), or merely because code was
+  just implemented. Runs in a fresh fork with no conversation history: pass
+  the scope, intent and every user-stated acceptance criterion in the
   arguments.
 argument-hint: "<scope> · <intent> · <every acceptance criterion stated so far>"
 context: fork

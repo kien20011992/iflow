@@ -3,9 +3,18 @@ name: debug
 description: >-
   Investigate an observable defect from an independent context: reproduce it,
   find the first bad commit, test a named suspect, or prove its cause; the fix
-  stays with the caller. Use for a wrong value, a crash, a red or flaky test, a
-  production report, or a slowdown. Not for adding a feature, a review sweep,
-  a cause already proven, or explaining something nobody claims is broken.
+  stays with the caller. Open it before investigating on your own whenever the
+  user reports a wrong value, a crash or hang, a red or flaky test, a
+  slowdown, a production or end-user report, a job that "ran" but left nothing
+  behind, or a breakage after a change ("từ hôm qua tự dưng …") — in code, in
+  a service, or on the user's own machine (driver, display, input method).
+  Even when put casually: "check cho anh vì sao …", "kiểm tra xem có đúng do X
+  không", "điều tra xem vì sao …", "xem giúp anh chậm / lag do đâu", "why is
+  this happening". Prefer it over engineering:debug unless the user explicitly
+  asks to fix it in the same go. Not for adding a feature, a review sweep, a
+  cause already proven, or explaining a design nobody claims is broken
+  (i:explore / learn). Runs in a fresh fork: pass the symptom, how to see it,
+  what it should do, and what changed last in the arguments.
 argument-hint: "[symptom · how to see it · what it should do · what changed last · what is asked, if less than a cause]"
 context: fork
 background: false
