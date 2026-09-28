@@ -2,68 +2,58 @@
 
 Contents: 1. Principles · 2. Label contract table · 3. Birth checklist ·
 4. Template shape.md · 5. Template slice file and NN identity rules ·
-6. Research-slice source discipline · 7. Quality test.
+6. Research-slice source discipline.
 
 ## 1. Principles
 
 - `shape.md` is the single source of truth for the whole program's state,
-  born the moment the slice table is approved (during Shape, the working
-  draft lives in a plan file on both run paths; see references/shape.md).
-  So `docs/shape/` holds only approved dossiers, and the hook and the
-  checker treat every shape.md there as one. The plan
+  born the moment the slice table is approved. `docs/shape/` sits at the
+  repository's git root (the project directory outside git) and holds only
+  approved dossiers; the resume hook reads only the shape.md files there
+  that carry the `<!-- generated-by: iflow/2 -->` marker. The plan
   file (`~/.claude/plans/…`) is a per-session working copy outside the repo
-  and may be cleaned up — never point to it as a source of truth, never copy
-  a whole plan into the dossier (it will duplicate and drift). The dossier
-  keeps only the two things most expensive to rebuild: approved intent and
-  verified results.
-- Update the `Current slice:` and `Next action:` lines the moment the next
-  action changes, not at slice end. `Next action:` is always one runnable
-  imperative sentence ("EnterPlanMode for slice 03, explore only within X"
-  — reading it tells you exactly where the program stands), never a status
-  description. (The checker script runs per the slice loop in SKILL.md and
-  at step 6 of the birth checklist.)
+  and may be cleaned up — never point to it as a source of truth.
 - `Current slice:` names the slice whose row status is `doing` — starting
-  with its two-digit NN — and reads `—` exactly when no row is `doing`. Starting a slice is therefore ONE
-  write: the row goes `doing`, `Current slice:` names it, `Next action:`
-  becomes its first step. A finished program writes `Overall status: done`,
-  `Current slice: —`, and a `Next action:` pointing at the summary instead
-  of a step to run. The checker enforces all of this.
+  with its two-digit NN — and reads `—` exactly when no row is `doing`. A
+  finished program writes `Overall status: done`, `Current slice: —`, and
+  a `Next action:` pointing at the summary instead of a step to run. When
+  these lines change is SKILL.md's invariant 2.
 
 ## 2. Label contract table
 
-These exact strings, all in shape.md's closing state block, are the only
-contract in a dossier. Changing any of them means changing all three
-consumers in the same commit — the checker fails loudly when they drift.
+These exact strings are the contract the resume hook and the checker read;
+write them character for character.
 
-| String (exact) | Where it lives | Consumers |
-|---|---|---|
-| `Overall status:` — values `running` \| `done` | state block, first status line | template §4 · hook `iflow-resume.sh` (lets a `done` dossier pass in silence only once the checker agrees) · `scripts/check-dossier.sh` |
-| `Current slice:` | state block | template §4 · hook (prints it) · checker (cross-checks against slice-table statuses) |
-| `Next action:` | state block | template §4 · hook (prints it) · checker (non-empty, non-placeholder) |
-| Slice statuses `todo` \| `doing` \| `done` \| `needs-redo` \| `retired` | last cell of slice-table rows `\| NN \| …`, read only below `Overall status:` | template §4 · checker (valid-value set; at least one row) |
-| `<!-- generated-by: iflow/2 -->` | state block | template §4 · checker (era detection) |
-| `slice-NN-<name>.md` | dossier directory | template §5 · checker |
+| String (exact) | Where it lives |
+|---|---|
+| `Overall status:` — values `running` \| `done` | state block, first status line |
+| `Current slice:` | state block |
+| `Next action:` | state block |
+| Slice statuses `todo` \| `doing` \| `done` \| `needs-redo` \| `retired` | last cell of slice-table rows `\| NN \| …`, read only below `Overall status:` |
+| `<!-- generated-by: iflow/2 -->` | state block; marks the file as an i:flow dossier |
+| `slice-NN-<name>.md` | dossier directory |
 
 ## 3. Birth checklist (the moment the slice table is approved)
 
 1. Materialize research notes: every subsection of the draft's research
-   notes becomes a file `docs/research/<topic-slug>/<zone-slug>.md`
-   (no-plan-mode path: the notes are already files — skip). This step has
-   historically been skipped — do not skip it; the quality test checks it.
+   notes becomes a file `docs/research/<topic-slug>/<zone-slug>.md`.
 2. Create `shape.md` per §4, distilled from the approved plan and the
-   draft; what was explored LINKS to the research docs (never re-paste
-   their content), and the sources list those doc paths. Never copy the
-   plan wholesale.
+   draft, with `Next action:` set to the first slice; what was explored
+   LINKS to the research docs (never re-paste their content), and the
+   sources list those doc paths. Never copy the plan wholesale.
 3. Create one slice file per slice, opening with its charter.
 4. Seed each slice file's notes: every deliberately-left-open item from
    Shape relevant to that slice gets one line saying, in the user's words,
    that it was left open while shaping; a left-open item relevant to no
    slice goes into shape.md's section on what was explored — nothing may
    drop.
-5. Set `Next action:` to the first slice.
-6. Run `check-dossier.sh` on the dossier, then the quality test (§7),
-   before leaving it.
-7. Retire the draft: its `Shape draft: <topic>` line becomes
+5. Run the checker per SKILL.md's invariant 2, then the quality test: a
+   fresh agent reading shape.md alone can say which slice is running, what
+   the next action is and what has been decided, and every research note
+   exists as a file linked from shape.md's body. A missing answer means the
+   dossier is not done.
+6. Retire the draft: in this session's draft and in any draft it was
+   recovered from, the `Shape draft: <topic>` line becomes
    `Shape draft done: <topic>`, the words i:lite uses, so no later draft
    recovery offers a Shape whose program already has a dossier.
 
@@ -106,10 +96,9 @@ docs/research/<topic-slug>/; findings that belong to no slice>
 
 <!-- generated-by: iflow/2 -->
 
-> AGENT: continuing from this file? Load the `i:flow` skill first (Skill
-> tool, or read its SKILL.md wherever it is installed), then follow the
-> Next action below. Facts live in this directory, not in conversational
-> memory.
+> AGENT: continuing from this file? Load the `i:flow` skill first (read
+> its SKILL.md wherever it is installed), then follow the Next action
+> below. Facts live in this directory, not in conversational memory.
 
 Overall status: running
 Current slice: —
@@ -123,16 +112,14 @@ Next action: <one runnable imperative sentence>
 
 ## 5. Template slice file and NN identity rules
 
-File name: `slice-NN-<name>.md`, created for every slice the moment the
-table is locked. **NN identity rules:** two digits from 01, in run order at
+File name: `slice-NN-<name>.md`. **NN identity rules:** two digits from 01, in run order at
 first approval. NN is a permanent identity — rebuilding the table may
 retire an old number or append new ones, never reuse or renumber; slice
 files keep their names.
 
 The charter — the paragraph under the title — is immutable after
 creation; everything that arrives later goes into the notes, the last
-section. A rerun under "needs-redo" appends a fresh approved plan and
-result headed as a second attempt; old entries stay as history.
+section.
 
 ````markdown
 # <the slice, named in the user's language>
@@ -143,17 +130,14 @@ slices it needs first>
 
 ## <approved plan>
 
-<build, written right after the plan passes its gate: a 3–7 line summary
-— what changes, proven by what at which boundary, deliberately skipping
-what — followed by the plan's steps as a numbered list, one line each,
-never the plan's prose. Verification reads from here, not from memory; a
-session resuming mid-slice continues from these steps.>
+<build: written right after the plan passes its gate, as step 2 of
+SKILL.md's build cycle says. Verification reads from here, not from
+memory; a session resuming mid-slice continues from these steps.>
 
 ## <result>
 
-<build: after verify — pass or not, evidence (commands run + key output),
-the review gate's outcome when the gate applied (findings / clean / could
-not run), divergence from the approved plan>
+<build: after verify, with the contents step 5 of SKILL.md's build cycle
+lists>
 
 <research: the finished document replaces the two sections above>
 
@@ -176,14 +160,3 @@ other slices. Read all of it when this slice starts.>
   silently pick a side.
 - Keep evidence taken from sources clearly separate from your own
   synthesis.
-
-The "light form" used by Shape's zone research notes: record the source
-tier, label estimates — the first two bullets only.
-
-## 7. Quality test
-
-Before leaving the dossier, a fresh agent reading shape.md alone must be
-able to answer: which slice is running, what the next action is, and what
-has been decided. Additionally: every research-notes subsection from Shape
-exists as a file under `docs/research/<topic-slug>/` and is linked from
-shape.md's body. Any missing answer means the file is not done.

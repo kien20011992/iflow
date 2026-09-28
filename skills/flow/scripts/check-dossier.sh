@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # check-dossier.sh <dossier-dir> — mechanical guard for an i:flow dossier.
 # Read-only. Prints one line per violation. Exit 0 = clean, 1 = violations.
-# Label strings: the contract table in references/state.md §2 is the single
-# definition — change there and here together.
+# Label strings: references/state.md §2 lists them and CLAUDE.md at the repo
+# root lists every reader — change them together.
 set -u
 
 dir="${1:?usage: check-dossier.sh <dossier-dir>}"
@@ -15,8 +15,8 @@ if [ ! -f "$f" ]; then
   exit 1
 fi
 
-# The marker is what says "this file speaks the contract". Missing it is a
-# violation to report, not a cue to guess at some other set of labels.
+# The marker is what makes a shape.md an i:flow dossier; the resume hook
+# skips files without it.
 grep -q '<!-- generated-by: iflow/2 -->' "$f" ||
   say "missing '<!-- generated-by: iflow/2 -->' marker"
 L_STATUS='Overall status:'; L_SLICE='Current slice:'
@@ -34,13 +34,17 @@ val() { # val <label> — value of first line starting with label, trimmed
 status=$(val "$L_STATUS")
 slice=$(val "$L_SLICE")
 next=$(val "$L_NEXT")
+# A missing line is reported once; checks that read it are skipped, so they
+# cannot report a wrong cause.
+has_status=0; grep -q "^$L_STATUS" "$f" && has_status=1
+has_slice=0; grep -q "^$L_SLICE" "$f" && has_slice=1
 
-if ! grep -q "^$L_STATUS" "$f"; then
+if [ "$has_status" -eq 0 ]; then
   say "missing line '$L_STATUS'"
 elif [ "$status" != "$V_RUNNING" ] && [ "$status" != "done" ]; then
   say "'$L_STATUS' has invalid value '$status'"
 fi
-grep -q "^$L_SLICE" "$f" || say "missing line '$L_SLICE'"
+[ "$has_slice" -eq 1 ] || say "missing line '$L_SLICE'"
 if ! grep -q "^$L_NEXT" "$f"; then
   say "missing line '$L_NEXT'"
 else
@@ -60,12 +64,8 @@ rows=$(awk -F'|' -v lab="$L_STATUS" 'index($0, lab)==1 {seen=1}
 }' "$f")
 
 # No rows means every row check below passes vacuously — say why instead.
-if [ -z "$rows" ]; then
-  if awk -v lab="$L_STATUS" 'index($0, lab)==1 {exit} /^\|[ \t]*[0-9][0-9][ \t]*\|/ {found=1} END {exit !found}' "$f"; then
-    say "slice table sits above '$L_STATUS'; it belongs in the state block below it"
-  else
-    say "no slice rows below '$L_STATUS' (each reads '| NN | … | <status> |', NN two digits)"
-  fi
+if [ "$has_status" -eq 1 ] && [ -z "$rows" ]; then
+  say "no slice rows below '$L_STATUS' — the slice table belongs in the state block, rows read '| NN | … | <status> |' with NN two digits"
 fi
 
 dups=$(printf '%s\n' "$rows" | awk -F'\t' '$1!="" {c[$1]++} END {for (n in c) if (c[n]>1) printf "%s ", n}')
@@ -112,7 +112,7 @@ elif [ -n "$cur_nn" ]; then
   elif [ "$cur_st" != "$V_DOING" ]; then
     say "'$L_SLICE' names $cur_nn but its row status is '$cur_st' (expected '$V_DOING')"
   fi
-elif [ "$malformed" -eq 0 ] && [ -n "$doing_rows" ]; then
+elif [ "$has_slice" -eq 1 ] && [ "$malformed" -eq 0 ] && [ -n "$doing_rows" ]; then
   say "'$L_SLICE' is '—' but row(s)$doing_rows are '$V_DOING'"
 fi
 

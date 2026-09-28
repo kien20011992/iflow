@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# check-pointers.sh [skill-dir] — mechanical guard for i:flow's own cross-file
+# check-pointers.sh [skill-dir] — mechanical guard for a skill's own cross-file
 # pointers. Read-only. Prints one line per violation. Exit 0 = clean, 1 = not.
 #
 # Gathering each rule into one home left pointers behind in every other place,
 # so a renamed file or a renumbered section now rots silently. This checks the
-# three pointer forms i:flow actually uses:
+# three pointer forms a skill uses:
 #   1. markdown links   [text](file.md) or (file.md#anchor) → file must exist
 #   2. §N / section N   → target file must have a "## N." heading
 #   3. <File>'s Layer N → that file must have a "## Layer N" heading
