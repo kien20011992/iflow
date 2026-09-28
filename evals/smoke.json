@@ -1,5 +1,5 @@
 [
-  {"query": "Tôi muốn dựng một tool gen ảnh từ ảnh người dùng upload, deploy lên Cloudflare, gen 3 ảnh cùng lúc và có trang preview để chọn mẫu. Chưa rõ nên bắt đầu từ đâu, hãy cùng tôi định hình rồi làm từng phần một.", "should_trigger": true},
+  {"query": "Worker sinh ảnh cứ chạy được khoảng 30 ảnh là treo, không log lỗi gì, restart thì chạy tiếp. Điều tra cho anh nguyên nhân là gì, chưa cần sửa vội.", "should_trigger": true},
   {"query": "Hà Nội 9 giờ sáng thì Tokyo là mấy giờ?", "should_trigger": false},
   {"query": "Đếm trong database icallme có bao nhiêu identities có tên phiên âm kiểu Hàn hoặc chứa ký tự tiếng Hàn.", "should_trigger": false}
 ]

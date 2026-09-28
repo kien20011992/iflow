@@ -4,8 +4,7 @@ This file is i:flow's references/shape.md sentence for sentence, except
 where i:lite differs on purpose; when either changes, diff the two. The
 deliberate differences: no slices and never `docs/shape/` — stage 3 is ONE
 plan (§3); a run has no dossier, and the user can skip stages (the `fast`
-lane, the straight-to-plan jump); the no-plan-mode draft lives at
-`~/.claude/plans/<topic-slug>.md`; research notes reach `docs/research/`
+lane, the straight-to-plan jump); research notes reach `docs/research/`
 through the plan's first step, their light source discipline written out
 here; how-to detail goes to the deep read, unmade choices to the plan's
 assumptions; the opening round may split the map, deferring cheap and
@@ -72,13 +71,16 @@ unavailable — Shape still runs all three stages with these substitutions
 
 | Thing | Plan-mode path | No-plan-mode path |
 |---|---|---|
-| Working draft | native plan file | a plan-format file the model writes itself at `~/.claude/plans/<topic-slug>.md` |
+| Working draft | native plan file | a plan-format file the model writes itself at `~/.claude/plans/iflow-<session-id>-<topic-slug>.md` |
 | Research notes | subsections of the draft's research notes | `docs/research/<topic-slug>/<zone-slug>.md` files, written directly |
 | Zone map | last in the plan file's body | last in that file's body |
 | Recovered draft sections | copied into the plan file | copied into the self-written draft; research notes materialized straight into the docs files above |
 
-Leanings inside a self-written draft follow the same re-confirm rule as
-recovered drafts.
+`<session-id>` is `$CLAUDE_CODE_SESSION_ID` in Bash; when that is empty,
+use `date +%Y%m%d-%H%M%S`. A topic slug alone would collide: another
+repo's draft on the same topic, or the old draft that recovery copies
+from, would be the very file this session writes. Leanings inside a
+self-written draft follow the same re-confirm rule as recovered drafts.
 
 ## 1. Stage 1 — explore the picture
 

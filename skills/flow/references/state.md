@@ -8,8 +8,9 @@ Contents: 1. Principles · 2. Label contract table · 3. Birth checklist ·
 
 - `shape.md` is the single source of truth for the whole program's state,
   born the moment the slice table is approved (during Shape, the working
-  draft lives in the plan file — except on the no-plan-mode path, where a
-  draft shape.md plays that role; see references/shape.md). The native plan
+  draft lives in a plan file on both run paths; see references/shape.md).
+  So `docs/shape/` holds only approved dossiers, and the hook and the
+  checker treat every shape.md there as one. The plan
   file (`~/.claude/plans/…`) is a per-session working copy outside the repo
   and may be cleaned up — never point to it as a source of truth, never copy
   a whole plan into the dossier (it will duplicate and drift). The dossier
@@ -39,7 +40,7 @@ consumers in the same commit — the checker fails loudly when they drift.
 | `Overall status:` — values `running` \| `done` | state block, first status line | template §4 · hook `iflow-resume.sh` (lets a `done` dossier pass in silence only once the checker agrees) · `scripts/check-dossier.sh` |
 | `Current slice:` | state block | template §4 · hook (prints it) · checker (cross-checks against slice-table statuses) |
 | `Next action:` | state block | template §4 · hook (prints it) · checker (non-empty, non-placeholder) |
-| Slice statuses `todo` \| `doing` \| `done` \| `needs-redo` \| `retired` | last cell of slice-table rows `\| NN \| …`, read only below `Overall status:` | template §4 · checker (valid-value set) |
+| Slice statuses `todo` \| `doing` \| `done` \| `needs-redo` \| `retired` | last cell of slice-table rows `\| NN \| …`, read only below `Overall status:` | template §4 · checker (valid-value set; at least one row) |
 | `<!-- generated-by: iflow/2 -->` | state block | template §4 · checker (era detection) |
 | `slice-NN-<name>.md` | dossier directory | template §5 · checker |
 
@@ -52,8 +53,7 @@ consumers in the same commit — the checker fails loudly when they drift.
 2. Create `shape.md` per §4, distilled from the approved plan and the
    draft; what was explored LINKS to the research docs (never re-paste
    their content), and the sources list those doc paths. Never copy the
-   plan wholesale. No-plan-mode path: distill in place on the draft
-   shape.md.
+   plan wholesale.
 3. Create one slice file per slice, opening with its charter.
 4. Seed each slice file's notes: every deliberately-left-open item from
    Shape relevant to that slice gets one line saying, in the user's words,

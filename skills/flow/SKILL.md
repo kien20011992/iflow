@@ -24,7 +24,7 @@ Two layers. The Shape layer turns a large or ambiguous request into a
 user-approved table of vertical slices; the slice loop executes the slices
 one by one until done. Core invariant: **facts live in files, not in
 conversational memory** — during Shape they live in the working draft
-(the native plan file itself, including its research notes — never a
+(the plan file itself, including its research notes — never a
 second draft file alongside it), after the table is approved they live in
 the dossier, and research notes become `docs/research/<topic-slug>/*.md`
 files at dossier birth.
@@ -62,6 +62,7 @@ or updating a dossier in a session.
 
 Resolve in this order: the user names a dossier → the dossier active in the
 conversation → a `docs/shape/*/shape.md` matching the topic → none yet:
+weigh it per "Too light for slices?" under Layer 1 first; if it goes on,
 attempt draft recovery (see "Draft recovery" in
 [references/shape.md](references/shape.md)), else start Shape fresh.
 
@@ -82,8 +83,8 @@ the authoritative files for the active work:
 - during a slice: shape.md and the current slice file.
 
 The compaction summary is a pointer, not a source of truth; facts live in
-those files. On the plan-mode Shape path no dossier exists yet, so the
-resume hook stays silent: this rule is the only reload. If the draft's
+those files. During Shape no dossier exists yet, on either run path, so
+the resume hook stays silent: this rule is the only reload. If the draft's
 path was lost, recover it per "Draft recovery" in
 [references/shape.md](references/shape.md).
 
@@ -92,21 +93,23 @@ resume hook re-points the dossier), without pressing.
 
 ## Layer 1 — Shape
 
-A new topic enters Shape. Before anything else, read
+**Too light for slices?** This skill is invoked by hand, so a new topic is
+weighed first, from the request alone — before reading any reference,
+entering plan mode or scanning the repo. When one plan covers it — one
+task, one deliverable, nothing worth approving on its own — that turn is
+one line in the user's language: the reason, then `/i:lite <task>`
+(`/i:lite fast <task>` when the direction is already settled). Nothing
+else — no picture draft, no zone map, no other question — then stop for
+the user's call. Unsure means not too light: go on to Shape. Say it once,
+never again mid-way.
+
+Otherwise the topic enters Shape: before anything else, read
 [references/shape.md](references/shape.md) and follow its three stages —
 it owns the plan-file conventions, the two run paths (plan mode /
 no-plan-mode), the stage rules, and decision rights.
 
 If mid-Shape the need collapses to pure understanding with no repo
 deliverable, hand off to i:explore instead of shaping.
-
-**Too light for slices?** This skill is invoked by hand, so the opening
-round also weighs the request: when one plan covers it — one task, one
-deliverable, nothing worth approving on its own — say so in one line with
-the reason and recommend `/i:lite <task>` (`/i:lite fast` when the
-direction is already settled); the user decides. Handing over loses
-nothing: i:lite works from the same draft format. Say it once, at the
-opening round, never again mid-way.
 
 The moment the slice table passes its gate: create the dossier per the
 birth checklist in [references/state.md](references/state.md), then enter

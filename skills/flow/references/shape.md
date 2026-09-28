@@ -54,13 +54,16 @@ unavailable — Shape still runs all three stages with these substitutions
 
 | Thing | Plan-mode path | No-plan-mode path |
 |---|---|---|
-| Working draft | native plan file | `docs/shape/<slug>/shape.md`, born from the first exploration round; its next-action line reads "Continue Shape: …" |
+| Working draft | native plan file | a plan-format file the model writes itself at `~/.claude/plans/iflow-<session-id>-<topic-slug>.md` |
 | Research notes | subsections of the draft's research notes | `docs/research/<topic-slug>/<zone-slug>.md` files, written directly |
-| Zone map | last in the plan file's body | in shape.md's state block until birth |
-| Recovered draft sections | copied into the plan file | materialized straight into the docs files above |
+| Zone map | last in the plan file's body | last in that file's body |
+| Recovered draft sections | copied into the plan file | copied into the self-written draft; research notes materialized straight into the docs files above |
 
-Leanings inside a draft shape.md follow the same re-confirm rule as
-recovered drafts.
+`<session-id>` is `$CLAUDE_CODE_SESSION_ID` in Bash; when that is empty,
+use `date +%Y%m%d-%H%M%S`. A topic slug alone would collide: another
+repo's draft on the same topic, or the old draft that recovery copies
+from, would be the very file this session writes. Leanings inside a
+self-written draft follow the same re-confirm rule as recovered drafts.
 
 ## 1. Stage 1 — explore the picture
 
@@ -167,7 +170,14 @@ confirmed; the settled zones live on the map, not in every line.
 "Understood" is a verdict on the
 exchange: a zone the user has not responded to on substance is at most "in
 discussion". A small topic whose few zones are already clear may have its
-opening round recommend going straight to the decision session.
+opening round recommend going straight to the decision session — or, when
+the request itself already settles every zone, straight to stage 3. The
+user's own words at invocation count as direct decisions (early-lock path
+(1)) and are recorded as such; the model's reading of them does not. That
+opening round also runs stage 2's fresh-eyes pass and lists its candidates
+beside the recommendation: a kept candidate reopens stage 1 for it;
+otherwise the picture rides the slice table's gate, one approval for both.
+The user decides; only a direct confirmation (section 4) takes that jump.
 
 **Two valves, both measured on the picture draft:** (1) a round that could
 not change at least one sentence of the draft did not budge; two such

@@ -59,9 +59,13 @@ rows=$(awk -F'|' -v lab="$L_STATUS" 'index($0, lab)==1 {seen=1}
   print nn "\t" st
 }' "$f")
 
-# Rows only above the status line would pass unchecked — say so instead.
-if [ -z "$rows" ] && awk -v lab="$L_STATUS" 'index($0, lab)==1 {exit} /^\|[ \t]*[0-9][0-9][ \t]*\|/ {found=1} END {exit !found}' "$f"; then
-  say "slice table sits above '$L_STATUS'; it belongs in the state block below it"
+# No rows means every row check below passes vacuously — say why instead.
+if [ -z "$rows" ]; then
+  if awk -v lab="$L_STATUS" 'index($0, lab)==1 {exit} /^\|[ \t]*[0-9][0-9][ \t]*\|/ {found=1} END {exit !found}' "$f"; then
+    say "slice table sits above '$L_STATUS'; it belongs in the state block below it"
+  else
+    say "no slice rows below '$L_STATUS' (each reads '| NN | … | <status> |', NN two digits)"
+  fi
 fi
 
 dups=$(printf '%s\n' "$rows" | awk -F'\t' '$1!="" {c[$1]++} END {for (n in c) if (c[n]>1) printf "%s ", n}')

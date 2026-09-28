@@ -32,7 +32,7 @@
 # competitor a description must beat — then totals. --out writes the same
 # numbers as JSON. A query with any run that showed neither a Skill call nor
 # a result event (timeout, crash) is ERROR, never PASS. Exit 0 when every query passes,
-# 1 when any fails or errors, 2 on usage error.
+# 1 when any fails or errors, 2 on usage error or a user-invoked-only skill.
 set -uo pipefail
 
 repo="$(cd "$(dirname "$0")/.." && pwd)"
@@ -59,6 +59,15 @@ while [[ $# -gt 0 ]]; do
 done
 
 [[ -d "$repo/skills/$skill" ]] || { echo "no such skill in $repo/skills: $skill" >&2; exit 2; }
+# A user-invoked-only skill never shows Claude its description, so every
+# positive query would FAIL for no reason. The flag is read from the YAML
+# frontmatter only, never from the body.
+if awk 'NR==1 {if ($0 != "---") exit; next} $0 == "---" {exit}
+        /^disable-model-invocation:[[:space:]]*true[[:space:]]*$/ {found=1}
+        END {exit !found}' "$repo/skills/$skill/SKILL.md"; then
+  echo "$skill is user-invoked only (disable-model-invocation: true): Claude never sees its description, so there is nothing to measure" >&2
+  exit 2
+fi
 [[ -f "$eval_file" ]] || { echo "eval file not found: $eval_file" >&2; exit 2; }
 [[ "$runs" =~ ^[1-9][0-9]*$ && "$jobs" =~ ^[1-9][0-9]*$ ]] || usage
 for tool in jq claude timeout; do
