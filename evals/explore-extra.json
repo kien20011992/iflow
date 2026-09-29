@@ -1,0 +1,6 @@
+[
+  {"query": "Hôm trước mình tìm hiểu dở chuyện mua đất nền ngoại ô, giờ đi tiếp phần tổng tiền nhé.", "should_trigger": true},
+  {"query": "Tiếp tục buổi khám phá hôm qua về tự host Postgres, còn phần sao lưu chưa bàn.", "should_trigger": true},
+  {"query": "Let's pick up the home lab exploration where we left off last week.", "should_trigger": true},
+  {"query": "Tôi đang nghĩ đến việc đổi tên hàm getUser thành fetchUser trong cả repo này, làm giúp tôi.", "should_trigger": false}
+]

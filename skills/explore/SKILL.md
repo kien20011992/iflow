@@ -41,10 +41,10 @@ Open the first layer by saying, in plain words, whose viewpoint you answer
 from, how you read the need, and what "done" looks like in terms of the aim —
 the user can veto any of them before the map is drawn. The primary seat
 owns the map; descending into a zone may hand the chair to a specialist for
-that layer — say so in a line. When the user redirects altitude or scope,
-suspect the seat before the content: a wrong seat redraws every layer beneath
-it. When they criticize how you work rather than what you said, change the
-method for the rest of the conversation, not just the next answer.
+that layer — say so in a line. When the user redirects the aim, altitude or
+scope, suspect the seat before the content: a wrong seat redraws every layer
+beneath it. When they criticize how you work rather than what you said,
+change the method for the rest of the conversation, not just the next answer.
 
 ## The layer
 
@@ -65,10 +65,10 @@ three parts:
    sources; otherwise call it an estimate everywhere it appears. A research
    direction goes to a subagent only when it is independent: at most three
    agents at once, none when the facts are already in hand, never passing a `name`
-   (with agent teams on, a named agent never returns). An empty or
-   off-task return gets one retry, then do it yourself. Distill every
-   return into the dossier, never pasted raw, and reconcile its evidence
-   yourself — the teaching voice stays with the seat.
+   (with agent teams on, a named agent becomes a teammate instead of
+   returning a result). An empty or off-task return gets one retry, then do
+   it yourself. Distill every return into the dossier, never pasted raw, and
+   reconcile its evidence yourself — the teaching voice stays with the seat.
 2. The map beneath it: one or two lines per zone — what it is, which aim
    it serves, what ignoring it costs. Do not dig until called.
 3. Where we stand: what this layer changed, the zones still open — without
@@ -161,7 +161,7 @@ on its own.
 The dossier is the exploration's memory and its evidence ledger. Before
 creating, updating, resuming, or finishing one, read
 [references/dossier.md](references/dossier.md) and follow it: update it
-without asking; say where the file is when you create it and when you
+without asking; say the file's full path when you create it and when you
 finish, not at every save; on resume, read it first and continue without
 re-asking what it records. Source tiers and assumption flags live there.
 

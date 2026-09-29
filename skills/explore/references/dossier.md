@@ -121,7 +121,9 @@ one line rather than omitting the section.
 
 ### State for the next session
 
-The agent's block, last in the file and compact. Three parts:
+The agent's block, last in the file and compact. Three parts, labeled like
+the headings above — in the user's language, by what each holds; the bold
+names below are roles, not labels:
 
 **Where we are.** Four lines, each a pointer, none a copy: the evolved
 question and the expert lens serving it; the aim the exploration serves,
@@ -137,10 +139,11 @@ needs — confirmed, still inferred, recommended by the expert with
 rationale, rejected or deferred and why; corrections to how you work, such
 as "shorter answers".
 
-**The map.** The single place a zone's status lives. One table row per zone
-that is relevant, explored, or intentionally queued: the aim it serves, its
-status (open, in progress, closed), a one-line verdict pointing to its
-conclusion in the body, and the open dependency blocking it, if any.
+**Status of each part of the subject.** The single place a zone's status
+lives. One table row per zone that is relevant, explored, or intentionally
+queued: the aim it serves, its status (open, in progress, closed), a
+one-line verdict pointing to its conclusion in the body, and the open
+dependency blocking it, if any.
 
 ## Quality test
 
