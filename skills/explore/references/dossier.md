@@ -154,7 +154,7 @@ these from the dossier alone:
 - What is being explored, and through which expert lens?
 - What does the user need this for, and what aim is the exploration
   serving?
-- Which layers has the user received, and what can they now decide or
+- Which parts has the user been taught, and what can they now decide or
   understand that they could not before?
 - What has been confirmed, proposed, corrected, rejected, or left open?
 - Which evidence supports the important claims, and at what source tier?
