@@ -124,9 +124,9 @@ section.
 ````markdown
 # <the slice, named in the user's language>
 
-<the charter, one paragraph: the goal (research: the question answered),
-the product — an executed plan | a finished document about … — and the
-slices it needs first>
+<the charter, one paragraph of short sentences, one idea each: the goal
+(research: the question answered), the product — an executed plan | a
+finished document about … — and the slices it needs first>
 
 ## <approved plan>
 

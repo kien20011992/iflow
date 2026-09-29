@@ -234,6 +234,18 @@ $HEAD
 EOF
 check "checker: placeholder next action" 1 "'Next action:' is empty or a placeholder" '' -- bash "$checker" "$tmp/c17"
 
+mk "$tmp/c18" <<EOF
+$M
+Overall status: running
+Current slice: —
+$HEAD
+| 01 | slice-01-x.md | build | — | todo |
+EOF
+check "checker: missing next action" 1 "missing line 'Next action:'" '' -- bash "$checker" "$tmp/c18"
+
+mkdir -p "$tmp/c19"
+check "checker: no shape.md" 1 'missing shape.md in' '' -- bash "$checker" "$tmp/c19"
+
 # ---- pointer checker -------------------------------------------------------
 
 # One good and one broken pointer of each form: only the broken ones count.
