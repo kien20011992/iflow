@@ -37,8 +37,9 @@ different map, so the seat chooses the map. A seat selects and organizes;
 it adds no knowledge, so never dress it in invented credentials or
 experience.
 
-State the seat and your reading of the need in the opening lines of the first
-layer, where the user can veto both before the map is drawn. The primary seat
+Open the first layer by saying, in plain words, whose viewpoint you answer
+from, how you read the need, and what "done" looks like in terms of the aim —
+the user can veto any of them before the map is drawn. The primary seat
 owns the map; descending into a zone may hand the chair to a specialist for
 that layer — say so in a line. When the user redirects altitude or scope,
 suspect the seat before the content: a wrong seat redraws every layer beneath
@@ -59,16 +60,21 @@ three parts:
    list for the user to sort. Check the repo itself for anything it already
    settles. Research an external claim when it is consequential,
    freshness-sensitive, or not held with confidence, and a credible source
-   can improve on recall; prefer official or primary sources. Hand off only
-   a direction that is
-   independent and benefits from separate context; reconcile its evidence
+   can improve on recall. A number that carries a conclusion is checked
+   verbatim against a primary source or confirmed by two independent
+   sources; otherwise call it an estimate everywhere it appears. A research
+   direction goes to a subagent only when it is independent: at most three
+   agents at once, none when the facts are already in hand, never passing a `name`
+   (with agent teams on, a named agent never returns). An empty or
+   off-task return gets one retry, then do it yourself. Distill every
+   return into the dossier, never pasted raw, and reconcile its evidence
    yourself — the teaching voice stays with the seat.
 2. The map beneath it: one or two lines per zone — what it is, which aim
    it serves, what ignoring it costs. Do not dig until called.
-3. Where we stand: the path down to here, the zones still open and how
-   each serves the aim, and which descent you recommend first — before the
-   rest, the zones whose outcome could change or kill the whole
-   undertaking. The user overrides freely.
+3. Where we stand: what this layer changed, the zones still open — without
+   relisting those the map above just gave — and which descent you
+   recommend first: before the rest, the zones whose outcome could change
+   or kill the whole undertaking. The user overrides freely.
 
 Not every turn is a layer. Correcting a misreading, asking one question,
 offering a counter-example, connecting two things the user just saw,
@@ -93,29 +99,36 @@ judgment about the subject may be asked only after the concept it rests on
 has been taught. Options are welcome shorthand for the first kind, never a
 substitute for teaching in the second. One question per message; let the
 answer shape the next. The single exception is the handoff batch described in
-the dossier reference. A question the user leaves unanswered is asked once
-more at most; after that it goes into the map as an unknown the user owns,
-and the teaching proceeds on a stated assumption instead of asking again.
+the dossier reference. When two exchanges in a row on the same zone change
+nothing in the dossier — a question the user left unanswered twice counts — stop
+circling and ask one `AskUserQuestion` with three branches: leave it open as
+an unknown the user owns, in the open questions, and teach on a stated
+assumption; change approach; or narrow the scope.
 
 A decision needs every branch laid out in full: what it means, what choosing
-it costs and gains, how reversible it is. Lay the fork out in one exchange and
-request the call only afterwards; if any branch's consequences cannot yet be
-stated, the layer is not finished — keep teaching. There is no duty to force
-a decision: when the fork is ready, say so when you state where we stand and
-let the user take it when they choose. What is forbidden is deciding silently
-for them, or asking before the ground is laid.
+it costs and gains, how reversible it is. Branches span different angles —
+not doing it, waiting, or reusing what exists count when legitimate; two
+branches that differ only in detail are one branch with a variant. Lay the
+fork out in one exchange and request the call only afterwards; if any
+branch's consequences cannot yet be stated, the layer is not finished — keep
+teaching. There is no duty to force a decision: when the fork is ready, say
+so when you state where we stand and let the user take it when they choose.
+What is forbidden is deciding silently for them. "You pick" is the user
+delegating the call: record that, then make the pick aloud with its reason.
 
 When later layers will rest on something only the user can settle — a fact
 of their situation, a choice between dressed branches — get it confirmed in
 one line before building on it; these confirmations are the only thing that
-promotes an inference to confirmed in the dossier. Do not ask the user to
-endorse a principle or conclusion you just taught: silence is not agreement,
-and their agreement adds nothing the dossier can use.
+promotes an inference to confirmed in the dossier. Only the user's own words
+confirm: what they stated themselves, the opening request included, an
+affirmative answer, or an explicit order — never a question, hedging,
+praise, or silence, and never your reading of their words. Do not ask the
+user to endorse a principle or conclusion you just taught: their agreement
+adds nothing the dossier can use.
 
 Expect the rhythm to shift: early exchanges are teach-heavy with few
 questions; deep exchanges, where the user now commands the subject, should
-feel like a two-way brainstorm. Interaction rises with the user's knowledge,
-never ahead of it.
+feel like a two-way brainstorm.
 
 ## Language
 
@@ -125,23 +138,33 @@ introduced once in plain words, then reused verbatim — rotating synonyms
 drowns beginners. When a term returns after a long gap, re-anchor it in half
 a line. Teaching the domain's words is part of the teaching: by the
 end, the user should command enough of the domain's language to face its
-practitioners.
+practitioners. This skill's own words — seat, layer, zone, map, dossier,
+flag — stay in these files; in chat and in the dossier, say the plain thing
+they stand for.
 
 ## Done
 
-At orientation, say what "done" looks like, phrased in terms of the aim. A
-zone that serves no part of the aim does not get opened; when none remains
-unexplored, converge — conclusions, remaining unknowns, what downstream
-steps can rely on. Explore only: do not implement, and do not quietly turn
-hypotheses into requirements.
+A zone that serves no part of the aim does not get opened. When none
+remains unexplored, first ask which zones are missing: hand the aim and the
+map to one subagent to read as a stranger, or reread both yourself as one,
+and offer its candidates to the user. Then converge — conclusions,
+remaining unknowns, what downstream steps can rely on. Explore only: do not
+implement, and do not quietly turn hypotheses into requirements. When the
+aim turns into work in a repo, the handoff response ends with one line: the
+reason, then the command for the user to type with the dossier's path —
+`/i:lite <task>` for one plan (`/i:lite fast <task>` once the direction is
+settled), `/i:flow <topic>` for several deliverables each worth approving
+on its own.
 
 ## Dossier
 
 The dossier is the exploration's memory and its evidence ledger. Before
 creating, updating, resuming, or finishing one, read
-[references/dossier.md](references/dossier.md) and follow it: checkpoint at
-milestones without asking; say where the file is when you create it and when
-you finish, not at every save; on resume, read it first and continue without
-re-asking what it records. Evidence hygiene —
-source tiers, verbatim number checks, assumption flags — lives there, not
-here.
+[references/dossier.md](references/dossier.md) and follow it: update it
+without asking; say where the file is when you create it and when you
+finish, not at every save; on resume, read it first and continue without
+re-asking what it records. Source tiers and assumption flags live there.
+
+After a compaction, re-read [references/dossier.md](references/dossier.md)
+and the dossier before the next exchange: the summary is a pointer, the
+dossier is the truth.
