@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# tests/run.sh — regression tests for the i:flow resume hook and the
-# dossier checker. Every fixture is built in a throwaway temp directory;
+# tests/run.sh — regression tests for the i:flow resume hook, the dossier
+# checker and the pointer checker. Every fixture is built in a throwaway temp directory;
 # nothing outside it is touched. Exit 0 = every case passed.
 set -u
 export LC_ALL=C.UTF-8 # the hook caps lines by character, which needs UTF-8
@@ -136,6 +136,119 @@ $HEAD
 | 02 | slice-02-x.md | build | — | retired |
 EOF
 check "checker: done with a retired row" 0 '' '.' -- bash "$checker" "$tmp/c8"
+
+# A retired row needs no file; any other row does.
+mk "$tmp/c9" <<EOF
+$M
+Overall status: running
+Current slice: —
+Next action: EnterPlanMode for slice 01.
+$HEAD
+| 01 | slice-01-x.md | build | — | todo |
+| 02 | slice-02-x.md | build | — | retired |
+EOF
+rm "$tmp/c9"/slice-0[12]-x.md
+check "checker: row without its slice file" 1 'slice 01 has no file' 'slice 02' -- bash "$checker" "$tmp/c9"
+
+mk "$tmp/c10" <<EOF
+$M
+Overall status: running
+Current slice: —
+Next action: EnterPlanMode for slice 01.
+$HEAD
+| 01 | slice-01-x.md | build | — | todo |
+| 01 | slice-01-x.md | build | — | todo |
+EOF
+check "checker: duplicate slice numbers" 1 'duplicate slice numbers in the table: 01' '' -- bash "$checker" "$tmp/c10"
+
+mk "$tmp/c11" <<EOF
+$M
+Overall status: running
+Current slice: —
+Next action: EnterPlanMode for slice 01.
+$HEAD
+| 01 | slice-01-x.md | build | — | in progress |
+EOF
+check "checker: invalid row status" 1 "slice 01 has invalid status 'in progress'" '' -- bash "$checker" "$tmp/c11"
+
+mk "$tmp/c12" <<EOF
+$M
+Overall status: running
+Current slice: 01 a
+Next action: Continue slice 01.
+$HEAD
+| 01 | slice-01-x.md | build | — | doing |
+| 02 | slice-02-x.md | build | — | doing |
+EOF
+check "checker: two rows doing" 1 'multiple slices are' '' -- bash "$checker" "$tmp/c12"
+
+mk "$tmp/c13" <<EOF
+$M
+Overall status: running
+Current slice: 01 a
+Next action: Continue slice 01.
+$HEAD
+| 01 | slice-01-x.md | build | — | todo |
+EOF
+check "checker: current slice row is not doing" 1 "names 01 but its row status is 'todo'" '' -- bash "$checker" "$tmp/c13"
+
+mk "$tmp/c14" <<EOF
+$M
+Overall status: running
+Current slice: 03 c
+Next action: Continue slice 03.
+$HEAD
+| 01 | slice-01-x.md | build | — | todo |
+EOF
+check "checker: current slice has no row" 1 'names 03 but the slice table has no such row' '' -- bash "$checker" "$tmp/c14"
+
+mk "$tmp/c15" <<EOF
+$M
+Overall status: running
+Current slice: slice 01
+Next action: Continue slice 01.
+$HEAD
+| 01 | slice-01-x.md | build | — | doing |
+EOF
+check "checker: malformed current slice" 1 'must start with a two-digit slice number' '' -- bash "$checker" "$tmp/c15"
+
+# Seen in a real dossier: marked done while its last slice still runs.
+mk "$tmp/c16" <<EOF
+$M
+Overall status: done
+Current slice: 01 a
+Next action: Read the summary at the top of this file.
+$HEAD
+| 01 | slice-01-x.md | build | — | doing |
+EOF
+check "checker: done with a row still doing" 1 "overall status is done but slice 01 is 'doing'" '' -- bash "$checker" "$tmp/c16"
+check "checker: done with a current slice" 1 "overall status is done but 'Current slice:' still names 01" '' -- bash "$checker" "$tmp/c16"
+
+mk "$tmp/c17" <<EOF
+$M
+Overall status: running
+Current slice: —
+Next action: TBD
+$HEAD
+| 01 | slice-01-x.md | build | — | todo |
+EOF
+check "checker: placeholder next action" 1 "'Next action:' is empty or a placeholder" '' -- bash "$checker" "$tmp/c17"
+
+# ---- pointer checker -------------------------------------------------------
+
+# One good and one broken pointer of each form: only the broken ones count.
+pointers="$root/skills/flow/scripts/check-pointers.sh"
+mkdir -p "$tmp/p1/references"
+cat > "$tmp/p1/SKILL.md" <<'EOF'
+See [ok](references/state.md) and [bad](references/nope.md).
+Per state.md §1 and state.md §9.
+Per shape.md's Layer 1 and shape.md's Layer 7.
+EOF
+printf '## 1. One\n' > "$tmp/p1/references/state.md"
+printf '## Layer 1\n' > "$tmp/p1/references/shape.md"
+check "pointers: broken link" 1 "link 'references/nope.md' resolves to nothing" "link 'references/state.md'" -- bash "$pointers" "$tmp/p1"
+check "pointers: broken section number" 1 "'§9' points at state.md" "'§1'" -- bash "$pointers" "$tmp/p1"
+check "pointers: broken layer" 1 "'Layer 7' points at shape.md" "'Layer 1'" -- bash "$pointers" "$tmp/p1"
 
 # ---- hook ------------------------------------------------------------------
 

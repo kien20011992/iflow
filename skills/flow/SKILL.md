@@ -61,9 +61,9 @@ Shape on this topic, found per "Draft recovery" in
 "Too light for slices?" weighing → none: weigh it per "Too light for
 slices?" under Layer 1, and if it goes on, start Shape fresh.
 
-If shape.md already exists: read it and continue from the next-action line
-it records. Never re-ask what it already records; never make the user
-re-approve what was approved.
+If shape.md already exists: read it and the slice file its `Current slice:`
+names, then continue from the next-action line it records. Never re-ask
+what it already records; never make the user re-approve what was approved.
 
 ## After a compaction
 
@@ -111,8 +111,8 @@ Invariants:
    imperative sentence ("EnterPlanMode for slice 03, explore only within
    X"). Starting a slice is ONE write — the row goes `doing`, `Current
    slice:` names it, `Next action:` becomes its first step — made and
-   checked before `EnterPlanMode`, since plan mode blocks every write but
-   the plan file.
+   checked before `EnterPlanMode`, since plan mode allows no edit but the
+   plan file.
    Once the dossier stops changing — after a lone edit, or at the end of a
    burst of them such as the birth checklist — run
    `${CLAUDE_SKILL_DIR}/scripts/check-dossier.sh <dossier-dir>` in the
@@ -213,11 +213,12 @@ slice may delegate per formed question.
 
 **Auto-advance** — finishing a slice does not end the turn. After the
 slice's result section is written (or once the research document is
-complete): update shape.md, announce in exactly one line — for a research
-document, with its file path; it needs no approval before advancing, and
-feedback arriving later follows Mid-flight decisions — then start the next
-slice in the same turn, even when that means another trip through the
-approval gate. Stop only when a user decision is needed, a report you
+complete): update shape.md, announce in exactly one line which slice
+finished and whether it passed, naming any gap its result records — for a
+research document, with its file path; it needs no approval before
+advancing, and feedback arriving later follows Mid-flight decisions — then
+start the next slice in the same turn, even when that means another trip
+through the approval gate. Stop only when a user decision is needed, a report you
 commissioned has not come back yet, or every slice is done or retired. If
 the next
 slice is large, offer a new session in one sentence, without pressing.
