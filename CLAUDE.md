@@ -25,17 +25,22 @@ Ngoài hook và checker, i:debug và i:test cũng đọc hồ sơ của i:flow. 
 
 ## Lite cần đồng bộ tay
 
-i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (cổng duyệt, chứng minh, báo cáo). Hai bên không có script canh lệch.
+i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, chứng minh, review). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
+
+- Lite không có slice, không có `docs/shape/`. Giai đoạn 3 ra một plan duy nhất.
+- Lite không có hồ sơ, không có hook. Một lượt dở chỉ chạy tiếp được nhờ khôi phục bản nháp. Khi khôi phục, mọi lựa chọn trong một plan chưa được duyệt vẫn chỉ là giả định.
+- Lite bật plan mode ở bước 2 của SKILL.md, nên shape.md của lite không có câu `EnterPlanMode` ở đầu như flow.
+- Người dùng bỏ được phần bàn: làn `fast`, và lối nhảy thẳng sang plan khi không điểm nào đáng quyết. Khi nhảy thẳng, hướng đang nghiêng của mỗi điểm vào phần giả định của plan. Điểm giao cho model quyết cũng được báo trong phần giả định, còn flow báo trong bức tranh.
+- Vòng mở đầu được chia bản đồ: điểm rẻ và dễ quay lại thì hoãn vào phần giả định của plan (trạng thái "deferred to the plan's assumptions"). Người dùng quyết các điểm đó ở bước duyệt. Vì vậy nút "Lock" cũng được bỏ khi các điểm hoãn đến từ việc chia bản đồ.
+- Chữ nói về slice trong bản flow được đổi thành lời của lite, ví dụ "the plan's innards" và "the deep read".
+- Ghi chép nghiên cứu được ghi ra `docs/research/` ở bước đầu của plan. Flow ghi lúc tạo hồ sơ.
+- Hết lượt, lite ghi khối kết quả vào file plan, rồi đổi dòng `Shape draft:` thành `Shape draft done:`. Flow đổi dòng này lúc tạo hồ sơ.
+- Sau khi nén hội thoại, lite không đọc lại SKILL.md, vì SKILL.md của lite nhỏ hơn ngưỡng 5.000 token mà Claude Code tự gắn lại. Flow vẫn đọc lại, vì SKILL.md của flow sát ngưỡng.
+- Kết quả review mà cách sửa lệch khỏi plan thì lite chỉ báo lại. Lite không chép luật "hỏi người dùng trước" của flow (`ex-A1`).
+- Chạy tiếp một bản nháp ở phiên sau, lite vẫn cân lại "quá lớn cho một plan?". Lite không chép cách flow bỏ qua bước cân này (`sh-A2`).
+- Lần chạy mốc của lite diễn ra mỗi lượt, ngay trước thay đổi đầu tiên, và ghi vào file plan. Test đỏ mới mà thay đổi không gây ra thì chỉ báo lại. Flow ghi mốc một lần vào shape.md.
+- Lite không có mục "Tests from i:test" và không tự gọi i:test.
 
 Mỗi lần đổi một đoạn bên flow mà lite có bản chép, hãy ghi một dòng vào danh sách dưới đây. Đồng bộ xong thì xóa dòng đó.
 
-- `skills/lite/references/shape.md` §0–§2 và §4 cần theo bản mới của `skills/flow/references/shape.md`, do slice 02 của chương trình `docs/shape/got-flow/` sửa (các mã `sh-*`, `cc-3`, `cc-10`, `cc-11`, `st-5`, `st-6`, `st-7` trong `muc-da-duyet.md`). Những chỗ lite cố ý khác flow thì giữ nguyên: lite có đường "fast", có trạng thái trục "hoãn vào phần giả định của plan", và giai đoạn 3 của lite ra một plan duy nhất.
-- `skills/lite/references/agents.md` cần theo `skills/flow/references/agents.md` (các mã `cc-4a`, `cc-13`, `st-7`).
-- `skills/lite/SKILL.md`: hai phần "luật ngôn ngữ" và "đoạn Agents" cần theo bản mới của flow (các mã `sh-B4`, `sh-B16`, `sh-D1`). Dòng gọi `../flow/scripts/check-pointers.sh` thì chuyển vào file này, như flow đã làm (mã `md-2`).
-- `skills/lite/SKILL.md`, ba phần "The gate", "Build and prove" và "Mid-flight decisions" cần theo slice 03 của cùng chương trình:
-  - câu hỏi duyệt hết giờ hoặc bị từ chối thì không tính là duyệt (`cc-12`);
-  - bỏ câu "the only definition" (`md-3`);
-  - test đỏ có từ lần chạy mốc thì ghi lại một lần, không làm fail (`loop-3`);
-  - `/code-review` chạy nền, phải chờ kết quả (`cc-7`);
-  - kết quả review đòi lệch khỏi plan thì cần người dùng quyết trước (`ex-A1`);
-  - chỉ chép bước vào todo list khi có công cụ task list (`cc-5`).
+Hiện chưa có dòng nào: lite đã khớp flow 1.4.0 ở bản 1.5.0.
