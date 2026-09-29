@@ -3,9 +3,10 @@ name: lite
 description: >-
   Shape one task whose direction is not settled yet: map the open
   questions, research them, decide with you, then build and prove one
-  plan. No slices, no dossier; research notes go to docs/research/.
-  `fast` skips the shaping and goes straight to a plan that lists its
-  assumptions for you to veto at the gate.
+  plan. For work with several parts worth approving one by one, use
+  /i:flow. `fast` skips the discussion when the direction is already
+  clear: the plan lists every choice made for you, so you can reject any
+  before work starts. Research notes go to docs/research/.
 argument-hint: "[fast] <task>"
 disable-model-invocation: true
 ---
@@ -80,9 +81,10 @@ the model's. In order, before the gate:
    one subagent to read as a stranger and name missing choices, wrong
    assumptions and unproven claims. Fold what holds into the plan; list
    each rejected candidate in one line among the assumptions.
-3. The gate. A rejection that names a zone ("discuss X", "bàn X") opens
-   stage 1 with the draft plan as the starting picture; the run continues
-   as the full lane.
+3. The gate. A rejection that names an assumption ("discuss X", "bàn X")
+   opens stage 1 with the draft plan as the starting picture and the map
+   already split: X in discussion, every other assumption deferred to the
+   plan's assumptions; the run continues as the full lane.
 
 ## The plan
 
@@ -168,7 +170,8 @@ plan and pass the gate again.
 The run ends with one report in chat, the same facts as the completion
 block:
 
-- First, one sentence: what now works differently, and whether it passed.
+- First, one sentence: what now works differently, whether it passed, and
+  what the approved proof left unproven, if anything.
 - Evidence: each command run and what its output means ("212 tests, 0
   failed"), not pasted logs; any baseline red still red.
 - The review's outcome: the files handed to it, and what came back —
