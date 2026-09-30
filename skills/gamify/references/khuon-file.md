@@ -46,7 +46,7 @@ tên của game:
 7. `## Bài kiểm cố định` — heading chung cho mọi game; tên riêng của bài kiểm trong game này (Guardian, Tree Sentinel…) đứng trong câu đầu của mục. Nó là gì, đánh khi nào, lên cấp nghĩa là gì; đứng trước mục vùng vì vùng nhắc tới nó (A4).
 8. `## Các vùng` — câu "lần đọc đầu chỉ cần vùng 1"; mỗi vùng một đoạn bằng chữ (cảnh, nơi trao chiêu, qua vùng được gì); cuối mục một bảng hạn "để tra, không cần nhớ" (A5).
 9. `## Điều game không có` — tiền, xếp hạng, đếm ngày, phạt.
-10. `## Bảng tra tên` — hai cột: tên trong game → việc tay trên trang (C2 v2). Mọi tên riêng ở file người chơi phải có ở đây, và phải có mặt trong `gamemaster.md`.
+10. `## Bảng tra tên` — hai cột: tên trong game → việc tay trên trang (C2). Mọi tên riêng ở file người chơi phải có ở đây, và phải có mặt trong `gamemaster.md`.
 
 Một câu hạ gánh đứng ngay trước mục 5 (A6): "Bạn không cần thuộc luật: `<người dẫn>` giữ luật và nhắc lúc chơi."
 

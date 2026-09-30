@@ -1,11 +1,5 @@
 # Luật văn phong cho file người chơi — 18 điều
 
-Rút từ vòng sửa tay game gõ phím (chương trình `docs/shape/cot-truyen-de-hieu/`
-trong vault Notebooks, 9/2026): bốn người đọc mới liên tiếp trả lời đúng 5/5
-sau khi áp. Chép vào skill vì skill không được phụ thuộc file trong vault; sửa
-hai điều (A1, C2) cho bộ file v2. Nguồn gốc:
-`docs/research/cot-truyen-de-hieu/luat-van-phong.md`.
-
 Luật cốt lõi đứng trên cả 18 điều: SKILL.md, "Write for understanding".
 
 ## A. Luật về hình dạng
@@ -26,7 +20,7 @@ Luật cốt lõi đứng trên cả 18 điều: SKILL.md, "Write for understand
 - Sai: *"Trung 1a — Đọc trời: đọc đề 20 giây rồi ghi chỗ sẽ vấp, kiểm bằng tỷ lệ đoán trúng (≥3/6 nước đi, ba phiên liền)"*
 - Đúng: *"Hai việc con: Đọc trời (đọc đề 20 giây rồi ghi chỗ sẽ vấp, tới khi đoán trúng đều) và Bước đều (…)"* + bảng "Mức để qua chặng" bốn dòng.
 
-**A6. Một câu hạ gánh trước phần luật.** *"Bạn không cần thuộc luật: Bác Tư giữ luật và nhắc bạn lúc chơi. Đọc lần đầu chỉ cần nhớ hai điều."* Cả bốn người đọc mới đều nói câu này làm họ bớt lo rối.
+**A6. Một câu hạ gánh trước phần luật.** *"Bạn không cần thuộc luật: Bác Tư giữ luật và nhắc bạn lúc chơi. Đọc lần đầu chỉ cần nhớ hai điều."*
 
 ## B. Luật về câu chữ
 
@@ -48,7 +42,7 @@ Luật cốt lõi đứng trên cả 18 điều: SKILL.md, "Write for understand
 - Sai: *"Bác giữ cuốn sổ của bạn"* (mục Bác Tư) cạnh *"nó là file nhat-ky.md trên máy bạn, bạn là người cầm"* (mục Đóng sổ).
 - Đúng: *"Bác … ghi lại trong chat lời bạn đoán và kết quả từng lượt, và cuối mỗi chặng đọc cuốn nhật ký bạn đưa để kể lại."*
 
-**B6. Kể cách chơi thì kể cả kênh báo cáo.** Người chơi báo gì cho quản trò sau mỗi lượt, bằng câu nào, mở phiên bằng câu nào. Thiếu kênh là điểm không chấm được — review độc lập xếp đây là lỗi nặng nhất.
+**B6. Kể cách chơi thì kể cả kênh báo cáo.** Người chơi báo gì cho quản trò sau mỗi lượt, bằng câu nào, mở phiên bằng câu nào. Thiếu kênh là điểm không chấm được — đây là lỗi nặng nhất.
 - Sai: *"chép nguyên hai số wpm và % vào chat (hoặc dán ảnh)"* — không có chỗ vấp thật thì không chấm đọc trúng/trật được.
 - Đúng: *"Rồi bạn báo Bác Tư: hai số wpm và % chép nguyên từ màn hình, chữ nào bị tô đỏ, và chỗ nào tay khựng."*
 
@@ -65,9 +59,9 @@ Luật cốt lõi đứng trên cả 18 điều: SKILL.md, "Write for understand
 **C1. Ẩn dụ trung tâm được giới thiệu ở mục "bạn là ai", trước khi tên việc con dùng nó.** "Đọc trời" chỉ có nghĩa khi người đọc đã biết trời là dấu thanh, chữ mũ, chỗ đổi tiếng.
 - Đúng: *"Trời trên con đường này đổi mỗi ngày. Trong việc thật, trời là dấu thanh, chữ có mũ và chỗ đổi tiếng trong đoạn văn bạn sắp gõ. Ai nhìn trời và nói trước được hôm nay khó ở đâu thì đi êm."*
 
-**C2 (v2). Mỗi tên trong game đi kèm việc tay trên trang chơi ngay tại chỗ, không kèm kỹ năng ngoài đời.** Bản v1 đòi "ngoài đời là …"; bức tranh v2 cấm file người chơi nói kỹ năng thật (mọi tính toán nằm ở `gamemaster.md`). Cái người chơi cần để hiểu một tên là *tay mình sẽ làm gì*, và cái đó nói được mà không lộ việc thật.
-- Sai (v1): *"Đọc trời — ngoài đời là dấu thanh, chữ có mũ."* / Sai (v2, ví dụ forex): *"Sight — nhận ra swing high/low trên biểu đồ."*
-- Đúng (v2): *"Sight: bấm phía trên một nến để gọi nó là đỉnh, phía dưới để gọi là đáy. Đỉnh là nến cao hơn hai nến mỗi bên."*
+**C2. Mỗi tên trong game đi kèm việc tay trên trang chơi ngay tại chỗ, không kèm kỹ năng ngoài đời.** File người chơi không nói kỹ năng thật; mọi tính toán nằm ở `gamemaster.md`. Cái người chơi cần để hiểu một tên là *tay mình sẽ làm gì*, và cái đó nói được mà không lộ việc thật.
+- Sai: *"Đọc trời — ngoài đời là dấu thanh, chữ có mũ."* / Sai: *"Sight — nhận ra swing high/low trên biểu đồ."*
+- Đúng: *"Sight: bấm phía trên một nến để gọi nó là đỉnh, phía dưới để gọi là đáy. Đỉnh là nến cao hơn hai nến mỗi bên."*
 
 **C3. Lời người dẫn nói lúc chơi (biến cố mở, câu nghi thức) nằm ở file quản trò; file người chơi chỉ kể chặng và nói phần thưởng bằng lời là gì.** Người chơi nghe lời mở chặng lần đầu từ người dẫn, không đọc trước.
 
@@ -80,13 +74,8 @@ Mỗi lần viết lại, trước khi đưa người dùng đọc:
 3. **Phân loại phát hiện:** chữ nghĩa / cốt truyện thì sửa ngay; luật chơi thì ghi lại cho chủ luật, không tự sửa — file người chơi chỉ được nói thật hệ quả của luật.
 4. **Kiểm gameplay không đổi** bằng `diff` phần thân file quản trò với bản luật gốc.
 
-Kết quả trên game gõ phím: bốn người đọc mới liên tiếp trả lời đúng 5/5; số chỗ vấp giảm 8 → 5 chữ + 3 luật → 8 nhỏ → 4 không thuộc chữ nghĩa.
-
 ## E. Áp vào khuôn v2
 
-Xem `khuon-file.md`: mỗi file người chơi có heading cố định, luật A2–A6 nằm
-trong thứ tự heading của `world.md`; B5–B6 nằm ở mục "Một lần chơi" (trang
-tự ghi, người chơi gõ một dòng ghi chú, người dẫn đọc sổ); C3 nghĩa là biến
-cố mở vùng và phần thưởng cốt truyện chỉ có ở `gamemaster.md` mục 6. `run-check.sh` kiểm
-phần máy kiểm được (heading, tên có trong gamemaster, không từ ngoài đời);
-phép thử năm câu (mục D) kiểm phần còn lại.
+Xem `khuon-file.md`: khuôn đó gắn từng luật A–C vào đúng heading của từng
+file người chơi, và nói phần nào `run-check.sh` kiểm, phần nào phép thử năm
+câu (mục D) kiểm.

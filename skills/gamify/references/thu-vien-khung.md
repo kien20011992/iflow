@@ -4,19 +4,16 @@
 người chơi lặp lại việc gì mỗi phiên, cái gì mở ra cái gì, thua thì mất gì
 giữ gì, và thế giới đó nghe như thế nào. Giai đoạn concept lấy ba khung
 khác nhau ở đây, khoác lên bản đồ kỹ năng của việc thật, ra ba concept cho
-người dùng chọn. Khung không lấy từ gu người chơi; lấy từ bộ game tham chiếu
-đã nghiên cứu ở chương trình trước (`docs/shape/game-hoa-viec-kho/` slice
-01–03 trong vault Notebooks), vì đó là game dựng bài bản mà người dùng thấy
-hấp dẫn.
+người dùng chọn. Khung lấy từ bộ game tham chiếu đã được nghiên cứu, vì đó
+là game dựng bài bản mà người dùng thấy hấp dẫn.
 
 **Nguồn và giới hạn.** Vòng lặp, hình tiến trình, thất bại của mỗi khung
-rút từ ba case study trên. Ba case study **không bàn kiểu đặt tên**; mục
+rút từ các case study đó. Ba case study **không bàn kiểu đặt tên**; mục
 "Tông và kiểu đặt tên" là tổng hợp từ game gốc, không phải kết luận nghiên
 cứu — coi là gợi ý phong cách, không phải luật.
 
 **Thêm khung sau này:** chép đúng tám mục có nhãn của một khung dưới đây,
-điền cho game mới, thêm vào cuối. `check-skill.sh` đếm heading `## Khung N`
-và soi đủ tám nhãn.
+điền cho game mới, thêm vào cuối.
 
 ## Luật mọi khung phải mang
 
@@ -206,10 +203,8 @@ Bốn cơ chế không bao giờ vào game, dù người dùng xin:
 - **Tiền ở điểm hay phần thưởng** — lãi lỗ, quy đổi ra tiền, mồi bằng
   tiền: hết muốn chiến đấu.
 
-Hàng "bắt buộc" của phiên bản trước (ràng buộc tài nguyên mỗi lượt, ngẫu
-nhiên ở đề, lối rẽ không bẽ mặt, bài kiểm niêm phong, cốt truyện có người
-dẫn) đã nằm trong "Luật mọi khung phải mang" ở trên. Thi đua và đồng đội
-không dựng được một mình; bù bằng bài kiểm cố định và kho.
+Thi đua và đồng đội không dựng được một mình; bù bằng bài kiểm cố định và
+kho.
 
 ## Cơ chế tuỳ chọn — hỏi ở cổng khoá concept
 

@@ -5,9 +5,7 @@ dữ liệu thật, máy chấm biến luật `gamemaster.md` thành code, và t
 mà người chơi bấm vào. Người dẫn không chấm tay; người chơi không chép số
 vào chat. Thư mục luôn là `slate/` cho đồng nhất, nhưng **tên trang trong
 game do concept đặt** và ghi ở bảng từ vựng (`gamemaster.md` mục 7); file
-người chơi và lời người dẫn chỉ dùng tên đó. Game forex đầu tiên gọi trang
-là "the Slate" vì ẩn dụ của nó là tấm đá sống lại ngày cũ; game khác đặt
-tên khác.
+người chơi và lời người dẫn chỉ dùng tên đó.
 
 **Khi nào game có máy.** Khi việc thật mô phỏng được từ dữ liệu: giá lịch
 sử, kho văn bản, bộ đề, bản nhạc MIDI, log gõ phím. Không mô phỏng được thì
@@ -20,9 +18,8 @@ là đề.
 
 ## Máy chấm
 
-Nguyên tắc rút từ game đầu tiên (`docs/games/forex-ict-2022/slate/` trong
-vault Notebooks là ví dụ chạy được; các con số trong ngoặc là của ca đó,
-không phải chuẩn):
+Nguyên tắc (ví dụ và con số trong ngoặc là của game forex, không phải
+chuẩn):
 
 - **Hàm thuần từ luật.** Mỗi dòng của bảng nối trong `gamemaster.md` thành
   một hàm nhận đơn vị dữ liệu và trả kết quả; không đọc file, không mạng,
@@ -40,8 +37,7 @@ không phải chuẩn):
   nói rõ luật đó. Không bao giờ thưởng nhầm.
 - **Test mỗi luật một fixture** (`unittest`, không phụ thuộc ngoài): giá
   trị đúng ở ngưỡng và ngay dưới ngưỡng. Fixture phải giống dữ liệu thật ở
-  chỗ luật nhạy (forex: nến phẳng thân 0 làm "thân trung vị" vô nghĩa, bài
-  học thật).
+  chỗ luật nhạy (forex: nến phẳng thân 0 làm "thân trung vị" vô nghĩa).
 - **Dữ liệu giữ lại chỉ là thứ trang chơi cần.** Mỗi đề một JSON nhỏ; dữ
   liệu thô tải về xử lý xong thì bỏ. Nguồn tải có giới hạn tần suất → tải
   chậm rãi, cache, chờ lỗi rồi thử lại, chạy nền, chạy lại là tiếp tục.
@@ -54,8 +50,7 @@ không phải chuẩn):
   JS trên trang chạy cùng bộ ca lúc nạp trang (hay trong test riêng) và
   phải trả y hệt. Lệch một ca là lệch luật, không đưa trang ra.
 - **Đọc mắt một đề thật trước khi tin máy.** In một đề quanh chỗ máy chấm
-  và tự đọc: ca forex đầu tiên lộ ba lỗi luật mà 29 test đều xanh. Test
-  khoá luật đã viết, không khoá luật viết thiếu.
+  và tự đọc. Test khoá luật đã viết, không khoá luật viết thiếu.
 - **Máy không phải chân lý.** Lĩnh vực có chỗ là phán đoán thì máy và
   người lệch nhau ở vài ca; gamemaster.md nói rõ đó là "luật của <tên
   trang>", và người chơi thấy lệch thì ghi sổ, người dẫn chuyển vào
@@ -64,8 +59,8 @@ không phải chuẩn):
 ## Chấm đúng lúc
 
 Chấm đúng chưa đủ: trang còn phải chấm **đúng lúc**, và không phá cái người
-chơi đang nhìn. Ba luật dưới rút từ ca gõ phím, nơi 45 test và 34 ca đối
-chiếu đều xanh mà người chơi vẫn bỏ dở phiên đầu vì trang báo sai liên tục.
+chơi đang nhìn. Test và đối chiếu hai bản xanh hết vẫn không bắt được ba
+lỗi dưới; người chơi thì thấy ngay, và bỏ dở.
 
 - **Một nước đi chỉ được chấm khi nó không đổi được nữa.** Nước đi tốn
   nhiều thao tác mà chấm ngay ở thao tác đầu là báo hỏng oan: gõ "tiếng"
@@ -86,8 +81,8 @@ chiếu đều xanh mà người chơi vẫn bỏ dở phiên đầu vì trang b
 ## Hợp đồng kết quả
 
 Trang lưu bằng capability `db` của Artifact (`capabilities: {db: {}}`);
-chế độ play đọc bằng tool `ArtifactData` (get / list / query) với URL của
-artifact, và ghi lại bằng set / update. Không có `db` (người xem không đăng
+chế độ play đọc và ghi bằng tool `ArtifactData` với URL của artifact.
+Không có `db` (người xem không đăng
 nhập, hay bị từ chối) thì trang lưu localStorage và hiện nút "Sao chép cho
 người dẫn": người chơi dán JSON vào phiên, người dẫn đọc y như đọc từ db.
 
@@ -111,9 +106,9 @@ người dẫn biết đọc nó ra chữ gì.
 
 ## Cảm giác game
 
-Rút từ phiên chơi 1 của game đầu tiên: trang chấm đúng, lưu đúng, mà người
-dùng nói "vẫn cảm giác đang trade hơn là đang chơi" và "cốt truyện không
-được lồng ghép sâu". Một trang "chơi được" chưa phải game; những điều dưới
+Trang chấm đúng, lưu đúng mà vẫn có thể cho cảm giác đang làm việc thật
+chứ không phải đang chơi, với cốt truyện nằm ngoài lề. Một trang "chơi
+được" chưa phải game; những điều dưới
 đây là cái làm nó thành game, và trang của mọi game có máy phải có đủ. Hình
 hài cụ thể (quái, bẫy, boss, hay thứ khác) là của concept đã khoá; ví dụ
 trong ngoặc là của ca forex:

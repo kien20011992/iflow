@@ -44,3 +44,12 @@ i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/s
 Mỗi lần đổi một đoạn bên flow mà lite có bản chép, hãy ghi một dòng vào danh sách dưới đây. Đồng bộ xong thì xóa dòng đó.
 
 Hiện chưa có dòng nào: lite đã khớp flow 1.4.0 ở bản 1.5.0.
+
+## Sửa i:gamify
+
+Sau mỗi lần sửa gamify, chạy `skills/gamify/scripts/check-skill.sh`. Script này kiểm cấu trúc của skill mà không tốn API: frontmatter, lời trỏ, tiêu đề các mẫu, tám nhãn của mỗi khung, 18 điều văn phong, 32 điều thiết kế.
+
+- Gamify chạy trong hội thoại chính vì cần `AskUserQuestion`, mà fork không có công cụ này. Đừng thêm `context: fork` vào frontmatter.
+- Khung mới thêm vào cuối `references/thu-vien-khung.md`, đủ tám mục có nhãn. Script đếm heading `## Khung N` và soi đủ tám nhãn.
+- SKILL.md viết tiếng Anh, các file tham chiếu viết tiếng Việt.
+- Giữ SKILL.md của gamify dưới 5.000 token (hiện khoảng 15 KB). Sau khi nén hội thoại, skill không tự đọc lại SKILL.md mà trông vào việc Claude Code tự gắn lại file dưới ngưỡng này; file dài quá ngưỡng thì phần cuối, gồm các luật chung, bị cắt.

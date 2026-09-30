@@ -8,25 +8,21 @@ concept, chọn một, chỉnh một vòng, khoá. Concept đã khoá là cái m
 dungeon, quest, cấp sau này phải theo; đổi concept sau khoá là làm lại từ
 giai đoạn này.
 
-**Vì sao ba, vì sao khác khung.** Một khung cho mọi việc là cách phiên bản
-trước làm, ra game chán. Ba concept cùng một khung thì chọn cũng như không.
-Ba khung khác nhau cho người dùng thấy việc của mình có thể là chuỗi đền,
-là sân săn, hay là hầm bốc ngẫu nhiên — và chọn cái mình muốn sống trong
-đó nhiều tháng.
+**Vì sao ba, vì sao khác khung.** Một khung cho mọi việc ra game chán. Ba
+concept cùng một khung thì chọn cũng như không. Ba khung khác nhau cho
+người dùng thấy việc của mình có thể là chuỗi đền, là sân săn, hay là hầm
+bốc ngẫu nhiên — và chọn cái mình muốn sống trong đó nhiều tháng.
 
 **Thư viện là điểm xuất phát, không phải hàng rào.** Khung có sẵn giúp
-vòng đầu ra nhanh và có nền nghiên cứu. Người dùng không ưng cả ba là
-chuyện bình thường của một cuộc trò chuyện, không phải lỗi của ai và không
-phải tổn thất: vòng sau lấy từ bất kỳ thể loại game dựng bài bản nào
-(xem "Khi người dùng không ưng"). Cái cố định là luật mọi khung phải mang
-và phép kiểm khớp, không phải danh sách khung.
+vòng đầu ra nhanh và có nền nghiên cứu. Người dùng không ưng cả ba thì
+vòng sau lấy từ bất kỳ thể loại game dựng bài bản nào (xem "Khi người dùng
+không ưng"). Cái cố định là luật mọi khung phải mang và phép kiểm khớp,
+không phải danh sách khung.
 
 **Hai đường vào giai đoạn.** Người dùng có hình dung riêng về game (một
 cơ chế, một cốt truyện, một cảm giác — "mỗi lệnh là tung một chiêu, có
 kill thì có chữ hiện") thì đi **đường 2**: lấy concept của họ, không trình
 thư viện. Không có hình dung thì đi **đường 1**: ba khung từ thư viện.
-Lệnh "không lấy gu người chơi" chỉ áp cho nguồn khi người dùng không đưa
-gì; người dùng đưa thì đó là quyết định của họ.
 
 **Luật viết:** "Write for understanding" của SKILL.md, áp cả cho bản tả concept.
 
@@ -78,14 +74,15 @@ Người dùng bác cả ba, hay nói "cho cái khác", "không thích", "chán"
    tự thêm khung vào `thu-vien-khung.md`; thư viện chỉ đổi khi người dùng
    bảo.
 
-Không đếm vòng, không nhắc số vòng với người dùng. Việc chọn concept là
-trò chuyện qua lại như hỏi đáp thường; skill đưa cái nhanh trước, người
-dùng lái, skill theo.
+Người dùng không ưng là chuyện thường của một cuộc trò chuyện, không phải
+lỗi của ai. Không đếm vòng, không nhắc số vòng với người dùng. Việc chọn
+concept là trò chuyện qua lại như hỏi đáp thường; skill đưa cái nhanh
+trước, người dùng lái, skill theo.
 
 ## Đường 2 — người dùng đưa concept
 
 Người dùng tả hình dung của họ. Trước khi viết gì, hỏi bằng lời thường
-đúng hai điều, vì ca chạy thật đã hỏng ở đây: (1) cái họ tả là **đích**
+đúng hai điều: (1) cái họ tả là **đích**
 (cái họ sẽ làm khi đã giỏi — "trading là battlefield") hay là **cách chơi
 khi đang học**? Đích thì game này là phần trước đích, cần bối cảnh và
 gameplay cùng thế giới với đích. (2) Trong hình dung đó, cái nào là cốt
@@ -125,8 +122,7 @@ hỏi thêm:**
   kiểm cố định, nơi trao chiêu (nếu có), tài nguyên giới hạn lượt (nếu
   có), phần thưởng cốt truyện khi qua vùng, và từng chiêu với mã ngắn.
   Sau khi khoá, danh sách này thành bảng từ vựng ở `gamemaster.md` mục 7,
-  nguồn duy nhất cho mọi tên. Không mượn tên của game khác hay của ví dụ
-  trong skill.
+  nguồn duy nhất cho mọi tên.
 - **Luật tính điểm nếu concept có điểm/kill** — cái gì tính, cái gì không;
   may rủi phải tách khỏi tiến bộ (tiến bộ theo "chiêu sạch" = đúng lý,
   không theo kết quả giá).
@@ -148,14 +144,14 @@ tay mình sẽ làm gì:
    máy (plan.md ghi `Máy: không`) thì ghi rõ người chơi báo số nào, dạng gì.
 
 Ẩn dụ che mất một trong ba là concept trượt: viết lại chỗ đó, không trình.
-Kiểm thêm: tên riêng tiếng Anh (hoặc tên tự chế viết chữ Latin mang màu
-game gốc), không tiếng Việt, mỗi tên lần đầu có nửa câu giải nghĩa; không
-cơ chế trong hàng cấm; phiên vừa với phút/ngày của người chơi.
+Kiểm thêm: tên đúng hai luật "Names are English…" và "Write for
+understanding" của SKILL.md; không cơ chế trong hàng cấm; phiên vừa với
+phút/ngày của người chơi.
 
 ## Cổng chọn
 
-Ca chạy thật cho thấy người dùng từ chối `AskUserQuestion` bốn lần liền
-để nói tiếp: khi đang tìm hình dung, họ cần nói, không cần bấm. Vì thế:
+Người dùng đang tìm hình dung cần nói, không cần bấm, nên cổng này đi bằng
+lời:
 
 0. Trước khi hỏi gì, ghi ngay mục "Concept đã trình" vào `plan.md` (một
    dòng mỗi concept) và đổi `Việc kế tiếp:` thành "người dùng đang chọn
@@ -167,8 +163,7 @@ Ca chạy thật cho thấy người dùng từ chối `AskUserQuestion` bốn l
    "Khoá cái này, hay chỉnh gì?" (đường 2). Không dùng tool ở bước này.
 2. Người dùng nói → chỉnh, đưa lớp 2 của concept họ nghiêng về, hỏi lại
    bằng lời. Bác cả ba → mục "Khi người dùng không ưng". Lặp tới khi họ
-   nói "khoá" / "được" / "đúng rồi". Không đếm vòng, không coi vòng bị
-   bác là tốn kém: người dùng đang tìm, đi theo họ.
+   nói "khoá" / "được" / "đúng rồi". Người dùng đang tìm: đi theo họ.
 3. Chỉ khi người dùng đã nói được và còn một lựa chọn rời nhau (ví dụ ba
    nhánh tên gọi), mới dùng một `AskUserQuestion` để chốt.
 4. Không hỏi cơ chế tuỳ chọn ở đây: câu đó thuộc bước A của giai đoạn 3

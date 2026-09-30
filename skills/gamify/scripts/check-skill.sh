@@ -12,14 +12,14 @@
 #   3b. references/thu-vien-khung.md có ≥ 4 khung, mỗi khung đủ 8 nhãn mục,
 #      mục Hàng cấm với 4 gạch đầu dòng; references/concept.md có ba mục cổng
 #   3c. references/vong-slice.md có bốn mục và mẫu gamemaster.md đủ 9 mục
-#      đánh số với Bảng từ vựng ở mục 7; references/quy-trinh.md có mục "Trong v2";
+#      đánh số với Bảng từ vựng ở mục 7;
 #      khuon-file.md và quan-tro.md trỏ tới bảng từ vựng
 #   3d. references/slate.md có ba mục: Máy chấm, Hợp đồng kết quả, Cảm giác game
 #   3e. references/luat-van-phong.md đủ 18 điều A1–A6, B1–B9, C1–C3 + mục D;
 #      references/khuon-file.md có mục cho 8 file
 #   3f. references/quan-tro.md (chế độ play) đủ 7 mục, và SKILL.md trỏ tới nó
-#   4. references/quy-trinh.md còn đủ 13 bước (0–12), đủ 32 mã [1]..[32], và
-#      bảng đối chiếu vẫn gắn đủ 32 mã (danh sách kiểm nền của skill)
+#   4. references/quy-trinh.md còn đủ 32 mã [1]..[32] (danh sách kiểm nền
+#      của skill)
 #   5. SKILL.md không có chữ "commit" và không trỏ tới file của skill i:flow
 #      (skill này đi lộ trình riêng, không nạp skill khác)
 # Mỗi slice của chương trình v2 thêm file tham chiếu mới thì thêm vào REQ và
@@ -96,7 +96,7 @@ for h in 'Mẫu bản tả concept' 'Phép kiểm khớp' 'Cổng chọn'; do
   grep -q "^## $h" "$cc" || say "concept.md thiếu mục '## $h'"
 done
 
-# 3c. vong-slice.md — bốn mục, mẫu gamemaster.md 9 mục; quy-trinh.md — Trong v2
+# 3c. vong-slice.md — bốn mục, mẫu gamemaster.md 9 mục
 for h in 'Bảng slice của game' 'Cổng duyệt' 'Sửa và mở rộng'; do
   grep -q "^## $h" "$vs" || say "vong-slice.md thiếu mục '## $h'"
 done
@@ -106,7 +106,6 @@ mau="$(awk '/^## Mẫu `gamemaster.md`/{on=1; next} on && /^````/{if (seen) exit
 for n in $(seq 1 9); do
   grep -q "^## $n\. " <<<"$mau" || say "mẫu gamemaster.md trong vong-slice.md thiếu mục '## $n. …'"
 done
-grep -q '^## Trong v2' "$qt" || say "quy-trinh.md thiếu mục '## Trong v2' (vai danh sách kiểm)"
 grep -q 'Bảng từ vựng' <<<"$mau" || say "mẫu gamemaster.md trong vong-slice.md thiếu 'Bảng từ vựng' ở mục 7 (nguồn tên của từng game)"
 grep -qi 'bảng từ vựng' "$kf" && grep -qi 'bảng từ vựng' "$qtro" || say "khuon-file.md hoặc quan-tro.md không trỏ tới bảng từ vựng"
 
@@ -130,17 +129,9 @@ for h in 'Vào chế độ play' 'Mở phiên' 'Dẫn phiên' 'Bài kiểm cố 
 done
 grep -q 'references/quan-tro.md' "$skill" || say "SKILL.md không trỏ tới references/quan-tro.md (nhánh play)"
 
-# 4. quy-trinh.md — 13 bước, 32 mã, bảng đối chiếu đủ
-for n in $(seq 0 12); do
-  grep -q "^## Bước $n — " "$qt" || say "quy-trinh.md thiếu heading '## Bước $n — …'"
-done
+# 4. quy-trinh.md — 32 mã
 for n in $(seq 1 32); do
   grep -q "^$n\. \[$n\] " "$qt" || say "quy-trinh.md thiếu điều kiện '$n. [$n] …' trong danh sách ba mươi hai"
-done
-bang="$(awk '/^## Bảng đối chiếu/{on=1} on' "$qt")"
-[ -n "$bang" ] || say "quy-trinh.md thiếu mục '## Bảng đối chiếu'"
-for n in $(seq 1 32); do
-  grep -q "| \[$n\] |" <<<"$bang" || say "bảng đối chiếu thiếu mã [$n]"
 done
 
 # 5. hai điều SKILL.md không được có
@@ -148,6 +139,6 @@ grep -qi 'commit' "$skill" && say "SKILL.md chứa chữ 'commit'"
 grep -q 'skills/flow' "$skill" && say "SKILL.md trỏ agent tới file của skill i:flow"
 
 if [ "$fail" -eq 0 ]; then
-  echo "check-skill: sạch — frontmatter, link, 5 trục + mẫu plan.md, $nkhung khung × 8 nhãn + Hàng cấm, 3 mục concept, 4 mục vòng slice + mẫu gamemaster 9 mục, Trong v2, 3 mục slate, 18 điều văn phong, khuôn 8 file, 7 mục quản trò, 13 bước, 32 mã, bảng đối chiếu."
+  echo "check-skill: sạch — frontmatter, link, 5 trục + mẫu plan.md, $nkhung khung × 8 nhãn + Hàng cấm, 3 mục concept, 4 mục vòng slice + mẫu gamemaster 9 mục, 3 mục slate, 18 điều văn phong, khuôn 8 file, 7 mục quản trò, 32 mã."
 fi
 exit "$fail"

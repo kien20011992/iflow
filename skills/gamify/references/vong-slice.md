@@ -9,8 +9,7 @@ từng cái, chơi được ngay từ dungeon đầu.
 
 **Vì sao kế hoạch đi trước dungeon.** Người dùng đòi "kế hoạch định từ
 đầu": mỗi quest, mỗi cấp phải nối với một kỹ năng con ngay lúc thiết kế,
-không phải bịa dần. Dựng dungeon 1 trước rồi mới nghĩ thang đo là cách
-phiên bản trước làm, ra chặng chia đại. Nên duyệt gamemaster = duyệt kế
+không phải bịa dần khi dựng từng dungeon. Nên duyệt gamemaster = duyệt kế
 hoạch, rồi mới có dungeon.
 
 **Luật viết.** Cả gamemaster.md lẫn lời trình cho người dùng theo
@@ -90,8 +89,8 @@ Mỗi slice dungeon đi đúng năm bước:
    dungeon N", trả lời năm câu; script kiểm cấu trúc `run-check.sh`; và
    **cổng vui** dưới đây cho slice trang (03) và dungeon 1.
 
-   Cổng vui — trang chấm đúng chưa phải game (ca forex: "vẫn cảm giác đang
-   trade hơn là đang chơi"). Claude không bấm được trang, nên người dùng
+   Cổng vui — trang chấm đúng chưa phải là game. Claude không bấm được
+   trang, nên người dùng
    là người trả lời: sau phiên 1 ở chế độ play, hỏi năm câu có/không bằng
    lời thường, ghi nguyên lời vào plan.md; một "không" là chưa qua, slice
    03 hay 04 `needs-redo` tuỳ họ chê gì:
@@ -107,9 +106,9 @@ Mỗi slice dungeon đi đúng năm bước:
    đoạn chấm của trang ở ngoài trình duyệt** trên vài kiểu chơi thật —
    làm đúng hết, sai một nước, sai rồi lùi sửa — và đọc kết quả bằng mắt:
    đúng kỷ luật "đọc mắt một đề thật" của `slate.md`, nhưng cho đường nhập
-   liệu. Ba lỗi của ca gõ phím (chấm sớm, ghi đè đề, lùi sai đơn vị) đều
-   lọt qua test và qua soát mã, và đều lộ ngay ở bước này. Cả hai vẫn chỉ
-   là soát, không phải bằng chứng; bằng chứng là lời người dùng.
+   liệu. Lỗi ở đường nhập liệu thường lọt qua cả test lẫn soát mã, và lộ
+   ngay ở bước này. Cả hai vẫn chỉ là soát, không phải bằng chứng; bằng
+   chứng là lời người dùng.
 
    Hiệu chỉnh sau bài kiểm lần 0 — chỉ ở slice dungeon 1, ngay sau phiên 1:
    đọc `tests/<id>` của lần 0, đối chiếu từng số "(ước lượng)" ở
@@ -179,8 +178,7 @@ Nhánh `<game-dir> thêm dungeon: …` và `<game-dir> sửa: …` của SKILL.m
 - **Sửa** (game không hiệu quả): ghi dòng Quyết định vào plan.md trước
   (sửa gì, vì sao, bằng chứng từ nhật ký hay lời người dùng); rồi đánh
   `needs-redo` slice liên quan và chạy lại nó; đổi ngưỡng trong
-  gamemaster.md cũng là quyết định ghi trước, sửa sau. Skill không tự suy
-  từ nhật ký; người dùng nói muốn gì khi gọi.
+  gamemaster.md cũng là quyết định ghi trước, sửa sau.
 - **Đổi concept** sau khoá = làm lại từ giai đoạn 2; bảng slice cũ
   `retired` toàn bộ.
 

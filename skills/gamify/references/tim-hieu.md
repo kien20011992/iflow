@@ -9,9 +9,9 @@ bản đồ kỹ năng đã được người dùng duyệt. Mọi thứ ở gia
 quest, dungeon, cấp) đều suy ra từ bản đồ này, nên bản đồ sai thì cả game
 sai — vì thế duyệt bản đồ là cổng bắt buộc, không bỏ được.
 
-**Vì sao phải hỏi và tra cứu thay vì tự viết.** Phiên bản trước của skill
-hỏi bốn câu rồi tự chia chặng; kết quả là chặng do máy chia đại, nhiệm vụ
-không ai biết luyện cái gì. Người mới học cũng không tự kể được kỹ năng con
+**Vì sao phải hỏi và tra cứu thay vì tự viết.** Chặng tự chia mà không có
+bản đồ thì nhiệm vụ không ai biết luyện cái gì. Người mới học cũng không tự
+kể được kỹ năng con
 — đó chính là lý do họ đi học. Nên bản đồ lấy từ giáo trình (nếu người dùng
 có) cộng tra cứu, rồi người dùng duyệt.
 
@@ -90,8 +90,7 @@ người dùng duyệt thì trục mới đóng. Không được đi sang giai �
 chưa luyện / đã luyện tới đâu, nói cụ thể); số phút ổn định mỗi ngày dành
 được (con số thật, không phải mong muốn).
 
-**Không hỏi** người chơi thích game gì. Concept của game lấy từ thư viện
-khung có sẵn, không lấy từ gu người chơi.
+**Không hỏi** người chơi thích game gì (SKILL.md, Rules).
 
 **Đóng:** khi có hai con số/đoạn trên. **Ghi:** hai dòng.
 
