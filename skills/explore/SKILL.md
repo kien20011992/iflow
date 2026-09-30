@@ -99,10 +99,11 @@ judgment about the subject may be asked only after the concept it rests on
 has been taught. Options are welcome shorthand for the first kind, never a
 substitute for teaching in the second. One question per message; let the
 answer shape the next. The single exception is the handoff batch described in
-the dossier reference. When two exchanges in a row on the same zone change
-nothing in the dossier — a question the user left unanswered twice counts — stop
-circling and ask one `AskUserQuestion` with three branches: leave it open as
-an unknown the user owns, in the open questions, and teach on a stated
+the dossier reference. A question the user leaves unanswered twice is not
+asked again: it goes to the open questions as an unknown the user owns, and
+teaching goes on from a stated assumption. When two exchanges in a row on
+the same zone change nothing in the dossier, stop circling and ask one
+`AskUserQuestion` with three branches: leave it open on a stated
 assumption; change approach; or narrow the scope.
 
 A decision needs every branch laid out in full: what it means, what choosing
@@ -113,8 +114,10 @@ fork out in one exchange and request the call only afterwards; if any
 branch's consequences cannot yet be stated, the layer is not finished — keep
 teaching. There is no duty to force a decision: when the fork is ready, say
 so when you state where we stand and let the user take it when they choose.
-What is forbidden is deciding silently for them. "You pick" is the user
-delegating the call: record that, then make the pick aloud with its reason.
+What is forbidden is deciding silently for them. Only an explicit "you
+pick" delegates the call: record that, then make the pick aloud with its
+reason. Asking what you recommend delegates nothing: the call stays the
+user's, open in the dossier.
 
 When later layers will rest on something only the user can settle — a fact
 of their situation, a choice between dressed branches — get it confirmed in
@@ -165,6 +168,6 @@ without asking; say the file's full path when you create it and when you
 finish, not at every save; on resume, read it first and continue without
 re-asking what it records. Source tiers and assumption flags live there.
 
-After a compaction, re-read [references/dossier.md](references/dossier.md)
+After a compaction, re-read `${CLAUDE_SKILL_DIR}/references/dossier.md`
 and the dossier before the next exchange: the summary is a pointer, the
 dossier is the truth.

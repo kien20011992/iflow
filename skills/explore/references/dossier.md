@@ -68,17 +68,18 @@ hand off, finish, or mark it ready is that confirmation.
 In the handoff response, set `status: ready` and present the unconfirmed
 inferences that a conclusion or a downstream step depends on as one compact
 batch. Do not wait for another reply, and do not put the whole ledger to the
-user. Whatever the user does not confirm stays flagged, and every conclusion
-depending on it stays marked blocked; `ready` with flags and intentionally
-open questions is normal. If the user answers the batch later, record the
-confirmations and clear the flags.
+user. Whatever the user does not confirm stays marked unconfirmed, and every
+conclusion depending on it stays marked blocked; `ready` with unconfirmed
+items and intentionally open questions is normal. If the user answers the
+batch later, record the confirmations and lift those marks.
 
 ## Required information
 
 The user reads this file first, without the chat; a future agent resumes
 from it second. So the body comes first and one compact state block comes
 last. Each piece of state lives fully in exactly one section; other sections
-may point to it or state its consequence, never reproduce it. Keep these
+may point to it by a short title, never by a list number — lists get
+reordered — or state its consequence; never reproduce it. Keep these
 roles, in this order, under headings in the user's language that say what
 each section holds:
 
@@ -104,9 +105,10 @@ the original misreading in every future session.
 
 ### Open questions
 
-Unresolved zones, missing evidence, and unconfirmed inferences, each with
-what it could change and who owns the answer. Put first the question whose
-answer would change the most conclusions, and say what it would change.
+Unresolved parts of the subject, missing evidence, and unconfirmed
+inferences, each with what it could change and who owns the answer. Put
+first the question whose answer would change the most conclusions, and say
+what it would change.
 This is the working queue and the fence that keeps an unknown from becoming
 a fact.
 
@@ -128,8 +130,9 @@ names below are roles, not labels:
 **Where we are.** Four lines, each a pointer, none a copy: the evolved
 question and the expert lens serving it; the aim the exploration serves,
 and, when it is a decision, whether it is on the table yet; the most
-recently delivered part and the recommended next descent; the flags
-downstream must carry, by reference to the open questions.
+recently delivered part and the recommended next descent; the unconfirmed
+assumptions downstream must carry, each named by its open question's short
+title.
 
 **Who the user is.** Kept separate from the subject, each item marked
 confirmed by the user or inferred by the expert, never silently promoted:
@@ -143,7 +146,7 @@ as "shorter answers".
 lives. One table row per zone that is relevant, explored, or intentionally
 queued: the aim it serves, its status (open, in progress, closed), a
 one-line verdict pointing to its conclusion in the body, and the open
-dependency blocking it, if any.
+question blocking it, by its short title, if any.
 
 ## Quality test
 
