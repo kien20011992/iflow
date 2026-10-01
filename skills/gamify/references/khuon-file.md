@@ -110,4 +110,4 @@ bên trong `slate/`.
 
 ## `gamemaster.md`
 
-Theo mẫu 9 mục ở `vong-slice.md`. Riêng mục 6 (đường tiến trình) mang **biến cố mở** mỗi vùng (≤ 6 dòng, người dẫn kể lần đầu vào vùng) và **`<phần thưởng cốt truyện>`** (3 dòng, trao khi qua bài kiểm cuối vùng) — người chơi nghe từ người dẫn, không đọc trước (C3). Mục 7 mang bảng từ vựng và mẫu khối journal ở trên. Mục 8 mang một dòng `Từ cấm ở file người chơi: a, b, c` — tên lĩnh vực và kỹ năng thật của game này (ví dụ forex: forex, EURUSD, ICT, thanh khoản, order block…); `run-check.sh` đọc dòng đó để soi file người chơi.
+Theo mẫu 9 mục ở `vong-slice.md`. Riêng mục 6 (đường tiến trình) mang **biến cố mở** mỗi vùng (≤ 6 dòng, trang kể khi người chơi vào vùng lần đầu) và **`<phần thưởng cốt truyện>`** (3 dòng, trao khi qua bài kiểm cuối vùng) — người chơi nghe lúc chơi, không đọc trước (C3). Mục 7 mang bảng từ vựng và mẫu khối journal ở trên. Mục 8 mang một dòng `Từ cấm ở file người chơi: a, b, c` — tên lĩnh vực và kỹ năng thật của game này (ví dụ forex: forex, EURUSD, ICT, thanh khoản, order block…); `run-check.sh` đọc dòng đó để soi file người chơi.

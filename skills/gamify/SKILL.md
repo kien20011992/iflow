@@ -109,8 +109,9 @@ which directory a name resolved to. Then take exactly one branch:
    goes first (the fun gate or the calibration of `vong-slice.md` that the
    line asks for), then continue from its
    `Việc kế tiếp:` line; if it names a slice, run that slice.
-4. A game alone, or + `tiếp tục` → play mode when its `Việc kế tiếp:` line
-   points at playing, resume build otherwise.
+4. A game alone, or + `tiếp tục` → resume build when `plan.md` has an
+   unanswered "phiên 1 xong" or "lần 0 xong" note; otherwise play mode when
+   its `Việc kế tiếp:` line points at playing, resume build otherwise.
 5. No game found → a **new pursuit**: build mode from stage 1. "play
    piano" names no game, so it is a new pursuit.
 

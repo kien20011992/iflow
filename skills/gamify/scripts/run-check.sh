@@ -7,9 +7,9 @@
 #   1. đủ file: world.md, quests.md, character.md, journal.md, gamemaster.md,
 #      ít nhất một dungeons/NN-*.md; boss/set.json và slate/index.html trừ khi
 #      gamemaster/plan.md có dòng `Máy: không` (game không mô phỏng được)
-#   2. world.md có đúng 10 heading theo thứ tự
-#   3. mỗi dungeons/NN-*.md có 4 heading và tên vùng của nó được world.md hoặc
-#      quests.md nhắc
+#   2. world.md có đúng 10 heading '## ' theo thứ tự, không thừa không thiếu
+#   3. mỗi dungeons/NN-*.md có đúng 4 heading '## ' theo thứ tự, và tên vùng của
+#      nó được world.md hoặc quests.md nhắc
 #   4. mọi tên ở cột trái "Bảng tra tên" của world.md có mặt trong gamemaster.md
 #   5. file người chơi thuần game: không "ngoài đời"/"kỹ năng" (chung), không từ
 #      trong dòng "Từ cấm ở file người chơi:" của gamemaster.md mục 8 (riêng từng
@@ -38,21 +38,18 @@ dungeons=()
 for f in "$dir"/dungeons/[0-9][0-9]-*.md; do [ -f "$f" ] && dungeons+=("$f"); done
 [ "${#dungeons[@]}" -gt 0 ] || { echo "run-check: thiếu dungeons/NN-*.md"; exit 2; }
 
-# 2. world.md — 10 heading đúng thứ tự
+# 2. world.md — đúng 10 heading, đúng thứ tự (so nguyên chuỗi: bắt cả thừa, thiếu, sai thứ tự)
 want=('## Đây là game gì' '## Bạn là ai' '## Bắt đầu thế nào' '## Lần chơi đầu tiên' '## Một lần chơi'
       '## Hôm nào mệt' '## Bài kiểm cố định' '## Các vùng' '## Điều game không có' '## Bảng tra tên')
-got=$(grep -E '^## ' "$dir/world.md")
-k=0
-while IFS= read -r line; do
-  if [ "$k" -lt "${#want[@]}" ] && [ "$line" = "${want[$k]}" ]; then k=$((k+1)); fi
-done <<<"$got"
-[ "$k" -eq "${#want[@]}" ] || say "world.md thiếu hoặc sai thứ tự heading (khớp $k/${#want[@]} theo thứ tự: ${want[*]})"
+[ "$(grep -E '^## ' "$dir/world.md")" = "$(printf '%s\n' "${want[@]}")" ] ||
+  say "world.md phải có đúng 10 heading '## ' theo thứ tự: ${want[*]}"
 
-# 3. dungeon — 4 heading, được nhắc
+# 3. dungeon — đúng 4 heading theo thứ tự, được nhắc
 dwant=('## Vào vùng' '## Chiêu trong vùng' '## Qua vùng' '## Lần đọc đầu')
 for d in "${dungeons[@]}"; do
   base=$(basename "$d")
-  for h in "${dwant[@]}"; do grep -qxF "$h" "$d" || say "$base thiếu heading '$h'"; done
+  [ "$(grep -E '^## ' "$d")" = "$(printf '%s\n' "${dwant[@]}")" ] ||
+    say "$base phải có đúng 4 heading '## ' theo thứ tự: ${dwant[*]}"
   # tiêu đề dạng "# Vùng 1 — the Plateau": tên vùng là phần sau dấu gạch dài; không có gạch thì lấy cả dòng
   title=$(grep -m1 -E '^# ' "$d" | sed -E 's/^# *//; s/^.*— *//')
   if [ -n "$title" ]; then
