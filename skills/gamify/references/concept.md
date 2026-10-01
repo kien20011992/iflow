@@ -45,7 +45,8 @@ thư viện. Không có hình dung thì đi **đường 1**: ba khung từ thư 
   nhiên hợp.
 - Bản đồ có một "setup trọn" nhiều pha phải đọc tell → Vùng đất đổ nát hợp.
 
-Chọn ba khung khớp nhất, **cố ý khác nhau**; ghi một dòng lý do mỗi khung.
+Chọn ba khung khớp nhất, **cố ý khác nhau ở việc tay mỗi lượt**, không chỉ
+ở thế giới; ghi một dòng lý do mỗi khung.
 Bốn khung đều khớp thì bỏ khung có nhược điểm nặng nhất với người chơi này
 (ví dụ 20 phút/ngày thì lượt-1-giờ của Hầm ngẫu nhiên phải co lại — nói rõ
 trong bản tả nếu vẫn chọn).
@@ -118,8 +119,8 @@ hỏi thêm:**
   bộ đề niêm phong; cái gì mở cái gì.
 - **Người dẫn** — tên, một câu tả, luật nói (bao nhiêu câu mỗi lượt).
 - **Từ vựng của game** — tên do concept này đặt cho: trang chơi, một lần
-  chơi (đêm / chuyến / hiệp…), đề (đơn vị người chơi xử lý mỗi lần), bài
-  kiểm cố định, nơi trao chiêu (nếu có), tài nguyên giới hạn lượt (nếu
+  chơi (đêm / chuyến / hiệp…), đề (đơn vị người chơi xử lý mỗi lần), vùng
+  (vùng / phòng / tầng…), bài kiểm cố định, nơi trao chiêu (nếu có), tài nguyên giới hạn lượt (nếu
   có), phần thưởng cốt truyện khi qua vùng, và từng chiêu với mã ngắn.
   Sau khi khoá, danh sách này thành bảng từ vựng ở `gamemaster.md` mục 7,
   nguồn duy nhất cho mọi tên.
@@ -167,7 +168,7 @@ lời:
 3. Chỉ khi người dùng đã nói được và còn một lựa chọn rời nhau (ví dụ ba
    nhánh tên gọi), mới dùng một `AskUserQuestion` để chốt.
 4. Không hỏi cơ chế tuỳ chọn ở đây: câu đó thuộc bước A của giai đoạn 3
-   (`vong-slice.md`), hỏi một lần, bằng lời thường.
+   (`vong-slice.md`), hỏi một lần.
 
 ## Ghi vào `plan.md`
 
@@ -185,7 +186,7 @@ Chèn ngay trước khối trạng thái ở cuối file:
 - Tên: <tên concept>
 - Tông: <hai ba câu>
 - Vai: <tên, một câu>; Người dẫn: <tên, một câu>
-- Từ vựng: trang <tên>; một lần chơi = <tên>; đề = <tên>; bài kiểm = <tên>; nơi trao chiêu = <tên/—>; tài nguyên = <tên/—>; phần thưởng cốt truyện = <tên>; chiêu: <MÃ> <tên>, …
+- Từ vựng (tên riêng tiếng Anh không mạo từ; từ chỉ đơn vị là từ tiếng Việt của thế giới game; mỗi thứ một tên): trang <tên>; một lần chơi = <tên>; đề = <tên>; vùng = <tên>; bài kiểm = <tên>; nơi trao chiêu = <tên/—>; tài nguyên = <tên/—>; phần thưởng cốt truyện = <tên>; chiêu: <MÃ> <tên>, …
 - Chỉnh so với bản trình: <gì, hoặc "khoá nguyên">
 - Nhược điểm chấp nhận: <…>
 

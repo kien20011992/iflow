@@ -48,8 +48,9 @@ dựng từng dungeon.
 25. [25] Trễ hạn có lưới: lùi một tuần, không huỷ chặng.
 26. [26] Đích lớn viết một lần, treo ở chân trời làm mốc nhìn, không nằm trong
     bất kỳ danh sách việc nào.
-27. [27] Màn hình hằng ngày có ba dòng: hôm nay, hạn kế, một hai việc gợi ý.
-    Bậc kế tiếp hiện, bậc cuối không.
+27. [27] Màn mở của trang chơi có ba dòng: hôm nay, hạn kế, một hai việc gợi
+    ý (chữ của trang, không phải lời người dẫn). Bậc kế tiếp hiện, bậc cuối
+    không.
 28. [28] Không xếp việc thành hàng thẳng; để vài việc ở độ xa khác nhau và cho
     phép rẽ.
 29. [29] Kết chặng trao một công cụ hoặc quyền mới, công cụ đó mở chặng sau và
@@ -57,7 +58,8 @@ dựng từng dungeon.
 30. [30] Vai của người chơi là người lên lịch trong hạn: quy trình đưa hạn và
     menu, không đưa lịch.
 31. [31] Mỗi tên, bảng, con số trong hồ sơ và trong mọi file quản trò sinh ra
-    tự giải nghĩa ngay tại chỗ xuất hiện đầu: nó là gì trong việc thật, người
-    chơi làm gì với nó.
+    tự giải nghĩa ngay tại chỗ xuất hiện đầu: ở file người chơi là việc tay
+    trên trang, người chơi làm gì với nó; nghĩa ở việc thật chỉ nằm trong
+    `gamemaster.md`.
 32. [32] Mỗi chặng lớn có một biến cố mở do người dẫn kể ngày đầu và một biến
     cố kết mọc từ nhật ký và bài kiểm của chính người chơi, không viết sẵn.

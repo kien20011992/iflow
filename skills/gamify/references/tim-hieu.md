@@ -69,9 +69,10 @@ duyệt xong lại phải sửa.
   trong game).
 - *Giỏi nghĩa là*: một hành động cụ thể, quan sát được, ví dụ "đánh dấu
   vùng giá quan trọng trên biểu đồ 15 phút trong 30 giây".
-- *Dấu hiệu đo được*: thứ quản trò chấm được từ cái người chơi báo về —
-  con số chép từ màn hình, kết quả so với đáp án niêm phong, ảnh. "Cảm thấy
-  tự tin hơn" không phải dấu hiệu.
+- *Dấu hiệu đo được*: thứ chấm được — cái trang tự ghi khi người chơi bấm
+  (trúng, sót, thời điểm), kết quả so với đáp án niêm phong; game không máy
+  thì con số hay ảnh người chơi báo. "Cảm thấy tự tin hơn"
+  không phải dấu hiệu.
 - *Học sau*: kỹ năng con nào phải có trước; "—" nếu vào thẳng được.
 - *Nguồn*: giáo trình chính chủ (ghi mục/bài) / nguồn thứ cấp (ghi tên) /
   ước lượng.
@@ -96,27 +97,32 @@ chưa luyện / đã luyện tới đâu, nói cụ thể); số phút ổn đ�
 
 ### Trục 3 — Sân luyện
 
-**Hỏi:** công cụ nào cho phép thử sai mà không mất tiền thật, uy tín thật,
-cơ hội thật (tên công cụ, bản miễn phí hay trả phí, giới hạn đã biết); có
-dữ liệu nào sẵn để làm bộ đề niêm phong không (kho biểu đồ cũ, bộ đề gõ,
-bài tập có đáp án).
+**Hỏi:** dữ liệu nào để trang của game tái hiện việc thật, thử sai mà không
+mất tiền thật, uy tín thật, cơ hội thật (kho biểu đồ cũ, kho văn bản, bộ đề
+có đáp án) — dữ liệu này cũng là nguồn làm bộ đề niêm phong; và phần nào
+buộc phải làm ở công cụ ngoài (tên công cụ, bản miễn phí hay trả phí, giới
+hạn đã biết).
 
-**Đóng:** khi có tên công cụ và biết dữ liệu làm đề lấy từ đâu. Nếu người
+**Đóng:** khi biết dữ liệu làm đề lấy từ đâu, và tên công cụ ngoài nếu có. Nếu người
 dùng không chắc công cụ có làm được điều cần (ví dụ bản miễn phí có tua được
 khung thời gian đó không), ghi lại là "chưa kiểm, kiểm ở phiên đầu" — không
 tra cứu thay, vì giới hạn tài khoản là thứ chỉ người dùng thấy.
 
-**Ghi:** công cụ, giới hạn, nguồn dữ liệu làm đề, điều chưa kiểm.
+**Ghi:** nguồn dữ liệu làm đề, công cụ ngoài và giới hạn của nó, điều chưa
+kiểm.
 
 ### Trục 4 — Thước đo
 
-**Hỏi:** khi chơi, người chơi báo được gì cho quản trò: con số chép từ màn
-hình (số nào), ảnh chụp, kết quả so với đáp án đã niêm phong, hay chỉ lời tự
-kể. Câu này quyết định cột "dấu hiệu đo được" của bản đồ có đứng được không:
+**Hỏi:** trang tự ghi được gì khi người chơi bấm (trúng, sót, thời điểm),
+và dấu hiệu nào trang không thấy được (việc làm ở công cụ ngoài, cảm nhận
+của tay): dấu hiệu đó phải đổi, hoặc chỉ tự khai và không làm điều kiện
+lên cấp. Chỉ khi việc không mô phỏng được từ dữ liệu (trục 3) mới hỏi
+người chơi báo gì, dạng gì: con số (số nào), ảnh, hay lời tự kể. Câu này quyết định cột "dấu hiệu đo được" của bản đồ có đứng được không:
 dấu hiệu nào không lấy được từ kênh báo cáo thì phải đổi dấu hiệu hoặc đổi
 kênh.
 
-**Đóng:** khi biết người chơi gửi gì, dạng gì. Trục này hỏi ở lượt 2,
+**Đóng:** khi biết trang ghi gì, và với việc không mô phỏng được, người
+chơi báo gì. Trục này hỏi ở lượt 2,
 **trước** khi rút bản đồ: cột "dấu hiệu đo được" viết theo kênh này, nên
 bảng đưa duyệt đã là bảng cuối, không phải sửa sau khi duyệt. Dòng nào chỉ
 tự khai được thì ghi rõ "không làm điều kiện lên cấp".
@@ -139,8 +145,9 @@ từ đây không nhắc lại ở bất kỳ file nào của game — nó là c
 
 1. Đọc `$ARGUMENTS`. Cái gì đã có ở đó thì không hỏi.
 2. **Lượt 1** — một `AskUserQuestion`, đúng bốn câu: (a) trình độ hiện tại
-   (trục 2); (b) phút ổn định mỗi ngày (trục 2); (c) sân luyện — công cụ
-   nào, và dữ liệu làm bộ đề lấy từ đâu, gộp trong một câu (trục 3); (d)
+   (trục 2); (b) phút ổn định mỗi ngày (trục 2); (c) sân luyện — dữ liệu
+   nào để trang tái hiện việc thật, và công cụ ngoài nào nếu có, gộp trong
+   một câu (trục 3); (d)
    có giáo trình đang theo không (trục 1). Câu nào `$ARGUMENTS` đã trả
    lời thì thay bằng câu điều kiện vào còn mờ, nếu có.
 3. Suy ba điều kiện vào từ tên việc và câu (c). Sai một → dừng, nói việc
@@ -173,8 +180,8 @@ thứ nên tra cứu, hoặc tra cứu thứ nên hỏi.
 
 Hồ sơ thiết kế; người chơi không mở, chế độ play chỉ chèn ghi chú. Người
 dùng được đưa đường dẫn file này (SKILL.md, Report): thân bài viết cho họ
-theo `~/.claude/rules/docs.md`, không slice, trục, cổng duyệt, giai đoạn,
-khung. Khối `## Trạng thái để làm tiếp` luôn là mục cuối, chỗ duy nhất ghi
+cho người chưa xem chat: lời thường, mỗi câu một ý, tiêu đề nói mục đó nói
+gì; không slice, trục, cổng duyệt, giai đoạn, khung. Khối `## Trạng thái để làm tiếp` luôn là mục cuối, chỗ duy nhất ghi
 tiến độ; mục mới chèn ngay trước nó.
 
 ````markdown

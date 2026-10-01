@@ -13,13 +13,15 @@ cố định, nơi trao chiêu, tài nguyên, từng chiêu — là của riêng
 giai đoạn concept và ghi một lần ở bảng từ vựng (`gamemaster.md` mục 7).
 File này gọi chúng bằng từ khung trong ngoặc nhọn, kiểu `<người dẫn>`,
 `<lần chơi>`; khi dựng thì thay bằng tên của game. Ví dụ trong file này lấy
-từ game forex đầu tiên (trang "the Slate", người dẫn Ilo, lần chơi là một
+từ game forex đầu tiên (trang "Slate", người dẫn Ilo, lần chơi là một
 "đêm", bài kiểm Guardian, nơi trao chiêu Shrine, chiêu Sight / Lure) và chỉ
 là ví dụ.
 
-**Hai luật đứng trên khuôn.** (1) "Write for understanding" của SKILL.md.
+**Ba luật đứng trên khuôn.** (1) "Write for understanding" của SKILL.md.
 (2) File người chơi thuần game: không "ngoài đời là", không tên kỹ năng thật,
-không tên lĩnh vực; mỗi tên game kèm **việc tay trên trang**.
+không tên lĩnh vực; mỗi tên game kèm **việc tay trên trang**. (3) 18 điều
+của [luat-van-phong.md](luat-van-phong.md): mở khi viết, không đợi lúc
+kiểm; mã trong ngoặc ở dưới (A3, B6…) trỏ vào đó.
 
 | File | Ai đọc | Ai ghi | Trần |
 |---|---|---|---|
@@ -35,26 +37,28 @@ không tên lĩnh vực; mỗi tên game kèm **việc tay trên trang**.
 ## `world.md` — mười mục, đúng thứ tự
 
 Heading cố định bằng chữ trung tính (script kiểm đúng chữ); thân mục dùng
-tên của game:
+tên của game. Heading giữ chữ khung (vùng, lần chơi) mà game gọi khác thì
+chỗ đầu tiên nói một lần "vùng ở đây là phòng", "một lần chơi ở đây là
+một đêm", rồi cả file chỉ dùng chữ của game:
 
-1. `## Đây là game gì` — ba tới năm câu: game là gì, chơi mỗi ngày bao lâu, điều khác thường của game này (trang chấm ngay; không tiền, không xếp hạng).
+1. `## Đây là game gì` — ba tới năm câu: game là gì, chơi mỗi ngày bao lâu, điều khác thường của riêng game này: việc tay mà game khác không bắt làm (forex: gọi đỉnh đáy trên một ngày cũ trước khi nó chạy lại). "Không tiền, không xếp hạng" để ở mục 9.
 2. `## Bạn là ai` — vai, `<người dẫn>` (tên + một câu), ẩn dụ trung tâm (ví dụ forex: Slate sống lại ngày cũ; Shrine trao Rune). Giới thiệu ẩn dụ ở đây trước khi mục nào dùng nó (C1).
-3. `## Bắt đầu thế nào` — mở trang nào, `<người dẫn>` dẫn lần chơi đầu, không cần đọc gì khác trước.
+3. `## Bắt đầu thế nào` — mở trang nào, `<người dẫn>` dẫn lần chơi đầu, không cần đọc gì khác trước; giữa các lần chơi gặp `<người dẫn>` trong chat bằng `/i:gamify play <thư mục game>`, chơi xong nói "xong" (B6); hai thứ đừng mở, `gamemaster.md` và `boss/`, vì mở là lộ đề và luật chấm của chính mình (A1).
 4. `## Lần chơi đầu tiên` — việc tay theo thứ tự, kể cả `<bài kiểm>` lần 0.
 5. `## Một lần chơi` — kể theo thời gian: các khúc, mỗi khúc mấy phút và để làm gì (A3, B2); kênh: trang ghi gì, người chơi gõ gì, `<người dẫn>` đọc gì (B5, B6).
 6. `## Hôm nào mệt` — ba lối rẽ tên trung tính; nghỉ không phạt + hệ quả hạn nói thật (B8).
 7. `## Bài kiểm cố định` — heading chung cho mọi game; tên riêng của bài kiểm trong game này (Guardian, Tree Sentinel…) đứng trong câu đầu của mục. Nó là gì, đánh khi nào, lên cấp nghĩa là gì; đứng trước mục vùng vì vùng nhắc tới nó (A4).
-8. `## Các vùng` — câu "lần đọc đầu chỉ cần vùng 1"; mỗi vùng một đoạn bằng chữ (cảnh, nơi trao chiêu, qua vùng được gì); cuối mục một bảng hạn "để tra, không cần nhớ" (A5).
+8. `## Các vùng` — câu "lần đọc đầu chỉ cần vùng 1"; vùng 1 một đoạn bằng chữ (cảnh, nơi trao chiêu, qua vùng được gì); các vùng sau mỗi vùng một dòng trong bảng hạn cuối mục (tên, một câu cảnh, hạn; chưa nói chiêu), bảng "để tra, không cần nhớ" (A5).
 9. `## Điều game không có` — tiền, xếp hạng, đếm ngày, phạt.
-10. `## Bảng tra tên` — hai cột: tên trong game → việc tay trên trang (C2). Mọi tên riêng ở file người chơi phải có ở đây, và phải có mặt trong `gamemaster.md`.
+10. `## Bảng tra tên` — hai cột: tên trong game → việc tay trên trang (C2). Mọi tên riêng ở `world.md` phải có ở đây, và phải có mặt trong `gamemaster.md`; tên chỉ có ở một file vùng thì giải nghĩa ngay tại chỗ (C2).
 
 Một câu hạ gánh đứng ngay trước mục 5 (A6): "Bạn không cần thuộc luật: `<người dẫn>` giữ luật và nhắc lúc chơi."
 
 ## `dungeons/NN-<tên>.md` — bốn mục
 
 1. `## Vào vùng` — cảnh khi tới, một đoạn; không lộ biến cố mở (`<người dẫn>` kể).
-2. `## Chiêu trong vùng` — heading chung; mỗi chiêu (và nơi trao nó, nếu concept có): việc tay trên trang, thế nào là trúng, tối đa mấy lần một lần chơi.
-3. `## Qua vùng` — điều kiện bằng lời (`<bài kiểm>` cuối vùng đạt gì), hạn ngày, trễ thì sao; phần thưởng bằng lời (chiêu hay nơi trao chiêu kế mở, một `<phần thưởng cốt truyện>`).
+2. `## Chiêu trong vùng` — heading chung; mỗi chiêu (và nơi trao nó, nếu concept có): việc tay trên trang, thế nào là trúng, và giới hạn mấy lần một lần chơi nếu có.
+3. `## Qua vùng` — điều kiện bằng lời (`<bài kiểm>` cuối vùng đạt gì), hạn ngày (trễ hạn thì sao đã nói ở mục "Hôm nào mệt" của `world.md`, không nhắc lại); phần thưởng bằng lời (chiêu hay nơi trao chiêu kế mở, một `<phần thưởng cốt truyện>`).
 4. `## Lần đọc đầu` — hai ba câu: chỉ cần nhớ gì.
 
 Tên file: `NN` hai chữ số theo thứ tự đường tiến trình của gamemaster.md mục 6, tên kebab-case tiếng Anh (`01-the-plateau.md`). Dungeon thêm sau nối số mới.
@@ -81,7 +85,7 @@ Mở đầu hai câu: sổ này `<người dẫn>` ghi từ trang, bạn không 
 
 Ví dụ forex: `## Đêm 3 — 24/09/2026 · ngày bốc 463e3b5f` / `- Sight 2/3, sót 4 · Lure 1/1, cắn 0` / `- Kiếm: chưa mở · chuỗi 1` / `- Ghi chú: —` / `- Ilo: …`.
 
-Ngoài khối lần chơi, sổ có hai loại khối vùng do người dẫn ghi đúng lời đã nói trong chat: `## Vùng N mở — <ngày>` chép biến cố mở (≤ 6 dòng) ngay sau khi kể, và `## Vùng N qua — <ngày>` chép biến cố đóng ứng biến cùng `<phần thưởng cốt truyện>`. Khối này vừa để người chơi đọc lại, vừa là dấu cho người dẫn biết đã kể; cách dùng ở `quan-tro.md`.
+Ngoài khối lần chơi, sổ có hai loại khối vùng do người dẫn ghi: `## Vùng N mở — <ngày>` chép nguyên biến cố mở của `gamemaster.md` mục 6 (≤ 6 dòng), và `## Vùng N qua — <ngày>` chép biến cố đóng người dẫn nói trong chat cùng `<phần thưởng cốt truyện>`. Hai khối này vừa để người chơi đọc lại, vừa là dấu cho người dẫn biết vùng đã mở hay đã qua; cách dùng ở `quan-tro.md`.
 
 ## `boss/`
 

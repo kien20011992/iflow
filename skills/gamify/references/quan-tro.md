@@ -15,13 +15,9 @@ nguyên, từng chiêu với mã và trường đo của nó. File này gọi ch
 khung — *lần chơi*, *trang*, *người dẫn*, *bài kiểm*, *chiêu* — và người dẫn
 thay bằng tên trong game khi nói. Không mang tên của game khác vào.
 
-**Game dựng trước khi có bảng từ vựng** (mục 7 không có bảng): lấy tên từ
-chính mục 7 và `world.md` của game đó, và đọc tên ba bộ sưu tập, mã chiêu,
-trường riêng đúng như dòng "Phiên Claude ở chế độ play" của mục 7 ghi —
-game cũ có thể ghi `nights/<id>` và `guardian/<id>` thay cho `sessions` và
-`tests`, và có trường riêng không ghi ở đâu ngoài dòng đó. Dùng đúng tên
-game đó ghi; không đổi tên bộ sưu tập, vì trang của game đó đang ghi vào
-tên cũ.
+Tên ba bộ sưu tập, mã chiêu và trường riêng đọc đúng như dòng "Phiên
+Claude ở chế độ play" của mục 7 ghi, vì trang đang ghi vào đúng các tên
+đó; mục 7 không có bảng từ vựng thì lấy tên từ dòng đó và `world.md`.
 
 Ba nguồn sự thật, không trộn: **luật** ở `gamemaster.md`; **kết quả** ở sổ
 chung của trang (đọc bằng tool `ArtifactData`); **bản ghi** là ba file người
@@ -30,10 +26,12 @@ ngưỡng, không tự cấp gì ngoài thang.
 
 ## Vào chế độ play
 
-Đọc, theo thứ tự: `gamemaster.md` trọn (nhất là mục 3 thang, 5 luật một
+Đọc, theo thứ tự: `gamemaster.md` mục 2–8 (nhất là mục 3 thang, 5 luật một
 phiên, 6 đường tiến trình với biến cố mở và phần thưởng cốt truyện, 7 luật
-quản trò và bảng từ vựng, 8 từ cấm); rồi `character.md`, `quests.md`,
-`journal.md`. URL trang (cũng là URL sổ chung cho `ArtifactData`) nằm ở
+quản trò và bảng từ vựng, 8 từ cấm; mục 9 là danh sách kiểm của người dựng);
+rồi `character.md`, `quests.md`; `journal.md` thì đọc tiêu đề mọi khối (cho
+bước 3 của Mở phiên), còn thân khối chỉ từ khối `## Vùng N mở` của vùng
+hiện tại. URL trang (cũng là URL sổ chung cho `ArtifactData`) nằm ở
 dòng "Phiên Claude ở chế độ play" của mục 7 trong `gamemaster.md`; thiếu
 dòng đó thì hỏi người chơi URL trang một lần và ghi vào đó.
 
@@ -61,13 +59,14 @@ Thứ tự cố định, lượt đầu tiên của phiên:
    - lần chơi trong `sessions` mà `journal.md` chưa có khối (so ngày thật
      của `started_at` với ngày ở tiêu đề khối, và `item_id` với mã đề ghi ở
      tiêu đề);
-   - lần đánh trong `tests` mà `character.md` chưa ghi ở dòng "<bài kiểm>
-     gần nhất";
+   - lần đánh mới trong `tests` (mục "Bài kiểm cố định và cấp");
    - vùng hiện tại (dòng "Vùng" của `character.md`) chưa có khối
      `## Vùng N mở` trong `journal.md`;
+   - vùng hiện tại đã có khối `## Vùng N qua` mà `dungeons/` giờ đã có
+     file của vùng kế: ghi nốt phần còn lại của mục "Qua vùng";
    - `character/main` chưa tồn tại.
 4. Làm việc tồn trước, im lặng: ghi khối journal cho từng lần chơi thiếu
-   (mục "Dẫn phiên"), chấm từng lần bài kiểm chưa chấm (mục "Bài kiểm cố
+   (mục "Dẫn phiên"), chấm từng lần đánh mới (mục "Bài kiểm cố
    định và cấp"), gieo `character/main` nếu chưa có — đúng các trường của
    Hợp đồng kết quả (`slate.md` của skill): `region`, `unlocked` (mảng mã
    chiêu, mã lấy ở bảng từ vựng), `levels` (cấp từng mã, kể cả chiêu chưa
@@ -81,11 +80,14 @@ Thứ tự cố định, lượt đầu tiên của phiên:
    những dòng đó, và nói một câu. Đã mở → một câu của người dẫn. Sau đó
    **một dòng chỉ việc**: mở trang nào, làm gì lần này (lần chơi thường,
    hay bài kiểm cố định nếu tới lượt — xem mục dưới), xong thì quay lại nói
-   "xong". (Trang chưa có màn dẫn nhập thì người dẫn kể, ≤ 6 dòng.)
+   "xong". (Trang chưa có màn dẫn nhập thì người dẫn kể, ≤ 6 dòng.) Việc
+   tồn có lần chơi hôm nay thì câu đó là câu "<người dẫn>:" của khối mới
+   nhất, và dòng chỉ việc là cho lần sau, như bước 3 của "Dẫn phiên".
 6. Phiên đầu tiên của game (journal chỉ có tối đa một lần chơi và
-   `character.md` ghi tên tạm): hỏi tên trong cùng lượt, một câu, theo
-   giọng của game, kiểu "<trang> gọi bạn là gì? — tên không tiếng Việt, hay
-   để 'chưa nhớ'". Không trả lời thì giữ "chưa nhớ", không hỏi lại.
+   `character.md` ghi tên tạm), mà `world.md` không nói trang hỏi tên
+   người chơi: hỏi tên trong cùng lượt, một câu, theo giọng của game,
+   kiểu "<trang> gọi bạn là gì? — hay để 'chưa nhớ'". Không trả lời thì giữ
+   "chưa nhớ", không hỏi lại.
 
 ## Dẫn phiên
 
@@ -95,17 +97,22 @@ thấy họ vừa chơi):
 1. `list sessions` → lấy doc chưa có khối trong `journal.md`. Nhiều doc mới
    thì ghi theo thứ tự `started_at`. Lối rẽ Hoãn không có trong sổ (trang
    không lưu), nên không có gì để ghi; các đề của bài kiểm cố định cũng không
-   nằm ở `sessions`, chúng gộp trong `tests/<id>`.
+   nằm ở `sessions`, chúng gộp trong `tests/<id>`. `list tests` (hay tên bộ
+   sưu tập mục 7 ghi) → lần đánh mới thì chấm theo mục "Bài kiểm cố định và
+   cấp".
 2. Ghi một khối theo đúng mẫu ở `gamemaster.md` mục 7. Số lấy từ `summary`:
    với mỗi mã chiêu đã bấm, trúng = `hits`, đặt = `hits + misses`, sót =
    `missed`; trường riêng đọc ra chữ theo cột "đọc là" của bảng từ vựng;
    `note` chép nguyên văn, trống thì "—". Dòng "<người dẫn>:" là câu người
-   dẫn sẽ nói ở bước 3 — viết nó một lần, dùng ở cả hai chỗ.
+   dẫn sẽ nói ở bước 3 — viết nó một lần, dùng ở cả hai chỗ. Câu đó nói
+   điều mới so với các khối trước của vùng này: lần đầu trúng hết, lần đầu dùng chiêu
+   mới, một chỗ đổi hẳn so với lần trước. Không đọc lại số trang vừa hiện;
+   không có gì mới thì một câu của thế giới game.
 3. Nói **một câu**, đúng câu vừa ghi ở dòng "<người dẫn>:", rồi một dòng
    chỉ việc cho việc kế: bài kiểm cố định nếu tới lượt, hoặc "mai chơi
    tiếp". Không mời thêm một lần nữa; hết cửa sổ hay hết tài nguyên là hết
    (mục 5).
-4. Sổ chưa có lần chơi mới → một dòng hỏi: trang báo "Đã lưu vào sổ" hay
+4. Sổ chưa có lần chơi hay lần đánh mới → một dòng hỏi: trang báo "Đã lưu vào sổ" hay
    "lưu trên máy này"? Trường hợp sau xem mục cuối.
 
 Luật nói, áp cho mọi lượt:
@@ -133,11 +140,14 @@ Luật nói, áp cho mọi lượt:
 Khi nào bảo đánh (một dòng chỉ việc, không thuyết phục):
 
 - lần 0: phiên đầu tiên, khi `quests.md` còn dòng lần 0 mở;
-- cuối vùng: khi ngày hôm nay ≥ "Hạn vùng" ở `character.md`;
+- cuối vùng: khi ngày hôm nay ≥ "Hạn vùng" ở `character.md` và `journal.md`
+  chưa có khối `## Vùng N qua` của vùng đó;
 - người chơi xin: được, nếu lần đánh gần nhất (trường `at` trong
   `tests/*`) cách hôm nay từ bảy ngày.
 
-Chấm, cho mỗi doc `tests/<id>` chưa ghi vào `character.md`:
+Một lần đánh là **mới** khi ngày thật của `at` sau ngày ở dòng "<bài kiểm>
+gần nhất" của `character.md`; dòng đó chưa có ngày thì mọi lần đánh đều
+mới. Chấm từng lần đánh mới, theo thứ tự `at`:
 
 1. Chỉ chấm chiêu **đã mở** (dòng "Chiêu đã mở" của `character.md`). Chiêu
    chưa mở có điểm trong doc thì bỏ qua, không nhắc.
@@ -179,7 +189,11 @@ phần thưởng cốt truyện đúng như đã nói; `character.md` (Vùng, H�
 theo mục 6, Chiêu đã mở, phần thưởng đã có); `character/main` (`region`,
 `unlocked`); `quests.md` (đóng dòng vùng cũ, mở dòng cho mỗi chiêu hay nơi
 trao chiêu mới). Vùng mới được **mở** ở phiên sau, bằng biến cố mở của nó
-(mục "Mở phiên", bước 5).
+(mục "Mở phiên", bước 5). Vùng kế chưa có file `dungeons/` thì vẫn nói và
+ghi biến cố đóng cùng phần thưởng (khối `## Vùng N qua`), nhưng chưa ghi
+phần còn lại; dòng chỉ việc: vùng kế chưa dựng, người dựng gọi
+`/i:gamify <game> dựng tiếp`. Phiên đầu tiên sau khi file vùng kế có mặt
+thì ghi nốt phần còn lại, rồi mở vùng mới như bước 5 của "Mở phiên".
 
 Chưa qua khi tới hạn: lùi hạn bảy ngày, một lần cho mỗi vùng — sửa "Hạn
 vùng" ở `character.md`, ghi một dòng vào khối lần chơi gần nhất của journal;
@@ -199,8 +213,13 @@ Trước khi lượt cuối của phiên kết thúc, soát:
   mới thì thêm dòng; tối đa năm dòng mở.
 - `character/main`: chỉ ghi khi cấp, chiêu mở, vùng, hay trường riêng đổi;
   luôn pin `if_version`.
-- `gamemaster/plan.md` mục `## Ghi chú từ phiên chơi`: chỉ khi người chơi
-  xin nới luật hay báo máy lệch — một dòng, ngày + lời họ.
+- `gamemaster/plan.md` mục `## Ghi chú từ phiên chơi`, một dòng mỗi việc:
+  khi người chơi xin nới luật hay báo máy lệch (ngày + lời họ); khi phiên
+  này vừa ghi khối lần chơi đầu tiên của game ("<ngày> — phiên 1 xong, chờ
+  cổng vui"); và khi vừa chấm lần 0 mà `gamemaster.md` mục 2–4 còn số
+  "(ước lượng)" ("<ngày> — lần 0 xong, chờ hiệu chỉnh"). Dòng "phiên 1
+  xong" hay "lần 0 xong" đi kèm một dòng chỉ việc cho người dựng:
+  `/i:gamify <game> dựng tiếp`.
 
 Câu đóng phiên là một câu của người dẫn, không hẹn ngày, không mời.
 
@@ -223,13 +242,15 @@ bài kiểm Guardian); game khác thay bằng tên của nó, giữ nguyên cái
 cái sai.
 
 Đúng:
-- "Một dấu, một mồi, cả hai trúng. Lần sau ở lại tới 11:00 xem mồi có cắn."
-- "Guardian lần 0: Sight cấp 2, Lure cấp 1. Mốc đã có."
-- "Ba mồi, giá quét hai. Chuỗi vẫn 0 — kiếm chưa mở, chưa có gì để đứt."
+- "Một dấu, một mồi, lần đầu cả hai cùng trúng."
+- "Guardian lần 0: Sight cấp 2, Lure cấp 1 — mốc đã có."
+- "Ba mồi, giá quét hai — lần đầu mồi cắn quá nửa."
 
 Sai:
 - "Tuyệt vời, bạn làm rất tốt đêm nay!" — khen.
 - "Bạn đã nhận ra vùng thanh khoản đúng chỗ." — từ cấm, kỹ năng ngoài đời.
 - "Đêm nay bạn chọn Quan sát, cũng hợp lý." — bình luận lối rẽ.
 - "Ngày khép lại. Mai mở ngày khác. Nhớ đánh Guardian nhé, và nhớ đặt mồi
-  ở đỉnh hôm trước." — hai câu, lại còn dạy.
+  ở đỉnh hôm trước." — ba câu, lại còn dạy.
+- "Sight trúng 3 trên 6, Lure 1 trên 4." — đọc lại số trang vừa hiện,
+  không có gì mới.

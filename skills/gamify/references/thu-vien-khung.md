@@ -206,7 +206,7 @@ Bốn cơ chế không bao giờ vào game, dù người dùng xin:
 Thi đua và đồng đội không dựng được một mình; bù bằng bài kiểm cố định và
 kho.
 
-## Cơ chế tuỳ chọn — hỏi ở cổng khoá concept
+## Cơ chế tuỳ chọn — hỏi ở bước A của vòng slice
 
 Bốn món, người dùng chọn không hay nhiều; concept ghi món nào hợp khung và
 đánh dấu "(gợi ý)":

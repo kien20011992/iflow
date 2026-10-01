@@ -27,8 +27,15 @@ chuẩn):
   bằng JS, cùng hằng số), nên hàm phải đơn giản đủ để viết hai lần không
   lệch.
 - **Hằng số ở đầu file, chú thích "ước lượng".** Mọi sai số, ngưỡng, hệ số
-  của gamemaster.md nằm một chỗ; hiệu chỉnh sau bài kiểm lần 0 là sửa hai
-  chỗ cùng lúc: đây và gamemaster.md.
+  của gamemaster.md nằm một chỗ.
+- **Đổi số hay luật** — hiệu chỉnh sau bài kiểm lần 0, nhánh `sửa:`, chiêu
+  mới của dungeon thêm — đi đủ năm bước, theo thứ tự: sửa gamemaster.md;
+  sửa hằng số hay luật ở đây, và luật đổi đáp án hay có chiêu mới thì tính
+  lại `key` cho mọi đề đang có, kể cả đề trong `boss/set.json`, giữ nguyên
+  đề và seed; sửa bản JS trên trang; xuất lại
+  `data/fixtures.json` và chạy đối chiếu hai bản; đăng lại trang ở URL của
+  mục 7 (cập nhật artifact cũ, sổ chung giữ nguyên). Thiếu một bước là
+  trang, nơi chấm thật, vẫn chấm theo số cũ mà không ai thấy.
 - **Đáp án tính trước theo đề.** `key(đề)` trả một JSON: mọi đáp án máy tìm
   được; trang chơi chỉ so, không tính lại phần nặng. Chỉ phần phụ thuộc nước
   đi của người chơi là tính lúc chơi (forex: điểm vào, stop, đích).
@@ -48,7 +55,9 @@ chuẩn):
 - **Bộ ca kiểm chung cho hai bản.** Máy Python xuất `data/fixtures.json`
   (hằng số + mỗi ca: đầu vào, đầu ra) từ chính các fixture của test; bản
   JS trên trang chạy cùng bộ ca lúc nạp trang (hay trong test riêng) và
-  phải trả y hệt. Lệch một ca là lệch luật, không đưa trang ra.
+  phải trả y hệt. Lệch một ca là lệch luật, không đưa trang ra. Script
+  đối chiếu nằm ở `slate/tests/` của game, không ở thư mục tạm, vì mỗi lần
+  đổi số phải chạy lại nó.
 - **Đọc mắt một đề thật trước khi tin máy.** In một đề quanh chỗ máy chấm
   và tự đọc. Test khoá luật đã viết, không khoá luật viết thiếu.
 - **Máy không phải chân lý.** Lĩnh vực có chỗ là phán đoán thì máy và
@@ -95,7 +104,7 @@ chơi không thấy; trang hiện chúng bằng tên trong game.
 |---|---|---|---|
 | `character/main` | **người dẫn** (Claude); trang chỉ đọc, trừ các bộ đếm | `region` (tên vùng hiện tại), `unlocked` (mảng mã chiêu bấm được; trang mở chiêu theo mảng này, không hard-code theo vùng), `levels` (cấp 1–5 mỗi mã, kể cả chiêu chưa mở), `sessions` (số lần chơi, trang tự đếm) | bộ đếm và giới hạn khác của game, ghi ở bảng từ vựng (forex: `mana_max`, `chain`, `kills`, `r_unlocked`) |
 | `sessions/<id>` | trang, một doc mỗi lần chơi thường | `item_id` (id mờ của đề; đề thật tra ở `slate/data/ids.json`), `started_at`, `ended_at`, `summary` (mỗi mã chiêu đã bấm: `hits` trúng, `misses` sai, `missed` sót), `actions` (nước đi thô: bấm gì, ở đâu, lúc nào), `note` (một dòng người chơi gõ, có thể rỗng), `ended_by` | trường đo thêm của chiêu (forex: `W.lure_kills` mồi cắn, `R.casts / clean / kills / assists`), trạng thái cuối lần chơi (forex: `mana_left`, `chain_after`), dự đoán phụ (forex: `SKY.pick / answer / hit`) |
-| `tests/<id>` | trang, một doc mỗi lần đánh bài kiểm cố định | `at` (giờ ISO lúc xong), `picks` (số đề bốc), `results` (summary từng đề), `scores` (mỗi mã chiêu: `precision` % trúng trên đặt, `recall` % trúng trên có, null khi không bấm) | cột điểm khác mà thang mục 3 dùng (forex: `R.clean_pct`, `SKY.pct` + `SKY.n`) |
+| `tests/<id>` | trang, một doc mỗi lần đánh bài kiểm cố định | `at` (giờ ISO lúc xong), `picks` (số đề bốc), `results` (từng đề: summary và `actions` nước đi thô, cùng hình với `sessions`), `scores` (mỗi mã chiêu: `precision` % trúng trên đặt, `recall` % trúng trên có, null khi không bấm) | cột điểm khác mà thang mục 3 dùng (forex: `R.clean_pct`, `SKY.pct` + `SKY.n`) |
 
 Luật giữ cho hợp đồng đứng: trang chỉ ghi kết quả thô, mọi phán xét (cấp,
 mở chiêu, qua vùng, phần thưởng cốt truyện) là của người dẫn theo
