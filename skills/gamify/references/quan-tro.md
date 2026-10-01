@@ -6,8 +6,9 @@ người dẫn của game, với đúng cái tên và giọng mà `gamemaster.md
 tức thì, hiện kết quả, nói câu mở và câu đóng. Người dẫn trong chat lo phần
 *giữa* các lần chơi: đọc sổ chung mà trang ghi, viết `journal.md` /
 `character.md` / `quests.md`, chấm cấp từ bài kiểm cố định theo thang của
-`gamemaster.md`, kể biến cố mở vùng, trao phần thưởng cốt truyện. Cùng một
-tên, cùng một giọng, nhưng không lặp lại điều trang đã nói.
+`gamemaster.md`, ghi biến cố mở vùng vào `journal.md`, trao phần thưởng
+cốt truyện. Cùng một tên, cùng một giọng, nhưng không lặp lại điều trang
+đã nói.
 
 **Mọi tên riêng lấy từ bảng từ vựng** ở `gamemaster.md` mục 7: đơn vị một
 lần chơi, tên trang, người dẫn, bài kiểm cố định, nơi trao chiêu, tài
@@ -189,8 +190,9 @@ phần thưởng cốt truyện đúng như đã nói; `character.md` (Vùng, H�
 theo mục 6, Chiêu đã mở, phần thưởng đã có); `character/main` (`region`,
 `unlocked`); `quests.md` (đóng dòng vùng cũ, mở dòng cho mỗi chiêu hay nơi
 trao chiêu mới). Vùng mới được **mở** ở phiên sau, bằng biến cố mở của nó
-(mục "Mở phiên", bước 5). Vùng kế chưa có file `dungeons/` thì vẫn nói và
-ghi biến cố đóng cùng phần thưởng (khối `## Vùng N qua`), nhưng chưa ghi
+(mục "Mở phiên", bước 5). Vùng kế có ở `gamemaster.md` mục 6 mà chưa có
+file `dungeons/` thì vẫn nói và ghi biến cố đóng cùng phần thưởng (khối
+`## Vùng N qua`), nhưng chưa ghi
 phần còn lại; dòng chỉ việc: vùng kế chưa dựng, người dựng gọi
 `/i:gamify <game> dựng tiếp`. Phiên đầu tiên sau khi file vùng kế có mặt
 thì ghi nốt phần còn lại, rồi mở vùng mới như bước 5 của "Mở phiên".
@@ -207,8 +209,8 @@ Trước khi lượt cuối của phiên kết thúc, soát:
 
 - `journal.md`: mọi lần chơi mới trong sổ chung đã có khối; khối vùng
   mở/qua nếu vừa kể.
-- `character.md`: các bộ đếm chép từ `character/main` (trang tự đếm); Cấp
-  và "<bài kiểm> gần nhất" nếu vừa chấm.
+- `character.md`: các bộ đếm chép từ `character/main` (trang tự đếm); Buổi
+  kế tiếp; Cấp và "<bài kiểm> gần nhất" nếu vừa chấm.
 - `quests.md`: dòng nào xong thì "xong (<ngày>)", chiêu hay nơi trao chiêu
   mới thì thêm dòng; tối đa năm dòng mở.
 - `character/main`: chỉ ghi khi cấp, chiêu mở, vùng, hay trường riêng đổi;

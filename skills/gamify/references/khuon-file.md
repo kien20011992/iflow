@@ -43,7 +43,7 @@ một đêm", rồi cả file chỉ dùng chữ của game:
 
 1. `## Đây là game gì` — ba tới năm câu: game là gì, chơi mỗi ngày bao lâu, điều khác thường của riêng game này: việc tay mà game khác không bắt làm (forex: gọi đỉnh đáy trên một ngày cũ trước khi nó chạy lại). "Không tiền, không xếp hạng" để ở mục 9.
 2. `## Bạn là ai` — vai, `<người dẫn>` (tên + một câu), ẩn dụ trung tâm (ví dụ forex: Slate sống lại ngày cũ; Shrine trao Rune). Giới thiệu ẩn dụ ở đây trước khi mục nào dùng nó (C1).
-3. `## Bắt đầu thế nào` — mở trang nào, `<người dẫn>` dẫn lần chơi đầu, không cần đọc gì khác trước; giữa các lần chơi gặp `<người dẫn>` trong chat bằng `/i:gamify play <thư mục game>`, chơi xong nói "xong" (B6); hai thứ đừng mở, `gamemaster.md` và `boss/`, vì mở là lộ đề và luật chấm của chính mình (A1).
+3. `## Bắt đầu thế nào` — mở trang nào, `<người dẫn>` dẫn lần chơi đầu, không cần đọc gì khác trước; hôm nay chơi gì thì xem dòng Buổi kế tiếp của `character.md`; giữa các lần chơi gặp `<người dẫn>` trong chat bằng `/i:gamify play <thư mục game>`, chơi xong nói "xong" (B6); hai thứ đừng mở, `gamemaster.md` và `boss/`, vì mở là lộ đề và luật chấm của chính mình (A1).
 4. `## Lần chơi đầu tiên` — việc tay theo thứ tự, kể cả `<bài kiểm>` lần 0.
 5. `## Một lần chơi` — kể theo thời gian: các khúc, mỗi khúc mấy phút và để làm gì (A3, B2); kênh: trang ghi gì, người chơi gõ gì, `<người dẫn>` đọc gì (B5, B6).
 6. `## Hôm nào mệt` — ba lối rẽ tên trung tính; nghỉ không phạt + hệ quả hạn nói thật (B8).
@@ -69,7 +69,7 @@ Câu dẫn một dòng rồi bảng: `Nhiệm vụ | Làm gì | Trạng thái (m
 
 ## `character.md`
 
-Bảng một cột giá trị: Tên (người chơi đặt ở lần chơi đầu hoặc "chưa nhớ"), Vùng, Ngày đầu (D0), Hạn vùng, Chiêu đã mở, Cấp từng chiêu, các bộ đếm mà bảng từ vựng khai báo (ví dụ forex: Chuỗi, Kill), Số lần chơi, `<bài kiểm>` gần nhất (ngày + hai số có nhãn), `<phần thưởng cốt truyện>` đã có. Người dẫn ghi sau `<bài kiểm>` và khi qua vùng.
+Bảng một cột giá trị: Tên (người chơi đặt ở lần chơi đầu hoặc "chưa nhớ"), Buổi kế tiếp (lần chơi thường hay `<bài kiểm>`), Vùng, Ngày đầu (D0), Hạn vùng, Chiêu đã mở, Cấp từng chiêu, các bộ đếm mà bảng từ vựng khai báo (ví dụ forex: Chuỗi, Kill), Số lần chơi, `<bài kiểm>` gần nhất (ngày + hai số có nhãn), `<phần thưởng cốt truyện>` đã có. Người dẫn ghi sau mỗi lần chơi, sau `<bài kiểm>` và khi qua vùng.
 
 ## `journal.md`
 
