@@ -34,9 +34,11 @@ only — never product code, never an i:flow dossier.
 
 Resolve in this order: an explicit user scope → the active i:flow slice →
 one coherent changed public surface, changed meaning the working tree plus
-the commits since the default branch, or plus the last commit when on the
-default branch → ask, in one line, when nothing or several unrelated
-surfaces changed. An ask ends this run, so name each candidate as the exact
+the commits since the default branch, or on the default branch the working
+tree alone, else the last commit → ask, in one line, when nothing or several
+unrelated surfaces changed. An ask ends this run, so name each candidate —
+each changed surface, or when nothing changed the main public modules and
+the whole repository — as the exact
 `/i:test <candidate scope · original intent · every supplied acceptance criterion>`
 call that resumes it, never a promise to continue. Never default to the
 whole repository; when the user names it, Not covered lists every public
