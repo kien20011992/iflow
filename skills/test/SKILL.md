@@ -33,12 +33,12 @@ only — never product code, never an i:flow dossier.
 ## Scope
 
 Resolve in this order: an explicit user scope → the active i:flow slice →
-one coherent changed public surface, changed meaning the working tree plus
-the commits since the default branch, or on the default branch the working
-tree alone, else the last commit → ask, in one line, when nothing or several
-unrelated surfaces changed. An ask ends this run, so name each candidate —
-each changed surface, or when nothing changed the main public modules and
-the whole repository — as the exact
+one coherent changed public surface, changed meaning off the default branch
+the working tree plus the commits since it; on the default branch the
+working tree when it has changes, otherwise the last commit → ask, in one
+line, when nothing or several unrelated surfaces changed. An ask ends this
+run, so name each candidate — each changed surface, or when nothing changed
+the main public modules and the whole repository — as the exact
 `/i:test <candidate scope · original intent · every supplied acceptance criterion>`
 call that resumes it, never a promise to continue. Never default to the
 whole repository; when the user names it, Not covered lists every public
@@ -118,8 +118,8 @@ slot.
 
 ## Native implementation
 
-Find the project's own test command, config and neighbouring tests first,
-then follow its placement, naming, fixtures, helpers and parameterization.
+Follow the project's test config and neighbouring tests in placement,
+naming, fixtures, helpers and parameterization.
 Use a fake clock, a fixed seed and a unique namespace wherever determinism
 needs them. Mock the external boundary, never the behaviour under test. No
 real credential, production service or shared dataset. A dependency
