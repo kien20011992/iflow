@@ -19,8 +19,7 @@ disable-model-invocation: true
 
 # i:gamify — build the game, then run it
 
-Nothing here changes product code. Everything below is a delta from
-your defaults; where nothing is said, your defaults are right.
+Nothing here changes product code.
 
 This skill never loads or reads another skill's files; what it needs is in
 its own `references/`. The one exception: the skills the `Artifact` tool
@@ -83,10 +82,9 @@ section).
 **Frame and vocabulary are two different things.** The frame is what every
 game shares: the file names above, the nine sections of `gamemaster.md`,
 the shape of the page's shared record, the banned mechanics. The vocabulary
-is every name — the page, the narrator, the fixed test, every move with its
-code — plus the unit words the prose repeats (one session, one item, one
-zone), invented at the concept stage and declared once in `gamemaster.md`
-section 7. The references' examples come from the first game, a forex one.
+is every name of this game plus the unit words the prose repeats (one
+session, one item, one zone); where it is declared is the rule below. The
+references' examples come from the first game, a forex one.
 
 ## Dispatch on `$ARGUMENTS`
 
@@ -150,17 +148,14 @@ template, then the slice table in `plan.md`'s state block. The rules in
 `gamemaster.md` must be machine-checkable where the game has a machine:
 each one names the data it reads and the tolerance it allows.
 
-Three approvals cover the build: `gamemaster.md` with the machine (its
-plain-words summary adds the data source, what the page shows and saves;
-approving it approves "the plan laid down from the start" and slices
-02–03), dungeon 1, and dungeons 2 onward in one go, two or three lines
-each. An approval covering several slices writes "Kế hoạch đã duyệt" into
-each at once; such a slice is built without asking, unless it came back as
-`needs-redo`.
+Approvals follow `vong-slice.md`: `gamemaster.md` together with the
+machine (approving it approves slices 02–03), dungeon 1, then dungeons 2
+onward in one go; an approval covering several slices writes "Kế hoạch đã
+duyệt" into each at once.
 
 Run the slices in order, one `doing` at a time, writing `plan.md` the
-moment the state changes. After each slice report one line — which slice,
-passed or not, how many remain — and go straight on. Stop only at an
+moment the state changes. After each slice, the one-line report of
+`vong-slice.md` step 5, then go straight on. Stop only at an
 approval question, when handing session 1 to the user, when the user says
 stop, or when a check still fails after two fixes: that slice turns
 `needs-redo`, and the run stops and asks.
@@ -169,7 +164,8 @@ stop, or when a check still fails after two fixes: that slice turns
   [references/slate.md](references/slate.md); skipped only when nothing
   about the pursuit can be computed ("A game has a machine" above).
 - **Slice 03 — the playable page:** "Hợp đồng kết quả" and "Cảm giác game"
-  in the same file; write the page's URL into `gamemaster.md` section 7.
+  in the same file; write the page's URL into the referee-rules section
+  of `gamemaster.md`.
 - **Slice 04 — dungeon 1**, then one slice per further dungeon: build the
   player files from [references/khuon-file.md](references/khuon-file.md);
   run `${CLAUDE_SKILL_DIR}/scripts/run-check.sh <game-dir>` until clean;
@@ -187,25 +183,21 @@ tool the user picks becomes a new numbered slice.
 
 ### Stage 5 — final check
 
-Run the "Kiểm cuối" section of `vong-slice.md` as written: all six checks
-pass → `plan.md` reads "chơi được — hoàn tất"; any fail → a decision line
-and the related slice `needs-redo`.
+Run the "Kiểm cuối" section of `vong-slice.md` as written.
 
 ## Play mode
 
-The playable page runs each session: it points at each button, scores at
-once, shows the hit, says its own opening and closing line. The Claude
-session is the same narrator *between* sessions, under the game's own
-names, and never repeats what the page already said. The whole protocol —
-what it reads and writes, how it speaks, what to do when there is no
-shared record — is [references/quan-tro.md](references/quan-tro.md).
+The playable page runs each session; the Claude session is the same
+narrator *between* sessions, under the game's own names, never repeating
+what the page said. The whole protocol is
+[references/quan-tro.md](references/quan-tro.md).
 
 ## Rules that hold in every mode
 
 - **Pure game on the player's side.** `world.md`, `quests.md`, `dungeons/`,
   `character.md`, `journal.md` and every word the page shows never say what
   a quest trains in real life; the banned-words line of `gamemaster.md`
-  section 8 holds for all of them. The calculation is real and lives in
+  holds for all of them. The calculation is real and lives in
   `gamemaster.md`.
 - **Names are English, styled after the frame's source game, with no
   article.** Characters, lands, items, moves, the page and the fixed test
@@ -225,7 +217,7 @@ shared record — is [references/quan-tro.md](references/quan-tro.md).
 - **Banned mechanics, always:** luck in a score; a counted daily streak; a
   leaderboard; money, profit or loss anywhere in scoring or rewards.
 - **Every name is this game's own.** The concept stage invents the
-  vocabulary; `gamemaster.md` section 7 declares it; the page, the player
+  vocabulary; `gamemaster.md`'s vocabulary table declares it; the page, the player
   files and the narrator use only that. A name from the references' forex
   example appearing in a non-forex game is a defect, not a convention.
 - **Never ask about the player's taste in games to generate concepts.**
@@ -234,8 +226,8 @@ shared record — is [references/quan-tro.md](references/quan-tro.md).
   mechanic, a story, a feel — is their decision and wins: that is road 2
   in `references/concept.md`, and there the skill may ask where they want
   the story's inspiration from.
-- **Ask, never guess** what the user knows and you do not; **never re-ask**
-  what `gamemaster/plan.md` already records. **Approval is a direct yes:**
+- **Never re-ask** what `gamemaster/plan.md` already records. **Approval
+  is a direct yes:**
   a question, praise, silence, or a choice question that timed out or was
   declined approves nothing.
 
@@ -265,8 +257,8 @@ block.
 
 End the run with: the path of `gamemaster/plan.md`; for stage 1, the
 sources of the skill map with their tier (the user's curriculum / a
-secondary source / an estimate); for stage 2, which frames were
-offered in each round and why, which the user locked and what was adjusted; for stage 3,
+secondary source / an estimate); for stage 2, which frames were offered
+and why, which the user locked and what was adjusted; for stage 3,
 which numbers in `gamemaster.md` are estimates to be recalibrated after
 the fixed test's first run, what the slice table holds, and for each slice
 run this session its check result (engine tests, fixture parity,

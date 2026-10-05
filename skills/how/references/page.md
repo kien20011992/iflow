@@ -4,14 +4,12 @@
 
 When the `Artifact` tool is available, publish the page with it: a private
 page on claude.ai, built under that tool's own rules and the skills it
-names. Load `artifact-diagramming` for a flow and `dataviz` for a chart
-when those skills are listed. Publishing sends the excerpts on the page
-off this machine: when the user has said the code is confidential, write a
-local file instead.
+names. Publishing sends the excerpts on the page off this machine: when
+the user has said the code is confidential, write a local file instead.
 
 Without the tool: one self-contained HTML file in the session's scratchpad
-directory (else the system temp directory) — no network requests, readable
-in light and dark — and give its full path.
+directory — no network requests, readable in light and dark — and give its
+full path.
 
 ## What the page must carry
 

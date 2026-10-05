@@ -9,12 +9,6 @@ bản đồ kỹ năng đã được người dùng duyệt. Mọi thứ ở gia
 quest, dungeon, cấp) đều suy ra từ bản đồ này, nên bản đồ sai thì cả game
 sai — vì thế duyệt bản đồ là cổng bắt buộc, không bỏ được.
 
-**Vì sao phải hỏi và tra cứu thay vì tự viết.** Chặng tự chia mà không có
-bản đồ thì nhiệm vụ không ai biết luyện cái gì. Người mới học cũng không tự
-kể được kỹ năng con
-— đó chính là lý do họ đi học. Nên bản đồ lấy từ giáo trình (nếu người dùng
-có) cộng tra cứu, rồi người dùng duyệt.
-
 ## Điều kiện vào
 
 Ba câu, sai một thì dừng, nói rõ việc phải làm trước, và **không tạo thư
@@ -173,14 +167,13 @@ từ đây không nhắc lại ở bất kỳ file nào của game — nó là c
    đưa người dùng chọn", rồi **đi tiếp giai đoạn 2** ngay trong cùng lượt
    chạy (SKILL.md, Stage 2) trừ khi người dùng bảo dừng.
 
-Ba lượt là chuẩn, bốn khi có sửa. Nhiều hơn năm lượt là dấu hiệu đang hỏi
-thứ nên tra cứu, hoặc tra cứu thứ nên hỏi.
+Ba lượt là chuẩn, bốn khi có sửa.
 
 ## Mẫu `gamemaster/plan.md`
 
 Hồ sơ thiết kế; người chơi không mở, chế độ play chỉ chèn ghi chú. Người
-dùng được đưa đường dẫn file này (SKILL.md, Report): thân bài viết cho họ
-cho người chưa xem chat: lời thường, mỗi câu một ý, tiêu đề nói mục đó nói
+dùng được đưa đường dẫn file này (SKILL.md, Report): thân bài viết cho họ,
+như cho người chưa xem chat: lời thường, mỗi câu một ý, tiêu đề nói mục đó nói
 gì; không slice, trục, cổng duyệt, giai đoạn, khung. Khối `## Trạng thái để làm tiếp` luôn là mục cuối, chỗ duy nhất ghi
 tiến độ; mục mới chèn ngay trước nó.
 
@@ -226,7 +219,7 @@ Nguồn:
 
 ## Ghi chú từ phiên chơi
 
-<người dẫn (chế độ play) nối một dòng khi người chơi xin nới luật hay báo máy chấm lệch: ngày + lời họ; không sửa luật giữa vùng>
+<người dẫn (chế độ play) nối một dòng khi người chơi xin nới luật hay báo máy chấm lệch (ngày + lời họ; không sửa luật giữa vùng), khi phiên 1 vừa xong ("<ngày> — phiên 1 xong, chờ cổng vui") và khi lần 0 vừa chấm mà còn số ước lượng ("<ngày> — lần 0 xong, chờ hiệu chỉnh")>
 
 ## Trạng thái để làm tiếp
 

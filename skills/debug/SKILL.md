@@ -39,7 +39,8 @@ caller's dossier, slice file or plan file is not edited at all.
 
 ## Commitment — settled before the target is opened
 
-Before the target is read, write down and keep: what was observed, verbatim;
+Before the target is read, write down in this run's own working notes —
+never a file left behind — and keep: what was observed, verbatim;
 what should have happened instead and where that expectation comes from; how
 often and under what conditions; when it last behaved correctly. That last
 point — the good point — is the cheapest cut there is: what changed from then
@@ -78,9 +79,10 @@ never known good are themselves valid answers here: record `unknown` or
   match is measured, not read: run the class of input the commitment names,
   not only the caller's one example, and a member that misses it is a defect
   this run keeps. Otherwise end with the report, Status not a defect, saying
-  in one line which: a misunderstanding goes to `/i:explore`; a wish is a
-  feature — `/i:lite <task>` for one plan, `/i:flow <topic>` for several
-  parts each worth approving on its own.
+  in one line which: a misunderstanding goes to `/i:how` when it is about
+  this repo's code, to `/i:explore` otherwise; a wish is a feature —
+  `/i:lite <task>` for one plan, `/i:flow <topic>` for several parts each
+  worth approving on its own.
 
 ## What is already in hand
 
@@ -104,9 +106,10 @@ desktop setting, a desktop service restarted — is never made by this run,
 not even as an instrument: it is named as the next step for the user to
 run, and until it runs, the cause is a hypothesis. Instruments are the
 target's own first: its runner, its logs, the record its process already
-keeps; `/run` when the boundary is the app. A profiler, debugger, tracer or sanitizer when
-those cannot separate the hypotheses that remain. `git bisect run` with the
-reproduction command is the measurement on the time axis — always in a
+keeps; `/run` when the boundary is the app. A profiler, debugger, tracer or
+sanitizer when those cannot separate the hypotheses that remain.
+`git bisect run` with the reproduction command is the measurement on the
+time axis — always in a
 separate `git worktree`, removed before the report. That worktree carries
 none of the main tree's installed dependencies or build output, so the
 command must go red on the bad end and green on the good end inside it
@@ -125,8 +128,8 @@ hold:
   symptom. A fragment that survives removing the cause — for a number, any
   part of the gap back to the expected value beyond the spread of N runs —
   is a second defect: one line under Not explained with its own `/i:debug`
-  call. A fragment
-  that goes with it but is not explained means the wrong cause.
+  call. A fragment that goes with it but is not explained means the wrong
+  cause.
 
 A cause may be a set — several factors needed at once, so removing any one
 makes it go. Name the set.
@@ -161,8 +164,7 @@ they stand for.
 
 Evidence is each decisive command with the key lines of its real output and
 what they show, not a pasted log; the report and the target's own artifacts
-are the record — no ledger, no case IDs, no inventory
-of what was tried.
+are the record — no ledger, no case IDs, no inventory of what was tried.
 
 **Next step** is runnable, chosen by size:
 

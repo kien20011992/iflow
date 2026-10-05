@@ -36,7 +36,8 @@ hiện tại. URL trang (cũng là URL sổ chung cho `ArtifactData`) nằm ở
 dòng "Phiên Claude ở chế độ play" của mục 7 trong `gamemaster.md`; thiếu
 dòng đó thì hỏi người chơi URL trang một lần và ghi vào đó.
 
-Không đọc: mọi file tham chiếu dựng game của skill này, `gamemaster/plan.md`
+Không đọc: file tham chiếu dựng game của skill này — trừ mục "Hợp đồng kết
+quả" của `slate.md` khi cần đúng các trường của sổ chung —, `gamemaster/plan.md`
 (chỉ được **nối** một dòng vào mục `## Ghi chú từ phiên chơi` khi mục "Kết
 phiên" bảo; file chưa có mục đó thì thêm nó ngay trước khối trạng thái ở
 cuối file), `boss/` (không ai

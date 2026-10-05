@@ -1,9 +1,7 @@
 # Durable Exploration Dossier
 
 Use the dossier as a self-contained knowledge artifact and as cold-start memory
-for a future context. Keep one living dossier per exploration. Integrate and
-rewrite it as it changes; do not append a transcript or create a new file for
-every update.
+for a future context.
 
 ## Resolve the dossier
 
@@ -34,12 +32,13 @@ example — writes nothing.
 
 ## Update as an integrated document
 
-At every update, reconcile the dossier with the conversation and newly
-checked sources, and rewrite the affected sections so the whole document
+At every update, rewrite the sections that the change — in the
+conversation or in newly checked sources — touches, so the document
 reflects the current understanding: keep useful detail, reasoning,
 examples, disagreements, and source context; remove superseded claims or
 move them into the evolution section when the change itself matters. Then
-re-read the result and resolve internal contradictions.
+re-read the sections that state or point to what changed and resolve
+contradictions.
 
 A conclusion that depends on an unconfirmed assumption must carry that
 assumption inline where the conclusion is stated, not only where the
@@ -151,8 +150,8 @@ question blocking it, by its short title, if any.
 ## Quality test
 
 When the dossier is created and at handoff, verify that the user could read
-the body cold and act on it, and that a fresh agent could answer all of
-these from the dossier alone:
+the body cold and act on it, and that, read alone as a stranger would, it
+answers all of these:
 
 - What is being explored, and through which expert lens?
 - What does the user need this for, and what aim is the exploration

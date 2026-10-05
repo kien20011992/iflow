@@ -12,9 +12,6 @@ rút từ các case study đó. Ba case study **không bàn kiểu đặt tên**
 "Tông và kiểu đặt tên" là tổng hợp từ game gốc, không phải kết luận nghiên
 cứu — coi là gợi ý phong cách, không phải luật.
 
-**Thêm khung sau này:** chép đúng tám mục có nhãn của một khung dưới đây,
-điền cho game mới, thêm vào cuối.
-
 ## Luật mọi khung phải mang
 
 Rút từ case study, không phụ thuộc khung nào. Giai đoạn slice (kế hoạch
@@ -203,13 +200,10 @@ Bốn cơ chế không bao giờ vào game, dù người dùng xin:
 - **Tiền ở điểm hay phần thưởng** — lãi lỗ, quy đổi ra tiền, mồi bằng
   tiền: hết muốn chiến đấu.
 
-Thi đua và đồng đội không dựng được một mình; bù bằng bài kiểm cố định và
-kho.
-
 ## Cơ chế tuỳ chọn — hỏi ở bước A của vòng slice
 
-Bốn món, người dùng chọn không hay nhiều; concept ghi món nào hợp khung và
-đánh dấu "(gợi ý)":
+Bốn món, người dùng chọn không hay nhiều ở bước A của vòng slice; khi hỏi,
+món hợp khung đã khoá được đánh dấu "(gợi ý)" theo cột cuối:
 
 | Cơ chế | Tác dụng | Tác dụng phụ | Hợp khung |
 |---|---|---|---|

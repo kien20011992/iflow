@@ -49,11 +49,11 @@ write them character for character.
    that it was left open while shaping; a left-open item relevant to no
    slice goes into shape.md's section on what was explored — nothing may
    drop.
-5. Run the checker per SKILL.md's invariant 2, then the quality test: a
-   fresh agent reading shape.md alone can say which slice is running, what
-   the next action is and what has been decided, and every research note
-   exists as a file linked from shape.md's body. A missing answer means the
-   dossier is not done.
+5. Run the checker per SKILL.md's invariant 2, then the quality test: read
+   shape.md alone, as a stranger would; it must say which slice is running,
+   what the next action is and what has been decided, and every research
+   note must exist as a file linked from shape.md's body. A missing answer
+   means the dossier is not done.
 6. Retire the draft: in this session's draft and in any draft it was
    recovered from, the `Shape draft: <topic>` line becomes
    `Shape draft done: <topic>`, the words i:lite uses, so no later draft

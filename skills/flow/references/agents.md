@@ -3,8 +3,6 @@
 - Never pass a `name` when calling the Agent tool: with agent teams
   enabled, a named subagent becomes a teammate instead of returning a
   result.
-- Delegation exists to protect the main context: heavy reading goes to
-  Explore agents.
 - No agent's output may live only in the conversation: the substance of
   every return lands in the file its work fed — a research note, a
   result section, the map. Raw agent output is never pasted into

@@ -7,10 +7,9 @@ picture · 2. Stage 2 — decision session · 3. Stage 3 — cut slices ·
 
 Enter `EnterPlanMode` the moment Shape starts or resumes, even when every
 expected slice is research. A stage starts only when the user has locked
-the previous one by direct confirmation (section 4). Three shortcuts skip a
-lock: the fast lane (§5); the opening round's jump to the decision session
-or to stage 3, which the user confirms directly; and stage 2's skipped
-"Lock" (see its Close).
+the previous one by direct confirmation (section 4), or through a
+shortcut the user controls: the fast lane (§5), the opening round's jump
+(§1), or the skipped "Lock" (§2's Close).
 
 ## 0. Working draft and the two run paths
 
@@ -39,8 +38,7 @@ its decisions and research notes into this session's draft; bring its
 picture draft, zone map and — when stage 3 had begun — its unapproved slice
 table, or the draft plan of an i:lite run handed over, along as starting
 points, reconciled against the decisions, keeping its topic; from then on
-work only in this session's draft. Dossier birth retires the recovered
-draft's `Shape draft:` line together with this session's. A previous
+work only in this session's draft. A previous
 session's leanings are not state — re-confirm each with the user as it
 gets used; research notes carry over as-is.
 
@@ -91,18 +89,16 @@ files). When only (a) holds, reason inline and label the output as
 estimate. When both hold, do the research BEFORE presenting the zone's
 material, delegating per angle. Distill the returns into a research note —
 a subsection of the draft named after the zone, condensed, closing with a
-sources list that records each significant source's tier (official /
-primary / secondary / listing-grade). A number that carries a conclusion
-but was checked neither verbatim against a primary source nor by two
-independent sources is an estimate, labelled so wherever it appears. The
+sources list tiered per state.md §6; a number that fails that check is an
+estimate, labelled so wherever it appears. The
 zone's material in conversation is drawn from this note, and the zone's
 map entry links to it.
 
 **Self-standing material** — written for someone who has not seen the
 context: the options gathered, each opened from its general shape in plain
 words, with enough reasoning, a sketch of how it would be done, strengths
-and weaknesses, its cost split on two scales — build cost on the AI scale,
-ownership cost afterwards on the human scale (reading, review,
+and weaknesses, its cost in two parts — building it (mostly the AI's
+work) and owning it afterwards (the human's: reading, review,
 maintenance) — and the cost of reversal; pre-existing context (repo facts,
 earlier decisions, terms of art) introduced in place on first use. Depth
 stops at what comparing the options needs — how-to detail belongs to layer
@@ -134,9 +130,9 @@ after enough discussion; (4) the stall valve below.
 **Position line** ends every exchange: what changed in the picture, the
 zones whose state changed this exchange, the zones still open with their
 state, and a recommendation for what comes next — steering stays in the
-user's hands. Zone states: unopened / in discussion /
-understood-leaning-recorded / locked early / delegated / suspected
-out-of-scope / deliberately left open / cut / waved-off. Open means
+user's hands. Zone states: unopened / in discussion / understood (leaning
+recorded) / locked early / delegated / suspected out-of-scope / left open
+/ cut. Open means
 unopened, in discussion, or suspected out-of-scope and not yet confirmed;
 the settled zones live on the map, not in every line. "Understood" is a
 verdict on the exchange: a zone the user has not responded to on substance
@@ -158,19 +154,19 @@ same zone that could not change a sentence of the draft → stop discussing
 and turn it into an `AskUserQuestion` with three branches: deliberately
 leave open / change approach / narrow scope. (2) A finding that changes no
 sentence of the draft belongs to a future slice's innards: save one line
-and return to the picture.
+in the draft's research notes and return to the picture.
 
 ## 2. Stage 2 — decision session, lock the picture
 
 Propose the session once every zone on the map has a fate: understood,
-locked early or delegated, or about to be named deliberately-left-open or
+locked early or delegated, or about to be named left open or
 cut from scope — no zone disappears silently; cutting a zone is itself a
 session decision. Before proposing, one fresh-eyes pass asks which axes
 are missing: hand the picture draft and the zone map to one subagent to
 read as a stranger. Its candidates go to the user alongside the session
 proposal. A candidate the user keeps enters the map as a zone (stage 1
 reopens for it); a waved-off one still gets one line on the map, marked
-waved-off.
+cut (waved off).
 
 The session gathers the leanings and only now adjudicates — eliminating,
 ranking, weaving them on the concrete problem: ask via `AskUserQuestion` in

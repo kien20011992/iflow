@@ -29,9 +29,9 @@ Language: protocol skeletons — file names, the draft's two lines in
 references/shape.md §0, this skill's own files — are English. Everything
 else a document holds, headings included, and every word spoken to the
 user follow the user's language, in words the user never has to look up:
-the protocol's private vocabulary — terms like lane, picture, zone map,
-the zone states, fresh-eyes pass, ripe — stays in this skill's own files
-and the state block; in documents and in chat, say the plain thing
+the protocol's private vocabulary — terms like zone, lane, picture draft,
+zone map, the zone states, fresh-eyes pass, ripe, Mid-flight — stays in
+this skill's own files and the state block; in documents and in chat, say the plain thing
 instead, or introduce the term right where it is first used. A zone code
 is shorthand for the zone map: anywhere outside the map — the position
 line above all — write it with its short name attached ("Z5 product
@@ -53,9 +53,6 @@ is the task.
    "Working draft and the two run paths" in
    [references/shape.md](references/shape.md).
 
-If mid-run the need collapses to pure understanding with no repo
-deliverable, hand off to i:explore instead.
-
 ## After a compaction
 
 Before the next exchange, re-read the active plan file, and while stages
@@ -73,8 +70,11 @@ round.
 **Fast lane** (`fast`): stages 1–2 are skipped on the user's word, never on
 the model's. In order, before the gate:
 
-1. The deep read (below), then the plan. Research only under the two
-   conditions of "Zone research" in
+1. The deep read (below), seeded by an i:explore dossier when one matches
+   (per "An i:explore dossier first" in
+   [references/shape.md](references/shape.md)), then the plan; each axis
+   the deep read finds enters the assumptions with its leaning. Research
+   only under the two conditions of "Zone research" in
    [references/shape.md](references/shape.md), into the draft's research
    notes under its source discipline.
 2. Fresh-eyes pass on the draft plan: hand the task and the draft plan to
@@ -91,7 +91,8 @@ the model's. In order, before the gate:
 **Deep read.** After the lock (full lane) or at the start (fast lane), read
 the code within the locked scope, or the task's scope in the fast lane —
 this is where how-to detail comes from.
-Heavy reading may be delegated to Explore agents.
+Heavy reading may be delegated to Explore agents; writing code is never
+delegated: the main agent owns every edit.
 
 **Too big for one plan?** Weighed twice, raised at most once per run. At
 the start, from the request alone — before plan mode, any reference or any
@@ -106,14 +107,14 @@ with the reason and recommend `/i:flow` (`/i:flow fast` in the fast lane);
 the user decides at the gate. A
 user who stays with i:lite has that choice written into the draft's
 decisions as soon as the draft exists — approving a plan that carries the
-recommendation is that choice — and this run does not raise it again. Handing over loses nothing:
-the plan file is i:flow's draft format.
+recommendation is that choice — and this run does not raise it again.
 
 **Contents.** Written into the plan file right after the picture, ahead of
 the decisions:
 
 - FIRST step: re-read `${CLAUDE_SKILL_DIR}/SKILL.md` if it is no longer in
-  context (a compaction, or a context cleared on approval); then write each
+  context (a compaction, or a context cleared on approval); rewrite each
+  decision line in the draft the plan departs from; then write each
   research-notes subsection, if any, to
   `docs/research/<topic-slug>/<zone-slug>.md`.
 - What changes; how we will know it works where a user or another system
@@ -122,9 +123,13 @@ the decisions:
   the test run that is the proof — the whole suite unless a narrower run is
   named with what it leaves out and why; a repo with no test command of its
   own gets one built by the same plan.
-- The assumptions: every choice the user did not make explicitly, one line
-  each — what was chosen, the main alternative, and what changing it would
-  change — readable without the code, so the user can veto it at the gate.
+- The assumptions: every choice the user did not make explicitly — a
+  recovered draft's leanings included — one line each: what was chosen,
+  the main alternative, and what changing it would change, readable
+  without the code so the user can veto it at the gate. The user's own
+  words at invocation are decisions, not assumptions.
+- A plan that departs from a decision already recorded in the draft says
+  so at the gate; the FIRST step above rewrites that line.
 - LAST step, one plain line: finish the proof, review, write the result
   below this plan, report — per "Build and prove".
 
@@ -153,8 +158,8 @@ service or deployment — except the working draft.
    this change did not cause is reported, not touched.
 4. Review — only when code changed (research notes and the plan file are
    not code): run `/code-review` at level medium over the files this run
-   touched. It runs in the background: wait for its findings — a review
-   still running is not one that could not run. A finding whose fix stays
+   touched. Wait for its findings; a review still running is not one that
+   could not run. A finding whose fix stays
    within the approved plan is fixed and re-verified; any other finding is
    reported. A review that could not run is reported and does not block.
 5. Close: write the completion block right after the plan in the plan

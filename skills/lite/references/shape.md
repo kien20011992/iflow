@@ -6,10 +6,9 @@ picture · 2. Stage 2 — decision session · 3. Stage 3 — one plan ·
 [agents.md](agents.md).
 
 A stage starts only when the user has locked the previous one by direct
-confirmation (section 4). Three shortcuts skip a lock: the `fast` lane in
-[SKILL.md](../SKILL.md); the opening round's jump to the decision session
-or straight to the plan, which the user confirms directly; and stage 2's
-skipped "Lock" (see its Close).
+confirmation (section 4), or through a shortcut the user controls: the
+`fast` lane in [SKILL.md](../SKILL.md), the opening round's jump (§1), or
+the skipped "Lock" (§2's Close).
 
 ## 0. Working draft and the two run paths
 
@@ -38,9 +37,8 @@ No survivor means Shape starts fresh, in silence. If one is chosen: copy
 its decisions and research notes into this session's draft; bring its
 picture draft, zone map and — when stage 3 had begun — its draft plan
 along as starting points, reconciled against the decisions, keeping its
-topic; from then on work only in this session's draft. The run's end
-retires the recovered draft's `Shape draft:` line together with this
-session's. A previous session's leanings, and every choice in a plan not
+topic; from then on work only in this session's draft. A previous
+session's leanings, and every choice in a plan not
 approved at this run's gate, are not state — re-confirm each with the user
 as it gets used; research notes carry over as-is.
 
@@ -100,8 +98,8 @@ map entry links to it.
 **Self-standing material** — written for someone who has not seen the
 context: the options gathered, each opened from its general shape in plain
 words, with enough reasoning, a sketch of how it would be done, strengths
-and weaknesses, its cost split on two scales — build cost on the AI scale,
-ownership cost afterwards on the human scale (reading, review,
+and weaknesses, its cost in two parts — building it (mostly the AI's
+work) and owning it afterwards (the human's: reading, review,
 maintenance) — and the cost of reversal; pre-existing context (repo facts,
 earlier decisions, terms of art) introduced in place on first use. Depth
 stops at what comparing the options needs — how-to detail belongs to the
@@ -134,10 +132,9 @@ after enough discussion; (4) the stall valve below.
 **Position line** ends every exchange: what changed in the picture, the
 zones whose state changed this exchange, the zones still open with their
 state, and a recommendation for what comes next — steering stays in the
-user's hands. Zone states: unopened / in discussion /
-understood-leaning-recorded / locked early / delegated / suspected
-out-of-scope / deferred to the plan's assumptions / deliberately left open
-/ cut / waved-off. Open means unopened, in discussion, or suspected
+user's hands. Zone states: unopened / in discussion / understood (leaning
+recorded) / locked early / delegated / suspected out-of-scope / deferred
+to the plan's assumptions / left open / cut. Open means unopened, in discussion, or suspected
 out-of-scope and not yet confirmed; the settled zones live on the map, not
 in every line. "Understood" is a verdict on the exchange: a zone the user
 has not responded to on substance is at most "in discussion".
@@ -161,21 +158,21 @@ only a direct confirmation (section 4) takes any of these jumps.
 same zone that could not change a sentence of the draft → stop discussing
 and turn it into an `AskUserQuestion` with three branches: deliberately
 leave open / change approach / narrow scope. (2) A finding that changes no
-sentence of the draft belongs to the plan's innards: save one line and
-return to the picture.
+sentence of the draft belongs to the plan's innards: save one line in the
+draft's research notes and return to the picture.
 
 ## 2. Stage 2 — decision session, lock the picture
 
 Propose the session once every zone on the map has a fate: understood,
 locked early or delegated, deferred to the plan's assumptions, or about to
-be named deliberately-left-open or cut from scope — no zone disappears
+be named left open or cut from scope — no zone disappears
 silently; cutting a zone is itself a session decision. A deferred zone is
 not adjudicated in the session: the user rules on it at the gate. Before
 proposing, one fresh-eyes pass asks which axes are missing: hand the
 picture draft and the zone map to one subagent to read as a stranger. Its
 candidates go to the user alongside the session proposal. A candidate the
 user keeps enters the map as a zone (stage 1 reopens for it); a waved-off
-one still gets one line on the map, marked waved-off.
+one still gets one line on the map, marked cut (waved off).
 
 The session gathers the leanings and only now adjudicates — eliminating,
 ranking, weaving them on the concrete problem: ask via `AskUserQuestion` in

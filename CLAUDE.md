@@ -25,26 +25,28 @@ Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i
 
 ## Lite cần đồng bộ tay
 
-i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, chứng minh, review). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
+i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, chứng minh, review, Mid-flight decisions, định nghĩa giả định). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
 
 - Lite không có slice, không có `docs/shape/`. Giai đoạn 3 ra một plan duy nhất.
 - Lite không có hồ sơ, không có hook. Một lượt dở chỉ chạy tiếp được nhờ khôi phục bản nháp. Khi khôi phục, mọi lựa chọn trong một plan chưa được duyệt vẫn chỉ là giả định.
 - Lite bật plan mode ở bước 2 của SKILL.md, nên shape.md của lite không có câu `EnterPlanMode` ở đầu như flow.
-- Cả hai bên có làn `fast` để người dùng bỏ phần bàn, nhưng mỗi bên một bản. Bản của flow nằm ở mục 5 của `skills/flow/references/shape.md`. Bản của lite nằm ở mục "Two lanes" trong SKILL.md của lite, không nằm trong shape.md, nên đừng chép mục 5 sang shape.md của lite. Hai bản khác nhau ở hai chỗ. Lite đọc sâu code rồi viết một plan, còn flow chỉ quét repo rồi cắt bảng slice, để dành phần đọc sâu cho plan của từng slice. Khi người dùng bác một giả định ở nút duyệt, lite chia bản đồ như vòng mở đầu, còn flow giữ các giả định còn lại trong bảng slice.
+- Cả hai bên có làn `fast` để người dùng bỏ phần bàn, nhưng mỗi bên một bản. Bản của flow nằm ở mục 5 của `skills/flow/references/shape.md`. Bản của lite nằm ở mục "Two lanes" trong SKILL.md của lite, không nằm trong shape.md, nên đừng chép mục 5 sang shape.md của lite. Cả hai làn fast đều mồi từ hồ sơ i:explore khi có. Hai bản khác nhau ở hai chỗ. Lite đọc sâu code rồi viết một plan, còn flow chỉ quét repo rồi cắt bảng slice, để dành phần đọc sâu cho plan của từng slice. Khi người dùng bác một giả định ở nút duyệt, lite chia bản đồ như vòng mở đầu, còn flow giữ các giả định còn lại trong bảng slice.
 - Lite có thêm lối nhảy thẳng sang plan khi không điểm nào đáng quyết. Khi nhảy thẳng, hướng đang nghiêng của mỗi điểm vào phần giả định của plan. Điểm giao cho model quyết cũng được báo trong phần giả định, còn flow báo trong bức tranh.
 - Vòng mở đầu được chia bản đồ: điểm rẻ và dễ quay lại thì hoãn vào phần giả định của plan (trạng thái "deferred to the plan's assumptions"). Người dùng quyết các điểm đó ở bước duyệt. Vì vậy nút "Lock" cũng được bỏ khi các điểm hoãn đến từ việc chia bản đồ.
 - Chữ nói về slice trong bản flow được đổi thành lời của lite, ví dụ "the plan's innards" và "the deep read".
+- Mục "Zone research" của lite giữ nguyên bậc nguồn và luật con số tại chỗ, vì lite không có state.md để trỏ như flow.
 - Ghi chép nghiên cứu được ghi ra `docs/research/` ở bước đầu của plan. Flow ghi lúc tạo hồ sơ.
+- Bằng chứng của lite nằm trong khối kết quả ở file plan; lite không có luật "bằng chứng nằm trong repo" của flow.
 - Hết lượt, lite ghi khối kết quả vào file plan, rồi đổi dòng `Shape draft:` thành `Shape draft done:`. Flow đổi dòng này lúc tạo hồ sơ.
-- Sau khi nén hội thoại, lite không đọc lại SKILL.md, vì SKILL.md của lite nhỏ hơn ngưỡng 5.000 token mà Claude Code tự gắn lại. Flow vẫn đọc lại, vì SKILL.md của flow sát ngưỡng.
+- Sau khi nén hội thoại, lite không đọc lại SKILL.md, vì SKILL.md của lite nhỏ hơn ngưỡng 5.000 token mà Claude Code tự gắn lại. Flow vẫn đọc lại, vì SKILL.md của flow sát ngưỡng. Riêng bước ĐẦU của plan lite vẫn đọc lại SKILL.md khi nó không còn trong context, để phủ trường hợp xoá context lúc duyệt.
 - Kết quả review mà cách sửa lệch khỏi plan thì lite chỉ báo lại. Lite không chép luật "hỏi người dùng trước" của flow (`ex-A1`).
-- Chạy tiếp một bản nháp ở phiên sau, lite vẫn cân lại "quá lớn cho một plan?". Lite không chép cách flow bỏ qua bước cân này (`sh-A2`).
+- Lite cân "quá lớn cho một plan?" hai lần, lúc nhận yêu cầu và lúc viết plan; flow chỉ cân một lần lúc nhận. Chạy tiếp một bản nháp ở phiên sau, lite vẫn cân lại; lite không chép cách flow bỏ qua bước cân này (`sh-A2`).
 - Lần chạy mốc của lite diễn ra mỗi lượt, ngay trước thay đổi đầu tiên, và ghi vào file plan. Test đỏ mới mà thay đổi không gây ra thì chỉ báo lại. Flow ghi mốc một lần vào shape.md.
 - Lite không có mục "Tests from i:test" và không tự gọi i:test.
 
 Mỗi lần đổi một đoạn bên flow mà lite có bản chép, hãy ghi một dòng vào danh sách dưới đây. Đồng bộ xong thì xóa dòng đó.
 
-Hiện chưa có dòng nào: lite đã khớp flow 1.4.0 ở bản 1.5.0.
+Hiện chưa có dòng nào: lite đã khớp flow 1.13.0 ở bản 1.13.0.
 
 ## Sửa i:gamify
 

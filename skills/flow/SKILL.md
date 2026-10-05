@@ -35,7 +35,9 @@ this skill's own files — are English. Everything
 else a document holds, headings included, and every word spoken to the
 user follow the user's language, in words the user never has to look up:
 the protocol's private vocabulary — terms like slice, Charter, birth
-checklist, ripe, finding, Mid-flight — stays in this skill's own files and
+checklist, ripe, finding, Mid-flight, zone, lane, picture draft,
+fresh-eyes pass and the zone states such as "understood (leaning
+recorded)" — stays in this skill's own files and
 the state block; in documents and in chat, say the plain thing instead, or
 introduce the term right where it is first used. A zone code is shorthand
 for the zone map: anywhere outside the map — the position line above all —
@@ -79,9 +81,7 @@ work:
   [references/state.md](references/state.md) and shape.md;
 - during a slice: shape.md and the current slice file.
 
-The compaction summary is a pointer, not a source of truth. During Shape no
-dossier exists yet, so the resume hook stays silent and this rule is the
-only reload.
+The compaction summary is a pointer, not a source of truth.
 
 ## Layer 1 — Shape
 
@@ -98,13 +98,6 @@ Otherwise the topic enters Shape: before anything else, read
 [references/shape.md](references/shape.md) and follow its three stages, or
 its fast lane when the user called `fast`.
 
-If mid-Shape the need collapses to pure understanding with no repo
-deliverable, hand off to i:explore instead of shaping.
-
-The moment the slice table passes its gate: create the dossier per the
-birth checklist in [references/state.md](references/state.md), then enter
-the slice loop within the same turn.
-
 ## Layer 2 — the slice loop
 
 Invariants:
@@ -115,10 +108,9 @@ Invariants:
    imperative sentence ("EnterPlanMode for slice 03, explore only within
    X"). Starting a slice is ONE write — the row goes `doing`, `Current
    slice:` names it, `Next action:` becomes its first step — made and
-   checked before `EnterPlanMode`, since plan mode allows no edit but the
-   plan file.
-   Once the dossier stops changing — after a lone edit, or at the end of a
-   burst of them such as the birth checklist — run
+   checked before `EnterPlanMode`.
+   After each write to the dossier (a burst such as the birth checklist
+   counts as one write), run
    `${CLAUDE_SKILL_DIR}/scripts/check-dossier.sh <dossier-dir>` in the
    foreground and fix what it reports.
 3. When a task-list tool is available, mirror the slice table into it so
@@ -130,9 +122,8 @@ Invariants:
    Then return. While plan mode is on, carry such lines in the plan; its
    FIRST step writes them.
 5. Verification evidence (scripts, screenshots, command output) must live
-   inside the repo — e.g. `docs/shape/<topic-slug>/evidence/` — never in a
-   session scratchpad, which sits outside the repo and is cleaned up on a
-   schedule.
+   inside the repo — e.g. `docs/shape/<topic-slug>/evidence/` — never in
+   the session scratchpad, which is cleaned up.
 
 **The approval gate.** Every plan i:flow puts to the user — the slice table
 that closes Shape, and each build slice's plan — passes the plan-mode
@@ -144,7 +135,7 @@ is read-only: nothing is created, changed, installed, migrated or deployed
 writes meanwhile: during Shape, the working draft; once the dossier exists,
 also the dossier's own files, as this skill directs.
 
-**Build slices** run a plan cycle:
+**Build slices** run the build cycle:
 
 1. `EnterPlanMode` when plan mode is in use; explore only within the
    slice's scope (deep code reading happens now, not earlier); reconcile
@@ -162,14 +153,10 @@ also the dossier's own files, as this skill directs.
    numbered list, one line each — never the plan's prose; write the lines
    the plan carries for other slices (invariant 4); rewrite each decision
    line in shape.md the plan departs from (step 1); and point
-   `Next action:` at the plan's next step. As its LAST step, in
-   the user's language, all four of: run the review gate if this slice
-   changed code, write the slice's result, update shape.md (mark slice NN
-   done, set the next action to the next slice), then re-read shape.md —
-   after a compaction, follow "After a compaction" first — and start that
-   slice per this skill. A slice that changes code lists in its plan the
-   tests covering that change; a repo with no test command of its own gets
-   one built by the same plan.
+   `Next action:` at the plan's next step. As its LAST step: steps 4 and
+   5 below, then "Auto-advance". A slice that changes code lists in its
+   plan the tests covering that change; a repo with no test command of its
+   own gets one built by the same plan.
 3. After approval: verify with real commands, checked against the slice
    file's approved-plan section, not against memory. When the proof
    boundary is the running app, `/run` is that command. When the repo has
@@ -188,15 +175,15 @@ also the dossier's own files, as this skill directs.
    describes. A red this slice caused whose cause the failure output and
    the change just made do not explain goes to `/i:debug <the red output ·
    the proof it breaks · the dossier's shape.md path · the active slice
-   file>` before any fix: it proves the cause, changes nothing, and the fix
-   stays here under the approved plan. Running a suite that already exists
+   file>` before any fix; the fix stays here under the approved plan.
+   Running a suite that already exists
    is this cycle's own work with the project's runner, never a trip through
    i:test.
 4. Review gate — only when the slice changed code (dossier files and
    research documents are not code): run `/code-review` at level medium
-   over the files this slice touched. It runs in the background: wait for
-   its findings before writing the result — a review still running is not
-   one that could not run. The main agent reconciles the findings against
+   over the files this slice touched. Wait for its findings before writing
+   the result; a review still running is not one that could not run. The
+   main agent reconciles the findings against
    the slice file's approved plan: a finding whose fix would depart from
    the approved plan needs the user's decision first (Mid-flight
    decisions), and the result records it; other findings inside this
@@ -219,16 +206,15 @@ discipline" in [references/state.md](references/state.md). A research
 slice may delegate per formed question.
 
 **Auto-advance** — finishing a slice does not end the turn. After the
-slice's result section is written (or once the research document is
-complete): update shape.md, announce in exactly one line which slice
+slice's result section is written (or the research document is complete):
+update shape.md (mark slice NN done, set the next action to the next
+slice), re-read it (invariant 1), announce in exactly one line which slice
 finished and whether it passed, naming any gap its result records — for a
-research document, with its file path; it needs no approval before
-advancing, and feedback arriving later follows Mid-flight decisions — then
-start the next slice in the same turn, even when that means another trip
-through the approval gate. Stop only when a user decision is needed, a report you
-commissioned has not come back yet, or every slice is done or retired. If
-the next
-slice is large, offer a new session in one sentence, without pressing.
+research document, with its file path — then start the next slice in the
+same turn, even through another approval gate. It needs no approval before
+advancing; feedback arriving later follows Mid-flight decisions. Stop only
+when a user decision is needed, a report you commissioned has not come
+back yet, or every slice is done or retired.
 
 ## Mid-flight decisions
 
@@ -254,22 +240,20 @@ also go "needs-redo" and rerun in the original order.
 
 ## Tests from i:test
 
-i:test writes NEW independent tests in a fresh fork that never saw the
-code being written. Call it only when the user asks for independent tests,
-when an approved plan's verification needs coverage that does not exist
-yet, or when a slice needs E2E, contract or adversarial proof nothing
-covers — never for a document-only slice, never as an automatic second
-pass over verification that already proved the slice. Before the call, write every
+i:test writes new independent tests from a fresh fork. Call it only when
+the user asks for independent tests, or when an approved plan needs
+coverage (unit, E2E, contract or adversarial) that nothing provides yet —
+never as an automatic second pass over verification that already proved
+the slice. Before the call, write every
 decision changed in this conversation into the dossier: the fork reads
 only the dossier and its arguments. The handoff is one plain sentence,
 not a schema: the
 slice and its dossier path, the focus, the constraints, and that the
 dossier's picture and decisions and the slice's charter are the oracle.
 Condense what comes back into the slice's result; the next action stays
-this flow's own call. A red no result claims and this slice's own change
-never touched is judged against the contract before it is filed
-anywhere; when that leaves its cause unexplained, take the i:debug lane of
-step 3.
+this flow's own call. A red in one of those tests that this slice's own
+change never touched is judged against the contract first; if that leaves
+its cause unexplained, it takes the i:debug lane of step 3.
 
 A red in one of those tests is a finding about the product, not a broken
 test. Inside the current slice's Charter: fix the code and re-verify.
@@ -284,8 +268,9 @@ the slice required that coverage.
 
 ## Finishing
 
-When every slice reads done or retired: if the program changed code, run
-the whole suite once more, never narrowed, per step 3 of the build cycle.
+When every slice reads done or retired: if code changed after the last
+whole-suite run, run the whole suite once more, never narrowed, per step 3
+of the build cycle.
 A red beyond those recorded at the baseline means not done — each takes
 its lane there, and a slice already reading done that has to carry a fix
 goes through "needs-redo" above; finishing resumes once none is left.

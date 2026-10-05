@@ -13,6 +13,7 @@ description: >-
   or decision rather than a textbook concept to explain or drill, and over
   deep-research when they want a dialogue, not a report to read. Not for a
   factual lookup or work with a deliverable in the repo (i:flow).
+argument-hint: "<idea or subject to explore, or dossier to resume>"
 ---
 
 # Explore, layer by layer
@@ -24,8 +25,7 @@ The product is not the answer — it is a user who commands the subject well
 enough to fulfil that aim themselves, knowing what each question means
 and, when the aim is a decision, what each choice costs. Center every
 response on the user's comprehension, not on being faster or smarter than
-them. Everything below is a delta from your defaults; where nothing is
-said, your defaults are right.
+them.
 
 ## The seat
 
@@ -129,10 +129,6 @@ praise, or silence, and never your reading of their words. Do not ask the
 user to endorse a principle or conclusion you just taught: their agreement
 adds nothing the dossier can use.
 
-Expect the rhythm to shift: early exchanges are teach-heavy with few
-questions; deep exchanges, where the user now commands the subject, should
-feel like a two-way brainstorm.
-
 ## Language
 
 Write at the vocabulary the user's own messages demonstrate, and let it rise
@@ -141,8 +137,8 @@ introduced once in plain words, then reused verbatim — rotating synonyms
 drowns beginners. When a term returns after a long gap, re-anchor it in half
 a line. Teaching the domain's words is part of the teaching: by the
 end, the user should command enough of the domain's language to face its
-practitioners. This skill's own words — seat, layer, zone, map, dossier,
-flag — stay in these files; in chat and in the dossier, say the plain thing
+practitioners. This skill's own words — seat, layer, zone, map, dossier —
+stay in these files; in chat and in the dossier, say the plain thing
 they stand for.
 
 ## Done
@@ -151,13 +147,14 @@ A zone that serves no part of the aim does not get opened. When none
 remains unexplored, first ask which zones are missing: hand the aim and the
 map to one subagent to read as a stranger, or reread both yourself as one,
 and offer its candidates to the user. Then converge — conclusions,
-remaining unknowns, what downstream steps can rely on. Explore only: do not
+remaining unknowns, what downstream steps can rely on; whether that is
+enough is the user's call, never a verdict of yours. Explore only: do not
 implement, and do not quietly turn hypotheses into requirements. When the
 aim turns into work in a repo, the handoff response ends with one line: the
 reason, then the command for the user to type with the dossier's path —
 `/i:lite <task>` for one plan (`/i:lite fast <task>` once the direction is
-settled), `/i:flow <topic>` for several deliverables each worth approving
-on its own.
+settled), `/i:flow <topic>` (`/i:flow fast <topic>` once settled) for
+several deliverables each worth approving on its own.
 
 ## Dossier
 
@@ -166,7 +163,8 @@ creating, updating, resuming, or finishing one, read
 [references/dossier.md](references/dossier.md) and follow it: update it
 without asking; say the file's full path when you create it and when you
 finish, not at every save; on resume, read it first and continue without
-re-asking what it records. Source tiers and assumption flags live there.
+re-asking what it records. Source tiers and the confirmed/unconfirmed
+marks live there.
 
 After a compaction, re-read `${CLAUDE_SKILL_DIR}/references/dossier.md`
 and the dossier before the next exchange: the summary is a pointer, the

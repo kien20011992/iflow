@@ -7,10 +7,6 @@ vào chat. Thư mục luôn là `slate/` cho đồng nhất, nhưng **tên trang
 game do concept đặt** và ghi ở bảng từ vựng (`gamemaster.md` mục 7); file
 người chơi và lời người dẫn chỉ dùng tên đó.
 
-**Khi nào game có máy.** Khi việc thật mô phỏng được từ dữ liệu: giá lịch
-sử, kho văn bản, bộ đề, bản nhạc MIDI, log gõ phím. Không mô phỏng được thì
-game chạy trên file và số báo tay, và `plan.md` ghi rõ vì sao.
-
 **Đơn vị đề.** Máy chấm làm việc trên *đề*: một đơn vị dữ liệu người chơi
 xử lý trong một lần chơi (forex: một ngày giá cũ; gõ phím: một đoạn văn;
 đàn: một câu nhạc). Tên đề trong game do bảng từ vựng đặt; ở đây gọi chung
@@ -115,12 +111,9 @@ người dẫn biết đọc nó ra chữ gì.
 
 ## Cảm giác game
 
-Trang chấm đúng, lưu đúng mà vẫn có thể cho cảm giác đang làm việc thật
-chứ không phải đang chơi, với cốt truyện nằm ngoài lề. Một trang "chơi
-được" chưa phải game; những điều dưới
-đây là cái làm nó thành game, và trang của mọi game có máy phải có đủ. Hình
-hài cụ thể (quái, bẫy, boss, hay thứ khác) là của concept đã khoá; ví dụ
-trong ngoặc là của ca forex:
+Một trang chấm đúng, lưu đúng chưa phải game. Trang của mọi game có máy
+phải có đủ các điều dưới đây; hình hài cụ thể (quái, bẫy, boss hay thứ
+khác) là của concept đã khoá, ví dụ trong ngoặc là của ca forex:
 
 - **Kẻ địch nhìn thấy được, nhưng chỉ sau khi đáp án đã khoá.** Mỗi đáp
   án chính là một thứ đứng đúng chỗ đó trên màn (forex: con quái ở mỗi

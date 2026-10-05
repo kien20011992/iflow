@@ -21,13 +21,12 @@ user who can say, in their own words, what the code does, in what order,
 and why it was built that way. Center every turn on their comprehension.
 
 Read only: never change product code, tests, config, a dossier or a plan
-file. Everything below is a delta from your defaults; where nothing is
-said, your defaults are right.
+file.
 
 ## 1. Find what the question points at
 
 The conversation may already hold the work; use it to sharpen the search,
-never instead of it. Run the same search whether or not the chat knows.
+never instead of it.
 
 **A scope the user names** — a file, commit, branch, feature or time range
 — is the target; check it exists before teaching it.
@@ -49,10 +48,10 @@ question into keywords — the user's words plus how code would spell them:
 identifiers, abbreviations, the text the UI shows, error messages. Search
 the code; rank entry points (routes, handlers, UI events, CLI commands,
 hook and config registrations) and source above docs, tests and notes;
-skip backups, vendored and generated directories. Then the history:
-`git log -S`/`-G` on the identifiers found, `git log --follow` on their
-files, `git log --grep` on the keywords. Uncommitted edits to those files
-are named as work in progress.
+skip backups, vendored and generated directories. Then the history: which
+commits added or removed each identifier found, how its files evolved,
+which commits mention the keywords. Uncommitted edits to those files are
+named as work in progress.
 
 A wide search in a large repo goes to one Explore agent, called without a
 `name`; the teaching stays here.
@@ -62,8 +61,7 @@ A wide search in a large repo goes to one Explore agent, called without a
 - One target → the first line names it ("commit `854968e`, 2 file"; "luồng
   đăng ký, bắt đầu ở `routes/auth.ts:12`"), then teach.
 - Several → one `AskUserQuestion`, each candidate a concrete option (short
-  hash and subject, file set, or entry point); its free-text answer takes a
-  hint.
+  hash and subject, file set, or entry point).
 - Nothing → say which words were searched and where, then ask in one line
   for a hint: a file or screen name, text on the UI, an error message, a
   rough date. Never teach a guess.
@@ -71,8 +69,7 @@ A wide search in a large repo goes to one Explore agent, called without a
   several unrelated concerns → the first turn is the overview and the list
   of parts, one or two lines each; the user picks where to go deep.
 
-Restate the target in the first line of every teaching turn: after a
-compaction it is the only trace of what was found.
+Restate the target in the first line of every teaching turn.
 
 ## 2. Where each "why" comes from
 
@@ -87,7 +84,7 @@ Look for recorded reasons before inferring any:
   path or directory name and name the files being taught — the folder is
   shared by every project, so a plan that never mentions this repo is not a
   source. A plan file does not record whether it was approved; an i:lite
-  plan that was carries its result block below the plan;
+  plan that was carries its completion block below the plan;
 - notes under `docs/research/`;
 - commit messages, the pull request description when the branch has one,
   comments and tests next to the code;
@@ -101,7 +98,7 @@ Every reason carries its source in half a sentence: "theo commit message",
 "theo file plan", "theo chú thích trong file", "theo lịch sử phiên ngày
 …", or "tôi suy ra từ code".
 "Đã duyệt" is said only of a dossier's approved plan or an i:lite plan
-with its result block.
+with its completion block.
 Never present an inferred reason as recorded. Where a record and the code
 disagree — the plan says X, the code does Y — say so plainly: that gap is
 often what the user most needs to see.
@@ -128,7 +125,8 @@ A teaching turn, in this order:
 and safely — a command, an existing test, a script on a sample input, the
 `run` skill for an app — run it and put the real output in the lesson.
 Mark each behaviour claim "đã chạy" or "đọc từ code". Before the first run
-record `git status --porcelain`; after the last, compare: a run that left
+record `git status --porcelain` and `git diff`; after the last, compare
+both: a run that left
 files changed is reported, never reverted with `git checkout`, `git
 restore` or `git stash`. Never run against a live system, real data, a paid
 API, or anything that sends, publishes or deploys; never install anything.
@@ -136,7 +134,7 @@ API, or anything that sends, publishes or deploys; never install anything.
 **Language.** A term of art appears only after a plain-words introduction,
 then is reused verbatim; after a long gap, re-anchor it in half a line. By
 the end the user should command the words the code's own authors use. This
-file's words — target, part, page, gauge — stay here; in chat say the plain
+file's words — target, part, page — stay here; in chat say the plain
 thing.
 
 ## 4. When a picture explains better
@@ -171,8 +169,8 @@ between parts.
   chưa?": only a correct answer in the user's words counts. No praise, no
   scolding — say what was right and what was off.
 - A question left unanswered twice is dropped. Two rounds stuck on the
-  same point → offer three ways on: leave it, explain it another way, or
-  narrow the scope.
+  same point → offer, in prose, three ways on: leave it, explain it
+  another way, or narrow the scope.
 - "thôi" or any stop ends the questions at once. Otherwise the last
   question asks for the whole thing in the user's own words, and a correct
   retelling ends them.
@@ -186,6 +184,8 @@ between parts.
   run.
 - One line each, only when it applies: a suspected defect →
   `/i:debug <symptom · how to see it · what it should do>`; a wish to
-  change it → `/i:lite <task>`; behaviour no test pins → `/i:test <scope>`.
+  change it → `/i:lite <task>`, or `/i:flow <topic>` when it has several
+  parts each worth approving on its own; behaviour no test pins →
+  `/i:test <scope · intent · the behaviour as the acceptance criterion>`.
 - The lesson is written into the repo only when the user asks to keep it,
   per "Keeping the lesson" in [references/page.md](references/page.md).

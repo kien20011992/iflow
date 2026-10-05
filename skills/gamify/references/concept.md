@@ -4,14 +4,7 @@
 nhau trong [thu-vien-khung.md](thu-vien-khung.md), khoác mỗi khung lên bản
 đồ thành một "concept": thế giới, vai, người dẫn, một phiên chơi trông thế
 nào, và cái gì trong game là cái gì trong việc thật. Người dùng đọc ba
-concept, chọn một, chỉnh một vòng, khoá. Concept đã khoá là cái mọi
-dungeon, quest, cấp sau này phải theo; đổi concept sau khoá là làm lại từ
-giai đoạn này.
-
-**Vì sao ba, vì sao khác khung.** Một khung cho mọi việc ra game chán. Ba
-concept cùng một khung thì chọn cũng như không. Ba khung khác nhau cho
-người dùng thấy việc của mình có thể là chuỗi đền, là sân săn, hay là hầm
-bốc ngẫu nhiên — và chọn cái mình muốn sống trong đó nhiều tháng.
+concept, chọn một, chỉnh một vòng, khoá.
 
 **Thư viện là điểm xuất phát, không phải hàng rào.** Khung có sẵn giúp
 vòng đầu ra nhanh và có nền nghiên cứu. Người dùng không ưng cả ba thì
@@ -73,12 +66,9 @@ Người dùng bác cả ba, hay nói "cho cái khác", "không thích", "chán"
    tên mới và một dòng nói vòng trước trượt ở đâu theo lời người dùng. Khi
    khoá, dòng "Dựa trên" ghi "<thể loại> — <game gốc>". Không
    tự thêm khung vào `thu-vien-khung.md`; thư viện chỉ đổi khi người dùng
-   bảo.
+   bảo, và khung mới chép đúng tám nhãn của một khung sẵn có.
 
-Người dùng không ưng là chuyện thường của một cuộc trò chuyện, không phải
-lỗi của ai. Không đếm vòng, không nhắc số vòng với người dùng. Việc chọn
-concept là trò chuyện qua lại như hỏi đáp thường; skill đưa cái nhanh
-trước, người dùng lái, skill theo.
+Không đếm vòng, không nhắc số vòng với người dùng.
 
 ## Đường 2 — người dùng đưa concept
 
@@ -128,7 +118,8 @@ hỏi thêm:**
   may rủi phải tách khỏi tiến bộ (tiến bộ theo "chiêu sạch" = đúng lý,
   không theo kết quả giá).
 
-Cả hai lớp không thiên vị trong lời.
+Cả hai lớp tả mọi concept cùng khổ, cùng độ kỹ; ý nghiêng chỉ nằm ở dòng
+cuối của lớp 1.
 
 ## Phép kiểm khớp
 

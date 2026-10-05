@@ -7,11 +7,6 @@ thua thì mất gì, bài kiểm cố định chấm bằng gì. Kế hoạch đ
 kế hoạch thì cắt game thành các slice: mỗi dungeon một slice, chơi được
 ngay từ dungeon đầu.
 
-**Vì sao kế hoạch đi trước dungeon.** Người dùng đòi "kế hoạch định từ
-đầu": mỗi quest, mỗi cấp phải nối với một kỹ năng con ngay lúc thiết kế,
-không phải bịa dần khi dựng từng dungeon. Nên duyệt gamemaster = duyệt kế
-hoạch, rồi mới có dungeon.
-
 **Luật viết.** Cả gamemaster.md lẫn lời trình cho người dùng theo
 "Write for understanding" của SKILL.md.
 
@@ -122,8 +117,10 @@ Mỗi slice dungeon đi đúng năm bước:
       chỉ thấy số?
    5. Muốn mở lần nữa không?
    Trước khi giao trang, ở slice 03 và ở mọi slice đổi trang, Claude làm
-   hai việc. Một, soát mã nguồn trang có đủ bốn thứ đầu (mục "Cảm giác
-   game" của `slate.md`) và có thật mọi thứ file người chơi và mục 2, 7
+   hai việc. Một, soát mã nguồn trang có đủ bốn điều đầu của mục "Cảm giác
+   game" trong `slate.md` — kẻ địch hiện sau khi khoá đáp án, hình của thứ
+   người chơi đặt, boss có thanh máu, tiếng và chuyển động — và có thật mọi
+   thứ file người chơi và mục 2, 7
    của gamemaster.md hứa trang hiện: chữ, màu, tiếng, nghi thức. Hai, **chạy chính
    đoạn chấm của trang ở ngoài trình duyệt** trên vài kiểu chơi thật —
    làm đúng hết, sai một nước, sai rồi lùi sửa — và đọc kết quả bằng mắt:

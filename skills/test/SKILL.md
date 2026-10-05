@@ -24,11 +24,9 @@ background: false
 `$ARGUMENTS` carries a scope (the behaviour to test), an intent (test
 type, focus, constraints) and any user-stated acceptance criteria; a
 missing scope or intent is resolved by the rules below, never guessed.
-Fresh eyes are the point: this run never saw the code being written.
-Expected results come from the contract — never from the implementation,
-the behaviour it happens to have today, or an existing assertion that
-contradicts the contract. This run writes test files and their fixtures
-only — never product code, never an i:flow dossier.
+Expected results come from the contract, never from the implementation.
+This run writes test files and their fixtures only — never product code,
+never an i:flow dossier.
 
 ## Scope
 
@@ -47,16 +45,15 @@ repository when the user names it — takes one surface at a time through
 expectations, risk pass, tests and run until every surface is done; any
 surface left without a test goes under Not covered with the specific
 reason it could not be completed. The active slice is the one the
-`Current slice:` line names in the dossier the caller names, else in a
-`docs/shape/*/shape.md` at the git root; `—` means none, and several
-dossiers naming a slice mean ask unless an explicit scope already settles
-the run. A diff says WHERE to look — its file list and
-changed signatures; its hunks wait until the expectations are written —
-never WHAT is correct.
+`Current slice:` line names in the dossier the caller names; `—` means
+none, and a call that names no dossier has none. A diff says WHERE to look
+— its file list and changed signatures; its hunks wait until the
+expectations are written — never WHAT is correct.
 
-## Expectations — written before the code under test is read
+## Expectations — written before any implementation body is read
 
-Write down and keep: scope · requested intent · public boundary · oracle
+Write down in this run's own working notes — never a file left behind —
+and keep: scope · requested intent · public boundary · oracle
 sources · observable response · final state · must-not-change effects ·
 repeat-call semantics · isolation constraints · explicit exclusions ·
 contract gaps. Per scenario, keep only the effects that apply: a pure
@@ -104,16 +101,17 @@ With no layer stated, pick the cheapest boundary that proves the invariant,
 and add a second layer only when it protects a different invariant — never
 copy one assertion across unit, integration and E2E.
 
-**Only what is missing**, when the intent asks for that alone: write and
-run nothing; match each expectation to a test that Native implementation
-counts as already covered, and the report, saying plainly that nothing was
-written or run, is the whole deliverable.
+**Only what is missing**, when the intent asks only for a list of what has
+no test yet, not for tests to be written: write and run nothing; match
+each expectation against the existing tests by the already-covered rule
+under Native implementation, and the report, saying plainly that nothing
+was written or run, is the whole deliverable.
 
-**E2E** goes through the outermost public boundary on the project's existing
-harness: real wiring for what the project owns, the existing sandbox,
-emulator or double for third parties, cleanup that also runs when the
-test fails. Decline, retry and concurrency go under "Not covered" unless
-they were asked for. No harness → a harness gap; never call an
+**E2E** runs on the project's existing harness: real wiring for what the
+project owns, the existing sandbox, emulator or double for third parties,
+cleanup that also runs when the test fails. Decline, retry and concurrency
+go under "Not covered" unless they were asked for. No harness → a harness
+gap; never call an
 integration test E2E.
 
 **Grouping.** Same setup, oracle and effect → one parameterized table or
@@ -125,7 +123,9 @@ several steps → one scenario test, never a chain of dependent tests.
 Follow the project's test config and neighbouring tests in placement,
 naming, fixtures, helpers and parameterization.
 Use a fake clock, a fixed seed and a unique namespace wherever determinism
-needs them. Mock the external boundary, never the behaviour under test. No
+needs them; a test that writes to a real store writes inside its own
+namespace, and its cleanup removes only what it created. Mock the external
+boundary, never the behaviour under test. No
 real credential, production service or shared dataset. A dependency
 already pinned in the project's manifest and lockfile may be restored with
 the project's own recorded command (e.g. `npm ci`, `bundle install`,
@@ -169,9 +169,9 @@ suite green, never report a pass without a run that happened.
 
 ## Report
 
-The deliverable is native test files, the fixtures they need, and whatever
-artifacts the runner itself produces — no ledger, no case IDs, no dated
-comments, no inventory file.
+Beyond the test files, their fixtures and the runner's own artifacts,
+nothing is left behind: no ledger, no case IDs, no dated comments, no
+inventory file.
 
 Return only the lines that have content, most important first: Findings,
 each with the test's name, what its source says should happen, what
@@ -180,10 +180,11 @@ the user's call whether to test it: every written expectation no new test
 proves and no existing test already covers, each with why it was left and
 the kind of test that would prove it — never a claim that the tests are
 enough · Contract or harness gaps, each contract gap put as the question
-the user must answer · Added or changed · Run · Result · Verified
-invariants, naming the existing test where an expectation was already
-covered · Scope and Intent / strategy, only where this run chose them
-rather than the arguments, with why · Boundary ·
+the user must answer · Added or changed · Run and Result — each command
+and what its output means, not a pasted log · Verified invariants, naming
+the existing test where an expectation was already covered · Scope and
+Intent / strategy, only where this run chose them rather than the
+arguments, with why · Boundary ·
 Oracle sources, saying plainly when the arguments carried no acceptance
 criteria and where the expectations came from instead · Isolation. Write
 it in the language the caller wrote `$ARGUMENTS` in and in plain words:
