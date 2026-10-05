@@ -22,37 +22,41 @@ background: false
 
 # i:debug — reproduce it, then prove the cause both ways
 
-`$ARGUMENTS` carries the symptom and, where the caller has them, the mission,
+`$ARGUMENTS` carries the symptom and, where the caller has them, what is asked,
 how to see it, what should have happened, a suspect, what changed last and
 what is already ruled out. Whatever it does not carry is resolved by the rules
 below, never guessed.
 
 Default to proving the cause. When the caller asks for less than a cause — a
 reproduction, the first bad commit, a verdict on a named suspect — stop there,
-with the same report.
+with the same report, its Status naming what was settled — a reproduction, the
+first bad commit, or the suspect convicted or cleared — where a full run would
+say proven.
 
-This run owns the diagnosis and its evidence. The fix belongs to the caller:
-the conversation that invoked this run, or the i:flow slice it came from.
-Nothing is changed for keeps here — not code, not a live system, not a
-dossier. Everything below is a delta from your defaults; where nothing is
-said, your defaults are right.
+This run owns the diagnosis and its evidence. The fix belongs to the caller.
+Nothing is changed for keeps here — not code, not a live system — and the
+caller's dossier, slice file or plan file is not edited at all.
 
 ## Commitment — settled before the target is opened
 
 Before the target is read, write down and keep: what was observed, verbatim;
 what should have happened instead and where that expectation comes from; how
 often and under what conditions; when it last behaved correctly. That last
-point is the cheapest cut there is: the diff from then to now — the working
-tree against HEAD when the tree is dirty — is measured before anything else
-is read. Unknown and never known good are themselves valid answers here:
-record `unknown` or `never known good` and go straight to reproduction —
-the temporal diff and bisect apply only once a measured good point exists.
+point — the good point — is the cheapest cut there is: what changed from then
+to now — the commits since then plus the working tree against HEAD when it is
+dirty; outside the code, the packages, settings and deploys the target's own
+records show changed — is taken before anything else is read. Unknown and
+never known good are themselves valid answers here: record `unknown` or
+`never known good` and go straight to reproduction.
 
 - **Source** — a commitment that already exists: the sentence the caller
   states, docs, a schema, an API contract, the written description of a
-  process, a test that was green, an i:flow dossier's picture (the body of
-  its shape.md). Never how the target behaves today, never what merely
-  seems reasonable. A crash,
+  process, a test that was green; called from i:flow, also the picture and
+  decisions in the shape.md the caller names and the charter the named
+  slice file opens with; called from i:lite, also the picture, what the
+  approved plan says will change, the decisions and the approved
+  assumptions in the plan file the caller names. Never how the target
+  behaves today, never what merely seems reasonable. A crash,
   a hang, data loss, or an unhandled error the target itself raises is a
   defect without any of those.
 - **Precedence** — docs, a schema or a contract outrank a test that was
@@ -62,37 +66,45 @@ the temporal diff and bisect apply only once a measured good point exists.
   expectation that conflicts with a higher commitment without naming and
   rejecting it is evidence, not an override — that conflict is a Gap. A
   commitment overridden this way is named in the report.
-- **Gap** — nothing states the correct behaviour, or a disagreement nothing
-  above settles: name both sides. This run ends there, blocked, naming the
-  exact `/i:debug <symptom · expectation>` call that resumes it, carrying
-  every field the original argument had and what this run ruled out.
+- **Gap** — no observable symptom in the arguments or from the target's own
+  runner, nothing that states the correct behaviour, or a disagreement
+  nothing above settles: name what is missing, or both sides, as the
+  question the user must answer — never sweep the repository for something
+  wrong to fill it. This run ends there, blocked, naming the exact
+  `/i:debug <symptom · what it should do>` call that resumes it once the
+  user's answer fills the missing field, carrying every field the original
+  argument had and what this run ruled out.
 - **Match** — behaviour that matches the commitment is not a defect. The
   match is measured, not read: run the class of input the commitment names,
   not only the caller's one example, and a member that misses it is a defect
-  this run keeps. Otherwise say which — a misunderstanding is i:explore's,
-  a wish is a feature and i:flow's — in one line and end.
+  this run keeps. Otherwise end with the report, Status not a defect, saying
+  in one line which: a misunderstanding goes to `/i:explore`; a wish is a
+  feature — `/i:lite <task>` for one plan, `/i:flow <topic>` for several
+  parts each worth approving on its own.
 
 ## What is already in hand
 
 | In hand | Reproduction | Proof both ways comes from |
 |---|---|---|
-| A red test or a failing command | Exists: run it once to confirm, then shrink it while the defect survives | Putting the cause back and running it again |
-| Only a trace — log lines, a production report, a case that went wrong | The captured occurrence with its evidence trail; make a local one only when one input or one request does it | Once a local reproduction exists, the first row applies; otherwise a toggle the target already owns — a flag, a config, a rollback — named as the next step, never operated by this run on a live system; until it runs, the cause is a hypothesis |
+| A red test or a failing command | Exists: run it once to confirm; when what changed since the good point has not already narrowed it, shrink it while the defect survives | Putting the cause back and running it again |
+| Only a trace — log lines, a production report, a case that went wrong | The captured occurrence with its evidence trail; make a local one when the trail names the inputs — their order and timing too — well enough to replay them in isolation | Once a local reproduction exists, the first row applies; otherwise it is the cannot-reproduce case below, settled by a toggle the target already owns — a flag, a config, a rollback — named as the next step, never operated by this run on a live system |
 | A cause the caller names | A hypothesis, tested first and like any other | The row that fits the symptom |
 | An intermittent or quantitative defect — flaky, slow | A number over N runs | Both tests measured over the same N |
-| A step people follow went wrong | The written procedure against the record of that case | Named as the next step; until it runs, a hypothesis |
 
 Cannot reproduce here → first measure the conditions that differ between
 where it fails and here; then every conclusion carries that flag, and the
 deliverable is the leading hypothesis, labelled as one, plus what would
-settle it. No observable symptom in the argument and none from the target's
-own runner → end with the resume call; never sweep the repository for
-something wrong.
+settle it.
 
 Reproduction and both tests run only where they are reversible and isolated —
-never on a live system or a shared dataset. Instruments are the target's own
-first: its runner, its logs, the record its process already keeps; `/run`
-when the boundary is the app. A profiler, debugger, tracer or sanitizer when
+never on a live system or a shared dataset. On the user's own machine,
+reading its state and running what changes nothing are measurements; a
+change to the machine's own setup — a system package, a driver, a system or
+desktop setting, a desktop service restarted — is never made by this run,
+not even as an instrument: it is named as the next step for the user to
+run, and until it runs, the cause is a hypothesis. Instruments are the
+target's own first: its runner, its logs, the record its process already
+keeps; `/run` when the boundary is the app. A profiler, debugger, tracer or sanitizer when
 those cannot separate the hypotheses that remain. `git bisect run` with the
 reproduction command is the measurement on the time axis — always in a
 separate `git worktree`, removed before the report. That worktree carries
@@ -110,8 +122,10 @@ hold:
 - **Put it back** — and the symptom returns: the only test separating the
   cause from a change that merely coincided.
 - **Accounts for everything** — the cause explains every part of the
-  symptom. A fragment that survives removing the cause is a second defect:
-  one line under Not explained with its own `/i:debug` call. A fragment
+  symptom. A fragment that survives removing the cause — for a number, any
+  part of the gap back to the expected value beyond the spread of N runs —
+  is a second defect: one line under Not explained with its own `/i:debug`
+  call. A fragment
   that goes with it but is not explained means the wrong cause.
 
 A cause may be a set — several factors needed at once, so removing any one
@@ -134,14 +148,18 @@ longer matches is reported under Working tree, never overwritten.
 
 ## Report
 
-In the language the caller wrote `$ARGUMENTS` in — not that of a pasted trace
-— only the lines that have content: Status — proven, hypothesis or blocked ·
-Symptom · Where the expectation comes from · Reproduction · Ruled out, and by
-what · Cause · Evidence · Where it is created · Not explained · Working tree ·
-Next step.
+In the language the caller wrote the arguments in (not that of a pasted
+trace) and in plain words, only the lines that have content, most important
+first: Status — proven, hypothesis, blocked or not a defect · Cause · Where
+it is created · Not explained · Reproduction · Evidence · Ruled out, and by
+what · Where the expectation comes from · Symptom · Working tree · Next
+step. The names above are roles, not headings; this skill's own terms —
+commitment, gap, remove-it and put-back test, instrument — are said by what
+they stand for.
 
-Evidence is the real output of the commands that ran; the report and the
-target's own artifacts are the record — no ledger, no case IDs, no inventory
+Evidence is each decisive command with the key lines of its real output and
+what they show, not a pasted log; the report and the target's own artifacts
+are the record — no ledger, no case IDs, no inventory
 of what was tried.
 
 **Next step** is runnable, chosen by size:
@@ -151,22 +169,19 @@ of what was tried.
   a disabled cache proves a cause and fixes nothing — otherwise the change to
   make and where. Either one is checked against the whole commitment written
   down at the start, not only the symptom that surfaced; what it leaves
-  uncovered is said there, never implied covered. With it, the reproduction
-  command that re-proves it; when the target is code with a runner and no
-  existing test already pins the commitment, add `/i:test <scope · the
-  reproduction as the case · the commitment as the oracle>`.
+  uncovered is listed as the user's call, never implied covered. With it,
+  the reproduction command that re-proves it; when the target is code with
+  a runner and no test the normal test command requires to pass already
+  asserts the commitment in full, add `/i:test <scope · a regression test
+  replaying the reproduction, its input and steps written out · what it
+  should do and where that is written, as the acceptance criterion>`.
 - The fix is larger than the cause — restructuring, several concerns, a
-  class of defect rather than one instance → `/i:flow <the diagnosis>`.
+  class of defect rather than one instance → `/i:lite <the diagnosis>` when
+  one plan covers the fix, `/i:flow <the diagnosis>` when it has several
+  parts each worth approving on its own.
 
 The same defect seen elsewhere gets one line; fixing those is the caller's
 decision.
-
-Called from i:flow, read the dossier the caller names — its
-`Current slice:` line, the picture and decisions in its shape.md's body,
-and the active slice's charter (what its slice file states first) — for
-the commitment, and return these same items. Called from i:lite, read the
-plan file the caller names the same way. Read only: this run never edits
-the dossier, the slice file or the plan file.
 
 ## Never
 
