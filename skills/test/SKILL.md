@@ -43,8 +43,9 @@ the main public modules and the whole repository — as the exact
 call that resumes it, never a promise to continue. Never default to the
 whole repository. A scope of several public surfaces — the whole
 repository when the user names it — takes one surface at a time through
-expectations, risk pass, tests and run, and Not covered lists every
-surface left without a test. Never pick a dossier by fuzzy match. The
+expectations, risk pass, tests and run until every surface is done; any
+surface left without a test goes under Not covered with the specific
+reason it could not be completed. Never pick a dossier by fuzzy match. The
 active slice is the one the `Current slice:` line names in the dossier the
 caller names, else in a `docs/shape/*/shape.md` at the git root; `—` means
 none, and several dossiers naming a slice mean ask unless an explicit scope
@@ -101,8 +102,9 @@ and add a second layer only when it protects a different invariant — never
 copy one assertion across unit, integration and E2E.
 
 **Only what is missing**, when the intent asks for that alone: write and
-run nothing; match each expectation to an existing test that asserts it,
-and the report is the whole deliverable.
+run nothing; match each expectation to a test that Native implementation
+counts as already covered, and the report, saying plainly that nothing was
+written or run, is the whole deliverable.
 
 **E2E** goes through the outermost public boundary on the project's existing
 harness: real wiring for what the project owns, the existing sandbox,
@@ -136,12 +138,15 @@ manifest or lockfile, never fetch from outside the repo's declared
 sources. Anything not already pinned, or missing config, is a blocker:
 report it with the smallest prerequisite, never install it. Never delete
 or weaken an existing assertion, nor a new one to reach green. An
-expectation an existing test already asserts gets no new test; otherwise
-extend an existing native table or parameterized case when it is the
-smallest coherent home, or add a new test. An existing assertion that
-contradicts the contract is a finding, never something to correct. Each
-new test says in its docstring, description or an adjacent comment, per
-the repository's convention, what it expects and where that comes from —
+expectation counts as already covered only when an existing, non-skipped
+test asserts it in full: at the same public boundary, under the same
+conditions, on the same observable result. An already covered expectation
+gets no new test; otherwise extend an existing native table or
+parameterized case when it is the smallest coherent home, or add a new
+test. An existing assertion that contradicts the contract is a finding,
+never something to correct. Each new test says in its docstring,
+description or an adjacent comment, per the repository's convention,
+what it expects and where that comes from —
 quoting the user's criterion, or naming the document, dossier decision or
 public symbol it relies on — so a red left behind can be traced back.
 
@@ -173,13 +178,14 @@ comments, no inventory file.
 Return only the lines that have content, most important first: Findings,
 each with the test's name, what its source says should happen, what
 happened, and that the test stays red in the suite · Not covered, put as
-the user's call whether to test it: every written expectation no test
-asserts, each with why it was left and the kind of test that would prove
-it — never a claim that the tests are enough · Contract or harness gaps,
-each contract gap put as the question the user must answer · Added or
-changed · Run · Result · Verified invariants, naming the existing test
-where one already asserted it · Scope and Intent / strategy, only where
-this run chose them rather than the arguments, with why · Boundary ·
+the user's call whether to test it: every written expectation no new test
+proves and no existing test already covers, each with why it was left and
+the kind of test that would prove it — never a claim that the tests are
+enough · Contract or harness gaps, each contract gap put as the question
+the user must answer · Added or changed · Run · Result · Verified
+invariants, naming the existing test where an expectation was already
+covered · Scope and Intent / strategy, only where this run chose them
+rather than the arguments, with why · Boundary ·
 Oracle sources, saying plainly when the arguments carried no acceptance
 criteria and where the expectations came from instead · Isolation. Write
 it in the language the caller wrote `$ARGUMENTS` in and in plain words:

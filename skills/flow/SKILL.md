@@ -271,9 +271,9 @@ runner's own skip marker, never a throwaway command-line flag — with a
 reason pointing at the line just written. Leaving any red open on
 purpose — one of those tests or any other — takes a user order (a
 Mid-flight decision) and skips the test the same way. Those skips are this flow's only edits to such a test: never
-delete it, never loosen its assertion. A harness or contract gap i:test
-reported, for coverage the slice required, blocks calling that slice a
-pass.
+delete it, never loosen its assertion. A harness or contract gap, or an
+expectation i:test left uncovered, blocks calling the slice a pass when
+the slice required that coverage.
 
 ## Finishing
 
