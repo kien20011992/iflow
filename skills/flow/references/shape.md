@@ -2,14 +2,15 @@
 
 Contents: 0. Working draft and the two run paths · 1. Stage 1 — explore the
 picture · 2. Stage 2 — decision session · 3. Stage 3 — cut slices ·
-4. Decision rights. Every agent this file spawns follows
+4. Decision rights · 5. Fast lane. Every agent this file spawns follows
 [agents.md](agents.md).
 
 Enter `EnterPlanMode` the moment Shape starts or resumes, even when every
 expected slice is research. A stage starts only when the user has locked
-the previous one by direct confirmation (section 4). Two shortcuts skip a
-lock: the opening round's jump to the decision session or to stage 3, which
-the user confirms directly, and stage 2's skipped "Lock" (see its Close).
+the previous one by direct confirmation (section 4). Three shortcuts skip a
+lock: the fast lane (§5); the opening round's jump to the decision session
+or to stage 3, which the user confirms directly; and stage 2's skipped
+"Lock" (see its Close).
 
 ## 0. Working draft and the two run paths
 
@@ -232,3 +233,34 @@ Four rules govern questions and answers; questions have no cap on count.
 - **Direct confirmation.** Affirmative words in the user's language ("ok",
   "chốt", "đúng rồi") or an explicit imperative confirm; questions,
   comparisons, hedging language, praise, and silence do not.
+
+## 5. Fast lane — straight to the slice table
+
+A first word `fast` skips stages 1–2 on the user's word, never on the
+model's. In order, before the gate:
+
+1. The opening sweep of stage 1 within the task's scope, seeded by an
+   i:explore dossier when one matches — no zone map, no discussion: each
+   axis it finds enters the assumptions with its leaning, unless the
+   user's own words at invocation settle it (a decision, early-lock path
+   (1)). Research only under the two conditions of "Zone research", into
+   the draft's research notes under its source discipline. Deep code
+   reading still waits for each build slice's plan.
+2. Write the draft per §0: a short picture, the slice table and run order
+   per stage 3 with its four tests, then the assumptions — every choice
+   the user did not make explicitly, a recovered draft's leanings
+   included, one line each: what was chosen, the main alternative, and
+   what changing it would change, readable without the code so the user
+   can veto it at the gate.
+3. Fresh-eyes pass: hand the task and the draft to one subagent to read
+   as a stranger and name missing choices, wrong assumptions and unproven
+   claims. Fold what holds into the draft; list each rejected candidate in
+   one line among the assumptions.
+4. The gate, submitted per stage 3's last paragraph, FIRST step included.
+   Approving the table approves its assumptions; the birth checklist
+   carries them into the decisions. A rejection that names an assumption
+   ("discuss X", "bàn X") opens stage 1 with the draft as the starting
+   picture and X as the map's one zone, in discussion; every other
+   assumption stays one of the table's — never adjudicated in the
+   decision session, ruled on by the user at the table's gate. The run
+   continues as the full lane.

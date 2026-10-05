@@ -40,7 +40,9 @@ write them character for character.
 2. Create `shape.md` per §4, distilled from the approved plan and the
    draft, with `Next action:` set to the first slice; what was explored
    LINKS to the research docs (never re-paste their content), and the
-   sources list those doc paths. Never copy the plan wholesale.
+   sources list those doc paths. Never copy the plan wholesale. Each
+   assumption approved with the table becomes one line in the decisions,
+   marked as approved with the table.
 3. Create one slice file per slice, opening with its charter.
 4. Seed each slice file's notes: every deliberately-left-open item from
    Shape relevant to that slice gets one line saying, in the user's words,

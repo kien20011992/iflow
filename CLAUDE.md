@@ -30,7 +30,8 @@ i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/s
 - Lite không có slice, không có `docs/shape/`. Giai đoạn 3 ra một plan duy nhất.
 - Lite không có hồ sơ, không có hook. Một lượt dở chỉ chạy tiếp được nhờ khôi phục bản nháp. Khi khôi phục, mọi lựa chọn trong một plan chưa được duyệt vẫn chỉ là giả định.
 - Lite bật plan mode ở bước 2 của SKILL.md, nên shape.md của lite không có câu `EnterPlanMode` ở đầu như flow.
-- Người dùng bỏ được phần bàn: làn `fast`, và lối nhảy thẳng sang plan khi không điểm nào đáng quyết. Khi nhảy thẳng, hướng đang nghiêng của mỗi điểm vào phần giả định của plan. Điểm giao cho model quyết cũng được báo trong phần giả định, còn flow báo trong bức tranh.
+- Cả hai bên có làn `fast` để người dùng bỏ phần bàn, nhưng mỗi bên một bản. Bản của flow nằm ở mục 5 của `skills/flow/references/shape.md`. Bản của lite nằm ở mục "Two lanes" trong SKILL.md của lite, không nằm trong shape.md, nên đừng chép mục 5 sang shape.md của lite. Hai bản khác nhau ở hai chỗ. Lite đọc sâu code rồi viết một plan, còn flow chỉ quét repo rồi cắt bảng slice, để dành phần đọc sâu cho plan của từng slice. Khi người dùng bác một giả định ở nút duyệt, lite chia bản đồ như vòng mở đầu, còn flow giữ các giả định còn lại trong bảng slice.
+- Lite có thêm lối nhảy thẳng sang plan khi không điểm nào đáng quyết. Khi nhảy thẳng, hướng đang nghiêng của mỗi điểm vào phần giả định của plan. Điểm giao cho model quyết cũng được báo trong phần giả định, còn flow báo trong bức tranh.
 - Vòng mở đầu được chia bản đồ: điểm rẻ và dễ quay lại thì hoãn vào phần giả định của plan (trạng thái "deferred to the plan's assumptions"). Người dùng quyết các điểm đó ở bước duyệt. Vì vậy nút "Lock" cũng được bỏ khi các điểm hoãn đến từ việc chia bản đồ.
 - Chữ nói về slice trong bản flow được đổi thành lời của lite, ví dụ "the plan's innards" và "the deep read".
 - Ghi chép nghiên cứu được ghi ra `docs/research/` ở bước đầu của plan. Flow ghi lúc tạo hồ sơ.

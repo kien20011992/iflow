@@ -97,11 +97,13 @@ Heavy reading may be delegated to Explore agents.
 the start, from the request alone — before plan mode, any reference or any
 scan: when the request itself names several increments each worth
 approving on its own, the whole turn is one line: the reason, then
-`/i:flow <task>` — i:flow cuts the work into parts approved one by one;
+`/i:flow <task>` (`/i:flow fast <task>` in the fast lane) — i:flow cuts the
+work into parts approved one by one;
 then stop for the user's call. Unsure means go on. At the plan: when the
 picture shows work that will not finish in one session, or several
 increments each worth approving on its own, say so at the top of the plan
-with the reason and recommend `/i:flow`; the user decides at the gate. A
+with the reason and recommend `/i:flow` (`/i:flow fast` in the fast lane);
+the user decides at the gate. A
 user who stays with i:lite has that choice written into the draft's
 decisions as soon as the draft exists — approving a plan that carries the
 recommendation is that choice — and this run does not raise it again. Handing over loses nothing:

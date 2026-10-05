@@ -14,7 +14,7 @@ description: >-
   for a single task one plan covers (thêm một tính năng nhỏ, sửa một hàm),
   pure understanding with no repo deliverable (i:explore), a defect (i:debug)
   or new tests (i:test).
-argument-hint: "<topic to shape, or dossier to resume>"
+argument-hint: "[fast] <topic to shape, or dossier to resume>"
 disable-model-invocation: true
 ---
 
@@ -54,6 +54,8 @@ test all live in
 [references/state.md](references/state.md) — read it before first creating
 or updating a dossier in a session.
 
+A first word `fast` calls the fast lane (shape.md §5); the rest is the
+topic.
 Resolve in this order: the user names a dossier → the dossier active in the
 conversation → a `docs/shape/*/shape.md` matching the topic → an unfinished
 Shape on this topic, found per "Draft recovery" in
@@ -87,12 +89,14 @@ only reload.
 before entering plan mode or scanning the repo. When one plan covers it —
 one task, one deliverable, nothing worth approving on its own — the whole
 turn is one line in the user's language: the reason, then `/i:lite <task>`
-(`/i:lite fast <task>` when the direction is already settled); then stop
+(`/i:lite fast <task>` when the user called `fast` or the direction is
+already settled); then stop
 for the user's call. Unsure means not too light. Say it once, never again
 mid-way.
 
 Otherwise the topic enters Shape: before anything else, read
-[references/shape.md](references/shape.md) and follow its three stages.
+[references/shape.md](references/shape.md) and follow its three stages, or
+its fast lane when the user called `fast`.
 
 If mid-Shape the need collapses to pure understanding with no repo
 deliverable, hand off to i:explore instead of shaping.
@@ -144,7 +148,9 @@ also the dossier's own files, as this skill directs.
 
 1. `EnterPlanMode` when plan mode is in use; explore only within the
    slice's scope (deep code reading happens now, not earlier); reconcile
-   against the slice's charter and notes. Heavy reading may be delegated to
+   against the slice's charter, its notes and shape.md's decisions — a
+   plan that departs from a decision says so at its gate (a Mid-flight
+   decision). Heavy reading may be delegated to
    Explore agents; writing code is never delegated: the main agent owns
    every edit.
 2. Write the plan. Every plan put to the gate must have as its FIRST step:
@@ -154,7 +160,8 @@ also the dossier's own files, as this skill directs.
    summary of the approved plan (what changes, proven by what at which
    boundary, deliberately skipping what) followed by the plan's steps as a
    numbered list, one line each — never the plan's prose; write the lines
-   the plan carries for other slices (invariant 4); and point
+   the plan carries for other slices (invariant 4); rewrite each decision
+   line in shape.md the plan departs from (step 1); and point
    `Next action:` at the plan's next step. As its LAST step, in
    the user's language, all four of: run the review gate if this slice
    changed code, write the slice's result, update shape.md (mark slice NN
