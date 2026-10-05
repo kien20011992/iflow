@@ -41,7 +41,9 @@ run, so name each candidate — each changed surface, or when nothing changed
 the main public modules and the whole repository — as the exact
 `/i:test <candidate scope · original intent · every supplied acceptance criterion>`
 call that resumes it, never a promise to continue. Never default to the
-whole repository; when the user names it, Not covered lists every public
+whole repository. A scope of several public surfaces — the whole
+repository when the user names it — takes one surface at a time through
+expectations, risk pass, tests and run, and Not covered lists every
 surface left without a test. Never pick a dossier by fuzzy match. The
 active slice is the one the `Current slice:` line names in the dossier the
 caller names, else in a `docs/shape/*/shape.md` at the git root; `—` means
@@ -98,6 +100,10 @@ With no layer stated, pick the cheapest boundary that proves the invariant,
 and add a second layer only when it protects a different invariant — never
 copy one assertion across unit, integration and E2E.
 
+**Only what is missing**, when the intent asks for that alone: write and
+run nothing; match each expectation to an existing test that asserts it,
+and the report is the whole deliverable.
+
 **E2E** goes through the outermost public boundary on the project's existing
 harness: real wiring for what the project owns, the existing sandbox,
 emulator or double for third parties, a unique data namespace, cleanup that
@@ -129,9 +135,10 @@ the project's own recorded command (e.g. `npm ci`, `bundle install`,
 manifest or lockfile, never fetch from outside the repo's declared
 sources. Anything not already pinned, or missing config, is a blocker:
 report it with the smallest prerequisite, never install it. Never delete
-or weaken an existing assertion, nor a new one to reach green. Extend an
-existing native table or parameterized case when it is the smallest
-coherent home; otherwise add a new test. An existing assertion that
+or weaken an existing assertion, nor a new one to reach green. An
+expectation an existing test already asserts gets no new test; otherwise
+extend an existing native table or parameterized case when it is the
+smallest coherent home, or add a new test. An existing assertion that
 contradicts the contract is a finding, never something to correct. Each
 new test says in its docstring, description or an adjacent comment, per
 the repository's convention, what it expects and where that comes from —
@@ -165,15 +172,20 @@ comments, no inventory file.
 
 Return only the lines that have content, most important first: Findings,
 each with the test's name, what its source says should happen, what
-happened, and that the test stays red in the suite · Added or changed ·
-Run · Result · Verified invariants · Not covered · Contract or harness
-gaps, each contract gap put as the question the user must answer · Scope ·
-Intent / strategy · Boundary · Oracle sources, saying plainly when the
-arguments carried no acceptance criteria and where the expectations came
-from instead · Isolation. Write it in the language the caller wrote
-`$ARGUMENTS` in and in plain words: the names above are roles, not
-headings, and this skill's own terms — oracle, invariant, boundary,
-harness, contract gap — are said by what they stand for.
+happened, and that the test stays red in the suite · Not covered, put as
+the user's call whether to test it: every written expectation no test
+asserts, each with why it was left and the kind of test that would prove
+it — never a claim that the tests are enough · Contract or harness gaps,
+each contract gap put as the question the user must answer · Added or
+changed · Run · Result · Verified invariants, naming the existing test
+where one already asserted it · Scope and Intent / strategy, only where
+this run chose them rather than the arguments, with why · Boundary ·
+Oracle sources, saying plainly when the arguments carried no acceptance
+criteria and where the expectations came from instead · Isolation. Write
+it in the language the caller wrote `$ARGUMENTS` in and in plain words:
+the names above are roles, not headings, and this skill's own terms —
+oracle, invariant, boundary, harness, contract gap — are said by what
+they stand for.
 
 Called from i:flow, return this same report; the dossier and the next
 action stay i:flow's.

@@ -7,7 +7,7 @@ Claude Code plugin `i` — six skills, invoked as `/i:<name>`:
 | `i:flow` | Shape a large or unsettled undertaking into approved vertical slices, then run them; state lives in `docs/shape/<topic>/shape.md`. User-invoked only; recommends `/i:lite` when one plan is enough. |
 | `i:lite` | Settle one unclear task with you, then build and prove it under a single plan you approve; `/i:lite fast <task>` skips the discussion. For several parts approved one by one, use `i:flow`. User-invoked only. |
 | `i:debug` | Reproduce a defect and prove its cause from a fresh context; the fix stays with the caller. |
-| `i:test` | Write new tests in the project's own test runner; expected results come from your requirements and docs, and are written down before the code is read. |
+| `i:test` | Write new tests in the project's own test runner; expected results come from your requirements and docs, and are written down before the code is read. `/i:test <scope> · only what is missing` lists what has no test yet and writes nothing. |
 | `i:explore` | Understand an unfamiliar topic layer by layer before deciding anything. |
 | `i:gamify` | Turn a months-long pursuit into a game a Claude session runs. User-invoked only. |
 
