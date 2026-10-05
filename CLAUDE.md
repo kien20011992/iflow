@@ -21,7 +21,7 @@ Muốn đổi một chuỗi thì sửa cả bốn nơi trong cùng một commit.
 | `<!-- generated-by: iflow/2 -->` | **Hook** chỉ đọc những `shape.md` có dấu này. File mất dấu sẽ bị hook bỏ qua hoàn toàn, không báo gì. **Checker** báo khi thiếu dấu. |
 | `slice-NN-<name>.md` | **Checker** kiểm mỗi hàng có file tương ứng. |
 
-Ngoài hook và checker, i:debug và i:test cũng đọc hồ sơ của i:flow. Hai skill này đọc theo vai trò các mục: bức tranh, quyết định, charter, plan đã duyệt, kết quả, ghi chú, và các cột của bảng slice. Đổi vai trò hay tên một mục thì phải xem lại cả hai skill.
+Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i:flow. Ba skill này đọc theo vai trò các mục: bức tranh, quyết định, charter, plan đã duyệt, kết quả, ghi chú, và các cột của bảng slice. Đổi vai trò hay tên một mục thì phải xem lại cả ba skill. i:how còn đọc khối kết quả mà i:lite ghi dưới plan, nên đổi khối đó cũng phải xem lại i:how. i:debug còn đọc bức tranh, phần nói plan sẽ đổi gì, các quyết định và giả định đã duyệt trong file plan của i:lite, nên đổi vai trò các phần đó cũng phải xem lại i:debug.
 
 ## Lite cần đồng bộ tay
 

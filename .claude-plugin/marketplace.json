@@ -1,6 +1,6 @@
 {
   "name": "iflow",
-  "description": "Personal Claude Code skills: i:flow, i:lite, i:debug, i:test, i:explore, i:gamify",
+  "description": "Personal Claude Code skills: i:flow, i:lite, i:debug, i:test, i:explore, i:gamify, i:how",
   "owner": {
     "name": "kiennt"
   },
@@ -8,7 +8,7 @@
     {
       "name": "i",
       "source": "./",
-      "description": "i:flow, i:lite, i:debug, i:test, i:explore, i:gamify"
+      "description": "i:flow, i:lite, i:debug, i:test, i:explore, i:gamify, i:how"
     }
   ]
 }
