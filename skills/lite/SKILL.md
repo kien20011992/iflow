@@ -133,7 +133,10 @@ the decisions:
 - LAST step, one plain line: finish the proof, review, write the result
   below this plan, report — per "Build and prove".
 
-**The gate.** The plan passes the plan-mode approval button when plan mode
+**The gate.** A plan that edits text a person or a model will read —
+skill files, documents, configuration — first gets the fresh-eyes pass of
+the fast lane, whichever lane is running. The plan passes the plan-mode
+approval button when plan mode
 is in use, and one `AskUserQuestion` on the plan's own content when it is
 not; a question that times out or is denied is not approval — stop there.
 Until it passes, the run is read-only: nothing is created, changed,

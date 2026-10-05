@@ -144,7 +144,13 @@ also the dossier's own files, as this skill directs.
    decision). Heavy reading may be delegated to
    Explore agents; writing code is never delegated: the main agent owns
    every edit.
-2. Write the plan. Every plan put to the gate must have as its FIRST step:
+2. Write the plan. When the slice's product is text a person or a model
+   will read — skill files, documents, configuration — hand the plan and
+   the files it edits to one agent that has not seen the conversation,
+   to read as a stranger and say, per item: is the reason true, is a
+   guard rail lost, do the new sentences contradict each other; fold what
+   holds into the plan before the gate. Every plan put to the gate must
+   have as its FIRST step:
    re-read `${CLAUDE_SKILL_DIR}/SKILL.md` if it is no longer in context (a
    compaction, or a context cleared on approval); record into the slice
    file's approved-plan section — the plan names that file — a 3–7 line
@@ -225,7 +231,11 @@ for approval, then continue.
 
 ## Redoing a slice
 
-Charter still right but the result overturned → the row becomes
+A small finding inside a finished slice's Charter — a sentence to fix, a
+line to restore — is not a redo: fix it at once, re-run that slice's
+checks, and record it under the slice's result as a second attempt, one
+line each; the table does not change. Charter still right but the result
+overturned → the row becomes
 "needs-redo" and the slice reruns the full cycle of its type; the reason
 goes into its notes, and its approved plan and result get fresh entries
 headed as a second attempt, the old ones kept as history. Charter wrong →
