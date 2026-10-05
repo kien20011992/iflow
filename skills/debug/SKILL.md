@@ -139,7 +139,7 @@ Changing the target in order to measure is an instrument, not a fix:
 allowed, and put back before the report. Before the first change, record
 `git rev-parse HEAD`, `git status --porcelain`, `git diff`,
 `git diff --cached` and, since none of those reads inside an untracked
-file, `git ls-files -z --others --exclude-standard | xargs -0 git hash-object`;
+file, `git ls-files -z --others --exclude-standard | xargs -0 git hash-object --`;
 at report time all five must match, and that match is the evidence that
 the target stands as it was found. Put back means
 reversing this run's own edits: `git checkout`, `git restore` and `git stash`
