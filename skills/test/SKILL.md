@@ -138,9 +138,10 @@ manifest or lockfile, never fetch from outside the repo's declared
 sources. Anything not already pinned, or missing config, is a blocker:
 report it with the smallest prerequisite, never install it. Never delete
 or weaken an existing assertion, nor a new one to reach green. An
-expectation counts as already covered only when an existing, non-skipped
-test asserts it in full: at the same public boundary, under the same
-conditions, on the same observable result. An already covered expectation
+expectation counts as already covered only when an existing test that the
+normal test command requires to pass asserts it in full: at the same
+public boundary, under the same conditions, on the same observable
+result. An already covered expectation
 gets no new test; otherwise extend an existing native table or
 parameterized case when it is the smallest coherent home, or add a new
 test. An existing assertion that contradicts the contract is a finding,
@@ -152,9 +153,10 @@ public symbol it relies on — so a red left behind can be traced back.
 
 ## Run
 
-Run the new or changed tests with the project's own runner, selecting them
-where the runner can select. The first run after your last edit is the
-evidence — never run again just to capture it more cleanly. A red is the
+Run the new or changed tests, and the existing ones counted as already
+covered, with the project's own runner, selecting them where the runner
+can select. The first run after your last edit is the evidence — never
+run again just to capture it more cleanly. A red is the
 test's own defect when its setup, fixture or import is wrong, or its
 expected value claims more than its oracle source says: correct it to the
 source's own words — never toward what the product returned — and rerun.
