@@ -46,21 +46,23 @@ whole repository. A scope of several public surfaces — the whole
 repository when the user names it — takes one surface at a time through
 expectations, risk pass, tests and run until every surface is done; any
 surface left without a test goes under Not covered with the specific
-reason it could not be completed. Never pick a dossier by fuzzy match. The
-active slice is the one the `Current slice:` line names in the dossier the
-caller names, else in a `docs/shape/*/shape.md` at the git root; `—` means
-none, and several dossiers naming a slice mean ask unless an explicit scope
-already settles the run. A diff says WHERE to look — its file list and
+reason it could not be completed. The active slice is the one the
+`Current slice:` line names in the dossier the caller names, else in a
+`docs/shape/*/shape.md` at the git root; `—` means none, and several
+dossiers naming a slice mean ask unless an explicit scope already settles
+the run. A diff says WHERE to look — its file list and
 changed signatures; its hunks wait until the expectations are written —
-never WHAT is correct. Say so when an explicit scope lands off the active
-slice.
+never WHAT is correct.
 
-## Expectations — written before any body is read
+## Expectations — written before the code under test is read
 
 Write down and keep: scope · requested intent · public boundary · oracle
 sources · observable response · final state · must-not-change effects ·
 repeat-call semantics · isolation constraints · explicit exclusions ·
-contract gaps.
+contract gaps. Per scenario, keep only the effects that apply: a pure
+parser has a response alone; a rejected write adds its final state and
+what must not change; a retried import needs all four, inside one
+scenario. Never invent a case to fill a slot.
 
 Oracle, in priority: the user's acceptance criteria → the dossier's
 picture and decisions (shape.md's body) and the active slice's charter
@@ -109,21 +111,14 @@ written or run, is the whole deliverable.
 
 **E2E** goes through the outermost public boundary on the project's existing
 harness: real wiring for what the project owns, the existing sandbox,
-emulator or double for third parties, a unique data namespace, cleanup that
-also runs when the test fails, response and observable final state both
-asserted. Decline, retry and concurrency go under "Not covered" unless they
-were asked for. No harness → a harness gap; never call an integration test
-E2E.
+emulator or double for third parties, cleanup that also runs when the
+test fails. Decline, retry and concurrency go under "Not covered" unless
+they were asked for. No harness → a harness gap; never call an
+integration test E2E.
 
 **Grouping.** Same setup, oracle and effect → one parameterized table or
 subtest, each row carrying its own native name. One invariant that needs
 several steps → one scenario test, never a chain of dependent tests.
-
-**Per scenario, ask what applies**: what comes back, what state is left
-behind, what must not have changed, what a second call does. A pure parser
-answers the first; a rejected write answers the first three; a retried
-import answers all four inside one scenario. Never invent a case to fill a
-slot.
 
 ## Native implementation
 
@@ -154,13 +149,13 @@ public symbol it relies on — so a red left behind can be traced back.
 
 ## Run
 
-Run the new or changed tests, and the existing ones counted as already
-covered, with the project's own runner, selecting them where the runner
-can select. The first run after your last edit is the evidence — never
-run again just to capture it more cleanly. A red is the
-test's own defect when its setup, fixture or import is wrong, or its
-expected value claims more than its oracle source says: correct it to the
-source's own words — never toward what the product returned — and rerun.
+Outside Only what is missing, run the new or changed tests, and the
+existing ones counted as already covered, with the project's own runner,
+selecting them where the runner can select. The first run after your last
+edit is the evidence — never run again just to capture it more cleanly. A
+red is the test's own defect when its setup, fixture or import is wrong,
+or its expected value claims more than its oracle source says: correct it
+to the source's own words — never toward what the product returned — and rerun.
 When the test matches its oracle and the product does not — a wrong value,
 a crash — the assertion stays and the red is a finding. An import or
 collection error is the test's own to fix unless the contract names that
@@ -195,6 +190,3 @@ it in the language the caller wrote `$ARGUMENTS` in and in plain words:
 the names above are roles, not headings, and this skill's own terms —
 oracle, invariant, boundary, harness, contract gap — are said by what
 they stand for.
-
-Called from i:flow, return this same report; the dossier and the next
-action stay i:flow's.

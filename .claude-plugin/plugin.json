@@ -1,6 +1,6 @@
 {
   "name": "i",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "Shape and execute large work in vertical slices (i:flow) or one unsettled task in a single plan (i:lite), with independent debugging (i:debug), testing (i:test), layered exploration (i:explore) and long-haul gamified practice (i:gamify).",
   "author": { "name": "kiennt" },
   "repository": "https://github.com/kien20011992/iflow",
