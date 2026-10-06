@@ -39,8 +39,10 @@ two sentences; never retell the page.
 Only when the user asks to keep it. The file is
 `docs/iflow/<task-slug>/how/<topic-slug>.md`, with `docs/` at the git root
 (the working directory outside git). `<task-slug>` is the task directory
-whose dossier names the files being taught, or the topic slug when none
-does. Write it in the user's language, for a reader who has not seen the
+the user names, by id, name or path; when they name none, a new
+`<topic-slug>-<id>`, `<id>` four hex characters from `openssl rand -hex 2`
+— never an existing directory picked by guessing that it is the same
+task. Write it in the user's language, for a reader who has not seen the
 chat:
 
 1. What the code does and why: the answer, the parts in the order they

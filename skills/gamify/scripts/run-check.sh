@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# run-check.sh <game-dir> — kiểm cấu trúc một game v2 (docs/iflow/<slug>/game), không tốn API.
+# run-check.sh <game-dir> — kiểm cấu trúc một game v2 (docs/iflow/<slug>-<id>/game), không tốn API.
 # Read-only. In một dòng mỗi vi phạm. Exit 0 = sạch, 1 = không, 2 = thiếu thư mục/file bắt buộc.
 #
 # Kiểm bảy điều máy kiểm được của khuôn (references/khuon-file.md); phần "hiểu

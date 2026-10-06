@@ -11,12 +11,15 @@ Contents: 1. Principles · 2. Label contract table · 3. Birth checklist ·
   directory `docs/iflow/<topic-slug>/`, with `docs/iflow/` at the
   repository's git root (the project directory outside git): `iflow.md`,
   one `NN-<name>.md` per slice, `evidence/NN-<name>/` per slice, and
-  `research/`. A dossier is born in the existing `docs/iflow/*` directory
-  on this task when there is one — above all the one holding the i:explore
-  dossier that seeded Shape — else in a new one named after the topic.
-  The directory name is the task's key — other skills working
-  on the same task write their own subdirectories there (`explore/`,
-  `how/`, `game/`, notes in `research/`) and never touch this skill's
+  `research/`. `<topic-slug>` throughout this skill is that directory's
+  name, `<slug>-<id>`: the topic in kebab-case, then four hex characters
+  from `openssl rand -hex 2`, so two programs on one topic never collide
+  and the user can name a task by its id. A dossier is born in the task
+  directory the user names — by id, name or path — else in a new one;
+  never in an existing directory picked by guessing that it is the same
+  task. Other skills the user points at this task write their own
+  subdirectories there (`explore/`, `how/`, `game/`, notes in `research/`)
+  and never touch this skill's
   files. The resume hook reads only the `docs/iflow/*/iflow.md` files that
   carry the `<!-- generated-by: iflow/2 -->` marker. The plan
   file (`~/.claude/plans/…`) is a per-session working copy outside the repo

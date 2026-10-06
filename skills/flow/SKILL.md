@@ -4,7 +4,7 @@ description: >-
   Shape a large or still-unsettled undertaking into user-approved vertical
   slices, then execute them one by one — code slices through plan mode,
   research slices as documents in the repo — tracked in
-  docs/iflow/<topic>/iflow.md. Use it whenever the request spans several
+  docs/iflow/<topic>-<id>/iflow.md. Use it whenever the request spans several
   coupled pieces or has no clear start yet, however terse: "review toàn bộ …
   rồi tối ưu", "làm lại hoàn toàn / nâng cấp toàn diện X: a, b, c", "tìm mọi
   cách để …", "research X rồi dựng thành tool/repo chạy được", "viết bộ tài
@@ -307,9 +307,9 @@ iflow.md's body, above the picture, and copy the program's result to
 documents (research slices) or a web page, a directory
 `assets/iflow/<topic-slug>/` holding the summary and each of them — a
 research slice's document part only, not its charter or notes. It is a
-copy — the dossier stays as it is — and a later redo copies again over
-this program's own earlier copy; a file there that this program did not
-write is never overwritten: the copy takes a new name beside it. Only
+copy — the dossier stays as it is — and nothing already in
+`assets/iflow/` is ever overwritten, not even this program's own earlier
+copy: a later copy takes a new name beside it. Only
 once the copy exists, set the overall status line in iflow.md to done and
 post the summary in chat as the end-of-program announcement.
 When the program changed code,

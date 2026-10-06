@@ -12,15 +12,19 @@ only inside the task's `explore/`.
 
 Use the first applicable choice:
 
-1. Reuse the dossier path explicitly supplied by the user.
+1. Reuse the dossier or task directory the user names, by id, name or
+   path.
 2. Reuse the active dossier already established in the conversation.
 3. Search `docs/iflow/*/explore/*.md` for a dossier matching the topic,
    `active` or `ready`; continuing a `ready` one sets it back to `active`.
    Reuse a single clear match. Ask only when several plausible matches make
    the choice unsafe.
 4. Otherwise create `docs/iflow/<task-slug>/explore/<concise-topic-slug>.md`
-   with the first layer: `<task-slug>` is the existing task directory whose
-   name matches the topic, or the topic slug when none does.
+   with the first layer: `<task-slug>` is `<topic-slug>-<id>`, the topic
+   slug then four hex characters from `openssl rand -hex 2`, so the user
+   can name the task by its id. Never put a new dossier into an existing
+   task directory by guessing that it is the same task; only choice 1 does
+   that.
 
 Use a stable, lowercase, hyphenated topic slug. Do not rename the dossier when
 the title evolves unless the user asks.

@@ -4,7 +4,7 @@ description: >-
   Turn one hard, long-haul pursuit — learning to trade, mastering a keyboard
   layout, any skill that takes months — into a game a Claude session runs as
   game master and narrator. Build mode shapes the game with the user in
-  approved slices under docs/iflow/<slug>/game/; play mode runs one session.
+  approved slices under docs/iflow/<slug>-<id>/game/; play mode runs one session.
   Use it whenever the user names a skill they want to practise over months
   and wants it to feel like a game, however terse: "học trading theo ICT", "luyện gõ
   phím nhanh, làm thành game đi", "game hoá việc luyện X" — and for "play
@@ -37,11 +37,12 @@ summary is a pointer; the facts are in those files.
 
 ## Where a game lives
 
-One directory per game, `docs/iflow/<slug>/game/`, named with real game
+One directory per game, `docs/iflow/<slug>-<id>/game/`, named with real game
 vocabulary because the player is a gamer. `docs/` is the one at the root
 of the current git repository, or in the working directory outside git.
-`docs/iflow/<slug>/` is the task's directory, which other skills working
-on the same pursuit share; this skill writes only inside its `game/`.
+`docs/iflow/<slug>-<id>/` is the task's directory, which other skills share
+only when the user points them at it; this skill writes only inside its
+`game/`.
 
 | Path | Who opens it | What it is |
 |---|---|---|
@@ -92,7 +93,7 @@ references' examples come from the first game, a forex one.
 Read the argument once. First find the game it names, by directory or by
 its **own name**: a game's directory is the pursuit ("go-phim-nhanh") while
 its name is the concept's ("Keystage"). Fold the name to a slug (see "Slug
-and directory") and look for `docs/iflow/<slug>/game/gamemaster/plan.md`; if
+and directory") and look for `docs/iflow/<slug>-*/game/gamemaster/plan.md`; if
 that misses, search every `docs/iflow/*/game/gamemaster/plan.md` for a
 `- Tên: <name>` line (the one concept lock writes, case-insensitive). Say
 which directory a name resolved to. Then take exactly one branch:
@@ -127,7 +128,7 @@ user — the real pursuit as a researched **skill map**, the player, the
 consequence-free practice ground, what the referee can measure, and the
 horizon. The skill map passes an approval gate before anything else
 happens. The stage ends when the approved map and the other four axes are
-in `docs/iflow/<slug>/game/gamemaster/plan.md`; go straight on to stage 2 in the
+in `docs/iflow/<slug>-<id>/game/gamemaster/plan.md`; go straight on to stage 2 in the
 same run unless the user stops you.
 
 ### Stage 2 — concept
@@ -237,14 +238,16 @@ what the page said. The whole protocol is
 
 ## Slug and directory
 
-`<slug>` is the existing `docs/iflow/*` directory on this pursuit when there
-is one — above all the one holding an i:explore dossier on it — else the
-pursuit in kebab-case, ASCII-folded, short. Two cases
-when `docs/iflow/<slug>/game/` already exists: it holds `gamemaster/plan.md` →
+`<slug>` is the pursuit in kebab-case, ASCII-folded, short, and `<id>` is
+four hex characters from `openssl rand -hex 2`, drawn when the game's task
+directory is created — unless the user names an existing task directory
+(by id, name or path) to build in: then the game is its `game/`. Never
+join an existing directory by guessing that it is the same pursuit. Two
+cases when that `game/` already exists: it holds `gamemaster/plan.md` →
 it is that game (Dispatch, branch 4); it does not (an older or unrelated
 directory) → ask once whether to use a different slug or to overwrite.
 "Overwrite" never deletes: the existing files move into
-`docs/iflow/<slug>/game/_v1/` first, so the top level holds only the new game's
+`docs/iflow/<slug>-<id>/game/_v1/` first, so the top level holds only the new game's
 files and nothing is lost. Never overwrite silently. Create the directory
 only after the entry conditions pass.
 

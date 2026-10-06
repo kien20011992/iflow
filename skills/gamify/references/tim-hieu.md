@@ -4,7 +4,7 @@
 game nào, skill phải biết việc thật gồm những kỹ năng con nào và cái nào đo
 được, người chơi đứng ở đâu, luyện ở đâu mà không mất gì, quản trò chấm được
 gì, và đích lớn là gì. Năm thứ đó là **năm trục**, cố định cho mọi việc.
-Sản phẩm của giai đoạn là file `docs/iflow/<slug>/game/gamemaster/plan.md` với
+Sản phẩm của giai đoạn là file `docs/iflow/<slug>-<id>/game/gamemaster/plan.md` với
 bản đồ kỹ năng đã được người dùng duyệt. Mọi thứ ở giai đoạn sau (concept,
 quest, dungeon, cấp) đều suy ra từ bản đồ này, nên bản đồ sai thì cả game
 sai — vì thế duyệt bản đồ là cổng bắt buộc, không bỏ được.
@@ -146,7 +146,7 @@ từ đây không nhắc lại ở bất kỳ file nào của game — nó là c
    lời thì thay bằng câu điều kiện vào còn mờ, nếu có.
 3. Suy ba điều kiện vào từ tên việc và câu (c). Sai một → dừng, nói việc
    phải làm trước, không tạo thư mục, báo cáo và kết thúc.
-4. **Ghi `plan.md` ngay** — tạo `docs/iflow/<slug>/game/gamemaster/` (luật slug
+4. **Ghi `plan.md` ngay** — tạo `docs/iflow/<slug>-<id>/game/gamemaster/` (luật slug
    trong SKILL.md) và viết `plan.md` theo mẫu dưới với những gì đã có; dòng
    `Việc kế tiếp:` ghi "hỏi kênh báo cáo và chân trời, rồi tra cứu bản đồ".
    Phiên bị cắt ở đây thì lần sau gọi lại bằng thư mục là chạy tiếp, không

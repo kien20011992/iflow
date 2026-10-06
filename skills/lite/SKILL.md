@@ -33,10 +33,14 @@ note another run wrote. Work that outgrows one plan is
 root (the working directory outside git). When the user's request asks for
 its result packaged as a document, that document goes to
 `assets/iflow/<topic-slug>.md` — a directory `assets/iflow/<topic-slug>/`
-when it is several files or a web page. `<topic-slug>` is the existing
-`docs/iflow/*` directory on this task when there is one — above all the
-one holding the i:explore dossier that seeded the run — else the task's
-own slug.
+when it is several files or a web page; nothing already in `assets/iflow/`
+is ever overwritten — a later copy takes a new name beside it.
+`<topic-slug>` is the task directory's name, `<slug>-<id>`: the task in
+kebab-case, then four hex characters from `openssl rand -hex 2`, so two
+tasks on one topic never collide and the user can name a task by its id.
+Work in the task directory the user names — by id, name or path — else
+create a new one; never pick an existing directory by guessing that it is
+the same task.
 
 Language: protocol skeletons — file names, the draft's two lines in
 references/shape.md §0, this skill's own files — are English. Everything
