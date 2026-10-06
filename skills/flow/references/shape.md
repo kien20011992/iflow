@@ -248,11 +248,7 @@ model's. In order, before the gate:
    included, one line each: what was chosen, the main alternative, and
    what changing it would change, readable without the code so the user
    can veto it at the gate.
-3. Fresh-eyes pass: hand the task and the draft to one subagent to read
-   as a stranger and name missing choices, wrong assumptions and unproven
-   claims. Fold what holds into the draft; list each rejected candidate in
-   one line among the assumptions.
-4. The gate, submitted per stage 3's last paragraph, FIRST step included.
+3. The gate, submitted per stage 3's last paragraph, FIRST step included.
    Approving the table approves its assumptions; the birth checklist
    carries them into the decisions. A rejection that names an assumption
    ("discuss X", "bàn X") opens stage 1 with the draft as the starting

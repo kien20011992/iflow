@@ -43,7 +43,8 @@ references/shape.md §0, this skill's own files — are English. Everything
 else a document holds, headings included, and every word spoken to the
 user follow the user's language, in words the user never has to look up:
 the protocol's private vocabulary — terms like zone, lane, picture draft,
-zone map, the zone states, fresh-eyes pass, ripe, Mid-flight — stays in
+zone map, the zone states, fresh-eyes pass, stranger read, ripe,
+Mid-flight — stays in
 this skill's own files and the state block; in documents and in chat, say the plain thing
 instead, or introduce the term right where it is first used. A zone code
 is shorthand for the zone map: anywhere outside the map — the position
@@ -90,11 +91,7 @@ the model's. In order, before the gate:
    only under the two conditions of "Zone research" in
    [references/shape.md](references/shape.md), into the draft's research
    notes under its source discipline.
-2. Fresh-eyes pass on the draft plan: hand the task and the draft plan to
-   one subagent to read as a stranger and name missing choices, wrong
-   assumptions and unproven claims. Fold what holds into the plan; list
-   each rejected candidate in one line among the assumptions.
-3. The gate. A rejection that names an assumption ("discuss X", "bàn X")
+2. The gate. A rejection that names an assumption ("discuss X", "bàn X")
    opens stage 1 with the draft plan as the starting picture and the map
    already split: X in discussion, every other assumption deferred to the
    plan's assumptions; the run continues as the full lane.
@@ -146,15 +143,29 @@ the decisions:
 - LAST step, one plain line: finish the proof, review, write the result
   below this plan, report — per "Build and prove".
 
-**The gate.** A plan that edits text a person or a model will read —
-skill files, documents, configuration — first gets the fresh-eyes pass of
-the fast lane, whichever lane is running. The plan passes the plan-mode
-approval button when plan mode
+**The gate.** The plan passes the plan-mode approval button when plan mode
 is in use, and one `AskUserQuestion` on the plan's own content when it is
 not; a question that times out or is denied is not approval — stop there.
 Until it passes, the run is read-only: nothing is created, changed,
 installed, migrated or deployed — no file, dependency, database, external
 service or deployment — except the working draft.
+
+**The stranger read before a gate.** One general-purpose agent (never a
+Plan agent) that has not seen the conversation reads a plan before its
+gate only when (1) the plan's own steps write or delete real data, call
+a paid API, deploy or migrate, and then, on that ground alone, the read
+covers only those steps; (2) the user asks for it; or (3) the user said
+the work must be done carefully or matters, judged by what they meant,
+not by the words alone. Real data means a production or shared
+environment's, never local or test data; migrate likewise. Hand the
+agent, told to change nothing, the task and the plan to name missing
+choices, wrong assumptions and unproven claims; fold what holds into the
+plan and give each rejected candidate one line in it. Otherwise the plan
+goes to its gate at once, with one line after its last step telling the
+user, in their language, to answer `soát` for an agent to read it; that
+answer runs the read, then the plan returns to the gate. Apart from this
+read and stage 2's fresh-eyes pass on the picture, no agent reviews or
+designs a plan, whatever plan mode suggests.
 
 ## Build and prove
 

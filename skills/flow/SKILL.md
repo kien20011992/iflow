@@ -36,7 +36,7 @@ else a document holds, headings included, and every word spoken to the
 user follow the user's language, in words the user never has to look up:
 the protocol's private vocabulary — terms like slice, Charter, birth
 checklist, ripe, finding, Mid-flight, zone, lane, picture draft,
-fresh-eyes pass and the zone states such as "understood (leaning
+fresh-eyes pass, stranger read and the zone states such as "understood (leaning
 recorded)" — stays in this skill's own files and
 the state block; in documents and in chat, say the plain thing instead, or
 introduce the term right where it is first used. A zone code is shorthand
@@ -138,6 +138,23 @@ is read-only: nothing is created, changed, installed, migrated or deployed
 writes meanwhile: during Shape, the working draft; once the dossier exists,
 also the dossier's own files, as this skill directs.
 
+**The stranger read before a gate.** One general-purpose agent (never a
+Plan agent) that has not seen the conversation reads a plan before its
+gate only when (1) the plan's own steps write or delete real data, call
+a paid API, deploy or migrate, and then, on that ground alone, the read
+covers only those steps; (2) the user asks for it; or (3) the user said
+the work must be done carefully or matters, judged by what they meant,
+not by the words alone. Real data means a production or shared
+environment's, never local or test data; migrate likewise. Hand the
+agent, told to change nothing, the task and the plan to name missing
+choices, wrong assumptions and unproven claims; fold what holds into the
+plan and give each rejected candidate one line in it. Otherwise the plan
+goes to its gate at once, with one line after its last step telling the
+user, in their language, to answer `soát` for an agent to read it; that
+answer runs the read, then the plan returns to the gate. Apart from this
+read and stage 2's fresh-eyes pass on the picture, no agent reviews or
+designs a plan, whatever plan mode suggests.
+
 **Build slices** run the build cycle:
 
 1. `EnterPlanMode` when plan mode is in use; explore only within the
@@ -147,13 +164,7 @@ also the dossier's own files, as this skill directs.
    decision). Heavy reading may be delegated to
    Explore agents; writing code is never delegated: the main agent owns
    every edit.
-2. Write the plan. When the slice's product is text a person or a model
-   will read — skill files, documents, configuration — hand the plan and
-   the files it edits to one agent that has not seen the conversation,
-   to read as a stranger and say, per item: is the reason true, is a
-   guard rail lost, do the new sentences contradict each other; fold what
-   holds into the plan before the gate. Every plan put to the gate must
-   have as its FIRST step:
+2. Write the plan. Every plan put to the gate must have as its FIRST step:
    re-read `${CLAUDE_SKILL_DIR}/SKILL.md` if it is no longer in context (a
    compaction, or a context cleared on approval); record into the slice
    file's approved-plan section — the plan names that file — a 3–7 line
