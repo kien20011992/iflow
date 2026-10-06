@@ -46,8 +46,8 @@ as it gets used; research notes carry over as-is.
 unavailable — Shape still runs both stages. The only difference is the
 working draft: a plan-format file the model writes itself at
 `~/.claude/plans/iflow-<session-id>-<topic-slug>.md`, `<session-id>` being
-`$CLAUDE_CODE_SESSION_ID`. Everything else in this file, research notes and
-zone map included, applies to both paths.
+`$CLAUDE_CODE_SESSION_ID`. Everything else in this file applies to both
+paths.
 
 ## 1. Stage 1 — explore the picture
 
@@ -104,13 +104,12 @@ maintenance) — and the cost of reversal; pre-existing context (repo facts,
 earlier decisions, terms of art) introduced in place on first use. Depth
 stops at what comparing the options needs — how-to detail belongs to the
 deep read in [SKILL.md](../SKILL.md); an example anchored in the problem is
-always welcome, an example is not depth. Options must span different
-angles — different premises, different solution families, including the
-don't-build / defer / reuse-something angle when it is legitimate — at
-least one representative option per angle; two options differing only in
-detail within one angle are not two choices: a variant is named in one line
-inside its angle's entry, dug into only when the user leans into that
-angle.
+welcome, and is not depth. Options span different angles — different
+premises, different solution families, the don't-build / defer /
+reuse-something angle when it is legitimate — at least one option per
+angle; two options differing only in detail within one angle are one
+choice with a variant, named in one line inside its angle's entry and dug
+into only when the user leans into that angle.
 
 Known hard constraints are part of the material: using them to probe each
 option — what it demands, where it snags — is description; adjudicating
@@ -124,8 +123,8 @@ the spot: its product is understanding plus a reasoned leaning, spoken
 aloud into the zone's map entry, waiting for the decision session. Before
 the session, only these paths enter the decisions: (1) an explicit user
 order; (2) a choice the user raised themselves — discuss it right there,
-lock it if they want; (3) a blocking decision — blocking means a NAMED zone
-cannot present its material until this one settles (merely swinging a later
+lock it if they want; (3) a blocking decision — a NAMED zone cannot
+present its material until this one settles (merely swinging a later
 recommendation is not blocking); raise it early, ask for the call only
 after enough discussion; (4) the stall valve below.
 

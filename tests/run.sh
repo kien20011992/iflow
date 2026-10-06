@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# tests/run.sh — regression tests for the i:flow resume hook, the dossier
-# checker and the pointer checker. Every fixture is built in a throwaway temp directory;
+# tests/run.sh — regression tests for the i:flow resume hook, the write-time
+# check hook, the dossier checker and the pointer checker. Every fixture is
+# built in a throwaway temp directory;
 # nothing outside it is touched. Exit 0 = every case passed.
 set -u
 export LC_ALL=C.UTF-8 # the hook caps lines by character, which needs UTF-8
@@ -302,6 +303,21 @@ check "hook: warning names only the unchecked dossier" 0 \
   env CLAUDE_PROJECT_DIR="$tmp/g6" IFLOW_SKILL_DIR="$tmp/fake" bash "$hook"
 check "hook: finds its skill without IFLOW_SKILL_DIR" 0 "directory is $skill" 'no check-dossier' -- \
   env -u IFLOW_SKILL_DIR CLAUDE_PROJECT_DIR="$tmp/g1" bash "$hook"
+
+# ---- write-time check hook -------------------------------------------------
+
+checkhook="$root/hooks/iflow-check.sh"
+# event <file_path> — a PostToolUse Write event whose content also mentions
+# "file_path", so only the unescaped key may be read.
+event() { printf '{"tool_name":"Write","tool_input":{"content":"x \\"file_path\\": \\"/nope\\" y","file_path":"%s"},"tool_response":{"filePath":"%s"}}' "$1" "$1"; }
+export -f event
+check_in() { event "$1" | env IFLOW_SKILL_DIR="$skill" bash "$checkhook"; }
+check "check hook: a file outside docs/iflow is ignored" 0 '' '.' -- check_in "$tmp/g1/README.md"
+check "check hook: iflow.md without the marker is ignored" 0 '' '.' -- check_in "$tmp/g2/docs/iflow/q/iflow.md"
+check "check hook: healthy dossier stays silent" 0 '' '.' -- check_in "$tmp/g1/docs/iflow/p/iflow.md"
+check "check hook: broken dossier is reported on exit 2" 2 "invalid value 'Running'" '' -- check_in "$tmp/g3/docs/iflow/r/iflow.md"
+check "check hook: a relative path resolves against the project dir" 2 "invalid value 'Running'" '' -- \
+  env CLAUDE_PROJECT_DIR="$tmp/g3" IFLOW_SKILL_DIR="$skill" bash -c 'event "$1" | bash "$2"' _ "docs/iflow/r/iflow.md" "$checkhook"
 
 # A 300-character Vietnamese Next action is cut at 200 characters, whole.
 long=$(printf 'ố%.0s' $(seq 300))

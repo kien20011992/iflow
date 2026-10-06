@@ -50,19 +50,21 @@ write them character for character.
    notes becomes a file `docs/iflow/<topic-slug>/research/<zone-slug>.md`;
    a name already taken there gets a new one — never overwrite a note
    another run wrote.
-2. Create `iflow.md` per §4, distilled from the approved plan and the
+2. Create one slice file per slice, opening with its charter — before
+   iflow.md, so the write-time check never sees a row without its file.
+3. Create `iflow.md` per §4, distilled from the approved plan and the
    draft, with `Next action:` set to the first slice; what was explored
    LINKS to the research docs (never re-paste their content), and the
    sources list those doc paths. Never copy the plan wholesale. Each
    assumption approved with the table becomes one line in the decisions,
    marked as approved with the table.
-3. Create one slice file per slice, opening with its charter.
 4. Seed each slice file's notes: every deliberately-left-open item from
    Shape relevant to that slice gets one line saying, in the user's words,
    that it was left open while shaping; a left-open item relevant to no
    slice goes into iflow.md's section on what was explored — nothing may
    drop.
-5. Run the checker per SKILL.md's invariant 2, then the quality test: read
+5. Fix whatever the write-time check reported (SKILL.md's invariant 2),
+   then the quality test: read
    iflow.md alone, as a stranger would; it must say which slice is running,
    what the next action is and what has been decided, and every research
    note must exist as a file linked from iflow.md's body. A missing answer
@@ -80,7 +82,7 @@ lives only there. `<…>` names a section's role, never its heading.
 ````markdown
 # <the program, named in the user's language>
 
-<once done: the closing summary per SKILL.md's Finishing>
+<once done: the closing summary per "Finishing" in closing.md>
 
 ## <the picture>
 

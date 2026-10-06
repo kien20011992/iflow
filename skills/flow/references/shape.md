@@ -14,13 +14,13 @@ shortcut the user controls: the fast lane (§5), the opening round's jump
 ## 0. Working draft and the two run paths
 
 The plan file is Shape's accumulating draft. Its title names the work in
-the user's own words, with no prefix. Its body puts the reader's part
-first — the picture draft, from stage 3 the slice table and run order, and
-the decisions, each written the moment it settles — and the working part
-last: the research notes, then the zone map. The state block for the next
-session closes the file, nothing after it: its own heading, then exactly
-two lines, `Shape draft: <topic>` and, right below it, `Repo: <repo path>`
-— the only lines Draft recovery reads. `<repo path>` is what
+the user's own words, with no prefix. Reader's part first — the picture
+draft, from stage 3 the slice table and run order, and the decisions,
+each written the moment it settles — then the working part: the research
+notes, then the zone map. The state block for the next session closes the
+file, nothing after it: its own heading, then exactly two lines,
+`Shape draft: <topic>` and, right below it, `Repo: <repo path>` — the only
+lines Draft recovery reads. `<repo path>` is what
 `git rev-parse --show-toplevel` prints, or the working directory outside
 git. Dossier birth (state.md §3) retires the first line to
 `Shape draft done: <topic>`, so only unfinished Shapes remain candidates.
@@ -38,16 +38,16 @@ its decisions and research notes into this session's draft; bring its
 picture draft, zone map and — when stage 3 had begun — its unapproved slice
 table, or the draft plan of an i:lite run handed over, along as starting
 points, reconciled against the decisions, keeping its topic; from then on
-work only in this session's draft. A previous
-session's leanings are not state — re-confirm each with the user as it
-gets used; research notes carry over as-is.
+work only in this session's draft. A previous session's leanings are not
+state — re-confirm each with the user as it gets used; research notes
+carry over as-is.
 
 **The two run paths.** When plan mode is not in use — declined or
-unavailable — Shape still runs all three stages. The only difference is the
-working draft: a plan-format file the model writes itself at
+unavailable — Shape still runs all three stages; the only difference is
+the working draft: a plan-format file the model writes itself at
 `~/.claude/plans/iflow-<session-id>-<topic-slug>.md`, `<session-id>` being
-`$CLAUDE_CODE_SESSION_ID`. Everything else in this file, research notes and
-zone map included, applies to both paths.
+`$CLAUDE_CODE_SESSION_ID`. Everything else in this file applies to both
+paths.
 
 ## 1. Stage 1 — explore the picture
 
@@ -90,25 +90,23 @@ estimate. When both hold, do the research BEFORE presenting the zone's
 material, delegating per angle. Distill the returns into a research note —
 a subsection of the draft named after the zone, condensed, closing with a
 sources list tiered per state.md §6; a number that fails that check is an
-estimate, labelled so wherever it appears. The
-zone's material in conversation is drawn from this note, and the zone's
-map entry links to it.
+estimate, labelled so wherever it appears. The zone's material in
+conversation is drawn from this note, and the zone's map entry links to it.
 
 **Self-standing material** — written for someone who has not seen the
 context: the options gathered, each opened from its general shape in plain
 words, with enough reasoning, a sketch of how it would be done, strengths
-and weaknesses, its cost in two parts — building it (mostly the AI's
-work) and owning it afterwards (the human's: reading, review,
-maintenance) — and the cost of reversal; pre-existing context (repo facts,
-earlier decisions, terms of art) introduced in place on first use. Depth
-stops at what comparing the options needs — how-to detail belongs to layer
-2; an example anchored in the problem is always welcome, an example is not
-depth. Options must span different angles — different premises, different
-solution families, including the don't-build / defer / reuse-something
-angle when it is legitimate — at least one representative option per angle;
-two options differing only in detail within one angle are not two choices:
-a variant is named in one line inside its angle's entry, dug into only when
-the user leans into that angle.
+and weaknesses, its cost in two parts — building it (mostly the AI's work)
+and owning it afterwards (the human's: reading, review, maintenance) — and
+the cost of reversal; pre-existing context (repo facts, earlier decisions,
+terms of art) introduced in place on first use. Depth stops at what
+comparing the options needs — how-to detail belongs to layer 2; an example
+anchored in the problem is welcome, and is not depth. Options span
+different angles — different premises, different solution families, the
+don't-build / defer / reuse-something angle when it is legitimate — at
+least one option per angle; two options differing only in detail within
+one angle are one choice with a variant, named in one line inside its
+angle's entry and dug into only when the user leans into that angle.
 
 Known hard constraints are part of the material: using them to probe each
 option — what it demands, where it snags — is description; adjudicating
@@ -122,8 +120,8 @@ the spot: its product is understanding plus a reasoned leaning, spoken
 aloud into the zone's map entry, waiting for the decision session. Before
 the session, only these paths enter the decisions: (1) an explicit user
 order; (2) a choice the user raised themselves — discuss it right there,
-lock it if they want; (3) a blocking decision — blocking means a NAMED zone
-cannot present its material until this one settles (merely swinging a later
+lock it if they want; (3) a blocking decision — a NAMED zone cannot
+present its material until this one settles (merely swinging a later
 recommendation is not blocking); raise it early, ask for the call only
 after enough discussion; (4) the stall valve below.
 
@@ -132,11 +130,10 @@ zones whose state changed this exchange, the zones still open with their
 state, and a recommendation for what comes next — steering stays in the
 user's hands. Zone states: unopened / in discussion / understood (leaning
 recorded) / locked early / delegated / suspected out-of-scope / left open
-/ cut. Open means
-unopened, in discussion, or suspected out-of-scope and not yet confirmed;
-the settled zones live on the map, not in every line. "Understood" is a
-verdict on the exchange: a zone the user has not responded to on substance
-is at most "in discussion".
+/ cut. Open means unopened, in discussion, or suspected out-of-scope and
+not yet confirmed; the settled zones live on the map, not in every line.
+"Understood" is a verdict on the exchange: a zone the user has not
+responded to on substance is at most "in discussion".
 
 A small topic whose few zones are already clear may have its opening round
 recommend going straight to the decision session — or, when the request

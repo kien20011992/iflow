@@ -12,7 +12,7 @@ Claude Code plugin `i` — seven skills, invoked as `/i:<name>`:
 | `i:gamify` | Turn a months-long pursuit into a game a Claude session runs. User-invoked only. |
 | `i:how` | Learn how this repo's code works or what a recent change did, part by part with the reason behind each part, then answer its questions until you can explain it yourself; draws a page when a picture explains better. Call it by name: `/i:how vừa làm gì vậy?`, `/i:how luồng đăng ký chạy thế nào?`. Reads only. User-invoked only. |
 
-A `SessionStart` hook prints resume pointers for unfinished `i:flow` dossiers in the current project, and stays silent when there are none.
+A `SessionStart` hook prints resume pointers for unfinished `i:flow` dossiers in the current project, and stays silent when there are none. A `PostToolUse` hook runs the dossier checker after every `Edit` or `Write` to a `docs/iflow/*/iflow.md` and hands any violation back to Claude; it ignores every other file.
 
 ## Trigger eval
 

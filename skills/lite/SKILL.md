@@ -45,15 +45,13 @@ the same task.
 Language: protocol skeletons — file names, the draft's two lines in
 references/shape.md §0, this skill's own files — are English. Everything
 else a document holds, headings included, and every word spoken to the
-user follow the user's language, in words the user never has to look up:
-the protocol's private vocabulary — terms like zone, lane, picture draft,
-zone map, the zone states, fresh-eyes pass, stranger read, ripe,
-Mid-flight — stays in
-this skill's own files and the state block; in documents and in chat, say the plain thing
-instead, or introduce the term right where it is first used. A zone code
-is shorthand for the zone map: anywhere outside the map — the position
-line above all — write it with its short name attached ("Z5 product
-shape"), and never write a code the map does not have yet.
+user follow the user's language, in words the user never has to look up.
+This skill's private vocabulary — the terms its files use as headings,
+bold leads and state names — stays in its files and the state block; in
+documents and in chat, say the plain thing or introduce the term where it
+is first used. A zone code is shorthand for the zone map: outside the
+map, write it with its short name ("Z5 product shape"), and never a code
+the map lacks.
 
 Agents: follow [references/agents.md](references/agents.md) whenever you
 put one to work.
@@ -154,23 +152,21 @@ Until it passes, the run is read-only: nothing is created, changed,
 installed, migrated or deployed — no file, dependency, database, external
 service or deployment — except the working draft.
 
-**The stranger read before a gate.** One general-purpose agent (never a
-Plan agent) that has not seen the conversation reads a plan before its
-gate only when (1) the plan's own steps write or delete real data, call
-a paid API, deploy or migrate, and then, on that ground alone, the read
-covers only those steps; (2) the user asks for it; or (3) the user said
-the work must be done carefully or matters, judged by what they meant,
-not by the words alone — a decision, recorded as such. Real data means a
-production or shared environment's, never local or test data; migrate
-likewise. Hand the
-agent, told to change nothing, the task and the plan to name missing
-choices, wrong assumptions and unproven claims; fold what holds into the
-plan and give each rejected candidate one line in it. Otherwise the plan
-goes to its gate at once, with one line after its last step telling the
-user, in their language, to answer `soát` for an agent to read it; that
-answer runs the read, then the plan returns to the gate. Apart from this
-read and stage 2's fresh-eyes pass on the picture, no agent reviews or
-designs a plan, whatever plan mode suggests.
+**The stranger read before a gate.** Only when (1) the plan's own steps
+write or delete real data — a production or shared environment's, never
+local or test data — call a paid API, deploy or migrate, and then only
+over those steps; (2) the user asks for it; or (3) the user said the work
+must be done carefully or matters, judged by what they meant, not by the
+words alone — recorded as a decision. Then one general-purpose agent
+(never a Plan agent) that has not seen the conversation, told to change
+nothing, reads the task and the plan to name missing choices, wrong
+assumptions and unproven claims; fold what holds into the plan and give
+each rejected candidate one line in it. Otherwise the plan goes to its
+gate at once, with one line after its last step telling the user, in
+their language, to answer `soát` for that read; the answer runs it, then
+the plan returns to the gate. Apart from this read and stage 2's
+fresh-eyes pass on the picture, no agent reviews or designs a plan,
+whatever plan mode suggests.
 
 ## Build and prove
 
