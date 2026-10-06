@@ -25,8 +25,9 @@ lines Draft recovery reads. `<repo path>` is what
 git. Dossier birth (state.md §3) retires the first line to
 `Shape draft done: <topic>`, so only unfinished Shapes remain candidates.
 
-**Draft recovery** (when no dossier exists): run
-`grep -A1 '^Shape draft: ' ~/.claude/plans/*.md` — each hit's next line
+**Draft recovery** (when no dossier exists): `<plans dir>` is
+`~/.claude/plans` unless the `plansDirectory` setting names another. Run
+`grep -A1 '^Shape draft: ' <plans dir>/*.md` — each hit's next line
 is that draft's `Repo:`; a `Repo:` anywhere else in a file is prose. Keep
 the drafts whose `Repo:` matches this session's `<repo path>`, then only
 those whose `Shape draft:` topic is the topic at hand. Exactly one survivor
@@ -45,7 +46,7 @@ carry over as-is.
 **The two run paths.** When plan mode is not in use — declined or
 unavailable — Shape still runs all three stages; the only difference is
 the working draft: a plan-format file the model writes itself at
-`~/.claude/plans/iflow-<session-id>-<topic-slug>.md`, `<session-id>` being
+`<plans dir>/iflow-<session-id>-<topic-slug>.md`, `<session-id>` being
 `$CLAUDE_CODE_SESSION_ID`. Everything else in this file applies to both
 paths.
 

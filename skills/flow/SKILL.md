@@ -124,7 +124,10 @@ passes its gate, work toward it is read-only: nothing is created,
 changed, installed, migrated or deployed — no file, dependency, database,
 external service or deployment. The only writes meanwhile: during Shape,
 the working draft; once the dossier exists, also the dossier's own files,
-as this skill directs.
+as this skill directs. The line after the plan's last step also tells the
+user, in their language, that approving with the context cleared is safe
+and worth it when the conversation before this gate was long: the plan's
+FIRST step re-reads what the next step needs.
 
 **The stranger read before a gate.** Only when (1) the plan's own steps
 write or delete real data — a production or shared environment's, never

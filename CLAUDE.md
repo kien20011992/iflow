@@ -2,6 +2,8 @@
 
 File này chỉ được nạp khi bạn, hoặc Claude, làm việc trong repo plugin. Người dùng plugin không bao giờ thấy nó. Vì vậy mọi lời dặn dành cho người sửa skill đặt ở đây, không đặt trong file skill.
 
+Trước khi tag một bản mới, hoặc sau khi đổi một luật của flow hay lite, chạy bộ eval hành vi trong README (`claude plugin eval . --scaffold --allow-tools Write --ablation none`). Nó tốn tiền thật, khoảng mười hai phiên mỗi lần chạy đủ, nên không chạy sau mỗi lần sửa chữ. Một case chỉ kiểm được hành vi tự kết thúc: phiên headless không bấm được nút duyệt, nên không có case nào đi qua cổng.
+
 Chạy `tests/run.sh` sau mỗi lần sửa hook hoặc checker của i:flow. Lệnh này dựng hồ sơ mẫu trong thư mục tạm, rồi kiểm cả hai hook lẫn checker.
 
 Ba mục của flow chỉ dùng về cuối vòng slice (Redoing a slice, Tests from i:test, Finishing) nằm ở `skills/flow/references/closing.md`, không nằm trong SKILL.md, để SKILL.md của flow dưới hẳn ngưỡng 5.000 token mà Claude Code gắn lại sau khi nén hội thoại; nếu để trong SKILL.md thì chính ba mục ở đuôi này là phần bị cắt. Đừng gộp lại.
@@ -44,6 +46,7 @@ i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/s
 - Kết quả review mà cách sửa lệch khỏi plan thì lite chỉ báo lại. Lite không chép luật "hỏi người dùng trước" của flow (`ex-A1`).
 - Lite cân "quá lớn cho một plan?" hai lần, lúc nhận yêu cầu và lúc viết plan; flow chỉ cân một lần lúc nhận. Chạy tiếp một bản nháp ở phiên sau, lite vẫn cân lại; lite không chép cách flow bỏ qua bước cân này (`sh-A2`).
 - Lần chạy mốc của lite diễn ra mỗi lượt, ngay trước thay đổi đầu tiên, và ghi vào file plan. Test đỏ mới mà thay đổi không gây ra thì chỉ báo lại. Flow ghi mốc một lần vào iflow.md.
+- Lite không có câu mời duyệt kèm xoá context ở cổng (flow, đoạn cổng duyệt). Lite chỉ có một plan, phần context trước cổng chủ yếu là lần đọc code mà bước xây vẫn cần, nên xoá không lợi gì.
 - Lite không có mục "Tests from i:test" (của flow, nằm trong `references/closing.md`) và không tự gọi i:test.
 
 Mỗi lần đổi một đoạn bên flow mà lite có bản chép, hãy ghi một dòng vào danh sách dưới đây. Đồng bộ xong thì xóa dòng đó.
