@@ -156,8 +156,9 @@ gate only when (1) the plan's own steps write or delete real data, call
 a paid API, deploy or migrate, and then, on that ground alone, the read
 covers only those steps; (2) the user asks for it; or (3) the user said
 the work must be done carefully or matters, judged by what they meant,
-not by the words alone. Real data means a production or shared
-environment's, never local or test data; migrate likewise. Hand the
+not by the words alone — a decision, recorded as such. Real data means a
+production or shared environment's, never local or test data; migrate
+likewise. Hand the
 agent, told to change nothing, the task and the plan to name missing
 choices, wrong assumptions and unproven claims; fold what holds into the
 plan and give each rejected candidate one line in it. Otherwise the plan

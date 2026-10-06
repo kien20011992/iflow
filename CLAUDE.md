@@ -25,7 +25,7 @@ Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i
 
 ## Lite cần đồng bộ tay
 
-i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, chứng minh, review, Mid-flight decisions, định nghĩa giả định). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
+i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, soát trước cổng, chứng minh, review, Mid-flight decisions, định nghĩa giả định). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
 
 - Lite không có slice, và không bao giờ sửa file của flow trong thư mục nhiệm vụ (`iflow.md`, `NN-<name>.md`, `evidence/`). Giai đoạn 3 ra một plan duy nhất.
 - Lite không có hồ sơ, không có hook. Một lượt dở chỉ chạy tiếp được nhờ khôi phục bản nháp. Khi khôi phục, mọi lựa chọn trong một plan chưa được duyệt vẫn chỉ là giả định.

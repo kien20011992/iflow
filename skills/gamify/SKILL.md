@@ -237,7 +237,9 @@ what the page said. The whole protocol is
 
 ## Slug and directory
 
-`<slug>` is the pursuit in kebab-case, ASCII-folded, short. Two cases
+`<slug>` is the existing `docs/iflow/*` directory on this pursuit when there
+is one — above all the one holding an i:explore dossier on it — else the
+pursuit in kebab-case, ASCII-folded, short. Two cases
 when `docs/iflow/<slug>/game/` already exists: it holds `gamemaster/plan.md` →
 it is that game (Dispatch, branch 4); it does not (an older or unrelated
 directory) → ask once whether to use a different slug or to overwrite.
