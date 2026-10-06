@@ -111,8 +111,11 @@ which directory a name resolved to. Then take exactly one branch:
 4. A game alone, or + `tiếp tục` → resume build when `plan.md` has an
    unanswered "phiên 1 xong" or "lần 0 xong" note; otherwise play mode when
    its `Việc kế tiếp:` line points at playing, resume build otherwise.
-5. No game found → a **new pursuit**: build mode from stage 1. "play
-   piano" names no game, so it is a new pursuit.
+5. No game found → a **new pursuit**: build mode from stage 1 — unless
+   the argument asked to continue, fix or extend one (`chơi tiếp`,
+   `tiếp tục`, `dựng tiếp`, `sửa:`, `thêm dungeon:`): then ask once for
+   its directory and dispatch again. "play piano" names no game, so it is
+   a new pursuit.
 
 ## Build mode
 

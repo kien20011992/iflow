@@ -124,8 +124,9 @@ Invariants:
 5. Verification evidence (scripts, screenshots, command output) lives in
    the repo, in the slice's own `docs/iflow/<topic-slug>/evidence/NN-<name>/`
    — never in the session scratchpad, which is cleaned up. Keep all of it:
-   evidence is never deleted, trimmed or replaced by a summary; keeping it
-   out of git is the user's `.gitignore` call, not this skill's.
+   evidence is never deleted, trimmed, overwritten or replaced by a
+   summary — a second attempt writes beside the first, under new names;
+   keeping it out of git is the user's `.gitignore` call, not this skill's.
 
 **The approval gate.** Every plan i:flow puts to the user — the slice table
 that closes Shape, and each build slice's plan — passes the plan-mode
@@ -286,16 +287,19 @@ of the build cycle.
 A red beyond those recorded at the baseline means not done — each takes
 its lane there, and a slice already reading done that has to carry a fix
 goes through "needs-redo" above; finishing resumes once none is left.
-Then set the overall status line in iflow.md to done and write the
-summary — each slice, its product, file paths, what was deliberately left
-open, and any baseline red still red — at the top of iflow.md's body,
-above the picture, and post it in
-chat as the end-of-program announcement. Then copy the program's result to
+Then write the summary — each slice, its product, file paths, what was
+deliberately left open, and any baseline red still red — at the top of
+iflow.md's body, above the picture, and copy the program's result to
 `assets/iflow/` beside `docs/` at the same root: the summary alone as
 `assets/iflow/<topic-slug>.md`; when the program also produced finished
 documents (research slices) or a web page, a directory
-`assets/iflow/<topic-slug>/` holding the summary and each of them. It is a
-copy — the dossier stays as it is — and a later redo copies again over it.
+`assets/iflow/<topic-slug>/` holding the summary and each of them — a
+research slice's document part only, not its charter or notes. It is a
+copy — the dossier stays as it is — and a later redo copies again over
+this program's own earlier copy; a file there that this program did not
+write is never overwritten: the copy takes a new name beside it. Only
+once the copy exists, set the overall status line in iflow.md to done and
+post the summary in chat as the end-of-program announcement.
 When the program changed code,
 it closes with one line: the program has not passed `/security-review`,
 run it BEFORE pushing.

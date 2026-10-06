@@ -11,7 +11,10 @@ Contents: 1. Principles · 2. Label contract table · 3. Birth checklist ·
   directory `docs/iflow/<topic-slug>/`, with `docs/iflow/` at the
   repository's git root (the project directory outside git): `iflow.md`,
   one `NN-<name>.md` per slice, `evidence/NN-<name>/` per slice, and
-  `research/`. The directory name is the task's key — other skills working
+  `research/`. A dossier is born in the existing `docs/iflow/*` directory
+  on this task when there is one — above all the one holding the i:explore
+  dossier that seeded Shape — else in a new one named after the topic.
+  The directory name is the task's key — other skills working
   on the same task write their own subdirectories there (`explore/`,
   `how/`, `game/`, notes in `research/`) and never touch this skill's
   files. The resume hook reads only the `docs/iflow/*/iflow.md` files that
@@ -41,7 +44,9 @@ write them character for character.
 ## 3. Birth checklist (the moment the slice table is approved)
 
 1. Materialize research notes: every subsection of the draft's research
-   notes becomes a file `docs/iflow/<topic-slug>/research/<zone-slug>.md`.
+   notes becomes a file `docs/iflow/<topic-slug>/research/<zone-slug>.md`;
+   a name already taken there gets a new one — never overwrite a note
+   another run wrote.
 2. Create `iflow.md` per §4, distilled from the approved plan and the
    draft, with `Next action:` set to the first slice; what was explored
    LINKS to the research docs (never re-paste their content), and the

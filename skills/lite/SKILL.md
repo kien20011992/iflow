@@ -25,14 +25,18 @@ the plan itself stays in the plan file.
 **Hard rule.** i:lite never creates or edits i:flow's files in a task
 directory — `iflow.md`, the `NN-<name>.md` slice files, `evidence/` — and
 never cuts the work into slices; it may add notes to that directory's
-`research/`. Work that outgrows one plan is
+`research/`, where a name already taken gets a new one — never overwrite a
+note another run wrote. Work that outgrows one plan is
 `/i:flow`'s — see "Too big for one plan?" below.
 
 **Where files go.** `docs/` and `assets/` here sit at the repository's git
 root (the working directory outside git). When the user's request asks for
 its result packaged as a document, that document goes to
 `assets/iflow/<topic-slug>.md` — a directory `assets/iflow/<topic-slug>/`
-when it is several files or a web page.
+when it is several files or a web page. `<topic-slug>` is the existing
+`docs/iflow/*` directory on this task when there is one — above all the
+one holding the i:explore dossier that seeded the run — else the task's
+own slug.
 
 Language: protocol skeletons — file names, the draft's two lines in
 references/shape.md §0, this skill's own files — are English. Everything
