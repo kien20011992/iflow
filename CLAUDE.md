@@ -58,6 +58,7 @@ Hiện chưa có dòng nào: lite đã khớp flow sau lượt cắt chữ ngày
 Sau mỗi lần sửa gamify, chạy `skills/gamify/scripts/check-skill.sh`. Script này kiểm cấu trúc của skill mà không tốn API: frontmatter, lời trỏ, tiêu đề các mẫu, tám nhãn của mỗi khung, 18 điều văn phong, 32 điều thiết kế.
 
 - Gamify chạy trong hội thoại chính vì cần `AskUserQuestion`, mà fork không có công cụ này. Đừng thêm `context: fork` vào frontmatter.
+- Ba file tham chiếu giữ phần chỉ đọc một lần, để hai file đọc đi đọc lại nhẹ đi: `ke-hoach-gamemaster.md` (bước A và mẫu gamemaster, chỉ slice 01), `sau-dungeon.md` (slice `tools.md`, kiểm cuối, sửa và mở rộng), `quan-tro-moc.md` (chấm bài kiểm và qua vùng, vài tuần một lần). Phần đọc mỗi slice ở `vong-slice.md`, phần đọc mỗi lần chơi ở `quan-tro.md`, kể cả luật "khi nào bảo đánh" vì mọi phiên đều cần nó. Đừng gộp lại; check-skill.sh kiểm đủ các mục ở từng file.
 - Khung mới thêm vào cuối `references/thu-vien-khung.md`, đủ tám mục có nhãn. Script đếm heading `## Khung N` và soi đủ tám nhãn.
 - SKILL.md viết tiếng Anh, các file tham chiếu viết tiếng Việt.
 - Giữ SKILL.md của gamify dưới 5.000 token (hiện khoảng 15 KB). Sau khi nén hội thoại, skill không tự đọc lại SKILL.md mà trông vào việc Claude Code tự gắn lại file dưới ngưỡng này; file dài quá ngưỡng thì phần cuối, gồm các luật chung, bị cắt.

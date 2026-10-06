@@ -78,8 +78,8 @@ the `Artifact` tool to publish the page with the `db` capability, and
 user's machine for the engine and the page. Without `Artifact`, the page
 is a local `slate/index.html` the user opens in a browser and it saves to
 localStorage; without `ArtifactData`, results reach the narrator by the
-"Sao chép cho người dẫn" button and a pasted JSON (`quan-tro.md`, last
-section).
+"Sao chép cho người dẫn" button and a pasted JSON (`quan-tro.md`, "Không
+có sổ chung").
 
 **Frame and vocabulary are two different things.** The frame is what every
 game shares: the file names above, the nine sections of `gamemaster.md`,
@@ -103,7 +103,7 @@ which directory a name resolved to. Then take exactly one branch:
    it names the only files play mode reads and writes.
 2. A game + `thêm dungeon: …` or `sửa: …` → **extend / fix**: read
    `gamemaster/plan.md` and run the "Sửa và mở rộng" section of
-   [references/vong-slice.md](references/vong-slice.md) as written.
+   [references/sau-dungeon.md](references/sau-dungeon.md) as written.
 3. A game + `dựng tiếp` → **resume build**: read `gamemaster/plan.md`; a
    line of its "Ghi chú từ phiên chơi" that no Quyết định line answers yet
    goes first (the fun gate or the calibration of `vong-slice.md` that the
@@ -148,12 +148,15 @@ stage — say so once when locking.
 ### Stage 3 — the slice loop
 
 Read [references/vong-slice.md](references/vong-slice.md) and run it as
-written: the optional mechanics, then `gamemaster.md` written from its
-template, then the slice table in `plan.md`'s state block. The rules in
+written; slice 01 also reads
+[references/ke-hoach-gamemaster.md](references/ke-hoach-gamemaster.md):
+the optional mechanics, then `gamemaster.md` written from its template,
+then the slice table in `plan.md`'s state block. The rules in
 `gamemaster.md` must be machine-checkable where the game has a machine:
 each one names the data it reads and the tolerance it allows.
 
-Approvals follow `vong-slice.md`: `gamemaster.md` together with the
+Approvals follow `ke-hoach-gamemaster.md` for the first and
+`vong-slice.md` for the rest: `gamemaster.md` together with the
 machine (approving it approves slices 02–03), dungeon 1, then dungeons 2
 onward in one go; an approval covering several slices writes "Kế hoạch đã
 duyệt" into each at once.
@@ -183,12 +186,13 @@ stops; `Việc kế tiếp` then points at slice `tools.md`.
 
 ### Stage 4 — `tools.md`
 
-Run the "Slice `tools.md`" section of `vong-slice.md` as written; each
+Run the "Slice `tools.md`" section of
+[references/sau-dungeon.md](references/sau-dungeon.md) as written; each
 tool the user picks becomes a new numbered slice.
 
 ### Stage 5 — final check
 
-Run the "Kiểm cuối" section of `vong-slice.md` as written.
+Run the "Kiểm cuối" section of `sau-dungeon.md` as written.
 
 ## Play mode
 

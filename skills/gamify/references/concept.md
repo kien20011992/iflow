@@ -159,7 +159,7 @@ lời:
 3. Chỉ khi người dùng đã nói được và còn một lựa chọn rời nhau (ví dụ ba
    nhánh tên gọi), mới dùng một `AskUserQuestion` để chốt.
 4. Không hỏi cơ chế tuỳ chọn ở đây: câu đó thuộc bước A của giai đoạn 3
-   (`vong-slice.md`), hỏi một lần.
+   (`ke-hoach-gamemaster.md`), hỏi một lần.
 
 ## Ghi vào `plan.md`
 

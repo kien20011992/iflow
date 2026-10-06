@@ -31,7 +31,7 @@ kiểm; mã trong ngoặc ở dưới (A3, B6…) trỏ vào đó.
 | `character.md` | người chơi | `<người dẫn>` | bảng |
 | `journal.md` | người chơi đọc lại; người dẫn dùng để ứng biến kết vùng | `<người dẫn>`, từ sổ chung của trang | mỗi lần chơi một khối |
 | `boss/` | không ai mở ngoài trang | máy (script trong `slate/`) | `set.json` + `README.md` |
-| `gamemaster.md` | người dẫn, mỗi phiên | người dựng; người dẫn chỉ ghi ghi chú | 9 mục (`vong-slice.md`) |
+| `gamemaster.md` | người dẫn, mỗi phiên | người dựng; người dẫn chỉ ghi ghi chú | 9 mục (`ke-hoach-gamemaster.md`) |
 | `slate/` | trang chơi | người dựng | `index.html` + nguồn |
 
 ## `world.md` — mười mục, đúng thứ tự
@@ -85,7 +85,7 @@ Mở đầu hai câu: sổ này `<người dẫn>` ghi từ trang, bạn không 
 
 Ví dụ forex: `## Đêm 3 — 24/09/2026 · ngày bốc 463e3b5f` / `- Sight 2/3, sót 4 · Lure 1/1, cắn 0` / `- Kiếm: chưa mở · chuỗi 1` / `- Ghi chú: —` / `- Ilo: …`.
 
-Ngoài khối lần chơi, sổ có hai loại khối vùng do người dẫn ghi: `## Vùng N mở — <ngày>` chép nguyên biến cố mở của `gamemaster.md` mục 6 (≤ 6 dòng), và `## Vùng N qua — <ngày>` chép biến cố đóng người dẫn nói trong chat cùng `<phần thưởng cốt truyện>`. Hai khối này vừa để người chơi đọc lại, vừa là dấu cho người dẫn biết vùng đã mở hay đã qua; cách dùng ở `quan-tro.md`.
+Ngoài khối lần chơi, sổ có hai loại khối vùng do người dẫn ghi: `## Vùng N mở — <ngày>` chép nguyên biến cố mở của `gamemaster.md` mục 6 (≤ 6 dòng), và `## Vùng N qua — <ngày>` chép biến cố đóng người dẫn nói trong chat cùng `<phần thưởng cốt truyện>`. Hai khối này vừa để người chơi đọc lại, vừa là dấu cho người dẫn biết vùng đã mở hay đã qua; khối mở dùng ở `quan-tro.md`, khối qua ở `quan-tro-moc.md`.
 
 ## `boss/`
 
@@ -110,4 +110,4 @@ bên trong `slate/`.
 
 ## `gamemaster.md`
 
-Theo mẫu 9 mục ở `vong-slice.md`. Riêng mục 6 (đường tiến trình) mang **biến cố mở** mỗi vùng (≤ 6 dòng, trang kể khi người chơi vào vùng lần đầu) và **`<phần thưởng cốt truyện>`** (3 dòng, trao khi qua bài kiểm cuối vùng) — người chơi nghe lúc chơi, không đọc trước (C3). Mục 7 mang bảng từ vựng và mẫu khối journal ở trên. Mục 8 mang một dòng `Từ cấm ở file người chơi: a, b, c` — tên lĩnh vực và kỹ năng thật của game này (ví dụ forex: forex, EURUSD, ICT, thanh khoản, order block…); `run-check.sh` đọc dòng đó để soi file người chơi.
+Theo mẫu 9 mục ở `ke-hoach-gamemaster.md`. Riêng mục 6 (đường tiến trình) mang **biến cố mở** mỗi vùng (≤ 6 dòng, trang kể khi người chơi vào vùng lần đầu) và **`<phần thưởng cốt truyện>`** (3 dòng, trao khi qua bài kiểm cuối vùng) — người chơi nghe lúc chơi, không đọc trước (C3). Mục 7 mang bảng từ vựng và mẫu khối journal ở trên. Mục 8 mang một dòng `Từ cấm ở file người chơi: a, b, c` — tên lĩnh vực và kỹ năng thật của game này (ví dụ forex: forex, EURUSD, ICT, thanh khoản, order block…); `run-check.sh` đọc dòng đó để soi file người chơi.

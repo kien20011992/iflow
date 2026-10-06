@@ -36,6 +36,9 @@ hiện tại. URL trang (cũng là URL sổ chung cho `ArtifactData`) nằm ở
 dòng "Phiên Claude ở chế độ play" của mục 7 trong `gamemaster.md`; thiếu
 dòng đó thì hỏi người chơi URL trang một lần và ghi vào đó.
 
+Đọc thêm `quan-tro-moc.md`, file của chế độ play, khi sổ chung có lần đánh
+mới hoặc hôm nay tới "Hạn vùng" ở `character.md`.
+
 Không đọc: file tham chiếu dựng game của skill này — trừ mục "Hợp đồng kết
 quả" của `slate.md` khi cần đúng các trường của sổ chung —, `gamemaster/plan.md`
 (chỉ được **nối** một dòng vào mục `## Ghi chú từ phiên chơi` khi mục "Kết
@@ -47,7 +50,7 @@ chỉ tra khi thật sự cần, và đề thật không bao giờ ghi vào file
 
 Người chơi chỉ nói chuyện trong chat. Không bao giờ bảo họ chép số từ màn
 hình; số nằm trong sổ chung, hoặc trong JSON họ dán khi trang báo "lưu trên
-máy này" (mục cuối).
+máy này" (mục "Không có sổ chung").
 
 ## Mở phiên
 
@@ -61,15 +64,16 @@ Thứ tự cố định, lượt đầu tiên của phiên:
    - lần chơi trong `sessions` mà `journal.md` chưa có khối (so ngày thật
      của `started_at` với ngày ở tiêu đề khối, và `item_id` với mã đề ghi ở
      tiêu đề);
-   - lần đánh mới trong `tests` (mục "Bài kiểm cố định và cấp");
+   - lần đánh mới trong `tests` (chấm theo `quan-tro-moc.md`);
    - vùng hiện tại (dòng "Vùng" của `character.md`) chưa có khối
      `## Vùng N mở` trong `journal.md`;
    - vùng hiện tại đã có khối `## Vùng N qua` mà `dungeons/` giờ đã có
-     file của vùng kế: ghi nốt phần còn lại của mục "Qua vùng";
+     file của vùng kế: ghi nốt phần còn lại của mục "Qua vùng" ở
+     `quan-tro-moc.md`;
    - `character/main` chưa tồn tại.
 4. Làm việc tồn trước, im lặng: ghi khối journal cho từng lần chơi thiếu
-   (mục "Dẫn phiên"), chấm từng lần đánh mới (mục "Bài kiểm cố
-   định và cấp"), gieo `character/main` nếu chưa có — đúng các trường của
+   (mục "Dẫn phiên"), chấm từng lần đánh mới (mục "Chấm bài kiểm cố
+   định" của `quan-tro-moc.md`), gieo `character/main` nếu chưa có — đúng các trường của
    Hợp đồng kết quả (`slate.md` của skill): `region`, `unlocked` (mảng mã
    chiêu, mã lấy ở bảng từ vựng), `levels` (cấp từng mã, kể cả chiêu chưa
    mở, mặc định 1), `sessions` (đếm khối lần chơi trong journal), cộng các
@@ -81,7 +85,8 @@ Thứ tự cố định, lượt đầu tiên của phiên:
    khối `## Vùng N mở — <ngày thật hôm nay>` vào `journal.md` với đúng
    những dòng đó, và nói một câu. Đã mở → một câu của người dẫn. Sau đó
    **một dòng chỉ việc**: mở trang nào, làm gì lần này (lần chơi thường,
-   hay bài kiểm cố định nếu tới lượt — xem mục dưới), xong thì quay lại nói
+   hay bài kiểm cố định nếu tới lượt — xem mục "Bài kiểm cố định và
+   cấp"), xong thì quay lại nói
    "xong". (Trang chưa có màn dẫn nhập thì người dẫn kể, ≤ 6 dòng.) Việc
    tồn có lần chơi hôm nay thì câu đó là câu "<người dẫn>:" của khối mới
    nhất, và dòng chỉ việc là cho lần sau, như bước 3 của "Dẫn phiên".
@@ -100,8 +105,8 @@ thấy họ vừa chơi):
    thì ghi theo thứ tự `started_at`. Lối rẽ Hoãn không có trong sổ (trang
    không lưu), nên không có gì để ghi; các đề của bài kiểm cố định cũng không
    nằm ở `sessions`, chúng gộp trong `tests/<id>`. `list tests` (hay tên bộ
-   sưu tập mục 7 ghi) → lần đánh mới thì chấm theo mục "Bài kiểm cố định và
-   cấp".
+   sưu tập mục 7 ghi) → lần đánh mới thì chấm theo mục "Chấm bài kiểm cố
+   định" của `quan-tro-moc.md`.
 2. Ghi một khối theo đúng mẫu ở `gamemaster.md` mục 7. Số lấy từ `summary`:
    với mỗi mã chiêu đã bấm, trúng = `hits`, đặt = `hits + misses`, sót =
    `missed`; trường riêng đọc ra chữ theo cột "đọc là" của bảng từ vựng;
@@ -115,7 +120,7 @@ thấy họ vừa chơi):
    tiếp". Không mời thêm một lần nữa; hết cửa sổ hay hết tài nguyên là hết
    (mục 5).
 4. Sổ chưa có lần chơi hay lần đánh mới → một dòng hỏi: trang báo "Đã lưu vào sổ" hay
-   "lưu trên máy này"? Trường hợp sau xem mục cuối.
+   "lưu trên máy này"? Trường hợp sau xem mục "Không có sổ chung".
 
 Luật nói, áp cho mọi lượt:
 
@@ -147,62 +152,8 @@ Khi nào bảo đánh (một dòng chỉ việc, không thuyết phục):
 - người chơi xin: được, nếu lần đánh gần nhất (trường `at` trong
   `tests/*`) cách hôm nay từ bảy ngày.
 
-Một lần đánh là **mới** khi ngày thật của `at` sau ngày ở dòng "<bài kiểm>
-gần nhất" của `character.md`; dòng đó chưa có ngày thì mọi lần đánh đều
-mới. Chấm từng lần đánh mới, theo thứ tự `at`:
-
-1. Chỉ chấm chiêu **đã mở** (dòng "Chiêu đã mở" của `character.md`). Chiêu
-   chưa mở có điểm trong doc thì bỏ qua, không nhắc.
-2. Với mỗi chiêu đã mở, đọc thang ở `gamemaster.md` mục 3. Cột nào của
-   `scores.<mã>` so với thang là do mục 3 ghi; mặc định trúng =
-   `precision`, không sót = `recall`. Cấp mới = cấp cao nhất mà mọi cột mục
-   3 đòi cùng đạt; cấp 1 khi có điểm (đã bấm). **Cấp không tụt:** thấp hơn
-   cấp đang ghi thì giữ cấp cũ.
-3. Chiêu cuối (nếu game có, mục 3 nói) mở khi điều kiện ở mục 3 thoả trong
-   **cùng một lần** đánh.
-4. Ghi: `character.md` dòng "Cấp" và "<bài kiểm> gần nhất" (ngày thật của
-   `at` + hai số mỗi chiêu, mỗi số kèm tên `world.md` dùng, kiểu
-   "23/09/2026 — <chiêu A> trúng 60 · không sót 40", không "60/40" trơ);
-   `character/main` bằng `update` với `if_version` (`levels`,
-   `unlocked`, trường riêng khi đổi); `quests.md` đóng dòng lần 0, hay dòng
-   "bài kiểm cuối vùng" nếu có.
-5. Nói một câu cấp, bằng tên chiêu và số cấp; không nói phần trăm trừ khi
-   người chơi hỏi. Nếu vừa ghi `character/main`, dòng chỉ việc thêm "tải
-   lại trang" — trang chỉ đọc nhân vật lúc nạp.
-
-## Qua vùng
-
-Điều kiện đọc ở `gamemaster.md` mục 3: tới hạn vùng **và** chiêu của vùng đạt
-cấp qua vùng ở lần đánh cuối vùng. Kiểm ngay sau khi chấm một lần đánh mà
-hôm nay ≥ hạn.
-
-Qua: nói theo đúng thứ tự, trong một lượt —
-
-1. **Biến cố đóng**, ứng biến 3–5 dòng từ các khối journal của vùng đó: lần
-   chơi nào đáng nhớ, lần đánh cuối đổi so với lần 0 thế nào. Giọng của
-   người dẫn, từ của trang, không tổng kết kiểu báo cáo.
-2. **Phần thưởng cốt truyện** nguyên văn ba dòng từ `gamemaster.md` mục 6
-   (tên của nó trong game ở bảng từ vựng).
-3. Tên nơi trao chiêu mới mở (nếu game có), và một dòng chỉ việc: tải lại
-   trang, mai vào vùng mới.
-
-Ghi: `journal.md` khối `## Vùng N qua — <ngày thật>` gồm biến cố đóng và
-phần thưởng cốt truyện đúng như đã nói; `character.md` (Vùng, Hạn vùng kế
-theo mục 6, Chiêu đã mở, phần thưởng đã có); `character/main` (`region`,
-`unlocked`); `quests.md` (đóng dòng vùng cũ, mở dòng cho mỗi chiêu hay nơi
-trao chiêu mới). Vùng mới được **mở** ở phiên sau, bằng biến cố mở của nó
-(mục "Mở phiên", bước 5). Vùng kế có ở `gamemaster.md` mục 6 mà chưa có
-file `dungeons/` thì vẫn nói và ghi biến cố đóng cùng phần thưởng (khối
-`## Vùng N qua`), nhưng chưa ghi
-phần còn lại; dòng chỉ việc: vùng kế chưa dựng, người dựng gọi
-`/i:gamify <game> dựng tiếp`. Phiên đầu tiên sau khi file vùng kế có mặt
-thì ghi nốt phần còn lại, rồi mở vùng mới như bước 5 của "Mở phiên".
-
-Chưa qua khi tới hạn: lùi hạn bảy ngày, một lần cho mỗi vùng — sửa "Hạn
-vùng" ở `character.md`, ghi một dòng vào khối lần chơi gần nhất của journal;
-vẫn chưa đủ sau lần lùi thì vùng kéo dài, không huỷ, không nhắc lại. Nghỉ
-dài (khoảng cách giữa hai lần chơi liền nhau lớn hơn ngưỡng ở mục 5) → hạn
-tự lùi đúng số ngày nghỉ, một lần, cùng cách ghi.
+Cách chấm từng lần đánh mới: mục "Chấm bài kiểm cố định" của
+`quan-tro-moc.md`.
 
 ## Kết phiên
 

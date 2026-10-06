@@ -1,6 +1,6 @@
 # Ba mươi hai điều kiện thiết kế — danh sách kiểm của kế hoạch và dungeon
 
-Bước A của vòng slice (`vong-slice.md`) đọc file này trước khi viết
+Bước A của vòng slice (`ke-hoach-gamemaster.md`) đọc file này trước khi viết
 `gamemaster.md`, rồi điền mục 9 của file đó: điều nào thoả bởi mục nào.
 
 32 điều chia hai nhóm khi kiểm: **nhóm kế hoạch** — [3] [4] [5] [9] [11]
