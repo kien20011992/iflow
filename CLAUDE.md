@@ -27,31 +27,9 @@ Muốn đổi một chuỗi thì sửa cả năm nơi trong cùng một commit. 
 
 Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i:flow. Mỗi thư mục nhiệm vụ mang một id ngắn ở đuôi tên (`<việc>-a7f3`, bốn ký tự hex từ `openssl rand -hex 2`), và chỉ khi người dùng gọi tên nhiệm vụ đó thì skill khác mới ghi vào cùng thư mục, không skill nào tự đoán "cùng việc" để chui vào. Khi được gọi, i:lite ghi `research/`, i:explore ghi `explore/`, i:how ghi `how/`, i:gamify ghi `game/`; đổi tên một thư mục con hay cách đặt tên thư mục thì sửa skill ghi nó và state.md §1. Ba skill này đọc theo vai trò các mục: bức tranh, quyết định, charter, plan đã duyệt, kết quả, ghi chú, và các cột của bảng slice. Đổi vai trò hay tên một mục thì phải xem lại cả ba skill. i:how còn đọc khối kết quả mà i:lite ghi dưới plan, nên đổi khối đó cũng phải xem lại i:how. i:debug còn đọc bức tranh, phần nói plan sẽ đổi gì, các quyết định và giả định đã duyệt trong file plan của i:lite, nên đổi vai trò các phần đó cũng phải xem lại i:debug.
 
-## Lite cần đồng bộ tay
+## i:flow và i:lite độc lập, không đồng bộ
 
-i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, soát trước cổng, chứng minh, review, Mid-flight decisions, định nghĩa giả định). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
-
-- Lite không có slice, và không bao giờ sửa file của flow trong thư mục nhiệm vụ (`iflow.md`, `NN-<name>.md`, `evidence/`). Giai đoạn 3 ra một plan duy nhất.
-- Lite không có hồ sơ, không có hook. Một lượt dở chỉ chạy tiếp được nhờ khôi phục bản nháp. Khi khôi phục, mọi lựa chọn trong một plan chưa được duyệt vẫn chỉ là giả định.
-- Lite bật plan mode ở bước 2 của SKILL.md, nên shape.md của lite không có câu `EnterPlanMode` ở đầu như flow.
-- Cả hai bên có làn `fast` để người dùng bỏ phần bàn, nhưng mỗi bên một bản. Bản của flow nằm ở mục 5 của `skills/flow/references/shape.md`. Bản của lite nằm ở mục "Two lanes" trong SKILL.md của lite, không nằm trong shape.md, nên đừng chép mục 5 sang shape.md của lite. Cả hai làn fast đều mồi từ hồ sơ i:explore khi có. Hai bản khác nhau ở hai chỗ. Lite đọc sâu code rồi viết một plan, còn flow chỉ quét repo rồi cắt bảng slice, để dành phần đọc sâu cho plan của từng slice. Khi người dùng bác một giả định ở nút duyệt, lite chia bản đồ như vòng mở đầu, còn flow giữ các giả định còn lại trong bảng slice.
-- Lite có thêm lối nhảy thẳng sang plan khi không điểm nào đáng quyết. Khi nhảy thẳng, hướng đang nghiêng của mỗi điểm vào phần giả định của plan. Điểm giao cho model quyết cũng được báo trong phần giả định, còn flow báo trong bức tranh.
-- Vòng mở đầu được chia bản đồ: điểm rẻ và dễ quay lại thì hoãn vào phần giả định của plan (trạng thái "deferred to the plan's assumptions"). Người dùng quyết các điểm đó ở bước duyệt. Vì vậy nút "Lock" cũng được bỏ khi các điểm hoãn đến từ việc chia bản đồ.
-- Chữ nói về slice trong bản flow được đổi thành lời của lite, ví dụ "the plan's innards" và "the deep read".
-- Mục "Zone research" của lite giữ nguyên bậc nguồn và luật con số tại chỗ, vì lite không có state.md để trỏ như flow.
-- Ghi chép nghiên cứu, khi có, được ghi ra `docs/iflow/<nhiệm-vụ>/research/` ở bước đầu của plan. Flow ghi lúc tạo hồ sơ.
-- Bằng chứng của lite nằm trong khối kết quả ở file plan; lite không có luật "bằng chứng nằm trong repo" của flow.
-- Hết lượt, lite ghi khối kết quả vào file plan, rồi đổi dòng `Shape draft:` thành `Shape draft done:`. Flow đổi dòng này lúc tạo hồ sơ.
-- Sau khi nén hội thoại, lite không đọc lại SKILL.md, vì SKILL.md của lite nhỏ hơn ngưỡng 5.000 token mà Claude Code tự gắn lại cho mỗi skill đã gọi. Flow vẫn đọc lại, vì SKILL.md của flow sát ngưỡng đó, và vì tổng mọi skill gắn lại bị trần 25.000 token, skill gọi lâu nhất rụng trước, nên một phiên flow dài đã gọi thêm debug, test, code-review có thể mất hẳn flow. Riêng bước ĐẦU của plan lite vẫn đọc lại SKILL.md khi nó không còn trong context, để phủ trường hợp xoá context lúc duyệt.
-- Kết quả review mà cách sửa lệch khỏi plan thì lite chỉ báo lại. Lite không chép luật "hỏi người dùng trước" của flow (`ex-A1`).
-- Lite cân "quá lớn cho một plan?" hai lần, lúc nhận yêu cầu và lúc viết plan; flow chỉ cân một lần lúc nhận. Chạy tiếp một bản nháp ở phiên sau, lite vẫn cân lại; lite không chép cách flow bỏ qua bước cân này (`sh-A2`).
-- Lần chạy mốc của lite diễn ra mỗi lượt, ngay trước thay đổi đầu tiên, và ghi vào file plan. Test đỏ mới mà thay đổi không gây ra thì chỉ báo lại. Flow ghi mốc một lần vào iflow.md.
-- Lite không có câu mời duyệt kèm xoá context ở cổng (flow, đoạn cổng duyệt). Lite chỉ có một plan, phần context trước cổng chủ yếu là lần đọc code mà bước xây vẫn cần, nên xoá không lợi gì.
-- Lite không có mục "Tests from i:test" (của flow, nằm trong `references/closing.md`) và không tự gọi i:test.
-
-Mỗi lần đổi một đoạn bên flow mà lite có bản chép, hãy ghi một dòng vào danh sách dưới đây. Đồng bộ xong thì xóa dòng đó.
-
-Hiện chưa có dòng nào: lite đã khớp flow sau lượt cắt chữ ngày 2026-10-07 (đoạn ngôn ngữ, lần đọc lạ, và ba câu trong shape.md §0 và §1).
+i:lite ra đời từ i:flow nên nhiều đoạn hai bên giống nhau (`references/shape.md`, `agents.md`, luật ngôn ngữ, cổng duyệt, lần đọc lạ, quyết định giữa chừng). Từ 2026-10-07 hai skill chạy song song: sửa một bên thì **không** chép sang bên kia, không có danh sách phải đồng bộ, không có module chung. Mỗi skill tự đứng với file của nó, và được phép đi khác nhau theo thời gian. Muốn một thay đổi có ở cả hai thì sửa cả hai trong cùng commit và nói rõ trong message, đó là việc có chủ ý, không phải nghĩa vụ.
 
 ## Sửa i:gamify
 
