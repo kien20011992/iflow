@@ -18,8 +18,8 @@ Muốn đổi một chuỗi thì sửa cả bốn nơi trong cùng một commit.
 | `Current slice:` | **Hook** in dòng này ra. **Checker** đối chiếu nó với trạng thái các hàng trong bảng slice. |
 | `Next action:` | **Hook** in dòng này ra, nhưng giấu đi khi checker báo hồ sơ hỏng. **Checker** kiểm dòng này không rỗng và không phải chữ giữ chỗ. |
 | Trạng thái hàng (`todo`, `doing`, `done`, `needs-redo`, `retired`) | **Checker** kiểm giá trị hợp lệ, bảng có ít nhất một hàng, và mỗi hàng chưa `retired` đều có file slice. |
-| `<!-- generated-by: iflow/2 -->` | **Hook** chỉ đọc những `shape.md` có dấu này. File mất dấu sẽ bị hook bỏ qua hoàn toàn, không báo gì. **Checker** báo khi thiếu dấu. |
-| `slice-NN-<name>.md` | **Checker** kiểm mỗi hàng có file tương ứng. |
+| `<!-- generated-by: iflow/2 -->` | **Hook** chỉ đọc những `docs/iflow/*/iflow.md` có dấu này. File mất dấu sẽ bị hook bỏ qua hoàn toàn, không báo gì. **Checker** báo khi thiếu dấu. |
+| `NN-<name>.md` | **Checker** kiểm mỗi hàng có file tương ứng. |
 
 Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i:flow. Ba skill này đọc theo vai trò các mục: bức tranh, quyết định, charter, plan đã duyệt, kết quả, ghi chú, và các cột của bảng slice. Đổi vai trò hay tên một mục thì phải xem lại cả ba skill. i:how còn đọc khối kết quả mà i:lite ghi dưới plan, nên đổi khối đó cũng phải xem lại i:how. i:debug còn đọc bức tranh, phần nói plan sẽ đổi gì, các quyết định và giả định đã duyệt trong file plan của i:lite, nên đổi vai trò các phần đó cũng phải xem lại i:debug.
 
@@ -27,7 +27,7 @@ Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i
 
 i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/shape.md`, `agents.md`, và vài đoạn trong SKILL.md (luật ngôn ngữ, cổng duyệt, chứng minh, review, Mid-flight decisions, định nghĩa giả định). Hai bên không có script canh lệch. Khi đồng bộ, so từng đoạn: bản của lite là bản của flow, trừ những chỗ lite cố ý khác dưới đây. Đừng chép đè lên các chỗ này.
 
-- Lite không có slice, không có `docs/shape/`. Giai đoạn 3 ra một plan duy nhất.
+- Lite không có slice, và không bao giờ sửa file của flow trong thư mục nhiệm vụ (`iflow.md`, `NN-<name>.md`, `evidence/`). Giai đoạn 3 ra một plan duy nhất.
 - Lite không có hồ sơ, không có hook. Một lượt dở chỉ chạy tiếp được nhờ khôi phục bản nháp. Khi khôi phục, mọi lựa chọn trong một plan chưa được duyệt vẫn chỉ là giả định.
 - Lite bật plan mode ở bước 2 của SKILL.md, nên shape.md của lite không có câu `EnterPlanMode` ở đầu như flow.
 - Cả hai bên có làn `fast` để người dùng bỏ phần bàn, nhưng mỗi bên một bản. Bản của flow nằm ở mục 5 của `skills/flow/references/shape.md`. Bản của lite nằm ở mục "Two lanes" trong SKILL.md của lite, không nằm trong shape.md, nên đừng chép mục 5 sang shape.md của lite. Cả hai làn fast đều mồi từ hồ sơ i:explore khi có. Hai bản khác nhau ở hai chỗ. Lite đọc sâu code rồi viết một plan, còn flow chỉ quét repo rồi cắt bảng slice, để dành phần đọc sâu cho plan của từng slice. Khi người dùng bác một giả định ở nút duyệt, lite chia bản đồ như vòng mở đầu, còn flow giữ các giả định còn lại trong bảng slice.
@@ -35,18 +35,18 @@ i:lite chép gần nguyên văn ba chỗ của i:flow: `skills/flow/references/s
 - Vòng mở đầu được chia bản đồ: điểm rẻ và dễ quay lại thì hoãn vào phần giả định của plan (trạng thái "deferred to the plan's assumptions"). Người dùng quyết các điểm đó ở bước duyệt. Vì vậy nút "Lock" cũng được bỏ khi các điểm hoãn đến từ việc chia bản đồ.
 - Chữ nói về slice trong bản flow được đổi thành lời của lite, ví dụ "the plan's innards" và "the deep read".
 - Mục "Zone research" của lite giữ nguyên bậc nguồn và luật con số tại chỗ, vì lite không có state.md để trỏ như flow.
-- Ghi chép nghiên cứu được ghi ra `docs/research/` ở bước đầu của plan. Flow ghi lúc tạo hồ sơ.
+- Ghi chép nghiên cứu, khi có, được ghi ra `docs/iflow/<nhiệm-vụ>/research/` ở bước đầu của plan. Flow ghi lúc tạo hồ sơ.
 - Bằng chứng của lite nằm trong khối kết quả ở file plan; lite không có luật "bằng chứng nằm trong repo" của flow.
 - Hết lượt, lite ghi khối kết quả vào file plan, rồi đổi dòng `Shape draft:` thành `Shape draft done:`. Flow đổi dòng này lúc tạo hồ sơ.
 - Sau khi nén hội thoại, lite không đọc lại SKILL.md, vì SKILL.md của lite nhỏ hơn ngưỡng 5.000 token mà Claude Code tự gắn lại. Flow vẫn đọc lại, vì SKILL.md của flow sát ngưỡng. Riêng bước ĐẦU của plan lite vẫn đọc lại SKILL.md khi nó không còn trong context, để phủ trường hợp xoá context lúc duyệt.
 - Kết quả review mà cách sửa lệch khỏi plan thì lite chỉ báo lại. Lite không chép luật "hỏi người dùng trước" của flow (`ex-A1`).
 - Lite cân "quá lớn cho một plan?" hai lần, lúc nhận yêu cầu và lúc viết plan; flow chỉ cân một lần lúc nhận. Chạy tiếp một bản nháp ở phiên sau, lite vẫn cân lại; lite không chép cách flow bỏ qua bước cân này (`sh-A2`).
-- Lần chạy mốc của lite diễn ra mỗi lượt, ngay trước thay đổi đầu tiên, và ghi vào file plan. Test đỏ mới mà thay đổi không gây ra thì chỉ báo lại. Flow ghi mốc một lần vào shape.md.
+- Lần chạy mốc của lite diễn ra mỗi lượt, ngay trước thay đổi đầu tiên, và ghi vào file plan. Test đỏ mới mà thay đổi không gây ra thì chỉ báo lại. Flow ghi mốc một lần vào iflow.md.
 - Lite không có mục "Tests from i:test" và không tự gọi i:test.
 
 Mỗi lần đổi một đoạn bên flow mà lite có bản chép, hãy ghi một dòng vào danh sách dưới đây. Đồng bộ xong thì xóa dòng đó.
 
-Hiện chưa có dòng nào: lite đã khớp flow 1.13.0 ở bản 1.13.0.
+Hiện chưa có dòng nào: lite đã khớp flow 2.0.0 ở bản 2.0.0.
 
 ## Sửa i:gamify
 

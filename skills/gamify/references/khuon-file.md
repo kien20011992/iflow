@@ -1,6 +1,6 @@
 # Khuôn tám file của một game
 
-**Đây là gì.** Mỗi game là một thư mục `docs/games/<slug>/` với đúng bộ file
+**Đây là gì.** Mỗi game là một thư mục `docs/iflow/<slug>/game/` với đúng bộ file
 dưới đây, tên file cố định bằng tiếng Anh (từ ngữ game), nội dung theo ngôn
 ngữ người dùng. Người chơi chỉ cần theo `world.md` và lời người dẫn trên
 trang chơi; các file khác mở khi game bảo. `run-check.sh <game-dir>` kiểm

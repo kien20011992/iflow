@@ -62,7 +62,7 @@ what must not change; a retried import needs all four, inside one
 scenario. Never invent a case to fill a slot.
 
 Oracle, in priority: the user's acceptance criteria → the dossier's
-picture and decisions (shape.md's body) and the active slice's charter
+picture and decisions (iflow.md's body) and the active slice's charter
 (what its slice file states first) → public docs, schemas, APIs and
 exported contracts, an exported symbol's signature, types and doc comment
 included when the change under test did not write them. Never an oracle:

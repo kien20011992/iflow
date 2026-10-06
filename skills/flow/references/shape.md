@@ -55,7 +55,7 @@ Work as two partners: the picture sharpens through two-way discussion, not
 through a chain of rounds the model runs by itself; research via subagents
 and the web serves the discussion, never substitutes for it.
 
-**An i:explore dossier first.** If one in `docs/research/*/explore.md`
+**An i:explore dossier first.** If one in `docs/iflow/*/explore/*.md`
 clearly matches the topic (ask when several fit), its confirmed findings
 seed the picture draft and whatever it flags as unconfirmed enters as a
 leaning to re-confirm, never as a decision.

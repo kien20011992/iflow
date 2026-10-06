@@ -14,12 +14,12 @@ trap 'rm -rf "$tmp"' EXIT
 pass=0
 fail=0
 
-# mk <dossier-dir> — shape.md from stdin, plus one slice file per table row
+# mk <dossier-dir> — iflow.md from stdin, plus one slice file per table row
 mk() {
   mkdir -p "$1"
-  cat > "$1/shape.md"
-  grep -oE '^\| [0-9]{2} ' "$1/shape.md" | tr -dc '0-9\n' | while read -r nn; do
-    : > "$1/slice-$nn-x.md"
+  cat > "$1/iflow.md"
+  grep -oE '^\| [0-9]{2} ' "$1/iflow.md" | tr -dc '0-9\n' | while read -r nn; do
+    : > "$1/$nn-x.md"
   done
 }
 
@@ -62,7 +62,7 @@ Overall status: running
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: healthy dossier" 0 '' '.' -- bash "$checker" "$tmp/c1"
 
@@ -72,7 +72,7 @@ Overall status: Running
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: invalid status value" 1 "invalid value 'Running'" '' -- bash "$checker" "$tmp/c2"
 
@@ -81,7 +81,7 @@ $M
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: missing Overall status reports only that" 1 \
   "missing line 'Overall status:'" 'slice rows|slice table' -- bash "$checker" "$tmp/c3"
@@ -91,14 +91,14 @@ $M
 Overall status: running
 Next action: Continue slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | doing |
+| 01 | 01-x.md | build | — | doing |
 EOF
 check "checker: missing Current slice reports only that" 1 \
   "missing line 'Current slice:'" "is '—' but" -- bash "$checker" "$tmp/c4"
 
 mk "$tmp/c5" <<EOF
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 $M
 Overall status: running
 Current slice: —
@@ -113,7 +113,7 @@ Overall status: running
 Current slice: —
 Next action: Continue slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | doing |
+| 01 | 01-x.md | build | — | doing |
 EOF
 check "checker: doing row but no current slice" 1 "is '—' but" '' -- bash "$checker" "$tmp/c6"
 
@@ -122,7 +122,7 @@ Overall status: running
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: missing marker" 1 'marker' '' -- bash "$checker" "$tmp/c7"
 
@@ -132,8 +132,8 @@ Overall status: done
 Current slice: —
 Next action: Read the summary at the top of this file.
 $HEAD
-| 01 | slice-01-x.md | build | — | done |
-| 02 | slice-02-x.md | build | — | retired |
+| 01 | 01-x.md | build | — | done |
+| 02 | 02-x.md | build | — | retired |
 EOF
 check "checker: done with a retired row" 0 '' '.' -- bash "$checker" "$tmp/c8"
 
@@ -144,10 +144,10 @@ Overall status: running
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
-| 02 | slice-02-x.md | build | — | retired |
+| 01 | 01-x.md | build | — | todo |
+| 02 | 02-x.md | build | — | retired |
 EOF
-rm "$tmp/c9"/slice-0[12]-x.md
+rm "$tmp/c9"/0[12]-x.md
 check "checker: row without its slice file" 1 'slice 01 has no file' 'slice 02' -- bash "$checker" "$tmp/c9"
 
 mk "$tmp/c10" <<EOF
@@ -156,8 +156,8 @@ Overall status: running
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: duplicate slice numbers" 1 'duplicate slice numbers in the table: 01' '' -- bash "$checker" "$tmp/c10"
 
@@ -167,7 +167,7 @@ Overall status: running
 Current slice: —
 Next action: EnterPlanMode for slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | in progress |
+| 01 | 01-x.md | build | — | in progress |
 EOF
 check "checker: invalid row status" 1 "slice 01 has invalid status 'in progress'" '' -- bash "$checker" "$tmp/c11"
 
@@ -177,8 +177,8 @@ Overall status: running
 Current slice: 01 a
 Next action: Continue slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | doing |
-| 02 | slice-02-x.md | build | — | doing |
+| 01 | 01-x.md | build | — | doing |
+| 02 | 02-x.md | build | — | doing |
 EOF
 check "checker: two rows doing" 1 'multiple slices are' '' -- bash "$checker" "$tmp/c12"
 
@@ -188,7 +188,7 @@ Overall status: running
 Current slice: 01 a
 Next action: Continue slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: current slice row is not doing" 1 "names 01 but its row status is 'todo'" '' -- bash "$checker" "$tmp/c13"
 
@@ -198,7 +198,7 @@ Overall status: running
 Current slice: 03 c
 Next action: Continue slice 03.
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: current slice has no row" 1 'names 03 but the slice table has no such row' '' -- bash "$checker" "$tmp/c14"
 
@@ -208,7 +208,7 @@ Overall status: running
 Current slice: slice 01
 Next action: Continue slice 01.
 $HEAD
-| 01 | slice-01-x.md | build | — | doing |
+| 01 | 01-x.md | build | — | doing |
 EOF
 check "checker: malformed current slice" 1 'must start with a two-digit slice number' '' -- bash "$checker" "$tmp/c15"
 
@@ -219,7 +219,7 @@ Overall status: done
 Current slice: 01 a
 Next action: Read the summary at the top of this file.
 $HEAD
-| 01 | slice-01-x.md | build | — | doing |
+| 01 | 01-x.md | build | — | doing |
 EOF
 check "checker: done with a row still doing" 1 "overall status is done but slice 01 is 'doing'" '' -- bash "$checker" "$tmp/c16"
 check "checker: done with a current slice" 1 "overall status is done but 'Current slice:' still names 01" '' -- bash "$checker" "$tmp/c16"
@@ -230,7 +230,7 @@ Overall status: running
 Current slice: —
 Next action: TBD
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: placeholder next action" 1 "'Next action:' is empty or a placeholder" '' -- bash "$checker" "$tmp/c17"
 
@@ -239,12 +239,12 @@ $M
 Overall status: running
 Current slice: —
 $HEAD
-| 01 | slice-01-x.md | build | — | todo |
+| 01 | 01-x.md | build | — | todo |
 EOF
 check "checker: missing next action" 1 "missing line 'Next action:'" '' -- bash "$checker" "$tmp/c18"
 
 mkdir -p "$tmp/c19"
-check "checker: no shape.md" 1 'missing shape.md in' '' -- bash "$checker" "$tmp/c19"
+check "checker: no iflow.md" 1 'missing iflow.md in' '' -- bash "$checker" "$tmp/c19"
 
 # ---- pointer checker -------------------------------------------------------
 
@@ -265,26 +265,26 @@ check "pointers: broken layer" 1 "'Layer 7' points at shape.md" "'Layer 1'" -- b
 # ---- hook ------------------------------------------------------------------
 
 gitrepo "$tmp/g1"
-mk "$tmp/g1/docs/shape/p" < "$tmp/c1/shape.md"
+mk "$tmp/g1/docs/iflow/p" < "$tmp/c1/iflow.md"
 mkdir -p "$tmp/g1/sub/dir"
-check "hook: running dossier is listed" 0 "g1/docs/shape/p/shape.md" '' -- hook_in "$tmp/g1"
+check "hook: running dossier is listed" 0 "g1/docs/iflow/p/iflow.md" '' -- hook_in "$tmp/g1"
 check "hook: prints its Next action" 0 'Next action: EnterPlanMode for slice 01' '' -- hook_in "$tmp/g1"
 check "hook: names the skill directory" 0 "directory is $skill" '' -- hook_in "$tmp/g1"
-check "hook: finds the dossier from a subdirectory" 0 "g1/docs/shape/p/shape.md" '' -- hook_in "$tmp/g1/sub/dir"
+check "hook: finds the dossier from a subdirectory" 0 "g1/docs/iflow/p/iflow.md" '' -- hook_in "$tmp/g1/sub/dir"
 
 gitrepo "$tmp/g2"
-mk "$tmp/g2/docs/shape/q" < "$tmp/c7/shape.md"
-check "hook: shape.md without the marker is ignored" 0 '' '.' -- hook_in "$tmp/g2"
+mk "$tmp/g2/docs/iflow/q" < "$tmp/c7/iflow.md"
+check "hook: iflow.md without the marker is ignored" 0 '' '.' -- hook_in "$tmp/g2"
 
 gitrepo "$tmp/g3"
-mk "$tmp/g3/docs/shape/r" < "$tmp/c2/shape.md"
+mk "$tmp/g3/docs/iflow/r" < "$tmp/c2/iflow.md"
 check "hook: broken dossier is flagged" 0 'BROKEN STATE' 'Next action:' -- hook_in "$tmp/g3"
 
-mk "$tmp/n1/docs/shape/p" < "$tmp/c1/shape.md"
-check "hook: works outside git" 0 "n1/docs/shape/p/shape.md" '' -- hook_in "$tmp/n1"
+mk "$tmp/n1/docs/iflow/p" < "$tmp/c1/iflow.md"
+check "hook: works outside git" 0 "n1/docs/iflow/p/iflow.md" '' -- hook_in "$tmp/n1"
 
 gitrepo "$tmp/g4"
-mk "$tmp/g4/docs/shape/d" < "$tmp/c8/shape.md"
+mk "$tmp/g4/docs/iflow/d" < "$tmp/c8/iflow.md"
 check "hook: healthy done dossier stays silent" 0 '' '.' -- hook_in "$tmp/g4"
 
 check "hook: missing checker still lists pointers" 0 "Next action: EnterPlanMode" 'state unverified' -- \
@@ -295,10 +295,10 @@ check "hook: missing checker gets one warning" 0 "no check-dossier.sh at $tmp/no
 mkdir -p "$tmp/fake/scripts"
 printf 'case "$1" in *bad*) exit 2 ;; esac\nexit 0\n' > "$tmp/fake/scripts/check-dossier.sh"
 gitrepo "$tmp/g6"
-mk "$tmp/g6/docs/shape/good" < "$tmp/c1/shape.md"
-mk "$tmp/g6/docs/shape/bad" < "$tmp/c1/shape.md"
+mk "$tmp/g6/docs/iflow/good" < "$tmp/c1/iflow.md"
+mk "$tmp/g6/docs/iflow/bad" < "$tmp/c1/iflow.md"
 check "hook: warning names only the unchecked dossier" 0 \
-  'Warning: could not check the state of docs/shape/bad/shape.md \(' 'of docs/shape/good' -- \
+  'Warning: could not check the state of docs/iflow/bad/iflow.md \(' 'of docs/iflow/good' -- \
   env CLAUDE_PROJECT_DIR="$tmp/g6" IFLOW_SKILL_DIR="$tmp/fake" bash "$hook"
 check "hook: finds its skill without IFLOW_SKILL_DIR" 0 "directory is $skill" 'no check-dossier' -- \
   env -u IFLOW_SKILL_DIR CLAUDE_PROJECT_DIR="$tmp/g1" bash "$hook"
@@ -306,7 +306,7 @@ check "hook: finds its skill without IFLOW_SKILL_DIR" 0 "directory is $skill" 'n
 # A 300-character Vietnamese Next action is cut at 200 characters, whole.
 long=$(printf 'ố%.0s' $(seq 300))
 gitrepo "$tmp/g5"
-sed "s/^Next action: .*/Next action: $long/" "$tmp/c1/shape.md" | mk "$tmp/g5/docs/shape/v"
+sed "s/^Next action: .*/Next action: $long/" "$tmp/c1/iflow.md" | mk "$tmp/g5/docs/iflow/v"
 line=$(hook_in "$tmp/g5" | grep 'Next action:')
 if printf '%s' "$line" | grep -q 'truncated' &&
    printf '%s' "$line" | iconv -f UTF-8 -t UTF-8 >/dev/null 2>&1; then

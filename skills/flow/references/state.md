@@ -1,16 +1,21 @@
 # The dossier — templates and rules
 
 Contents: 1. Principles · 2. Label contract table · 3. Birth checklist ·
-4. Template shape.md · 5. Template slice file and NN identity rules ·
+4. Template iflow.md · 5. Template slice file and NN identity rules ·
 6. Research-slice source discipline.
 
 ## 1. Principles
 
-- `shape.md` is the single source of truth for the whole program's state,
-  born the moment the slice table is approved. `docs/shape/` sits at the
-  repository's git root (the project directory outside git) and holds only
-  approved dossiers; the resume hook reads only the shape.md files there
-  that carry the `<!-- generated-by: iflow/2 -->` marker. The plan
+- `iflow.md` is the single source of truth for the whole program's state,
+  born the moment the slice table is approved. The dossier is the task's
+  directory `docs/iflow/<topic-slug>/`, with `docs/iflow/` at the
+  repository's git root (the project directory outside git): `iflow.md`,
+  one `NN-<name>.md` per slice, `evidence/NN-<name>/` per slice, and
+  `research/`. The directory name is the task's key — other skills working
+  on the same task write their own subdirectories there (`explore/`,
+  `how/`, `game/`, notes in `research/`) and never touch this skill's
+  files. The resume hook reads only the `docs/iflow/*/iflow.md` files that
+  carry the `<!-- generated-by: iflow/2 -->` marker. The plan
   file (`~/.claude/plans/…`) is a per-session working copy outside the repo
   and may be cleaned up — never point to it as a source of truth.
 - `Current slice:` names the slice whose row status is `doing` — starting
@@ -31,13 +36,13 @@ write them character for character.
 | `Next action:` | state block |
 | Slice statuses `todo` \| `doing` \| `done` \| `needs-redo` \| `retired` | last cell of slice-table rows `\| NN \| …`, read only below `Overall status:` |
 | `<!-- generated-by: iflow/2 -->` | state block; marks the file as an i:flow dossier |
-| `slice-NN-<name>.md` | dossier directory |
+| `NN-<name>.md` | dossier directory |
 
 ## 3. Birth checklist (the moment the slice table is approved)
 
 1. Materialize research notes: every subsection of the draft's research
-   notes becomes a file `docs/research/<topic-slug>/<zone-slug>.md`.
-2. Create `shape.md` per §4, distilled from the approved plan and the
+   notes becomes a file `docs/iflow/<topic-slug>/research/<zone-slug>.md`.
+2. Create `iflow.md` per §4, distilled from the approved plan and the
    draft, with `Next action:` set to the first slice; what was explored
    LINKS to the research docs (never re-paste their content), and the
    sources list those doc paths. Never copy the plan wholesale. Each
@@ -47,19 +52,19 @@ write them character for character.
 4. Seed each slice file's notes: every deliberately-left-open item from
    Shape relevant to that slice gets one line saying, in the user's words,
    that it was left open while shaping; a left-open item relevant to no
-   slice goes into shape.md's section on what was explored — nothing may
+   slice goes into iflow.md's section on what was explored — nothing may
    drop.
 5. Run the checker per SKILL.md's invariant 2, then the quality test: read
-   shape.md alone, as a stranger would; it must say which slice is running,
+   iflow.md alone, as a stranger would; it must say which slice is running,
    what the next action is and what has been decided, and every research
-   note must exist as a file linked from shape.md's body. A missing answer
+   note must exist as a file linked from iflow.md's body. A missing answer
    means the dossier is not done.
 6. Retire the draft: in this session's draft and in any draft it was
    recovered from, the `Shape draft: <topic>` line becomes
    `Shape draft done: <topic>`, the words i:lite uses, so no later draft
    recovery offers a Shape whose program already has a dossier.
 
-## 4. Template `docs/shape/<topic-slug>/shape.md`
+## 4. Template `docs/iflow/<topic-slug>/iflow.md`
 
 Reader's part first, state block last — nothing follows it, and progress
 lives only there. `<…>` names a section's role, never its heading.
@@ -87,8 +92,8 @@ its file; then why this order>
 ## <what was explored>
 
 <a few lines per zone under its plain name: what was seen, the leaning,
-what it means for slicing; link research docs in
-docs/research/<topic-slug>/; findings that belong to no slice>
+what it means for slicing; link research docs in research/; findings
+that belong to no slice>
 
 ## <sources>
 
@@ -114,7 +119,7 @@ Next action: <one runnable imperative sentence>
 
 ## 5. Template slice file and NN identity rules
 
-File name: `slice-NN-<name>.md`. **NN identity rules:** two digits from 01, in run order at
+File name: `NN-<name>.md`. **NN identity rules:** two digits from 01, in run order at
 first approval. NN is a permanent identity — rebuilding the table may
 retire an old number or append new ones, never reuse or renumber; slice
 files keep their names.

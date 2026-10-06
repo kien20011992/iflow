@@ -5,19 +5,22 @@ for a future context.
 
 ## Resolve the dossier
 
-`docs/research/` below is the one at the root of the current git
-repository, or in the working directory outside git.
+`docs/iflow/` below is the one at the root of the current git
+repository, or in the working directory outside git. Each task has one
+directory there, shared by every skill that works on it; this skill writes
+only inside the task's `explore/`.
 
 Use the first applicable choice:
 
 1. Reuse the dossier path explicitly supplied by the user.
 2. Reuse the active dossier already established in the conversation.
-3. Search `docs/research/*/explore.md` for a dossier matching the topic,
+3. Search `docs/iflow/*/explore/*.md` for a dossier matching the topic,
    `active` or `ready`; continuing a `ready` one sets it back to `active`.
    Reuse a single clear match. Ask only when several plausible matches make
    the choice unsafe.
-4. Otherwise create `docs/research/<concise-topic-slug>/explore.md` with the
-   first layer, beside any research notes i:flow keeps on the same topic.
+4. Otherwise create `docs/iflow/<task-slug>/explore/<concise-topic-slug>.md`
+   with the first layer: `<task-slug>` is the existing task directory whose
+   name matches the topic, or the topic slug when none does.
 
 Use a stable, lowercase, hyphenated topic slug. Do not rename the dossier when
 the title evolves unless the user asks.

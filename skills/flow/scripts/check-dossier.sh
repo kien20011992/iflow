@@ -6,16 +6,16 @@
 set -u
 
 dir="${1:?usage: check-dossier.sh <dossier-dir>}"
-f="$dir/shape.md"
+f="$dir/iflow.md"
 fail=0
 say() { printf 'check-dossier: %s\n' "$1"; fail=1; }
 
 if [ ! -f "$f" ]; then
-  say "missing shape.md in $dir"
+  say "missing iflow.md in $dir"
   exit 1
 fi
 
-# The marker is what makes a shape.md an i:flow dossier; the resume hook
+# The marker is what makes an iflow.md an i:flow dossier; the resume hook
 # skips files without it.
 grep -q '<!-- generated-by: iflow/2 -->' "$f" ||
   say "missing '<!-- generated-by: iflow/2 -->' marker"
@@ -78,8 +78,8 @@ while IFS="$(printf '\t')" read -r nn st; do
     say "slice $nn has invalid status '$st'"
   fi
   [ "$st" = "$V_DOING" ] && doing_rows="$doing_rows $nn"
-  if [ "$st" != "$V_RETIRED" ] && ! ls "$dir"/slice-"$nn"-*.md >/dev/null 2>&1; then
-    say "slice $nn has no file slice-$nn-*.md in $dir"
+  if [ "$st" != "$V_RETIRED" ] && ! ls "$dir"/"$nn"-*.md >/dev/null 2>&1; then
+    say "slice $nn has no file $nn-*.md in $dir"
   fi
   if [ "$status" = "done" ] && ! printf '%s' "$st" | grep -qxE "$V_END"; then
     say "overall status is done but slice $nn is '$st'"

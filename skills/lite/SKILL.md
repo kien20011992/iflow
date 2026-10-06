@@ -6,7 +6,7 @@ description: >-
   plan. For work with several parts worth approving one by one, use
   /i:flow. `fast` skips the discussion when the direction is already
   clear: the plan lists every choice made for you, so you can reject any
-  before work starts. Research notes go to docs/research/.
+  before work starts. Research notes go to docs/iflow/<task>/research/.
 argument-hint: "[fast] <task>"
 disable-model-invocation: true
 ---
@@ -18,12 +18,21 @@ on the user's word — then writes ONE consolidated plan, passes it through
 the gate, builds it and proves it. Core invariant: **facts live in files,
 not in conversational memory** — during the run they live in the working
 draft (the plan file, including its research notes and decisions), and
-research notes become `docs/research/<topic-slug>/*.md` files at the plan's
-first step.
+research notes, when the run has any, become
+`docs/iflow/<topic-slug>/research/*.md` files at the plan's first step;
+the plan itself stays in the plan file.
 
-**Hard rule.** i:lite never creates or edits anything under `docs/shape/`,
-and never cuts the work into slices. Work that outgrows one plan is
+**Hard rule.** i:lite never creates or edits i:flow's files in a task
+directory — `iflow.md`, the `NN-<name>.md` slice files, `evidence/` — and
+never cuts the work into slices; it may add notes to that directory's
+`research/`. Work that outgrows one plan is
 `/i:flow`'s — see "Too big for one plan?" below.
+
+**Where files go.** `docs/` and `assets/` here sit at the repository's git
+root (the working directory outside git). When the user's request asks for
+its result packaged as a document, that document goes to
+`assets/iflow/<topic-slug>.md` — a directory `assets/iflow/<topic-slug>/`
+when it is several files or a web page.
 
 Language: protocol skeletons — file names, the draft's two lines in
 references/shape.md §0, this skill's own files — are English. Everything
@@ -116,7 +125,7 @@ the decisions:
   context (a compaction, or a context cleared on approval); rewrite each
   decision line in the draft the plan departs from; then write each
   research-notes subsection, if any, to
-  `docs/research/<topic-slug>/<zone-slug>.md`.
+  `docs/iflow/<topic-slug>/research/<zone-slug>.md`.
 - What changes; how we will know it works where a user or another system
   sees it — which tests, which run, or the running app; and what is
   deliberately left out. A change to code lists the tests covering it and

@@ -2,8 +2,8 @@
 # SessionStart hook (startup|resume|clear|compact|fork): print resume
 # pointers for unfinished i:flow dossiers in this project. Absolutely silent
 # when there are none — print pointers only, never cat whole files.
-# Only a shape.md carrying the iflow/2 marker is an i:flow dossier; any other
-# shape.md is someone else's file and is skipped.
+# Only an iflow.md carrying the iflow/2 marker is an i:flow dossier; any other
+# iflow.md is someone else's file and is skipped.
 # Fail-closed: a dossier whose state check fails gets its violations printed
 # and its Next action withheld — a broken state must not issue orders.
 # Label strings: references/state.md §2 lists them and CLAUDE.md at the repo
@@ -34,11 +34,11 @@ capped() {
   done
 }
 
-# pointers <shape.md> — its status lines, indented and capped
+# pointers <iflow.md> — its status lines, indented and capped
 pointers() {
   grep -E '^(Current slice|Next action):' "$1" | capped '    '
 }
-for f in "$root"/docs/shape/*/shape.md; do
+for f in "$root"/docs/iflow/*/iflow.md; do
   [ -f "$f" ] || continue
   grep -q '<!-- generated-by: iflow/2 -->' "$f" || continue
   # st: 0 = checked and sound · 1 = checked and broken · 2 = cannot check.
@@ -91,6 +91,6 @@ if [ "$broken" -eq 1 ]; then
   printf 'Marked ⚠ BROKEN STATE: their Next action is withheld and must not be acted on; before resuming one, repair it per %s/references/state.md.\n' "$skill_dir"
 fi
 if [ "$healthy" -eq 1 ]; then
-  printf 'To resume one listed with no marker: read %s/SKILL.md and that shape.md, then continue per its Next action — do not re-ask what the dossier records. The skill directory is %s; wherever SKILL.md says ${CLAUDE_SKILL_DIR}, use that path.\n' "$skill_dir" "$skill_dir"
+  printf 'To resume one listed with no marker: read %s/SKILL.md and that iflow.md, then continue per its Next action — do not re-ask what the dossier records. The skill directory is %s; wherever SKILL.md says ${CLAUDE_SKILL_DIR}, use that path.\n' "$skill_dir" "$skill_dir"
 fi
 exit 0

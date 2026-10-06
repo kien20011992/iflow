@@ -36,8 +36,12 @@ two sentences; never retell the page.
 
 ## Keeping the lesson
 
-Only when the user asks to keep it. Write `docs/how/<topic-slug>.md` in the
-user's language, for a reader who has not seen the chat:
+Only when the user asks to keep it. The file is
+`docs/iflow/<task-slug>/how/<topic-slug>.md`, with `docs/` at the git root
+(the working directory outside git). `<task-slug>` is the task directory
+whose dossier names the files being taught, or the topic slug when none
+does. Write it in the user's language, for a reader who has not seen the
+chat:
 
 1. What the code does and why: the answer, the parts in the order they
    run, the example, each reason with its source. A flow goes in as a

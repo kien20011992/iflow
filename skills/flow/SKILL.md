@@ -4,7 +4,7 @@ description: >-
   Shape a large or still-unsettled undertaking into user-approved vertical
   slices, then execute them one by one — code slices through plan mode,
   research slices as documents in the repo — tracked in
-  docs/shape/<topic>/shape.md. Use it whenever the request spans several
+  docs/iflow/<topic>/iflow.md. Use it whenever the request spans several
   coupled pieces or has no clear start yet, however terse: "review toàn bộ …
   rồi tối ưu", "làm lại hoàn toàn / nâng cấp toàn diện X: a, b, c", "tìm mọi
   cách để …", "research X rồi dựng thành tool/repo chạy được", "viết bộ tài
@@ -26,7 +26,7 @@ one by one until done. Core invariant: **facts live in files, not in
 conversational memory** — during Shape they live in the working draft
 (the plan file itself, including its research notes — never a
 second draft file alongside it), after the table is approved they live in
-the dossier, and research notes become `docs/research/<topic-slug>/*.md`
+the dossier, and research notes become `docs/iflow/<topic-slug>/research/*.md`
 files at dossier birth.
 
 Language: protocol skeletons — file names, the state-block labels in
@@ -49,8 +49,8 @@ put one to work.
 
 ## The dossier
 
-A topic's dossier lives at `docs/shape/<topic-slug>/`: `shape.md` plus one
-`slice-NN-<name>.md` per slice. What `shape.md` is authoritative for, its
+A topic's dossier lives at `docs/iflow/<topic-slug>/`: `iflow.md` plus one
+`NN-<name>.md` per slice. What `iflow.md` is authoritative for, its
 templates, the label contract table, the birth checklist, and the quality
 test all live in
 [references/state.md](references/state.md) — read it before first creating
@@ -59,13 +59,13 @@ or updating a dossier in a session.
 A first word `fast` calls the fast lane (shape.md §5); the rest is the
 topic.
 Resolve in this order: the user names a dossier → the dossier active in the
-conversation → a `docs/shape/*/shape.md` matching the topic → an unfinished
+conversation → a `docs/iflow/*/iflow.md` matching the topic → an unfinished
 Shape on this topic, found per "Draft recovery" in
 [references/shape.md](references/shape.md) — resume it, with no new
 "Too light for slices?" weighing → none: weigh it per "Too light for
 slices?" under Layer 1, and if it goes on, start Shape fresh.
 
-If shape.md already exists: read it and the slice file its `Current slice:`
+If iflow.md already exists: read it and the slice file its `Current slice:`
 names, then continue from the next-action line it records. Never re-ask
 what it already records; never make the user re-approve what was approved.
 
@@ -78,8 +78,8 @@ work:
 - during Shape: [references/shape.md](references/shape.md) and the
   working draft;
 - while creating or repairing a dossier:
-  [references/state.md](references/state.md) and shape.md;
-- during a slice: shape.md and the current slice file.
+  [references/state.md](references/state.md) and iflow.md;
+- during a slice: iflow.md and the current slice file.
 
 The compaction summary is a pointer, not a source of truth.
 
@@ -102,8 +102,8 @@ its fast lane when the user called `fast`.
 
 Invariants:
 
-1. Re-read shape.md before starting and right after finishing each slice.
-2. `Current slice:` and `Next action:` in shape.md change the moment the
+1. Re-read iflow.md before starting and right after finishing each slice.
+2. `Current slice:` and `Next action:` in iflow.md change the moment the
    next action changes, not at slice end; `Next action:` is one runnable
    imperative sentence ("EnterPlanMode for slice 03, explore only within
    X"). Starting a slice is ONE write — the row goes `doing`, `Current
@@ -114,16 +114,18 @@ Invariants:
    `${CLAUDE_SKILL_DIR}/scripts/check-dossier.sh <dossier-dir>` in the
    foreground and fix what it reports.
 3. When a task-list tool is available, mirror the slice table into it so
-   the user sees progress; shape.md stays the single source of truth — on
-   divergence, shape.md wins.
+   the user sees progress; iflow.md stays the single source of truth — on
+   divergence, iflow.md wins.
 4. Work only the chosen slice. A finding belonging to another slice gets
    one line in that slice file's notes; one belonging to no slice gets
-   one line in shape.md's section on what was explored — nothing may drop.
+   one line in iflow.md's section on what was explored — nothing may drop.
    Then return. While plan mode is on, carry such lines in the plan; its
    FIRST step writes them.
-5. Verification evidence (scripts, screenshots, command output) must live
-   inside the repo — e.g. `docs/shape/<topic-slug>/evidence/` — never in
-   the session scratchpad, which is cleaned up.
+5. Verification evidence (scripts, screenshots, command output) lives in
+   the repo, in the slice's own `docs/iflow/<topic-slug>/evidence/NN-<name>/`
+   — never in the session scratchpad, which is cleaned up. Keep all of it:
+   evidence is never deleted, trimmed or replaced by a summary; keeping it
+   out of git is the user's `.gitignore` call, not this skill's.
 
 **The approval gate.** Every plan i:flow puts to the user — the slice table
 that closes Shape, and each build slice's plan — passes the plan-mode
@@ -139,7 +141,7 @@ also the dossier's own files, as this skill directs.
 
 1. `EnterPlanMode` when plan mode is in use; explore only within the
    slice's scope (deep code reading happens now, not earlier); reconcile
-   against the slice's charter, its notes and shape.md's decisions — a
+   against the slice's charter, its notes and iflow.md's decisions — a
    plan that departs from a decision says so at its gate (a Mid-flight
    decision). Heavy reading may be delegated to
    Explore agents; writing code is never delegated: the main agent owns
@@ -158,7 +160,7 @@ also the dossier's own files, as this skill directs.
    boundary, deliberately skipping what) followed by the plan's steps as a
    numbered list, one line each — never the plan's prose; write the lines
    the plan carries for other slices (invariant 4); rewrite each decision
-   line in shape.md the plan departs from (step 1); and point
+   line in iflow.md the plan departs from (step 1); and point
    `Next action:` at the plan's next step. As its LAST step: steps 4 and
    5 below, then "Auto-advance". A slice that changes code lists in its
    plan the tests covering that change; a repo with no test command of its
@@ -172,7 +174,7 @@ also the dossier's own files, as this skill directs.
    model never narrows the proof on its own. The first build slice whose
    dossier records no baseline yet runs the whole suite once, right after
    approval and before any change, and records the outcome — each red by
-   name, or "green" — in shape.md's section on what was explored; those
+   name, or "green" — in iflow.md's section on what was explored; those
    reds fail no later proof and need no skip. Any other red makes the proof
    fail. A
    red this slice's own change caused is fixed here; a red in a test i:test
@@ -180,7 +182,7 @@ also the dossier's own files, as this skill directs.
    stays in the suite only by a user order, skipped as "Tests from i:test"
    describes. A red this slice caused whose cause the failure output and
    the change just made do not explain goes to `/i:debug <the red output ·
-   the proof it breaks · the dossier's shape.md path · the active slice
+   the proof it breaks · the dossier's iflow.md path · the active slice
    file>` before any fix; the fix stays here under the approved plan.
    Running a suite that already exists
    is this cycle's own work with the project's runner, never a trip through
@@ -213,7 +215,7 @@ slice may delegate per formed question.
 
 **Auto-advance** — finishing a slice does not end the turn. After the
 slice's result section is written (or the research document is complete):
-update shape.md (mark slice NN done, set the next action to the next
+update iflow.md (mark slice NN done, set the next action to the next
 slice), re-read it (invariant 1), announce in exactly one line which slice
 finished and whether it passed, naming any gap its result records — for a
 research document, with its file path — then start the next slice in the
@@ -225,7 +227,7 @@ back yet, or every slice is done or retired.
 ## Mid-flight decisions
 
 An explicit order is a decision; a question or praise is not. Write the
-decision into shape.md first, touch code after. If the decision changes
+decision into iflow.md first, touch code after. If the decision changes
 the slice table: rebuild the table from the current shape, re-submit it
 for approval, then continue.
 
@@ -284,10 +286,16 @@ of the build cycle.
 A red beyond those recorded at the baseline means not done — each takes
 its lane there, and a slice already reading done that has to carry a fix
 goes through "needs-redo" above; finishing resumes once none is left.
-Then set the overall status line in shape.md to done and write the
+Then set the overall status line in iflow.md to done and write the
 summary — each slice, its product, file paths, what was deliberately left
-open, and any baseline red still red — at the top of shape.md's body,
+open, and any baseline red still red — at the top of iflow.md's body,
 above the picture, and post it in
-chat as the end-of-program announcement. When the program changed code,
+chat as the end-of-program announcement. Then copy the program's result to
+`assets/iflow/` beside `docs/` at the same root: the summary alone as
+`assets/iflow/<topic-slug>.md`; when the program also produced finished
+documents (research slices) or a web page, a directory
+`assets/iflow/<topic-slug>/` holding the summary and each of them. It is a
+copy — the dossier stays as it is — and a later redo copies again over it.
+When the program changed code,
 it closes with one line: the program has not passed `/security-review`,
 run it BEFORE pushing.

@@ -53,7 +53,7 @@ never known good are themselves valid answers here: record `unknown` or
 - **Source** — a commitment that already exists: the sentence the caller
   states, docs, a schema, an API contract, the written description of a
   process, a test that was green; called from i:flow, also the picture and
-  decisions in the shape.md the caller names and the charter the named
+  decisions in the iflow.md the caller names and the charter the named
   slice file opens with; called from i:lite, also the picture, what the
   approved plan says will change, the decisions and the approved
   assumptions in the plan file the caller names. Never how the target

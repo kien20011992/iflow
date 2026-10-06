@@ -76,16 +76,16 @@ Restate the target in the first line of every teaching turn.
 Look for recorded reasons before inferring any:
 
 - this conversation, when the work happened in it;
-- an i:flow dossier under `docs/shape/*/`: the picture and decisions in
-  `shape.md`, and the approved plan, result and notes of each slice file
-  that names the files being taught;
+- an i:flow dossier, a task directory under `docs/iflow/*/`: the picture
+  and decisions in its `iflow.md`, and the approved plan, result and notes
+  of each slice file (`NN-<name>.md`) that names the files being taught;
 - plan files Claude Code keeps from plan mode (`~/.claude/plans/` unless
   the `plansDirectory` setting names another) that mention this repo by its
   path or directory name and name the files being taught — the folder is
   shared by every project, so a plan that never mentions this repo is not a
   source. A plan file does not record whether it was approved; an i:lite
   plan that was carries its completion block below the plan;
-- notes under `docs/research/`;
+- notes in a task directory's `research/`, `explore/` and `how/`;
 - commit messages, the pull request description when the branch has one,
   comments and tests next to the code;
 - last, only when none of the above records the reason: the transcripts of
