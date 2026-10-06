@@ -78,9 +78,13 @@ for the user to confirm the cut; a zone discussion reveals is added to the
 map out loud.
 
 **Floor control:** which zone opens is the user's call — the model
-recommends which to discuss first, with a reason; after presenting one
-zone's material, yield the floor. Calling several zones at once is one call
-for the whole run: present them one per turn.
+recommends which to discuss first, with a reason; after presenting the
+material of the zone, or zones, called, yield the floor. One zone per turn
+is the default; when the user calls several zones at once, present them
+all in that turn, each under its own heading with its full self-standing
+material, once every zone among them that needs research has it — a zone
+blocked by another (early-lock path (3)) is not presented, only named as
+waiting for which; the position line stays one line for the whole turn.
 
 **Zone research:** research a zone only when BOTH hold, judged per zone:
 (a) its options rest on facts not held with confidence — technology

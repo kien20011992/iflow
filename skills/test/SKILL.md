@@ -31,20 +31,24 @@ never an i:flow dossier.
 ## Scope
 
 Resolve in this order: an explicit user scope → the active i:flow slice →
-one coherent changed public surface, changed meaning off the default branch
-the working tree plus the commits since it; on the default branch the
-working tree when it has changes, otherwise the last commit when the
-request points at a change just made → ask, in one line, when nothing or
-several unrelated surfaces changed. An ask ends this run, so name each
-candidate — each changed surface, or when nothing changed the main public
-modules and the whole repository — as the exact
+the changed public surfaces, changed meaning off the default branch the
+working tree plus the commits since it; on the default branch the working
+tree when it has changes, otherwise the last commit when the request
+points at a change just made — one coherent surface, or up to three
+unrelated ones taken together as one scope of several surfaces → ask, in
+one line, when nothing changed or more than three unrelated surfaces did.
+An ask ends this run, so name each candidate — each changed surface, or
+when nothing changed the main public modules and the whole repository —
+as the exact
 `/i:test <candidate scope · original intent · every supplied acceptance criterion>`
 call that resumes it, never a promise to continue. Never default to the
 whole repository. A scope of several public surfaces — the whole
-repository when the user names it — takes one surface at a time through
-expectations, risk pass, tests and run until every surface is done; any
-surface left without a test goes under Not covered with the specific
-reason it could not be completed. The active slice is the one the
+repository when the user names it, or the changed surfaces this run
+inferred — takes one surface at a time through expectations, risk pass,
+tests and run until every surface is done, a surface's hunks read only
+once its own expectations are written; any surface left without a test
+goes under Not covered with the specific reason it could not be
+completed. The active slice is the one the
 `Current slice:` line names in the dossier the caller names; `—` means
 none, and a call that names no dossier has none. A diff says WHERE to look
 — its file list and changed signatures; its hunks wait until the
@@ -173,7 +177,9 @@ Beyond the test files, their fixtures and the runner's own artifacts,
 nothing is left behind: no ledger, no case IDs, no dated comments, no
 inventory file.
 
-Return only the lines that have content, most important first: Findings,
+Return only the lines that have content, most important first — a scope
+this run inferred from the changes comes before everything else, so the
+user sees what was chosen for them before any finding: Findings,
 each with the test's name, what its source says should happen, what
 happened, and that the test stays red in the suite · Not covered, put as
 the user's call whether to test it: every written expectation no new test
