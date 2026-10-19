@@ -40,3 +40,19 @@ Sau mỗi lần sửa gamify, chạy `skills/gamify/scripts/check-skill.sh`. Scr
 - Khung mới thêm vào cuối `references/thu-vien-khung.md`, đủ tám mục có nhãn. Script đếm heading `## Khung N` và soi đủ tám nhãn.
 - SKILL.md viết tiếng Anh, các file tham chiếu viết tiếng Việt.
 - Giữ SKILL.md của gamify dưới 5.000 token (hiện khoảng 15 KB). Sau khi nén hội thoại, skill không tự đọc lại SKILL.md mà trông vào việc Claude Code tự gắn lại file dưới ngưỡng này; file dài quá ngưỡng thì phần cuối, gồm các luật chung, bị cắt.
+
+## Commit và push
+
+Trong repo này Claude tự commit khi xong một thay đổi, không cần hỏi trước. Push thì người bảo trì tự gõ.
+
+Mỗi commit là một thay đổi trọn vẹn, kể được bằng một câu, ví dụ "flow: hook kiểm hồ sơ sau mỗi lần ghi". Đừng commit lặt vặt. Sửa chính tả, viết lại câu vừa thêm, vá chỗ mà `tests/run.sh` hay `check-pointers.sh` vừa báo trong chính thay đổi đó thì gộp vào commit trước bằng `git commit --amend`, không tạo commit mới. Nội dung đã khác thì sửa message theo.
+
+Chỉ amend hay gộp những commit chưa lên remote, tức những commit mà `git log @{u}..HEAD` còn liệt kê. Commit đã push thì để nguyên, vì sửa nó buộc phải force push và lịch sử trên GitHub sẽ lệch với bản đã kéo về máy khác. Commit do người bảo trì tự tạo thì hỏi trước khi gộp hay sửa message.
+
+Trước khi đề nghị push, đọc lại chuỗi commit chưa push như người xem lịch sử sau này. Hai commit cùng nói về một việc thì gộp làm một. Commit cần gộp nằm ngay trước thì dùng amend. Commit nằm xa hơn thì `git commit --fixup <sha>` rồi `git rebase --autosquash @{u}`. Muốn gộp tất cả thành một thì `git reset --soft @{u}` rồi commit lại với message mới. Cả ba cách đều giữ nguyên file, chỉ đổi cách chia commit.
+
+Việc được giao xong, commit đã gọn, test đã chạy thì đề nghị push ngay, không đợi hỏi. In `git log @{u}..HEAD --oneline` và `git diff @{u} --stat`, nói một câu đợt này đổi gì, rồi đưa lệnh để người bảo trì tự gõ, sau đó khởi động lại phiên:
+
+```
+! git push origin main && claude plugin marketplace update iflow && claude plugin update i@iflow
+```
