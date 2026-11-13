@@ -1,5 +1,7 @@
 # Các vòng đã chạy
 
+Chín vòng dưới đây chạy theo nhịp cũ: sửa skill sau mỗi vòng. Từ nay vòng thử ghi vào [sổ quan sát](so-quan-sat.md) và skill đổi theo [quy trình đợt](quy-trinh-dot.md). Ba đề nhắc dưới đây nay nằm trong `de/luyen/`.
+
 | Vòng | Đề | Kết quả | Sửa gì | Còn gì |
 |---|---|---|---|---|
 | 1 | `hue-2-tang.md` | DXF hai tầng, 406 lệnh. CADCraft 0 lỗi; `check.py` 17/18 đạt; `dxf_check.py` báo oan 4 hàng kích thước. | `dxf_check.py`: tách hàng kích thước theo từng tầng, báo tên font không đuôi. `ve.md`: font ghi `arial.ttf`; layer `A-ANNO`, `C-PROP`; cột tô đặc trên layer của cột; nhãn cửa P/V; số bậc, quy ước thang hai tầng; thiết bị vệ sinh, bếp, đồ đạc; nhãn phòng MTEXT; luật đặt ba hàng kích thước; block cửa theo phía bản lề; `plan.py` dùng chung; phép cộng diện tích; độ thưa nét đứt 20. `cadcraft.md`: lệnh `plot` cho ảnh nền trắng, 406 lệnh chạy được, dừng khi lỗi, tên công cụ ở dòng lệnh. | Chữ trong ảnh vẽ bằng font nét vì máy không có Arial. Chưa có mặt cắt. Chưa ai mở file trong AutoCAD. |

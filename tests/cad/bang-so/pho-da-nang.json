@@ -5,7 +5,7 @@
   "type": "house",
   "depth": "construction",
   "scale": 100,
-  "note": "Từ đề tests/cad/loop/pho-5x20-3-tang.md và bảng số vòng 8, chép sang khuôn cad-params/1."
+  "note": "Từ đề tests/cad/loop/de/luyen/pho-5x20-3-tang.md và bảng số vòng 8, chép sang khuôn cad-params/1."
  },
  "site": {
   "outline": [

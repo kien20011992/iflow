@@ -1,14 +1,26 @@
 # Duyệt một vòng của vòng lặp vẽ
 
-Người duyệt là phiên chính, không phải agent đã vẽ. Đọc báo cáo của agent, rồi tự làm bốn việc dưới đây trên chính file của vòng đó.
+Người duyệt là phiên chính, không phải agent đã vẽ. Đọc báo cáo của agent, rồi
+tự làm bốn việc dưới đây trên chính file của vòng đó. Duyệt chỉ để ghi; việc
+sửa đi theo đợt, theo [quy trình đợt](quy-trinh-dot.md).
 
-1. Chạy lại `skills/cad/scripts/dxf_check.py` trên file DXF cuối. Đừng chép kết quả từ báo cáo.
-2. Mở ảnh PNG nền trắng của từng tầng và soát theo danh sách "Một hình mặt bằng phải có gì" trong `skills/cad/references/ve.md`: mục nào có, mục nào thiếu, mục nào sai.
-3. So cách vẽ với bản vẽ mẫu của văn phòng, nếu có: nét, nhãn, ký hiệu, cách ghi kích thước. Chỉ so cách vẽ, không so con số của một ca có đáp án.
-4. Xếp mỗi chỗ hỏng vào đúng một loại rồi mới sửa:
-   - skill thiếu hoặc sai luật → sửa file của skill;
-   - trình kiểm báo sai hoặc bỏ sót → sửa `dxf_check.py` và thêm một bản vẽ có lỗi cài sẵn vào bài tự thử;
-   - CADCraft làm khác tài liệu → sửa `cadcraft.md`, kèm nhãn phiên bản;
-   - agent làm kém mà skill đã nói rõ → không sửa gì, ghi lại.
+1. Chạy `diem_may.py` trên file DXF cuối và bảng số của vòng. Đừng chép kết
+   quả từ báo cáo của agent.
+2. Mở ảnh PNG nền trắng của từng hình và soát theo phần B của
+   [thang chung](thang-chung.md): mục nào có, mục nào thiếu, mục nào sai.
+3. So cách vẽ với bản vẽ mẫu của văn phòng, nếu có: nét, nhãn, ký hiệu, cách
+   ghi kích thước. Chỉ so cách vẽ, không so con số của một ca có đáp án.
+4. Ghi mỗi chỗ hỏng một dòng vào [sổ quan sát](so-quan-sat.md), kèm lớp đề
+   nghị đưa về:
+   - đo được trên file → phép kiểm;
+   - cách vẽ → hàm thư viện, block hay file mẫu;
+   - bảng số thiếu trường → khuôn bảng số;
+   - phán đoán nghề → chữ trong `references/`;
+   - CADCraft làm khác tài liệu → `references/cadcraft.md`, kèm nhãn phiên bản;
+   - agent làm kém mà skill đã nói rõ → ghi lại, không đưa về lớp nào.
 
-Sau khi sửa: chạy `tests/cad.sh`, ghi một dòng vào `rounds.md` (vòng mấy, file nào, sửa gì, còn gì), rồi chạy vòng sau với cùng đề bài. Dừng khi một vòng không còn chỗ hỏng loại một, hai hoặc ba nào, hoặc khi hai vòng liền không giảm được số chỗ hỏng.
+Lỗi đã có dòng trong sổ thì thêm loại công trình của đề này vào dòng cũ. Lỗi
+làm file hỏng hay mở không được thì báo ngay: nó được sửa thành một đợt riêng.
+
+Với đề giữ riêng thì không làm bốn việc trên: chỉ chấm điểm theo thang chung
+và ghi điểm, xem [quy trình đợt](quy-trinh-dot.md).

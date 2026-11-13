@@ -12,6 +12,9 @@
 #      through CADCraft passes both DXF checkers (skipped without cadcraft-cli);
 #   7. the input door accepts the sample brief, turns away each planted defect,
 #      judges input DXF files, and turns away images and PDFs (needs uv or ezdxf).
+#   8. the law checker reads its rules table and names each planted defect;
+#   9. the machine part of the common rubric (tests/cad/loop/diem_may.py)
+#      scores a sound drawing and docks each planted defect from its own item.
 # Prints one line per check. Exit 0 = nothing failed.
 set -u
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -117,6 +120,7 @@ ezdxf_selftest 'table-against-drawing checker' "$root/tests/cad/plan_check_selft
 ezdxf_selftest 'drawing library built through CADCraft' "$root/tests/cad/lib_build_test.py"
 ezdxf_selftest 'input door (brief form, DXF, images)' "$root/tests/cad/cua_vao_selftest.py"
 ezdxf_selftest 'law checker' "$root/tests/cad/luat_check_selftest.py"
+ezdxf_selftest 'machine part of the common rubric' "$root/tests/cad/diem_may_selftest.py"
 
 # --- the rules table: every row carries what a law check needs to cite it
 if out=$(python3 - "$skill/assets/luat/vn.json" <<'PY'

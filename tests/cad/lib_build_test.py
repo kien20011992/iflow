@@ -34,12 +34,24 @@ from chay import find_cli  # noqa: E402
 SKIP = 77
 
 
-def audit(cli, dxf):
-    """CADCraft's own structure check on the saved file: its error count."""
-    r = subprocess.run([cli, "run", str(dxf), "--cmd", "audit {}"], capture_output=True, text=True)
+def audit(cli, dxf, timeout=600):
+    """CADCraft's own structure check on the saved file: its error count, or
+    None when CADCraft gave no count it could be read from (crash, hang, other
+    output format). tests/cad/loop/diem_may.py uses this too."""
+    try:
+        r = subprocess.run([cli, "run", str(dxf), "--cmd", "audit {}"], capture_output=True,
+                           text=True, encoding="utf-8", errors="replace", timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return None
     for line in r.stdout.splitlines():
+        line = line.strip()
         if line.startswith("{") and "errors" in line:
-            return json.loads(line)["errors"]
+            try:
+                n = json.loads(line).get("errors")
+            except ValueError:
+                continue
+            if isinstance(n, int):
+                return n
     return None
 
 
