@@ -64,6 +64,7 @@ Ranh đất là ngoại lệ: nó không nằm trên lưới, nên viết bằng
 | `drawings` | có | Danh mục hình sẽ vẽ, kèm gốc của từng hình. |
 | `rules` | không | Mã các dòng luật áp dụng. |
 | `structure` | không | Số kết cấu để vẽ mặt cắt. Xem dưới. |
+| `law_inputs` | không | Số luật cần mà bản vẽ không cho. Xem dưới. |
 
 ### Khu đất
 
@@ -184,6 +185,24 @@ Thư viện vẽ một đám mây đánh dấu ở `near` kèm `what`, và đưa
 danh sách giao cho người dùng. Script kiểm in mỗi dòng `outside` thành một
 cảnh báo, để biết bao nhiêu phần sẽ bị giao lại. Thêm một loại đối tượng mới
 vào khuôn là việc của một đợt sửa skill, không phải của một dự án.
+
+### Số luật cần mà bản vẽ không cho
+
+```json
+"law_inputs": {"fire_resistance": {"value": "II", "by": "user"}, "s_class": {"value": "S0", "by": "user"},
+               "fire_height_mm": {"value": 7200, "by": "model"}, "people_per_floor": {"value": 6, "by": "model"}}
+```
+
+Các khoá: `fire_resistance` bậc chịu lửa (I tới V), `s_class` cấp nguy hiểm
+cháy kết cấu (S0 tới S3), `fire_height_mm` chiều cao phòng cháy chữa cháy,
+`people_per_floor`, `area_kind` (`new` khu mới, `existing` khu hiện hữu),
+`road_district_or_above` (đường giáp lô từ cấp quận trở lên), `road_width_m`,
+`sprinkler`, `submit_date` (ngày nộp, chọn dòng luật còn hiệu lực). Thiếu khoá
+nào thì phép kiểm luật cần nó báo "cần xem", không đoán.
+
+Cụm mang `kind` để phép kiểm luật biết nó là gì: `unit` (một căn hộ),
+`room` (một phòng khách sạn), `floor`, `core`, `other`; kèm `unit_type`
+(ví dụ `"2N"`) khi là căn hay phòng.
 
 ### Số kết cấu để vẽ mặt cắt
 

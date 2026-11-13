@@ -53,7 +53,7 @@ then ok 'SKILL.md points at the DXF checker, and the checker exists'
 else bad 'SKILL.md and scripts/dxf_check.py no longer match'; fi
 
 # SKILL.md points at every layer below it, and each file it points at exists.
-for tool in scripts/cua_vao.py scripts/params_check.py scripts/plan_check.py lib/build_mau.py; do
+for tool in scripts/cua_vao.py scripts/params_check.py scripts/plan_check.py scripts/luat_check.py lib/build_mau.py; do
   if grep -q "$tool" "$skill/SKILL.md" && [ -f "$skill/$tool" ]
   then ok "SKILL.md points at $tool, and it exists"
   else bad "SKILL.md and $tool no longer match"; fi
@@ -116,6 +116,23 @@ ezdxf_selftest 'DXF checker' "$root/tests/cad/dxf_check_selftest.py"
 ezdxf_selftest 'table-against-drawing checker' "$root/tests/cad/plan_check_selftest.py"
 ezdxf_selftest 'drawing library built through CADCraft' "$root/tests/cad/lib_build_test.py"
 ezdxf_selftest 'input door (brief form, DXF, images)' "$root/tests/cad/cua_vao_selftest.py"
+ezdxf_selftest 'law checker' "$root/tests/cad/luat_check_selftest.py"
+
+# --- the rules table: every row carries what a law check needs to cite it
+if out=$(python3 - "$skill/assets/luat/vn.json" <<'PY'
+import json, sys
+d = json.load(open(sys.argv[1], encoding="utf-8"))
+need = ("id", "what", "check", "value", "unit", "applies", "doc", "clause", "effective_from", "read_on", "certainty", "source")
+bad = [f"{r.get('id')}: thiếu {k}" for r in d["rules"] for k in need if k not in r]
+bad += [f"{r['id']}: mức chắc {r['certainty']}" for r in d["rules"]
+        if r.get("certainty") not in ("goc", "thuat_lai", "cach_hieu", "dia_phuong")]
+ids = [r["id"] for r in d["rules"]]
+bad += [f"id trùng: {i}" for i in set(ids) if ids.count(i) > 1]
+print("\n".join(bad) or f"{len(ids)} dòng")
+sys.exit(1 if bad else 0)
+PY
+); then ok "rules table: $out, each with its source, clause, dates and certainty"
+else printf '%s\n' "$out" | sed 's/^/      /'; bad 'rules table rows are incomplete'; fi
 
 # --- the drawing library's functions, without CADCraft
 if out=$(python3 "$root/tests/cad/lib_selftest.py" 2>&1); then

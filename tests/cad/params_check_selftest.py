@@ -109,6 +109,16 @@ def beam_not_a_pair(d):
     return "structure.beam.value"
 
 
+def odd_law_input(d):
+    d["law_inputs"] = {"fire_resistance": {"value": "VI", "by": "model"}}
+    return "law_inputs.fire_resistance.value"
+
+
+def odd_cluster_kind(d):
+    d["clusters"]["can-2N"]["kind"] = "flat"
+    return "clusters.can-2N.kind"
+
+
 def drawing_twice(d):
     d["drawings"].append({"id": "plan:L1", "origin": [0, 90000]})
     return "drawings[4].id"
@@ -132,6 +142,8 @@ DEFECTS = [
     ("chung-cu-ktdd5.json", placement_id_not_text),
     ("pho-da-nang.json", drawing_twice),
     ("pho-da-nang.json", beam_not_a_pair),
+    ("pho-da-nang.json", odd_law_input),
+    ("chung-cu-ktdd5.json", odd_cluster_kind),
 ]
 
 

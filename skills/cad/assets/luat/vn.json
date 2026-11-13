@@ -1,0 +1,857 @@
+{
+ "schema": "cad-rules/1",
+ "country": "VN",
+ "note": "Ngưỡng đọc từ bản gốc ngày 2026-11-13; chi tiết và trích nguyên văn trong file source của từng dòng.",
+ "rules": [
+  {
+   "id": "q04-can-ho",
+   "what": "Diện tích căn hộ tối thiểu",
+   "check": "unit_area_min",
+   "value": 25,
+   "unit": "m²",
+   "applies": {
+    "types": [
+     "apartment_building",
+     "apartment"
+    ]
+   },
+   "clause": "2.2.4.1; đo tới mặt trong tường hoàn thiện (1.4.13)",
+   "certainty": "goc",
+   "doc": "QCVN 04:2021/BXD",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/95-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q04-phong-ngu",
+   "what": "Diện tích phòng ngủ tối thiểu trong căn hộ",
+   "check": "bedroom_area_min",
+   "value": 9,
+   "unit": "m²",
+   "applies": {
+    "types": [
+     "apartment_building",
+     "apartment"
+    ]
+   },
+   "clause": "2.2.4.4",
+   "certainty": "goc",
+   "doc": "QCVN 04:2021/BXD",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/95-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q04-thang-may",
+   "what": "Số thang máy tối thiểu",
+   "check": "lifts_min",
+   "value": {
+    "from_storeys": [
+     [
+      5,
+      1
+     ],
+     [
+      10,
+      2
+     ]
+    ],
+    "per_units": 70,
+    "per_people": 200
+   },
+   "unit": "thang",
+   "applies": {
+    "types": [
+     "apartment_building",
+     "apartment"
+    ]
+   },
+   "clause": "2.4.1",
+   "certainty": "goc",
+   "doc": "QCVN 04:2021/BXD",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/95-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q04-cho-xe",
+   "what": "Diện tích chỗ để xe tối thiểu",
+   "check": "parking_area_min",
+   "value": {
+    "per_4_units_m2": 25,
+    "per_100m2_units": 20,
+    "motorbike_per_unit_m2": 6
+   },
+   "unit": "m²",
+   "applies": {
+    "types": [
+     "apartment_building",
+     "apartment"
+    ]
+   },
+   "clause": "2.2.17.1",
+   "certainty": "goc",
+   "doc": "QCVN 04:2021/BXD",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/95-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q04-cho-xe-dien",
+   "what": "Khoang đỗ và sạc xe điện",
+   "check": null,
+   "value": {
+    "basement": [
+     25,
+     50
+    ],
+    "ground": [
+     30,
+     80
+    ],
+    "gap_mm": 2000
+   },
+   "unit": "chỗ",
+   "applies": {
+    "types": [
+     "apartment_building",
+     "apartment"
+    ]
+   },
+   "clause": "2.10 (Sửa đổi 01:2026)",
+   "certainty": "goc",
+   "doc": "QCVN 04:2021/BXD Sửa đổi 01:2026",
+   "effective_from": "2026-12-15",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/6/31-bxd-kem.pdf",
+   "note": "Chưa có phép kiểm; dòng giữ để biết từ 15/12/2026."
+  },
+  {
+   "id": "q04-be-cua-so",
+   "what": "Chiều cao bệ cửa sổ hay lan can",
+   "check": null,
+   "value": 1400,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "apartment_building",
+     "apartment"
+    ]
+   },
+   "clause": "2.2.12",
+   "certainty": "cach_hieu",
+   "note": "Câu chữ đọc được hai cách; ghi cách an toàn.",
+   "doc": "QCVN 04:2021/BXD",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/95-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-ban-thang",
+   "what": "Bề rộng bản thang tối thiểu",
+   "check": "stair_width_min",
+   "value": 900,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.4.1",
+   "certainty": "goc",
+   "note": "0,7 m khi nhà cao PCCC ≤ 15 m và ≤ 15 người/tầng (dòng q06-ban-thang-nho); 1,2 m khi có tầng > 200 người.",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-ban-thang-nho",
+   "what": "Bề rộng bản thang, nhà thấp và ít người",
+   "check": "stair_width_min",
+   "value": 700,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ],
+    "fire_height_max_mm": 15000,
+    "people_per_floor_max": 15
+   },
+   "clause": "3.4.1 (Sửa đổi 1:2023)",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-mat-bac",
+   "what": "Mặt bậc tối thiểu",
+   "check": "tread_min",
+   "value": 250,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.4.2",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-co-bac",
+   "what": "Chiều cao cổ bậc",
+   "check": "riser_range",
+   "value": [
+    50,
+    220
+   ],
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.4.2",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-cua-thoat",
+   "what": "Bề rộng thông thủy cửa thoát nạn",
+   "check": "exit_door_width_min",
+   "value": 800,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.2.9",
+   "certainty": "goc",
+   "note": "1,2 m khi > 50 người qua (không áp cho chung cư).",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-hanh-lang",
+   "what": "Bề rộng hành lang thoát nạn",
+   "check": "corridor_width_min",
+   "value": 1200,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.3.6",
+   "certainty": "goc",
+   "note": "1,2 m khi phục vụ > 15 người từ phòng ở; 1,0 m trường hợp khác.",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-hanh-lang-nho",
+   "what": "Bề rộng hành lang thoát nạn, ít người",
+   "check": "corridor_width_min",
+   "value": 1000,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment"
+    ]
+   },
+   "clause": "3.3.6",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-so-loi-thoat",
+   "what": "Số lối thoát tối thiểu của một tầng",
+   "check": "exits_min",
+   "value": 2,
+   "unit": "lối",
+   "applies": {
+    "types": [
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.2.6.1",
+   "certainty": "goc",
+   "note": "Khách sạn: mọi tầng. Chung cư: khi tổng diện tích căn hộ trên tầng > 500 m². Mọi nhà: tầng ≥ 50 người. Ngoại lệ một lối ở 3.2.6.2.",
+   "condition": {
+    "apartment_units_area_m2_over": 500
+   },
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-khoang-cach-loi",
+   "what": "Khoảng cách giữa hai lối thoát",
+   "check": "exits_spacing_min",
+   "value": {
+    "of_diagonal": 0.5,
+    "with_sprinkler": 0.3333,
+    "min_mm": 7000
+   },
+   "unit": "",
+   "applies": {
+    "types": [
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "3.2.8 (Sửa đổi 1:2023 đổi cách đo)",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-quang-di",
+   "what": "Quãng đi tối đa từ cửa căn hay phòng tới lối thoát gần nhất",
+   "check": "travel_max",
+   "value": {
+    "I-S0": [
+     40000,
+     25000
+    ],
+    "II-S0": [
+     40000,
+     25000
+    ],
+    "II-S1": [
+     30000,
+     20000
+    ],
+    "III-S0": [
+     30000,
+     20000
+    ],
+    "III-S1": [
+     25000,
+     15000
+    ],
+    "IV-S0": [
+     25000,
+     15000
+    ],
+    "IV-S1": [
+     20000,
+     10000
+    ],
+    "IV-S2": [
+     20000,
+     10000
+    ],
+    "V": [
+     20000,
+     10000
+    ]
+   },
+   "unit": "mm [giữa hai thang, hành lang cụt]",
+   "applies": {
+    "types": [
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "Phụ lục G, Bảng G.1",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-quang-di-ks",
+   "what": "Quãng đi tối đa của khách sạn theo bảng nhà công cộng",
+   "check": "travel_max_alt",
+   "value": {
+    "I-S0": [
+     40000,
+     20000
+    ],
+    "II-S0": [
+     40000,
+     20000
+    ],
+    "III-S0": [
+     40000,
+     20000
+    ],
+    "IV-S0": [
+     30000,
+     15000
+    ],
+    "V": [
+     20000,
+     10000
+    ]
+   },
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "hotel"
+    ]
+   },
+   "clause": "G.1.2.1, Bảng G.2a chú thích 2",
+   "certainty": "goc",
+   "conflicts_with": "q06-quang-di",
+   "note": "Văn bản cho hai ngưỡng hành lang cụt với khách sạn (25 m và 20 m); kết quả giữa hai ngưỡng là cần xem.",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-quang-di-cao",
+   "what": "Quãng đi tối đa trong nhà rất cao",
+   "check": "travel_max_tall",
+   "value": [
+    20000,
+    15000
+   ],
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "hotel",
+     "apartment_building"
+    ],
+    "fire_height_min_mm": {
+     "hotel": 50000,
+     "apartment_building": 75000
+    }
+   },
+   "clause": "A.2.19",
+   "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q01-mat-do-nha-o",
+   "what": "Mật độ xây dựng thuần tối đa, nhà ở riêng lẻ",
+   "check": "density_max",
+   "value": {
+    "by_plot_m2": [
+     [
+      90,
+      100
+     ],
+     [
+      100,
+      90
+     ],
+     [
+      200,
+      70
+     ],
+     [
+      300,
+      60
+     ],
+     [
+      500,
+      50
+     ],
+     [
+      1000,
+      40
+     ]
+    ]
+   },
+   "unit": "%",
+   "applies": {
+    "types": [
+     "house"
+    ]
+   },
+   "clause": "Bảng 2.8 (2021) / Bảng 8 (2026)",
+   "certainty": "goc",
+   "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  },
+  {
+   "id": "q01-mat-do-hien-huu",
+   "what": "Ngoại lệ mật độ ở khu hiện hữu",
+   "check": "density_max_existing",
+   "value": {
+    "plot_max_m2": 100,
+    "height_max_mm": 25000,
+    "density": 100
+   },
+   "unit": "%",
+   "applies": {
+    "types": [
+     "house"
+    ],
+    "area_kind": "existing"
+   },
+   "clause": "2.7.7 (2021) / 2.6.6.2 (2026)",
+   "certainty": "goc",
+   "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  },
+  {
+   "id": "q01-tong-san",
+   "what": "Tổng diện tích sàn tối đa so với lô",
+   "check": "floor_area_ratio_max",
+   "value": 7,
+   "unit": "lần",
+   "applies": {
+    "types": [
+     "house"
+    ]
+   },
+   "clause": "Bảng 2.8 (2021) / Bảng 8 (2026)",
+   "certainty": "goc",
+   "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  },
+  {
+   "id": "q01-mat-do-chung-cu",
+   "what": "Mật độ xây dựng thuần tối đa, chung cư",
+   "check": "density_max",
+   "value": {
+    "heights_mm": [
+     16000,
+     19000,
+     22000,
+     25000,
+     28000,
+     31000,
+     34000,
+     37000,
+     40000,
+     43000,
+     46000,
+     46001
+    ],
+    "plots_m2": [
+     3000,
+     10000,
+     18000,
+     35000
+    ],
+    "table": [
+     [
+      75,
+      65,
+      63,
+      60
+     ],
+     [
+      75,
+      60,
+      58,
+      55
+     ],
+     [
+      75,
+      57,
+      55,
+      52
+     ],
+     [
+      75,
+      53,
+      51,
+      48
+     ],
+     [
+      75,
+      50,
+      48,
+      45
+     ],
+     [
+      75,
+      48,
+      46,
+      43
+     ],
+     [
+      75,
+      46,
+      44,
+      41
+     ],
+     [
+      75,
+      44,
+      42,
+      39
+     ],
+     [
+      75,
+      43,
+      41,
+      38
+     ],
+     [
+      75,
+      42,
+      40,
+      37
+     ],
+     [
+      75,
+      41,
+      39,
+      36
+     ],
+     [
+      75,
+      40,
+      38,
+      35
+     ]
+    ]
+   },
+   "unit": "%",
+   "applies": {
+    "types": [
+     "apartment_building"
+    ]
+   },
+   "clause": "Bảng 2.9 (2021) / Bảng 9 (2026)",
+   "certainty": "goc",
+   "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  },
+  {
+   "id": "q01-mat-do-dich-vu",
+   "what": "Mật độ xây dựng thuần tối đa, thương mại dịch vụ",
+   "check": "density_max",
+   "value": {
+    "heights_mm": [
+     16000,
+     19000,
+     22000,
+     25000,
+     28000,
+     31000,
+     34000,
+     37000,
+     40000,
+     43000,
+     46000,
+     46001
+    ],
+    "plots_m2": [
+     3000,
+     10000,
+     18000,
+     35000
+    ],
+    "table": [
+     [
+      80,
+      70,
+      68,
+      65
+     ],
+     [
+      80,
+      65,
+      63,
+      60
+     ],
+     [
+      80,
+      62,
+      60,
+      57
+     ],
+     [
+      80,
+      58,
+      56,
+      53
+     ],
+     [
+      80,
+      55,
+      53,
+      50
+     ],
+     [
+      80,
+      53,
+      51,
+      48
+     ],
+     [
+      80,
+      51,
+      49,
+      46
+     ],
+     [
+      80,
+      49,
+      47,
+      44
+     ],
+     [
+      80,
+      48,
+      46,
+      43
+     ],
+     [
+      80,
+      47,
+      45,
+      42
+     ],
+     [
+      80,
+      46,
+      44,
+      41
+     ],
+     [
+      80,
+      45,
+      43,
+      40
+     ]
+    ]
+   },
+   "unit": "%",
+   "applies": {
+    "types": [
+     "hotel"
+    ]
+   },
+   "clause": "Bảng 2.10 (2021) / Bảng 10 (2026)",
+   "certainty": "cach_hieu",
+   "note": "Văn bản không gọi tên khách sạn; xếp vào bảng này là suy luận.",
+   "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  },
+  {
+   "id": "q01-khoang-lui",
+   "what": "Khoảng lùi tối thiểu so với đường",
+   "check": "setback_min",
+   "value": {
+    "road_widths_m": [
+     19,
+     22
+    ],
+    "heights_mm": [
+     19000,
+     22000,
+     28000
+    ],
+    "table": [
+     [
+      0,
+      3,
+      4,
+      6
+     ],
+     [
+      0,
+      0,
+      3,
+      6
+     ],
+     [
+      0,
+      0,
+      0,
+      6
+     ]
+    ]
+   },
+   "unit": "m",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ],
+    "road_district_or_above": true
+   },
+   "clause": "Bảng 2.7 (2021) / Bảng 7 (2026)",
+   "certainty": "goc",
+   "note": "Chỉ áp cho đường cấp quận trở lên; địa phương có thể bắt lùi hơn.",
+   "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  },
+  {
+   "id": "dia-phuong-ban-cong",
+   "what": "Ban công, phần nhà nhô ra đường; cửa sổ nhìn sang lô bên cạnh",
+   "check": "local_only",
+   "value": null,
+   "unit": "",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ]
+   },
+   "clause": "QCVN 01 để quy chế kiến trúc từng thành phố quyết",
+   "certainty": "dia_phuong",
+   "doc": "Quy chế kiến trúc địa phương",
+   "effective_from": "2021-07-05",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/7/46-bxd-kem.pdf (bản 2026); bản 2021 trên luatvietnam.vn"
+  }
+ ]
+}

@@ -181,6 +181,7 @@ vẽ:
 |---|---|
 | `scripts/dxf_check.py` | File với chính nó: phiên bản, đơn vị, layer `0`, chữ có dấu, font, kích thước khớp hình và các hàng khép, tường khép kín, diện tích ghi khớp đường bao, chữ đè chữ, chữ đè đồ đạc và tầm quét cửa, chữ nằm trên nét kích thước hay đường cắt. |
 | `scripts/plan_check.py` | File với bảng số: ô cửa đủ và đúng chỗ, mỗi phòng một đường bao, diện tích so với nhu cầu, phòng cộng tường bằng phủ bì, cột và khu ướt chồng tầng, thang đi được, cánh cửa không vướng đồ, tới được mọi phòng, không xuyên phòng riêng. |
+| `scripts/luat_check.py` | Luật: diện tích căn và phòng ngủ, thang, cửa và hành lang thoát nạn, số lối thoát, quãng đi, mật độ, tổng sàn, khoảng lùi, thang máy, chỗ để xe. Ngưỡng đọc từ bảng luật `assets/luat/vn.json`, mỗi dòng có văn bản, điều khoản, hiệu lực và mức chắc. "Không đạt" chỉ khi dòng luật đọc từ bản gốc, còn hiệu lực và đủ số đầu vào (`law_inputs`); còn lại "cần xem". |
 | `audit` của CADCraft | Lỗi cấu trúc file. |
 
 `check.py` của dự án chỉ còn cho phép kiểm thật sự riêng của dự án đó. Phép

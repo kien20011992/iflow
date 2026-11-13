@@ -298,7 +298,9 @@
      ]
     }
    ],
-   "note": "y=0 là mặt ngoài; tường bao phòng nằm ở tầng điển hình"
+   "note": "y=0 là mặt ngoài; tường bao phòng nằm ở tầng điển hình",
+   "kind": "room",
+   "unit_type": "phòng đơn"
   },
   "phong-gia-dinh": {
    "grid": {
@@ -490,7 +492,9 @@
      "use": "wet"
     }
    ],
-   "note": "phòng gia đình hai ngủ dùng chung một WC; y=0 là mặt ngoài"
+   "note": "phòng gia đình hai ngủ dùng chung một WC; y=0 là mặt ngoài",
+   "kind": "room",
+   "unit_type": "phòng gia đình"
   },
   "tang-phong": {
    "grid": {
@@ -1228,7 +1232,8 @@
      ],
      "use": "circulation"
     }
-   ]
+   ],
+   "kind": "floor"
   }
  },
  "floors": {
@@ -1678,5 +1683,43 @@
    ]
   }
  ],
- "rules": []
+ "rules": [],
+ "law_inputs": {
+  "fire_resistance": {
+   "value": "I",
+   "by": "model"
+  },
+  "s_class": {
+   "value": "S0",
+   "by": "model"
+  },
+  "fire_height_mm": {
+   "value": 21000,
+   "by": "model"
+  },
+  "people_per_floor": {
+   "value": 40,
+   "by": "model"
+  },
+  "area_kind": {
+   "value": "new",
+   "by": "model"
+  },
+  "road_district_or_above": {
+   "value": true,
+   "by": "model"
+  },
+  "road_width_m": {
+   "value": 20,
+   "by": "model"
+  },
+  "sprinkler": {
+   "value": true,
+   "by": "model"
+  },
+  "submit_date": {
+   "value": "2026-11-13",
+   "by": "model"
+  }
+ }
 }

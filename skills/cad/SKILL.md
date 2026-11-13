@@ -246,7 +246,9 @@ in the files, named by their full paths.
    file, `uv run ${CLAUDE_SKILL_DIR}/scripts/dxf_check.py <dxf>` (the file
    against itself, text overlaps included), `uv run
    ${CLAUDE_SKILL_DIR}/scripts/plan_check.py <dxf> params.json` (the file
-   against the number table, and whether every room can be reached) and
+   against the number table, and whether every room can be reached), `uv run
+   ${CLAUDE_SKILL_DIR}/scripts/luat_check.py <dxf> params.json` (the law, read
+   from a rules table with clause and certainty; give it `law_inputs`) and
    CADCraft's `audit`. Their
    output goes in front of the user with the drawing; fix what they
    report, or say why it stands. A check that could not run — no shell, no

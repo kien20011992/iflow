@@ -37,6 +37,18 @@ DECIMAL_KEYS = {"need_area", "value", "north_deg"}
 PLAN_LISTS = ("walls", "columns", "openings", "stairs", "rooms", "shafts",
               "voids", "parking", "furniture", "railings", "placements", "outside")
 REQUIRED = ("schema", "project", "grid", "levels", "types", "floors", "drawings")
+CLUSTER_KINDS = ("unit", "room", "floor", "core", "other")  # unit: a flat; room: a hotel room
+LAW_INPUTS = {  # what the rule checks need that a drawing cannot show
+    "fire_resistance": lambda v: v in ("I", "II", "III", "IV", "V"),
+    "s_class": lambda v: v in ("S0", "S1", "S2", "S3"),
+    "fire_height_mm": lambda v: is_int(v) and v >= 0,
+    "people_per_floor": lambda v: is_int(v) and v >= 0,
+    "area_kind": lambda v: v in ("new", "existing"),
+    "road_district_or_above": lambda v: isinstance(v, bool),
+    "road_width_m": lambda v: is_num(v) and v > 0,
+    "sprinkler": lambda v: isinstance(v, bool),
+    "submit_date": lambda v: isinstance(v, str) and len(v) == 10 and v[4] == "-" and v[7] == "-",
+}
 STRUCTURE_KEYS = ("slab", "beam", "parapet", "footing_depth", "footing_width", "stair_waist",
                   "rail_height")
 NEEDS_SITE = ("house", "hotel", "apartment_building")
@@ -156,7 +168,11 @@ def check_plan_shape(block, path, rep, is_cluster=False):
     if not isinstance(block, dict):
         rep.err(path, "phải là một bảng")
         return
-    allowed = set(PLAN_LISTS) | ({"grid"} if is_cluster else set()) | {"note"}
+    allowed = set(PLAN_LISTS) | ({"grid", "kind", "unit_type"} if is_cluster else set()) | {"note"}
+    if is_cluster:
+        one_of(block, "kind", CLUSTER_KINDS, path, rep, required=False)
+        if "unit_type" in block and not (isinstance(block["unit_type"], str) and block["unit_type"]):
+            rep.err(f"{path}.unit_type", "phải là chữ")
     for k in block:
         if k not in allowed:
             rep.err(f"{path}.{k}", "phần không có trong khuôn")
@@ -430,6 +446,21 @@ def stage_shape(d, rep):
             else (is_int(v) and v > 0)
         if not ok:
             rep.err(f"{p}.value", "[rộng, cao] milimét dương" if pair else "milimét dương")
+
+    law = d.get("law_inputs", {})
+    if not isinstance(law, dict):
+        rep.err("law_inputs", "phải là một bảng")
+        law = {}
+    for key, entry in law.items():
+        p = f"law_inputs.{key}"
+        if key not in LAW_INPUTS:
+            rep.err(p, f"không thuộc {', '.join(LAW_INPUTS)}")
+        elif not isinstance(entry, dict) or "value" not in entry:
+            rep.err(p, "viết {\"value\": …, \"by\": …}")
+        else:
+            check_provenance(entry, p, rep)
+            if not LAW_INPUTS[key](entry["value"]):
+                rep.err(f"{p}.value", f"giá trị {entry['value']!r} không hợp lệ")
 
     rules = d.get("rules", [])
     if not (isinstance(rules, list) and all(isinstance(r, str) for r in rules)):

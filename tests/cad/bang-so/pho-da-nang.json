@@ -1998,5 +1998,35 @@
    "value": 900,
    "by": "default"
   }
+ },
+ "law_inputs": {
+  "fire_resistance": {
+   "value": "II",
+   "by": "model"
+  },
+  "s_class": {
+   "value": "S0",
+   "by": "model"
+  },
+  "fire_height_mm": {
+   "value": 7200,
+   "by": "model"
+  },
+  "people_per_floor": {
+   "value": 6,
+   "by": "model"
+  },
+  "area_kind": {
+   "value": "new",
+   "by": "model"
+  },
+  "road_district_or_above": {
+   "value": false,
+   "by": "model"
+  },
+  "submit_date": {
+   "value": "2026-11-13",
+   "by": "model"
+  }
  }
 }

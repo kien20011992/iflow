@@ -76,7 +76,7 @@ def flip(side, mirrored):
 
 def new_level():
     return {k: [] for k in ("walls", "openings", "rooms", "columns", "stairs",
-                            "voids", "shafts", "furniture")}
+                            "voids", "shafts", "furniture", "parking")}
 
 
 def add_block(out, block, grid, tf, mirrored, prefix, d, level_name, next_level):
@@ -133,7 +133,10 @@ def add_block(out, block, grid, tf, mirrored, prefix, d, level_name, next_level)
             if key == "voids" and v.get("floor", "none") != "none":
                 continue  # a glass floor is walked on: part of the room below it
             a, b = pt(v["from"]), pt(v["to"])
-            out[key].append({"id": prefix + v["id"], "poly": rect(a, b)})
+            out[key].append({"id": prefix + v["id"], "poly": rect(a, b), "kind": v.get("kind")})
+    for v in filter(built, block.get("parking", [])):
+        out["parking"].append({"id": prefix + v["id"], "poly": rect(pt(v["from"]), pt(v["to"])),
+                               "vehicle": v["vehicle"], "count": v["count"]})
     for i, pl in enumerate(block.get("placements", [])):
         place(out, pl, i, grid, tf, mirrored, prefix, d, level_name, next_level)
 

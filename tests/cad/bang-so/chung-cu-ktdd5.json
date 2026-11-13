@@ -406,7 +406,9 @@
     }
    ],
    "furniture": [],
-   "note": "y=0 là mặt ngoài, y=8400 là mặt hành lang; tường bao căn nằm ở tầng điển hình"
+   "note": "y=0 là mặt ngoài, y=8400 là mặt hành lang; tường bao căn nằm ở tầng điển hình",
+   "kind": "unit",
+   "unit_type": "2N"
   },
   "can-1N": {
    "grid": {
@@ -555,7 +557,9 @@
     }
    ],
    "furniture": [],
-   "note": "y=0 là mặt ngoài, y=8400 là mặt hành lang; tường bao căn nằm ở tầng điển hình"
+   "note": "y=0 là mặt ngoài, y=8400 là mặt hành lang; tường bao căn nằm ở tầng điển hình",
+   "kind": "unit",
+   "unit_type": "1N"
   },
   "tang-dien-hinh": {
    "grid": {
@@ -1535,7 +1539,8 @@
      ],
      "mirror": "y"
     }
-   ]
+   ],
+   "kind": "floor"
   }
  },
  "floors": {
@@ -2530,5 +2535,43 @@
    ]
   }
  ],
- "rules": []
+ "rules": [],
+ "law_inputs": {
+  "fire_resistance": {
+   "value": "I",
+   "by": "model"
+  },
+  "s_class": {
+   "value": "S0",
+   "by": "model"
+  },
+  "fire_height_mm": {
+   "value": 24000,
+   "by": "model"
+  },
+  "people_per_floor": {
+   "value": 60,
+   "by": "model"
+  },
+  "area_kind": {
+   "value": "new",
+   "by": "model"
+  },
+  "road_district_or_above": {
+   "value": true,
+   "by": "model"
+  },
+  "road_width_m": {
+   "value": 10,
+   "by": "model"
+  },
+  "sprinkler": {
+   "value": true,
+   "by": "model"
+  },
+  "submit_date": {
+   "value": "2026-11-13",
+   "by": "model"
+  }
+ }
 }
