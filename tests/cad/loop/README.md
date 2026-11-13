@@ -6,7 +6,10 @@ sửa, khi nào giữ hay bỏ một đợt sửa.
 
 - [prompt.md](prompt.md): prompt cho agent dựng bản vẽ. Thay `{SKILL}` bằng
   đường dẫn `skills/cad`, `{WORK}` bằng một thư mục tạm mới, `{BRIEF}` bằng
-  nội dung một file đề.
+  nội dung một file đề, `{MODE}` bằng một trong hai câu chế độ ghi trong file:
+  `ve` đi thẳng tới bản vẽ, `du` đi đủ bảy sản phẩm (cần cho đề giữ riêng,
+  vì phần C và D chấm cả phương án); `{RETURN}` bằng `luyen` hay `giu-rieng`,
+  để đề giữ riêng chỉ trả về một dòng.
 - [review.md](review.md): phiên chính duyệt một vòng và ghi lỗi vào sổ.
 - [so-quan-sat.md](so-quan-sat.md): sổ quan sát, mỗi lỗi một dòng.
 - [thang-chung.md](thang-chung.md): thang điểm chung cho mọi đề;

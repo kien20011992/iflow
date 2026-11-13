@@ -29,15 +29,33 @@ from plan_check_selftest import build, outlines  # noqa: E402
 diem_may.run_audit = lambda dxf: "none"  # no CADCraft in the self-test
 
 
-def scored(tmp, name, d, o, extra=None):
-    dxf, params = pathlib.Path(tmp) / f"{name}.dxf", pathlib.Path(tmp) / f"{name}.json"
+def scored_paths(tmp, name):
+    return pathlib.Path(tmp) / f"{name}.dxf", pathlib.Path(tmp) / f"{name}.json"
+
+
+def report(tmp, name, d, o, extra=None):
+    dxf, params = scored_paths(tmp, name)
     build(d, o, str(dxf), extra)
     params.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
-    return {k: v["points"] for k, v in diem_may.score(dxf, params)["items"].items()}
+    return diem_may.score(dxf, params)
+
+
+def scored(tmp, name, d, o, extra=None):
+    return {k: v["points"] for k, v in report(tmp, name, d, o, extra)["items"].items()}
 
 
 def layer0(msp):
     msp.add_line((0, 0), (100, 100))
+
+
+def two_clouds(msp):
+    msp.doc.layers.add("A-REVS")
+    for x in (0, 3000):
+        msp.add_lwpolyline([(x, 0), (x + 500, 0), (x + 500, 500), (x, 500)], close=True,
+                           dxfattribs={"layer": "A-REVS"})
+    # CADCraft may close a cloud by repeating its first point instead of setting the flag.
+    msp.add_lwpolyline([(6000, 0), (6500, 0), (6500, 500), (6000, 0)], dxfattribs={"layer": "A-REVS"})
+    msp.add_mtext("chưa vẽ: thang t1", dxfattribs={"layer": "A-REVS", "insert": (0, 600)})
 
 
 def no_door(msp):
@@ -70,9 +88,33 @@ def main():
             expect(got[key] < sound[key] and others == {k: v for k, v in sound.items() if k != key},
                    f"{name}: chỉ mất {key}", got)
 
+        # Clouds left for what the library could not draw are counted, never scored.
+        h = report(tmp, "clouds", flat_table(), outlines(), two_clouds)["handed_back"]
+        base = diem_may.score(*scored_paths(tmp, "sound"))["handed_back"]
+        expect(h["clouds"] == 3 and base["clouds"] == 0 and h["table_items"] == base["table_items"] > 0
+               and h["share"] == round(3 / h["table_items"], 3),
+               "đếm đám mây bị giao lại, kể cả đám mây khép bằng điểm đầu lặp lại", h)
+
         d, o, _, _ = small_bedroom(flat_table(), outlines())
         got = scored(tmp, "law", d, o)
         expect(got["A4"] == 0, "phòng ngủ dưới luật mất A4", got)
+
+    # The "Chưa vẽ" list of a build log: only the last run's list counts.
+    with tempfile.TemporaryDirectory() as tmp:
+        log = pathlib.Path(tmp) / "build.log"
+        log.write_text("cadcraft-cli: mã thoát 0\nChưa vẽ:\n  - cũ\ncadcraft-cli: mã thoát 0\nChưa vẽ:\n  - hình site\n"
+                       "  - L1: nhãn DS của cv không có chỗ\n  - L1: Lối xe xuống hầm (ram dốc)\n"
+                       "  - L2: diện tích Sảnh tính cả 13.52 m² cột hay ô trống đứng giữa phòng\n", encoding="utf-8")
+        g = diem_may.handed_back_log(log)
+        clean = pathlib.Path(tmp) / "clean.log"  # a clean last run leaves nothing from the run before
+        clean.write_text("cadcraft-cli: mã thoát 0\nChưa vẽ:\n  - cũ\ncadcraft-cli: mã thoát 0\n", encoding="utf-8")
+        g16 = pathlib.Path(tmp) / "utf16.log"  # Windows PowerShell 5.1 writes UTF-16 with a byte-order mark
+        g16.write_text("Chưa vẽ:\n  - hình site\n", encoding="utf-16")
+        clean_g, utf16_g = diem_may.handed_back_log(clean), diem_may.handed_back_log(g16)
+    expect(clean_g["listed"] == 0 and utf16_g["listed"] == 1, "lần dựng cuối sạch thì danh sách rỗng; đọc được log UTF-16",
+           (clean_g, utf16_g))
+    expect(g == {"listed": 4, "text_no_spot": 1, "assumed": 0, "area_note": 1, "needs_eye": 0, "undrawn": 2,
+                 "drawings": 1}, "đọc danh sách chưa vẽ của lần dựng cuối", g)
 
     # Part A is never rescaled: an item that did not run lowers the maximum, not the points.
     rep = diem_may.tally({"A1": (4, ""), "A2": (3.5, ""), "A3": (6, ""), "A4": (4, ""), "A5": (None, "")})
