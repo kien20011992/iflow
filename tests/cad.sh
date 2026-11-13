@@ -5,7 +5,9 @@
 #   2. every cross-file pointer resolves (check-pointers.sh);
 #   3. the DXF checker still names each planted defect (needs uv or ezdxf);
 #   4. the number-table checker passes the three sample tables and names
-#      each planted defect.
+#      each planted defect;
+#   5. the table-against-drawing checker passes a sound drawing and names
+#      each planted defect (needs uv or ezdxf).
 # Prints one line per check. Exit 0 = nothing failed.
 set -u
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -79,19 +81,21 @@ done
 if out=$(bash "$root/skills/flow/scripts/check-pointers.sh" "$skill" 2>&1); then ok "$out"
 else bad "$out"; fi
 
-# --- the DXF checker against planted defects
-selftest="$root/tests/cad/dxf_check_selftest.py"
-if command -v uv > /dev/null 2>&1; then runner=(uv run -q "$selftest")
-elif python3 -c 'import ezdxf' 2> /dev/null; then runner=(python3 "$selftest")
-else runner=(); fi
-if [ "${#runner[@]}" -eq 0 ]; then
-  skip 'DXF checker self-test: needs uv, or a python3 with ezdxf'
-elif out=$("${runner[@]}" 2>&1); then
-  ok "DXF checker self-test: $(printf '%s\n' "$out" | tail -1)"
-else
-  printf '%s\n' "$out" | sed 's/^/      /'
-  bad 'DXF checker self-test'
-fi
+# --- the two DXF-reading checkers against planted defects (need uv or ezdxf)
+ezdxf_selftest() {  # $1 = label, $2 = self-test script
+  local runner
+  if command -v uv > /dev/null 2>&1; then runner=(uv run -q "$2")
+  elif python3 -c 'import ezdxf' 2> /dev/null; then runner=(python3 "$2")
+  else skip "$1 self-test: needs uv, or a python3 with ezdxf"; return; fi
+  if out=$("${runner[@]}" 2>&1); then
+    ok "$1 self-test: $(printf '%s\n' "$out" | tail -1)"
+  else
+    printf '%s\n' "$out" | sed 's/^/      /'
+    bad "$1 self-test"
+  fi
+}
+ezdxf_selftest 'DXF checker' "$root/tests/cad/dxf_check_selftest.py"
+ezdxf_selftest 'table-against-drawing checker' "$root/tests/cad/plan_check_selftest.py"
 
 # --- the number-table checker against the samples and planted defects
 if out=$(python3 "$root/tests/cad/params_check_selftest.py" 2>&1); then

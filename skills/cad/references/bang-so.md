@@ -199,6 +199,33 @@ hơn hai là cắt gãy. Mỗi hình trong `drawings` có `id` dạng `plan:<t�
 `site`, và `origin` là gốc của hình đó trong không gian mô hình. Hình `site`
 cần phần `site`. Hai hình cùng `id`, hay hai mặt cắt cùng tên, là lỗi.
 
+## Bảng số hiện lên file DXF thế nào
+
+Thư viện vẽ ghi file theo các điều dưới đây, và `scripts/plan_check.py` đọc
+file theo đúng các điều đó để so với bảng số. Đổi một điều thì sửa cả hai
+bên.
+
+- Mỗi hình `plan:<tầng>` nằm ở `origin` của nó trong `drawings`: tọa độ
+  trong file bằng tọa độ theo bảng số cộng gốc của hình.
+- Mỗi phòng là một đường bao khép kín trên `X-AREA`, chứa điểm `at` của
+  phòng.
+- Mỗi ô cửa là một block chèn trên `A-DOOR` (cửa đi, cửa cuốn, ô trống)
+  hay `A-GLAZ` (cửa sổ), có thuộc tính `ID` bằng id của ô cửa. Điểm chèn
+  là tâm ô cửa trên đường tim tường. Cánh cửa đi là một cung trong block,
+  tâm ở bản lề, bán kính bằng bề rộng cánh.
+- Đối tượng nằm trong một cụm đã đặt mang id mở rộng: mỗi lần đặt viết
+  `tên-cụm#n`, nối bằng `/`, rồi tới id gốc. `n` là thứ tự của lần đặt trong
+  danh sách `placements` chứa nó, đếm từ 0. Lần đặt ở gốc bảng thêm chữ `g`
+  trước số, để không trùng với lần đặt trong tầng: `tên-cụm#g0`. Ví dụ cửa
+  `d1` của căn đặt thứ tư trong tầng điển hình, tầng này lại là lần đặt đầu
+  tiên ở gốc bảng: `tang-dien-hinh#g0/can-2N#3/d1`.
+- Hình mặt cắt, mặt đứng và khu đất nằm ngoài vùng của mọi mặt bằng: vùng
+  của một mặt bằng là khung bao tường và phòng của tầng đó, nới 1 m mỗi
+  phía. Block ô cửa vẽ trên mặt đứng nằm ngoài vùng đó nên không bị đếm là
+  ô cửa thừa.
+- Mỗi cột là một đường khép kín trên `A-COLS`. Đồ đạc và thiết bị là block
+  trên `A-FURN` hay `A-FLOR`.
+
 ## Script kiểm làm gì và không làm gì
 
 Kiểm: đúng phiên bản; đủ phần bắt buộc theo loại công trình và độ sâu hồ
