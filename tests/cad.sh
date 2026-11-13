@@ -3,7 +3,9 @@
 #   1. the skill's files keep the contracts its eval fixtures and the
 #      maintainers' notes in CLAUDE.md rely on;
 #   2. every cross-file pointer resolves (check-pointers.sh);
-#   3. the DXF checker still names each planted defect (needs uv or ezdxf).
+#   3. the DXF checker still names each planted defect (needs uv or ezdxf);
+#   4. the number-table checker passes the three sample tables and names
+#      each planted defect.
 # Prints one line per check. Exit 0 = nothing failed.
 set -u
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -89,6 +91,14 @@ elif out=$("${runner[@]}" 2>&1); then
 else
   printf '%s\n' "$out" | sed 's/^/      /'
   bad 'DXF checker self-test'
+fi
+
+# --- the number-table checker against the samples and planted defects
+if out=$(python3 "$root/tests/cad/params_check_selftest.py" 2>&1); then
+  ok "number-table checker self-test: $(printf '%s\n' "$out" | tail -1)"
+else
+  printf '%s\n' "$out" | sed 's/^/      /'
+  bad 'number-table checker self-test'
 fi
 
 printf '%d passed, %d failed, %d skipped\n' "$pass" "$fail" "$skipped"

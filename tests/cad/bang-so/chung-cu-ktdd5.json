@@ -1,0 +1,2231 @@
+{
+ "schema": "cad-params/1",
+ "project": {
+  "name": "Chung cư độc lập nhiều tầng (đề KTDD5, khu đất 1)",
+  "type": "apartment_building",
+  "depth": "scheme",
+  "scale": 200,
+  "note": "Bảng thử khuôn: bố cục do Claude phác để thử độ phủ của khuôn, không phải lời giải của đề và không ghi by trên từng đối tượng."
+ },
+ "site": {
+  "outline": [
+   [
+    -8400,
+    -6000
+   ],
+   [
+    57800,
+    -6000
+   ],
+   [
+    57800,
+    23400
+   ],
+   [
+    -8400,
+    23400
+   ]
+  ],
+  "setbacks": [
+   {
+    "edge": 0,
+    "mm": 6000,
+    "by": "model"
+   },
+   {
+    "edge": 1,
+    "mm": 3000,
+    "by": "model"
+   },
+   {
+    "edge": 2,
+    "mm": 3000,
+    "by": "model"
+   },
+   {
+    "edge": 3,
+    "mm": 3000,
+    "by": "model"
+   }
+  ],
+  "front_edge": 0,
+  "north_deg": 0,
+  "by": "model",
+  "note": "khu đất 1 (1.947 m²) chỉ có trong bản đồ của đề; cạnh 66,2 × 29,4 m ước từ thước tỷ lệ của bản đồ",
+  "limits": [
+   {
+    "name": "floors_max",
+    "value": 9,
+    "by": "user"
+   },
+   {
+    "name": "height_max_mm",
+    "value": 30000,
+    "by": "user"
+   },
+   {
+    "name": "density_min_pct",
+    "value": 50,
+    "by": "user"
+   },
+   {
+    "name": "density_max_pct",
+    "value": 70,
+    "by": "user"
+   }
+  ]
+ },
+ "grid": {
+  "x": {
+   "1": 0,
+   "2": 3600,
+   "3": 10800,
+   "4": 18000,
+   "5": 22800,
+   "6": 30000,
+   "7": 34800,
+   "8": 42000,
+   "9": 49200
+  },
+  "y": {
+   "A": 0,
+   "B": 8400,
+   "C": 10400,
+   "D": 18800
+  }
+ },
+ "levels": [
+  {
+   "name": "B1",
+   "elevation": -3300,
+   "height": 3300,
+   "kind": "basement"
+  },
+  {
+   "name": "L1",
+   "elevation": 0,
+   "height": 4200,
+   "kind": "ground"
+  },
+  {
+   "name": "L2",
+   "elevation": 4200,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L3",
+   "elevation": 7500,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L4",
+   "elevation": 10800,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L5",
+   "elevation": 14100,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L6",
+   "elevation": 17400,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L7",
+   "elevation": 20700,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L8",
+   "elevation": 24000,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "Mai",
+   "elevation": 27300,
+   "height": 0,
+   "kind": "roof"
+  }
+ ],
+ "types": {
+  "walls": {
+   "ext": {
+    "thickness": 220
+   },
+   "corr": {
+    "thickness": 200
+   },
+   "party": {
+    "thickness": 200
+   },
+   "int": {
+    "thickness": 100
+   }
+  },
+  "openings": {
+   "D7": {
+    "kind": "door",
+    "width": 700
+   },
+   "D8": {
+    "kind": "door",
+    "width": 800
+   },
+   "D10": {
+    "kind": "door",
+    "width": 1000
+   },
+   "DS": {
+    "kind": "door",
+    "width": 3000
+   },
+   "V12": {
+    "kind": "window",
+    "width": 1200
+   },
+   "V18": {
+    "kind": "window",
+    "width": 1800
+   }
+  },
+  "stairs": {
+   "TC": {
+    "kind": "u_turn",
+    "flight_width": 1200,
+    "tread": 280,
+    "gap": 200
+   },
+   "TT": {
+    "kind": "u_turn",
+    "flight_width": 1200,
+    "tread": 280,
+    "gap": 200
+   }
+  }
+ },
+ "clusters": {
+  "can-2N": {
+   "grid": {
+    "x": {
+     "a": 0,
+     "b": 7200
+    },
+    "y": {
+     "m": 0,
+     "h": 8400
+    }
+   },
+   "walls": [
+    {
+     "id": "w1",
+     "type": "int",
+     "from": [
+      [
+       "a"
+      ],
+      [
+       "m",
+       3600
+      ]
+     ],
+     "to": [
+      [
+       "b"
+      ],
+      [
+       "m",
+       3600
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w2",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       3600
+      ],
+      [
+       "m"
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       3600
+      ],
+      [
+       "m",
+       3600
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w3",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       5400
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "to": [
+      [
+       "b"
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w4",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       5400
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       5400
+      ],
+      [
+       "h"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "d1",
+     "wall": "w1",
+     "type": "D8",
+     "offset": 2400
+    },
+    {
+     "id": "d2",
+     "wall": "w1",
+     "type": "D8",
+     "offset": 4000
+    },
+    {
+     "id": "d3",
+     "wall": "w4",
+     "type": "D7",
+     "offset": 300
+    }
+   ],
+   "rooms": [
+    {
+     "id": "n1",
+     "name": "Ngủ 1",
+     "at": [
+      [
+       "a",
+       1800
+      ],
+      [
+       "m",
+       1800
+      ]
+     ],
+     "use": "private",
+     "need_area": 9
+    },
+    {
+     "id": "n2",
+     "name": "Ngủ 2",
+     "at": [
+      [
+       "a",
+       5400
+      ],
+      [
+       "m",
+       1800
+      ]
+     ],
+     "use": "private",
+     "need_area": 9
+    },
+    {
+     "id": "k",
+     "name": "Khách, bếp",
+     "at": [
+      [
+       "a",
+       2400
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "wc",
+     "name": "WC",
+     "at": [
+      [
+       "a",
+       6300
+      ],
+      [
+       "m",
+       7200
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "furniture": [],
+   "note": "y=0 là mặt ngoài, y=8400 là mặt hành lang; tường bao căn nằm ở tầng điển hình"
+  },
+  "can-1N": {
+   "grid": {
+    "x": {
+     "a": 0,
+     "b": 4800
+    },
+    "y": {
+     "m": 0,
+     "h": 8400
+    }
+   },
+   "walls": [
+    {
+     "id": "w1",
+     "type": "int",
+     "from": [
+      [
+       "a"
+      ],
+      [
+       "m",
+       3600
+      ]
+     ],
+     "to": [
+      [
+       "b"
+      ],
+      [
+       "m",
+       3600
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w3",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       3000
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "to": [
+      [
+       "b"
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w4",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       3000
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       3000
+      ],
+      [
+       "h"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "d1",
+     "wall": "w1",
+     "type": "D8",
+     "offset": 1800
+    },
+    {
+     "id": "d3",
+     "wall": "w4",
+     "type": "D7",
+     "offset": 300
+    }
+   ],
+   "rooms": [
+    {
+     "id": "n1",
+     "name": "Ngủ",
+     "at": [
+      [
+       "a",
+       2400
+      ],
+      [
+       "m",
+       1800
+      ]
+     ],
+     "use": "private",
+     "need_area": 9
+    },
+    {
+     "id": "k",
+     "name": "Khách, bếp",
+     "at": [
+      [
+       "a",
+       1500
+      ],
+      [
+       "m",
+       6000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "wc",
+     "name": "WC",
+     "at": [
+      [
+       "a",
+       3900
+      ],
+      [
+       "m",
+       7200
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "furniture": [],
+   "note": "y=0 là mặt ngoài, y=8400 là mặt hành lang; tường bao căn nằm ở tầng điển hình"
+  },
+  "tang-dien-hinh": {
+   "grid": {
+    "x": {
+     "1": 0,
+     "2": 3600,
+     "3": 10800,
+     "4": 18000,
+     "5": 22800,
+     "6": 30000,
+     "7": 34800,
+     "8": 42000,
+     "9": 49200
+    },
+    "y": {
+     "A": 0,
+     "B": 8400,
+     "C": 10400,
+     "D": 18800
+    }
+   },
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wD",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w9",
+     "type": "ext",
+     "from": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wB",
+     "type": "corr",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wC",
+     "type": "corr",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p2s",
+     "type": "party",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p2n",
+     "type": "party",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p3s",
+     "type": "party",
+     "from": [
+      [
+       "3"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "3"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p3n",
+     "type": "party",
+     "from": [
+      [
+       "3"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "3"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p4s",
+     "type": "party",
+     "from": [
+      [
+       "4"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "4"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p4n",
+     "type": "party",
+     "from": [
+      [
+       "4"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "4"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p7s",
+     "type": "party",
+     "from": [
+      [
+       "7"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "7"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p7n",
+     "type": "party",
+     "from": [
+      [
+       "7"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "7"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p8s",
+     "type": "party",
+     "from": [
+      [
+       "8"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "8"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p8n",
+     "type": "party",
+     "from": [
+      [
+       "8"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "8"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p5s",
+     "type": "party",
+     "from": [
+      [
+       "5"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "5"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p6s",
+     "type": "party",
+     "from": [
+      [
+       "6"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "6"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p5n",
+     "type": "party",
+     "from": [
+      [
+       "5"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "5"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p6n",
+     "type": "party",
+     "from": [
+      [
+       "6"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "6"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "cs0",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 5700
+    },
+    {
+     "id": "cn0",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 5700
+    },
+    {
+     "id": "cs1",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 12900
+    },
+    {
+     "id": "cn1",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 12900
+    },
+    {
+     "id": "cs2",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 17700
+    },
+    {
+     "id": "cn2",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 17700
+    },
+    {
+     "id": "cs3",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 29700
+    },
+    {
+     "id": "cn3",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 29700
+    },
+    {
+     "id": "cs4",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 36900
+    },
+    {
+     "id": "cn4",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 36900
+    },
+    {
+     "id": "cs5",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 44100
+    },
+    {
+     "id": "cn5",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 44100
+    },
+    {
+     "id": "v-thang",
+     "wall": "w1",
+     "type": "V12",
+     "offset": 3000,
+     "by": "model"
+    },
+    {
+     "id": "vs0",
+     "wall": "wA",
+     "type": "V18",
+     "offset": 6300
+    },
+    {
+     "id": "vn0",
+     "wall": "wD",
+     "type": "V18",
+     "offset": 6300
+    },
+    {
+     "id": "vs1",
+     "wall": "wA",
+     "type": "V18",
+     "offset": 13500
+    },
+    {
+     "id": "vn1",
+     "wall": "wD",
+     "type": "V18",
+     "offset": 13500
+    },
+    {
+     "id": "vs2",
+     "wall": "wA",
+     "type": "V18",
+     "offset": 19500
+    },
+    {
+     "id": "vn2",
+     "wall": "wD",
+     "type": "V18",
+     "offset": 19500
+    },
+    {
+     "id": "vs3",
+     "wall": "wA",
+     "type": "V18",
+     "offset": 31500
+    },
+    {
+     "id": "vn3",
+     "wall": "wD",
+     "type": "V18",
+     "offset": 31500
+    },
+    {
+     "id": "vs4",
+     "wall": "wA",
+     "type": "V18",
+     "offset": 37500
+    },
+    {
+     "id": "vn4",
+     "wall": "wD",
+     "type": "V18",
+     "offset": 37500
+    },
+    {
+     "id": "vs5",
+     "wall": "wA",
+     "type": "V18",
+     "offset": 44700
+    },
+    {
+     "id": "vn5",
+     "wall": "wD",
+     "type": "V18",
+     "offset": 44700
+    }
+   ],
+   "stairs": [
+    {
+     "id": "tc",
+     "type": "TC",
+     "start": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "next"
+    },
+    {
+     "id": "tt",
+     "type": "TT",
+     "start": [
+      [
+       "1",
+       200
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "next"
+    }
+   ],
+   "shafts": [
+    {
+     "id": "tm1",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       2500
+      ],
+      [
+       "A",
+       2500
+      ]
+     ]
+    },
+    {
+     "id": "tm2",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       2800
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       5000
+      ],
+      [
+       "A",
+       2500
+      ]
+     ]
+    },
+    {
+     "id": "rac",
+     "kind": "garbage",
+     "from": [
+      [
+       "5",
+       5300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "A",
+       1500
+      ]
+     ]
+    },
+    {
+     "id": "kt",
+     "kind": "duct",
+     "from": [
+      [
+       "5",
+       5300
+      ],
+      [
+       "A",
+       1800
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "A",
+       3000
+      ]
+     ]
+    }
+   ],
+   "rooms": [
+    {
+     "id": "hl",
+     "name": "Hành lang",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "B",
+       1000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "st",
+     "name": "Sảnh tầng",
+     "at": [
+      [
+       "5",
+       3600
+      ],
+      [
+       "A",
+       5000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "tht",
+     "name": "Thang thoát hiểm",
+     "at": [
+      [
+       "1",
+       1800
+      ],
+      [
+       "A",
+       4000
+      ]
+     ],
+     "use": "circulation"
+    }
+   ],
+   "placements": [
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "2"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "can-1N",
+     "at": [
+      [
+       "4"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "can-1N",
+     "at": [
+      [
+       "4"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "can-1N",
+     "at": [
+      [
+       "6"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "can-1N",
+     "at": [
+      [
+       "6"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "7"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "7"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "8"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "can-2N",
+     "at": [
+      [
+       "8"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    }
+   ]
+  }
+ },
+ "floors": {
+  "B1": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wD",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w9",
+     "type": "ext",
+     "from": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "left"
+    }
+   ],
+   "stairs": [
+    {
+     "id": "tc",
+     "type": "TC",
+     "start": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "L1"
+    },
+    {
+     "id": "tt",
+     "type": "TT",
+     "start": [
+      [
+       "1",
+       200
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "L1"
+    }
+   ],
+   "shafts": [
+    {
+     "id": "tm1",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       2500
+      ],
+      [
+       "A",
+       2500
+      ]
+     ]
+    },
+    {
+     "id": "tm2",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       2800
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       5000
+      ],
+      [
+       "A",
+       2500
+      ]
+     ]
+    },
+    {
+     "id": "rac",
+     "kind": "garbage",
+     "from": [
+      [
+       "5",
+       5300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "A",
+       1500
+      ]
+     ]
+    },
+    {
+     "id": "kt",
+     "kind": "duct",
+     "from": [
+      [
+       "5",
+       5300
+      ],
+      [
+       "A",
+       1800
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "A",
+       3000
+      ]
+     ]
+    }
+   ],
+   "parking": [
+    {
+     "id": "pk1",
+     "vehicle": "car",
+     "count": 30,
+     "from": [
+      [
+       "2",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       -300
+      ],
+      [
+       "D",
+       -300
+      ]
+     ],
+     "by": "model"
+    },
+    {
+     "id": "pk2",
+     "vehicle": "motorbike",
+     "count": 180,
+     "from": [
+      [
+       "6",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "9",
+       -300
+      ],
+      [
+       "D",
+       -300
+      ]
+     ],
+     "by": "model"
+    }
+   ],
+   "rooms": [
+    {
+     "id": "ham",
+     "name": "Đỗ xe",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "B",
+       1000
+      ]
+     ],
+     "use": "service"
+    }
+   ]
+  },
+  "L1": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wD",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w9",
+     "type": "ext",
+     "from": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wL",
+     "type": "int",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wS",
+     "type": "int",
+     "from": [
+      [
+       "6"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "6"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "cv",
+     "wall": "wA",
+     "type": "DS",
+     "offset": 24000,
+     "by": "model",
+     "note": "cửa chính sảnh"
+    },
+    {
+     "id": "ch",
+     "wall": "wA",
+     "type": "DS",
+     "offset": 38000,
+     "by": "model",
+     "note": "cửa cửa hàng"
+    }
+   ],
+   "stairs": [
+    {
+     "id": "tc",
+     "type": "TC",
+     "start": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "L2"
+    },
+    {
+     "id": "tt",
+     "type": "TT",
+     "start": [
+      [
+       "1",
+       200
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "L2"
+    }
+   ],
+   "shafts": [
+    {
+     "id": "tm1",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       2500
+      ],
+      [
+       "A",
+       2500
+      ]
+     ]
+    },
+    {
+     "id": "tm2",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       2800
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       5000
+      ],
+      [
+       "A",
+       2500
+      ]
+     ]
+    },
+    {
+     "id": "rac",
+     "kind": "garbage",
+     "from": [
+      [
+       "5",
+       5300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "A",
+       1500
+      ]
+     ]
+    },
+    {
+     "id": "kt",
+     "kind": "duct",
+     "from": [
+      [
+       "5",
+       5300
+      ],
+      [
+       "A",
+       1800
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "A",
+       3000
+      ]
+     ]
+    }
+   ],
+   "rooms": [
+    {
+     "id": "sanh",
+     "name": "Sảnh, thư báo",
+     "at": [
+      [
+       "4"
+      ],
+      [
+       "B",
+       1000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "ql",
+     "name": "Quản lý",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "C",
+       4000
+      ]
+     ],
+     "use": "service",
+     "need_area": 20
+    },
+    {
+     "id": "sh",
+     "name": "Sinh hoạt cộng đồng",
+     "at": [
+      [
+       "4"
+      ],
+      [
+       "C",
+       4000
+      ]
+     ],
+     "use": "shared",
+     "need_area": 60
+    },
+    {
+     "id": "cht",
+     "name": "Cửa hàng tiện ích",
+     "at": [
+      [
+       "8"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "tht",
+     "name": "Thang thoát hiểm",
+     "at": [
+      [
+       "1",
+       1800
+      ],
+      [
+       "A",
+       4000
+      ]
+     ],
+     "use": "circulation"
+    }
+   ],
+   "outside": [
+    {
+     "id": "x1",
+     "what": "Lối xe xuống hầm (ram dốc)",
+     "near": [
+      [
+       "9",
+       3000
+      ],
+      [
+       "A",
+       -3000
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "placements": [
+  {
+   "cluster": "tang-dien-hinh",
+   "at": [
+    [
+     "1"
+    ],
+    [
+     "A"
+    ]
+   ],
+   "levels": [
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7",
+    "L8"
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "name": "1-1",
+   "look": "+x",
+   "path": [
+    [
+     [
+      "5",
+      1500
+     ],
+     [
+      "A",
+      -3000
+     ]
+    ],
+    [
+     [
+      "5",
+      1500
+     ],
+     [
+      "D",
+      3000
+     ]
+    ]
+   ]
+  }
+ ],
+ "drawings": [
+  {
+   "id": "site",
+   "origin": [
+    0,
+    -60000
+   ]
+  },
+  {
+   "id": "plan:B1",
+   "origin": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "plan:L1",
+   "origin": [
+    70000,
+    0
+   ]
+  },
+  {
+   "id": "plan:L2",
+   "origin": [
+    140000,
+    0
+   ]
+  },
+  {
+   "id": "section:1-1",
+   "origin": [
+    0,
+    60000
+   ]
+  }
+ ],
+ "rules": []
+}

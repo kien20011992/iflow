@@ -1,0 +1,1938 @@
+{
+ "schema": "cad-params/1",
+ "project": {
+  "name": "Nhà phố 3 tầng, Đà Nẵng",
+  "type": "house",
+  "depth": "construction",
+  "scale": 100,
+  "note": "Từ đề tests/cad/loop/pho-5x20-3-tang.md và bảng số vòng 8, chép sang khuôn cad-params/1."
+ },
+ "site": {
+  "outline": [
+   [
+    0,
+    -3000
+   ],
+   [
+    5000,
+    -3000
+   ],
+   [
+    5000,
+    17000
+   ],
+   [
+    0,
+    17000
+   ]
+  ],
+  "setbacks": [
+   {
+    "edge": 0,
+    "mm": 3000
+   },
+   {
+    "edge": 1,
+    "mm": 0
+   },
+   {
+    "edge": 2,
+    "mm": 2000
+   },
+   {
+    "edge": 3,
+    "mm": 0
+   }
+  ],
+  "front_edge": 0,
+  "north_deg": 0,
+  "ground_elevation": -300,
+  "note": "north_deg 0: hướng bắc là chiều dương trục x; mặt tiền (cạnh 0) nhìn về hướng đông"
+ },
+ "grid": {
+  "x": {
+   "1": 0,
+   "2": 5000
+  },
+  "y": {
+   "A": 0,
+   "B": 4000,
+   "C": 8000,
+   "D": 11000,
+   "E": 15000
+  }
+ },
+ "levels": [
+  {
+   "name": "L1",
+   "elevation": 0,
+   "height": 3600,
+   "kind": "ground"
+  },
+  {
+   "name": "L2",
+   "elevation": 3600,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L3",
+   "elevation": 6900,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "Mai",
+   "elevation": 10200,
+   "height": 0,
+   "kind": "roof"
+  }
+ ],
+ "types": {
+  "walls": {
+   "ext": {
+    "thickness": 200,
+    "material": "gạch"
+   },
+   "int": {
+    "thickness": 100,
+    "material": "gạch"
+   },
+   "virtual": {
+    "thickness": 0
+   }
+  },
+  "openings": {
+   "P1": {
+    "kind": "door",
+    "width": 800,
+    "height": 2200
+   },
+   "P2": {
+    "kind": "door",
+    "width": 700,
+    "height": 2200
+   },
+   "P3": {
+    "kind": "door",
+    "width": 900,
+    "height": 2200
+   },
+   "P4": {
+    "kind": "shutter",
+    "width": 4000,
+    "height": 2800
+   },
+   "V1": {
+    "kind": "window",
+    "width": 3000,
+    "height": 1400,
+    "sill": 900,
+    "by": "default"
+   },
+   "V2": {
+    "kind": "window",
+    "width": 1200,
+    "height": 1400,
+    "sill": 900,
+    "by": "default"
+   },
+   "V3": {
+    "kind": "window",
+    "width": 2400,
+    "height": 1400,
+    "sill": 900,
+    "by": "default"
+   }
+  },
+  "stairs": {
+   "T1": {
+    "kind": "u_turn",
+    "flight_width": 900,
+    "tread": 260,
+    "gap": 100,
+    "landing": 1560
+   }
+  },
+  "columns": {
+   "C1": {
+    "size": [
+     200,
+     300
+    ]
+   }
+  }
+ },
+ "floors": {
+  "L1": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wE",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w2",
+     "type": "ext",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wB",
+     "type": "int",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wC",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1900
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center",
+     "by": "model",
+     "note": "chỉ phía sau chiếu nghỉ"
+    },
+    {
+     "id": "vC",
+     "type": "virtual",
+     "from": [
+      [
+       "1",
+       200
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1900
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center",
+     "note": "ranh ảo giữa lối đi và phía sau, không in"
+    },
+    {
+     "id": "wWCy",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1500,
+       -100
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -50
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -50
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wWCx",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1500,
+       -50
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -100
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1500,
+       -50
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "columns": [
+    {
+     "id": "c1A",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "A",
+       150
+      ]
+     ]
+    },
+    {
+     "id": "c1B",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "B"
+      ]
+     ]
+    },
+    {
+     "id": "c1C",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "C"
+      ]
+     ]
+    },
+    {
+     "id": "c1D",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "D"
+      ]
+     ]
+    },
+    {
+     "id": "c1E",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "E",
+       -150
+      ]
+     ]
+    },
+    {
+     "id": "c2A",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "A",
+       150
+      ]
+     ]
+    },
+    {
+     "id": "c2B",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "B"
+      ]
+     ]
+    },
+    {
+     "id": "c2C",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "C"
+      ]
+     ]
+    },
+    {
+     "id": "c2D",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "D"
+      ]
+     ]
+    },
+    {
+     "id": "c2E",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "E",
+       -150
+      ]
+     ]
+    }
+   ],
+   "openings": [
+    {
+     "id": "o1",
+     "wall": "wA",
+     "type": "P4",
+     "offset": 500
+    },
+    {
+     "id": "o2",
+     "wall": "wB",
+     "type": "P1",
+     "offset": 1000,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o3",
+     "wall": "wE",
+     "type": "P3",
+     "offset": 300,
+     "hinge": "start",
+     "swing": "right",
+     "by": "default",
+     "note": "cửa ra ngoài mở vào trong"
+    },
+    {
+     "id": "o4",
+     "wall": "wWCy",
+     "type": "P2",
+     "offset": 750,
+     "hinge": "end",
+     "swing": "left",
+     "by": "model"
+    }
+   ],
+   "stairs": [
+    {
+     "id": "t1",
+     "type": "T1",
+     "start": [
+      [
+       "2",
+       -200
+      ],
+      [
+       "B",
+       50
+      ]
+     ],
+     "dir": "+y",
+     "turn": "left",
+     "up_to": "L2",
+     "risers": 20
+    }
+   ],
+   "rooms": [
+    {
+     "id": "r1",
+     "name": "Cửa hàng",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "A",
+       2000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "r2",
+     "name": "Thang, lối đi",
+     "at": [
+      [
+       "1",
+       1500
+      ],
+      [
+       "B",
+       2000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "r3",
+     "name": "Bếp, ăn",
+     "at": [
+      [
+       "1",
+       2300
+      ],
+      [
+       "D",
+       1000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "r4",
+     "name": "WC",
+     "at": [
+      [
+       "2",
+       -950
+      ],
+      [
+       "E",
+       -1100
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "voids": [
+    {
+     "id": "gieng-troi",
+     "from": [
+      [
+       "1",
+       200
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "1",
+       1200
+      ],
+      [
+       "D"
+      ]
+     ],
+     "floor": "glass"
+    }
+   ],
+   "furniture": [
+    {
+     "id": "f1",
+     "block": "BAN-AN-6",
+     "at": [
+      [
+       "1",
+       2150
+      ],
+      [
+       "D",
+       -900
+      ]
+     ]
+    },
+    {
+     "id": "f2",
+     "block": "BON-CAU",
+     "at": [
+      [
+       "2",
+       -450
+      ],
+      [
+       "E",
+       -525
+      ]
+     ],
+     "rotate": 180
+    },
+    {
+     "id": "f3",
+     "block": "CHAU-RUA-BEP",
+     "at": [
+      [
+       "2",
+       -500
+      ],
+      [
+       "C",
+       1800
+      ]
+     ],
+     "rotate": 90
+    }
+   ]
+  },
+  "L2": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wE",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w2",
+     "type": "ext",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wB",
+     "type": "int",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wD",
+     "type": "int",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1500
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wC",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1900
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center",
+     "by": "model",
+     "note": "chỉ phía sau chiếu nghỉ"
+    },
+    {
+     "id": "vC",
+     "type": "virtual",
+     "from": [
+      [
+       "1",
+       200
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1900
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center",
+     "note": "ranh ảo giữa lối đi và phía sau, không in"
+    },
+    {
+     "id": "wWCy",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1500,
+       -100
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -50
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -50
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wWCx",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1500,
+       -50
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -100
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1500,
+       -50
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "columns": [
+    {
+     "id": "c1A",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "A",
+       150
+      ]
+     ]
+    },
+    {
+     "id": "c1B",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "B"
+      ]
+     ]
+    },
+    {
+     "id": "c1C",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "C"
+      ]
+     ]
+    },
+    {
+     "id": "c1D",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "D"
+      ]
+     ]
+    },
+    {
+     "id": "c1E",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "E",
+       -150
+      ]
+     ]
+    },
+    {
+     "id": "c2A",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "A",
+       150
+      ]
+     ]
+    },
+    {
+     "id": "c2B",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "B"
+      ]
+     ]
+    },
+    {
+     "id": "c2C",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "C"
+      ]
+     ]
+    },
+    {
+     "id": "c2D",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "D"
+      ]
+     ]
+    },
+    {
+     "id": "c2E",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "E",
+       -150
+      ]
+     ]
+    }
+   ],
+   "openings": [
+    {
+     "id": "o1",
+     "wall": "wA",
+     "type": "V1",
+     "offset": 1000
+    },
+    {
+     "id": "o2",
+     "wall": "wB",
+     "type": "P1",
+     "offset": 1000,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o3",
+     "wall": "wD",
+     "type": "P1",
+     "offset": 1400,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o4",
+     "wall": "wE",
+     "type": "V2",
+     "offset": 1000
+    },
+    {
+     "id": "o5",
+     "wall": "wWCx",
+     "type": "P2",
+     "offset": 300,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    }
+   ],
+   "stairs": [
+    {
+     "id": "t1",
+     "type": "T1",
+     "start": [
+      [
+       "2",
+       -200
+      ],
+      [
+       "B",
+       50
+      ]
+     ],
+     "dir": "+y",
+     "turn": "left",
+     "up_to": "L3",
+     "risers": 20
+    }
+   ],
+   "rooms": [
+    {
+     "id": "r1",
+     "name": "Phòng khách",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "A",
+       2000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "r2",
+     "name": "Thang",
+     "at": [
+      [
+       "2",
+       -1150
+      ],
+      [
+       "B",
+       2000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "r3",
+     "name": "Sinh hoạt, hành lang",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "C",
+       1500
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "r4",
+     "name": "Phòng ngủ",
+     "at": [
+      [
+       "1",
+       1500
+      ],
+      [
+       "D",
+       2000
+      ]
+     ],
+     "use": "private"
+    },
+    {
+     "id": "r5",
+     "name": "WC",
+     "at": [
+      [
+       "2",
+       -950
+      ],
+      [
+       "E",
+       -1100
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "voids": [
+    {
+     "id": "gieng-troi",
+     "from": [
+      [
+       "1",
+       200
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "1",
+       1200
+      ],
+      [
+       "D"
+      ]
+     ],
+     "floor": "none"
+    }
+   ],
+   "railings": [
+    {
+     "id": "lc1",
+     "points": [
+      [
+       [
+        "1",
+        1200
+       ],
+       [
+        "C"
+       ]
+      ],
+      [
+       [
+        "1",
+        1200
+       ],
+       [
+        "D"
+       ]
+      ]
+     ]
+    }
+   ],
+   "furniture": [
+    {
+     "id": "f1",
+     "block": "BON-CAU",
+     "at": [
+      [
+       "2",
+       -450
+      ],
+      [
+       "E",
+       -525
+      ]
+     ],
+     "rotate": 180
+    }
+   ]
+  },
+  "L3": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wE",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w2",
+     "type": "ext",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wB",
+     "type": "int",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wD",
+     "type": "int",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1500
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wC",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1900
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center",
+     "by": "model",
+     "note": "chỉ phía sau chiếu nghỉ"
+    },
+    {
+     "id": "vC",
+     "type": "virtual",
+     "from": [
+      [
+       "1",
+       200
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1900
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center",
+     "note": "ranh ảo giữa lối đi và phía sau, không in"
+    },
+    {
+     "id": "wWCy",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1500,
+       -100
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -50
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -50
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wWCx",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       -200,
+       -1500,
+       -50
+      ],
+      [
+       "E",
+       -200,
+       -2000,
+       -100
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       -200,
+       -1500,
+       -50
+      ],
+      [
+       "E"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "columns": [
+    {
+     "id": "c1A",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "A",
+       150
+      ]
+     ]
+    },
+    {
+     "id": "c1B",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "B"
+      ]
+     ]
+    },
+    {
+     "id": "c1C",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "C"
+      ]
+     ]
+    },
+    {
+     "id": "c1D",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "D"
+      ]
+     ]
+    },
+    {
+     "id": "c1E",
+     "type": "C1",
+     "at": [
+      [
+       "1",
+       100
+      ],
+      [
+       "E",
+       -150
+      ]
+     ]
+    },
+    {
+     "id": "c2A",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "A",
+       150
+      ]
+     ]
+    },
+    {
+     "id": "c2B",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "B"
+      ]
+     ]
+    },
+    {
+     "id": "c2C",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "C"
+      ]
+     ]
+    },
+    {
+     "id": "c2D",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "D"
+      ]
+     ]
+    },
+    {
+     "id": "c2E",
+     "type": "C1",
+     "at": [
+      [
+       "2",
+       -100
+      ],
+      [
+       "E",
+       -150
+      ]
+     ]
+    }
+   ],
+   "openings": [
+    {
+     "id": "o1",
+     "wall": "wA",
+     "type": "V3",
+     "offset": 1300
+    },
+    {
+     "id": "o2",
+     "wall": "wB",
+     "type": "P1",
+     "offset": 1000,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o3",
+     "wall": "wD",
+     "type": "P1",
+     "offset": 1400,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o4",
+     "wall": "wE",
+     "type": "V2",
+     "offset": 1000
+    },
+    {
+     "id": "o5",
+     "wall": "wWCx",
+     "type": "P2",
+     "offset": 300,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    }
+   ],
+   "stairs": [],
+   "rooms": [
+    {
+     "id": "r1",
+     "name": "Phòng ngủ",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "A",
+       2000
+      ]
+     ],
+     "use": "private"
+    },
+    {
+     "id": "r2",
+     "name": "Thang",
+     "at": [
+      [
+       "2",
+       -1150
+      ],
+      [
+       "B",
+       2000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "r3",
+     "name": "Sinh hoạt, hành lang",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "C",
+       1500
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "r4",
+     "name": "Phòng thờ",
+     "at": [
+      [
+       "1",
+       1500
+      ],
+      [
+       "D",
+       2000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "r5",
+     "name": "WC",
+     "at": [
+      [
+       "2",
+       -950
+      ],
+      [
+       "E",
+       -1100
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "voids": [
+    {
+     "id": "gieng-troi",
+     "from": [
+      [
+       "1",
+       200
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "1",
+       1200
+      ],
+      [
+       "D"
+      ]
+     ],
+     "floor": "none"
+    }
+   ],
+   "railings": [
+    {
+     "id": "lc1",
+     "points": [
+      [
+       [
+        "1",
+        1200
+       ],
+       [
+        "C"
+       ]
+      ],
+      [
+       [
+        "1",
+        1200
+       ],
+       [
+        "D"
+       ]
+      ]
+     ]
+    }
+   ],
+   "furniture": [
+    {
+     "id": "f1",
+     "block": "BON-CAU",
+     "at": [
+      [
+       "2",
+       -450
+      ],
+      [
+       "E",
+       -525
+      ]
+     ],
+     "rotate": 180
+    }
+   ]
+  }
+ },
+ "sections": [
+  {
+   "name": "1-1",
+   "look": "-x",
+   "path": [
+    [
+     [
+      "2",
+      -200,
+      -450
+     ],
+     [
+      "A",
+      -500
+     ]
+    ],
+    [
+     [
+      "2",
+      -200,
+      -450
+     ],
+     [
+      "C",
+      500
+     ]
+    ],
+    [
+     [
+      "1",
+      700
+     ],
+     [
+      "C",
+      500
+     ]
+    ],
+    [
+     [
+      "1",
+      700
+     ],
+     [
+      "E",
+      500
+     ]
+    ]
+   ],
+   "note": "cắt gãy: qua vế lên rồi qua giếng trời"
+  }
+ ],
+ "drawings": [
+  {
+   "id": "plan:L1",
+   "origin": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "plan:L2",
+   "origin": [
+    22000,
+    0
+   ]
+  },
+  {
+   "id": "plan:L3",
+   "origin": [
+    44000,
+    0
+   ]
+  },
+  {
+   "id": "section:1-1",
+   "origin": [
+    66000,
+    0
+   ]
+  }
+ ],
+ "rules": []
+}

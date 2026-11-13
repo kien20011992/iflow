@@ -1,0 +1,1682 @@
+{
+ "schema": "cad-params/1",
+ "project": {
+  "name": "Khách sạn gia đình kiểu B&B (đề KTDD5, khu đất 2)",
+  "type": "hotel",
+  "depth": "scheme",
+  "scale": 200,
+  "note": "Bảng thử khuôn: bố cục do Claude phác để thử độ phủ của khuôn, không phải lời giải của đề và không ghi by trên từng đối tượng."
+ },
+ "site": {
+  "outline": [
+   [
+    -6000,
+    -6000
+   ],
+   [
+    40000,
+    -6000
+   ],
+   [
+    40000,
+    20000
+   ],
+   [
+    26000,
+    36000
+   ],
+   [
+    -6000,
+    30000
+   ]
+  ],
+  "setbacks": [
+   {
+    "edge": 0,
+    "mm": 6000,
+    "by": "model"
+   },
+   {
+    "edge": 1,
+    "mm": 4000,
+    "by": "model"
+   },
+   {
+    "edge": 2,
+    "mm": 4000,
+    "by": "model"
+   },
+   {
+    "edge": 3,
+    "mm": 4000,
+    "by": "model"
+   },
+   {
+    "edge": 4,
+    "mm": 6000,
+    "by": "model"
+   }
+  ],
+  "front_edge": 0,
+  "north_deg": 30,
+  "by": "model",
+  "note": "khu đất 2 (1.696 m²) chỉ có trong bản đồ của đề; hình ngũ giác ước từ bản đồ, chưa đo"
+ },
+ "grid": {
+  "x": {
+   "1": 0,
+   "2": 4000,
+   "3": 8000,
+   "4": 12000,
+   "5": 16000,
+   "6": 22000,
+   "7": 26000,
+   "8": 30000,
+   "9": 33600
+  },
+  "y": {
+   "A": 0,
+   "B": 6100,
+   "C": 8100,
+   "D": 14600
+  }
+ },
+ "levels": [
+  {
+   "name": "L1",
+   "elevation": 0,
+   "height": 4500,
+   "kind": "ground"
+  },
+  {
+   "name": "L2",
+   "elevation": 4500,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L3",
+   "elevation": 7800,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L4",
+   "elevation": 11100,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L5",
+   "elevation": 14400,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L6",
+   "elevation": 17700,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L7",
+   "elevation": 21000,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "Mai",
+   "elevation": 24300,
+   "height": 0,
+   "kind": "roof"
+  }
+ ],
+ "types": {
+  "walls": {
+   "ext": {
+    "thickness": 220
+   },
+   "corr": {
+    "thickness": 200
+   },
+   "party": {
+    "thickness": 150
+   },
+   "int": {
+    "thickness": 100
+   }
+  },
+  "openings": {
+   "D7": {
+    "kind": "door",
+    "width": 700
+   },
+   "D8": {
+    "kind": "door",
+    "width": 800
+   },
+   "D9": {
+    "kind": "door",
+    "width": 900
+   },
+   "DS": {
+    "kind": "door",
+    "width": 3000
+   },
+   "V15": {
+    "kind": "window",
+    "width": 1500
+   }
+  },
+  "stairs": {
+   "T": {
+    "kind": "u_turn",
+    "flight_width": 1200,
+    "tread": 280,
+    "gap": 200
+   }
+  }
+ },
+ "clusters": {
+  "phong-don": {
+   "grid": {
+    "x": {
+     "a": 0,
+     "b": 4000
+    },
+    "y": {
+     "m": 0,
+     "h": 6100
+    }
+   },
+   "walls": [
+    {
+     "id": "w1",
+     "type": "int",
+     "from": [
+      [
+       "a"
+      ],
+      [
+       "m",
+       3900
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       2000
+      ],
+      [
+       "m",
+       3900
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w2",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       2000
+      ],
+      [
+       "m",
+       3900
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       2000
+      ],
+      [
+       "h"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "d1",
+     "wall": "w2",
+     "type": "D7",
+     "offset": 1300,
+     "hinge": "end",
+     "swing": "left",
+     "by": "model"
+    }
+   ],
+   "rooms": [
+    {
+     "id": "ng",
+     "name": "Phòng ngủ",
+     "at": [
+      [
+       "a",
+       2000
+      ],
+      [
+       "m",
+       2000
+      ]
+     ],
+     "use": "private"
+    },
+    {
+     "id": "wc",
+     "name": "WC",
+     "at": [
+      [
+       "a",
+       1000
+      ],
+      [
+       "m",
+       5000
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "furniture": [
+    {
+     "id": "g",
+     "block": "GIUONG-DOI",
+     "at": [
+      [
+       "a",
+       2000
+      ],
+      [
+       "m",
+       1800
+      ]
+     ]
+    }
+   ],
+   "note": "y=0 là mặt ngoài; tường bao phòng nằm ở tầng điển hình"
+  },
+  "phong-gia-dinh": {
+   "grid": {
+    "x": {
+     "a": 0,
+     "b": 8000
+    },
+    "y": {
+     "m": 0,
+     "h": 6500
+    }
+   },
+   "walls": [
+    {
+     "id": "w1",
+     "type": "int",
+     "from": [
+      [
+       "a"
+      ],
+      [
+       "m",
+       3400
+      ]
+     ],
+     "to": [
+      [
+       "b"
+      ],
+      [
+       "m",
+       3400
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w2",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       4000
+      ],
+      [
+       "m"
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       4000
+      ],
+      [
+       "m",
+       3400
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w3",
+     "type": "int",
+     "from": [
+      [
+       "a"
+      ],
+      [
+       "m",
+       4200
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       2400
+      ],
+      [
+       "m",
+       4200
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w4",
+     "type": "int",
+     "from": [
+      [
+       "a",
+       2400
+      ],
+      [
+       "m",
+       4200
+      ]
+     ],
+     "to": [
+      [
+       "a",
+       2400
+      ],
+      [
+       "h"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "d1",
+     "wall": "w1",
+     "type": "D8",
+     "offset": 2600
+    },
+    {
+     "id": "d2",
+     "wall": "w1",
+     "type": "D8",
+     "offset": 4600
+    },
+    {
+     "id": "d3",
+     "wall": "w4",
+     "type": "D7",
+     "offset": 400
+    }
+   ],
+   "rooms": [
+    {
+     "id": "n1",
+     "name": "Ngủ 1",
+     "at": [
+      [
+       "a",
+       2000
+      ],
+      [
+       "m",
+       1700
+      ]
+     ],
+     "use": "private"
+    },
+    {
+     "id": "n2",
+     "name": "Ngủ 2",
+     "at": [
+      [
+       "a",
+       6000
+      ],
+      [
+       "m",
+       1700
+      ]
+     ],
+     "use": "private"
+    },
+    {
+     "id": "sh",
+     "name": "Sinh hoạt chung",
+     "at": [
+      [
+       "a",
+       5000
+      ],
+      [
+       "m",
+       5000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "wc",
+     "name": "WC",
+     "at": [
+      [
+       "a",
+       1200
+      ],
+      [
+       "m",
+       5300
+      ]
+     ],
+     "use": "wet"
+    }
+   ],
+   "note": "phòng gia đình hai ngủ dùng chung một WC; y=0 là mặt ngoài"
+  },
+  "tang-phong": {
+   "grid": {
+    "x": {
+     "1": 0,
+     "2": 4000,
+     "3": 8000,
+     "4": 12000,
+     "5": 16000,
+     "6": 22000,
+     "7": 26000,
+     "8": 30000,
+     "9": 33600
+    },
+    "y": {
+     "A": 0,
+     "B": 6100,
+     "C": 8100,
+     "D": 14600
+    }
+   },
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wD",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w9",
+     "type": "ext",
+     "from": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wB",
+     "type": "corr",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "to": [
+      [
+       "8"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wC",
+     "type": "corr",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "8"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w8",
+     "type": "int",
+     "from": [
+      [
+       "8"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "8"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p2s",
+     "type": "party",
+     "from": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "2"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p3s",
+     "type": "party",
+     "from": [
+      [
+       "3"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "3"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p4s",
+     "type": "party",
+     "from": [
+      [
+       "4"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "4"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p5s",
+     "type": "party",
+     "from": [
+      [
+       "5"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "5"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p6s",
+     "type": "party",
+     "from": [
+      [
+       "6"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "6"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p7s",
+     "type": "party",
+     "from": [
+      [
+       "7"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "7"
+      ],
+      [
+       "B"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p3n",
+     "type": "party",
+     "from": [
+      [
+       "3"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "3"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p5n",
+     "type": "party",
+     "from": [
+      [
+       "5"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "5"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "p6n",
+     "type": "party",
+     "from": [
+      [
+       "6"
+      ],
+      [
+       "C"
+      ]
+     ],
+     "to": [
+      [
+       "6"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "cs0",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 2400
+    },
+    {
+     "id": "vs0",
+     "wall": "wA",
+     "type": "V15",
+     "offset": 1250
+    },
+    {
+     "id": "cs1",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 6400
+    },
+    {
+     "id": "vs1",
+     "wall": "wA",
+     "type": "V15",
+     "offset": 5250
+    },
+    {
+     "id": "cs2",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 10400
+    },
+    {
+     "id": "vs2",
+     "wall": "wA",
+     "type": "V15",
+     "offset": 9250
+    },
+    {
+     "id": "cs3",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 14400
+    },
+    {
+     "id": "vs3",
+     "wall": "wA",
+     "type": "V15",
+     "offset": 13250
+    },
+    {
+     "id": "cs4",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 24400
+    },
+    {
+     "id": "vs4",
+     "wall": "wA",
+     "type": "V15",
+     "offset": 23250
+    },
+    {
+     "id": "cs5",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 28400
+    },
+    {
+     "id": "vs5",
+     "wall": "wA",
+     "type": "V15",
+     "offset": 27250
+    },
+    {
+     "id": "cn0",
+     "wall": "wC",
+     "type": "D9",
+     "offset": 5000
+    },
+    {
+     "id": "vn0a",
+     "wall": "wD",
+     "type": "V15",
+     "offset": 1250
+    },
+    {
+     "id": "vn0b",
+     "wall": "wD",
+     "type": "V15",
+     "offset": 5250
+    },
+    {
+     "id": "cn1",
+     "wall": "wC",
+     "type": "D9",
+     "offset": 13000
+    },
+    {
+     "id": "vn1a",
+     "wall": "wD",
+     "type": "V15",
+     "offset": 9250
+    },
+    {
+     "id": "vn1b",
+     "wall": "wD",
+     "type": "V15",
+     "offset": 13250
+    },
+    {
+     "id": "cn2",
+     "wall": "wC",
+     "type": "D9",
+     "offset": 27000
+    },
+    {
+     "id": "vn2a",
+     "wall": "wD",
+     "type": "V15",
+     "offset": 23250
+    },
+    {
+     "id": "vn2b",
+     "wall": "wD",
+     "type": "V15",
+     "offset": 27250
+    },
+    {
+     "id": "cth",
+     "wall": "w8",
+     "type": "D9",
+     "offset": 6800,
+     "note": "cửa từ hành lang vào thang thoát hiểm"
+    }
+   ],
+   "placements": [
+    {
+     "cluster": "phong-don",
+     "at": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "phong-don",
+     "at": [
+      [
+       "2"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "phong-don",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "phong-don",
+     "at": [
+      [
+       "4"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "phong-don",
+     "at": [
+      [
+       "6"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "phong-don",
+     "at": [
+      [
+       "7"
+      ],
+      [
+       "A"
+      ]
+     ]
+    },
+    {
+     "cluster": "phong-gia-dinh",
+     "at": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "phong-gia-dinh",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    },
+    {
+     "cluster": "phong-gia-dinh",
+     "at": [
+      [
+       "6"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "mirror": "y"
+    }
+   ],
+   "shafts": [
+    {
+     "id": "tm1",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       2300
+      ],
+      [
+       "C",
+       2300
+      ]
+     ]
+    },
+    {
+     "id": "tm2",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       2600
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       4600
+      ],
+      [
+       "C",
+       2300
+      ]
+     ]
+    },
+    {
+     "id": "kt",
+     "kind": "duct",
+     "from": [
+      [
+       "5",
+       4900
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "C",
+       2300
+      ]
+     ]
+    }
+   ],
+   "stairs": [
+    {
+     "id": "tc",
+     "type": "T",
+     "start": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       2700
+      ]
+     ],
+     "dir": "+x",
+     "turn": "left",
+     "up_to": "next"
+    },
+    {
+     "id": "tt",
+     "type": "T",
+     "start": [
+      [
+       "8",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "next"
+    }
+   ],
+   "rooms": [
+    {
+     "id": "hl",
+     "name": "Hành lang",
+     "at": [
+      [
+       "3"
+      ],
+      [
+       "B",
+       1000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "tht",
+     "name": "Thang thoát hiểm",
+     "at": [
+      [
+       "8",
+       1800
+      ],
+      [
+       "B"
+      ]
+     ],
+     "use": "circulation"
+    }
+   ]
+  }
+ },
+ "floors": {
+  "L1": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wD",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "1"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w9",
+     "type": "ext",
+     "from": [
+      [
+       "9"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "w8",
+     "type": "int",
+     "from": [
+      [
+       "8"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "8"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wR",
+     "type": "int",
+     "from": [
+      [
+       "4"
+      ],
+      [
+       "A"
+      ]
+     ],
+     "to": [
+      [
+       "4"
+      ],
+      [
+       "D"
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "openings": [
+    {
+     "id": "cv",
+     "wall": "wA",
+     "type": "DS",
+     "offset": 13000,
+     "by": "model",
+     "note": "cửa chính, sảnh lễ tân"
+    },
+    {
+     "id": "cth",
+     "wall": "w8",
+     "type": "D9",
+     "offset": 6800
+    }
+   ],
+   "shafts": [
+    {
+     "id": "tm1",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       2300
+      ],
+      [
+       "C",
+       2300
+      ]
+     ]
+    },
+    {
+     "id": "tm2",
+     "kind": "lift",
+     "from": [
+      [
+       "5",
+       2600
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       4600
+      ],
+      [
+       "C",
+       2300
+      ]
+     ]
+    },
+    {
+     "id": "kt",
+     "kind": "duct",
+     "from": [
+      [
+       "5",
+       4900
+      ],
+      [
+       "C",
+       300
+      ]
+     ],
+     "to": [
+      [
+       "6",
+       -300
+      ],
+      [
+       "C",
+       2300
+      ]
+     ]
+    }
+   ],
+   "stairs": [
+    {
+     "id": "tc",
+     "type": "T",
+     "start": [
+      [
+       "5",
+       300
+      ],
+      [
+       "C",
+       2700
+      ]
+     ],
+     "dir": "+x",
+     "turn": "left",
+     "up_to": "L2"
+    },
+    {
+     "id": "tt",
+     "type": "T",
+     "start": [
+      [
+       "8",
+       300
+      ],
+      [
+       "A",
+       300
+      ]
+     ],
+     "dir": "+y",
+     "turn": "right",
+     "up_to": "L2"
+    }
+   ],
+   "rooms": [
+    {
+     "id": "lt",
+     "name": "Lễ tân, giữ hành lý",
+     "at": [
+      [
+       "5"
+      ],
+      [
+       "A",
+       2000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "an",
+     "name": "Phòng ăn sáng, bếp nhỏ",
+     "at": [
+      [
+       "2"
+      ],
+      [
+       "B",
+       1000
+      ]
+     ],
+     "use": "shared"
+    },
+    {
+     "id": "tht",
+     "name": "Thang thoát hiểm",
+     "at": [
+      [
+       "8",
+       1800
+      ],
+      [
+       "B"
+      ]
+     ],
+     "use": "circulation"
+    }
+   ],
+   "parking": [
+    {
+     "id": "xm",
+     "vehicle": "motorbike",
+     "count": 40,
+     "from": [
+      [
+       "1"
+      ],
+      [
+       "D",
+       1000
+      ]
+     ],
+     "to": [
+      [
+       "5"
+      ],
+      [
+       "D",
+       5000
+      ]
+     ],
+     "by": "model"
+    },
+    {
+     "id": "ot",
+     "vehicle": "car",
+     "count": 3,
+     "from": [
+      [
+       "6"
+      ],
+      [
+       "A",
+       -5500
+      ]
+     ],
+     "to": [
+      [
+       "9"
+      ],
+      [
+       "A",
+       -500
+      ]
+     ],
+     "by": "model"
+    }
+   ],
+   "outside": [
+    {
+     "id": "x1",
+     "what": "Sân vườn theo ranh đất xiên",
+     "near": [
+      [
+       "9",
+       2000
+      ],
+      [
+       "D",
+       5000
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "placements": [
+  {
+   "cluster": "tang-phong",
+   "at": [
+    [
+     "1"
+    ],
+    [
+     "A"
+    ]
+   ],
+   "levels": [
+    "L2",
+    "L3",
+    "L4",
+    "L5",
+    "L6",
+    "L7"
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "name": "1-1",
+   "look": "+x",
+   "path": [
+    [
+     [
+      "5",
+      1000
+     ],
+     [
+      "A",
+      -3000
+     ]
+    ],
+    [
+     [
+      "5",
+      1000
+     ],
+     [
+      "D",
+      3000
+     ]
+    ]
+   ]
+  }
+ ],
+ "drawings": [
+  {
+   "id": "site",
+   "origin": [
+    0,
+    -60000
+   ]
+  },
+  {
+   "id": "plan:L1",
+   "origin": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "plan:L2",
+   "origin": [
+    50000,
+    0
+   ]
+  },
+  {
+   "id": "section:1-1",
+   "origin": [
+    100000,
+    0
+   ]
+  }
+ ],
+ "rules": []
+}
