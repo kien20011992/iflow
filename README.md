@@ -1,6 +1,6 @@
 # iflow
 
-Claude Code plugin `i` — seven skills, invoked as `/i:<name>`:
+Claude Code plugin `i` — eight skills, invoked as `/i:<name>`:
 
 | Skill | Use it for |
 |---|---|
@@ -11,6 +11,7 @@ Claude Code plugin `i` — seven skills, invoked as `/i:<name>`:
 | `i:explore` | Understand an unfamiliar topic layer by layer before deciding anything. |
 | `i:gamify` | Turn a months-long pursuit into a game a Claude session runs. User-invoked only. |
 | `i:how` | Learn how this repo's code works or what a recent change did, part by part with the reason behind each part, then answer its questions until you can explain it yourself; draws a page when a picture explains better. Call it by name: `/i:how vừa làm gì vậy?`, `/i:how luồng đăng ký chạy thế nào?`. Reads only. User-invoked only. |
+| `i:cad` | Work beside an architect from a brief to a clean DXF: gather the facts a design rests on with sources, lay out options that already fit them, then draw the chosen one through CADCraft and list what is left for AutoCAD. Starts from whatever you bring (a brief, a site plan, your own sketch) and recomputes the work whenever you add information; state lives in `docs/iflow/<project>-<id>/cad/`. Needs CADCraft installed only for the drawing itself. User-invoked only. |
 
 A `SessionStart` hook prints resume pointers for unfinished `i:flow` dossiers in the current project, and stays silent when there are none. A `PostToolUse` hook runs the dossier checker after every `Edit` or `Write` to a `docs/iflow/*/iflow.md` and hands any violation back to Claude; it ignores every other file.
 
@@ -42,9 +43,34 @@ claude plugin eval . --scaffold --allow-tools Write --ablation none --no-publish
 
 Each case runs three times by default (`--runs 1` while iterating); one full run is about twelve sessions. Results land in `evals/results/`, which is gitignored. `Bash` is not granted: the OS sandbox it needs is refused on a machine without `socat`, and none of the cases needs it.
 
+## Testing i:cad
+
+`i:cad` has its own tests, kept apart from the cases above so that the command above still costs what it says. Three layers, cheapest first:
+
+| Layer | Command | Cost | What it tells you |
+|---|---|---|---|
+| Free checks | `tests/cad.sh` | seconds, no API call | The skill's files keep the contracts its fixtures and `CLAUDE.md` rely on, every pointer resolves, and the DXF checker still names each of seven planted defects. |
+| Behaviour cases | `tests/cad/run-evals.sh` | six sessions per run of the suite | What Claude does with six kinds of opening message, graded by what it wrote and by a judge model; then one page to review. |
+| A delivered drawing | `uv run skills/cad/scripts/dxf_check.py FILE.dxf`, then the sheet in `skills/cad/references/phieu-duyet.md` | free, plus fifteen minutes of an architect | Whether the file is sound when read by something that is not CADCraft, and whether an architect could use it in AutoCAD. |
+
+The behaviour cases live in `evals-cad/`:
+
+| Case | What must happen |
+|---|---|
+| `cad-brief` | A bare brief opens a project file, puts a first cut on the table with its guesses marked, and asks only facts the owner holds — nothing about layers or fonts, no planning figure stated as verified. |
+| `cad-sketch-defects` | An architect's sketch carrying three planted defects (building wider than its plot, a bedroom nobody can reach, windows on the boundary) becomes a number table whose report names all three, asks instead of moving a wall, and claims no drawing. |
+| `cad-owner-assumed` | An owner with an unmeasured house who says "just draw it" gets rough work marked as assumed, a list of what to measure, and no exact-looking layouts. |
+| `cad-late-fact` | On a fixture project, a planning paper arriving after the layout was chosen is recorded, its consequence is given in numbers, the number table loses its approval, and the user's decisions stand until they choose. |
+| `cad-what-if` | On the same fixture, "what if we add a floor?" is answered with what would have to be redone, and nothing is written or edited. |
+| `cad-quick-fact` | A one-turn factual question gets a direct answer that states how sure it is, and opens no project folder. |
+
+`tests/cad/run-evals.sh` passes its arguments on to `claude plugin eval` (`--runs 1` while iterating, `--case cad-brief` for one case), then builds `review.html` beside the run's `report.html` in `evals-cad/results/<timestamp>/`. The built-in report shows the graders' verdicts; the review page adds what each run produced — the whole reply, every file written and every edit — read from the run's trace, which is why the script keeps the sandbox directories (`--keep-temp`, left under `/tmp/claude-eval-*` for you to delete).
+
+Three things the cases cannot reach, by construction: they run with no shell and no web (so no script is run and no DXF is made), they are one turn each (the two fixture cases stand in for later turns), and nothing here opens a file in AutoCAD. A case's `allowed_tools` must list `Write` and `Edit` as well as the operator's `--allow-tools`: without both, the write is refused and a "file exists" grader fails for the wrong reason.
+
 ## Trigger eval
 
-`scripts/trigger-eval.sh <skill> <eval.json>` measures whether a skill's description makes Claude open it unprompted: every query in the JSON array (`{"query", "should_trigger"}`) runs through `claude -p` three times against this working tree (`--plugin-dir`, installed copy disabled for the session), and a query passes when it fires on at least half the runs exactly if `should_trigger` says so. `evals/<skill>.json` holds each skill's set and `evals/smoke.json` is a three-query set for `debug` (`scripts/trigger-eval.sh debug evals/smoke.json`); add `--out results.json` to keep the numbers. Skills marked `disable-model-invocation: true` (flow, lite, gamify, how) show Claude no description, so the script refuses them; `evals/flow.json` and `evals/gamify.json` stay for the day auto-invocation is turned back on. Cost: queries × runs sessions of `claude -p`; a positive hit on a `context: fork` skill (i:debug, i:test) is cut short as soon as the Skill call is seen, so its fork does no real work.
+`scripts/trigger-eval.sh <skill> <eval.json>` measures whether a skill's description makes Claude open it unprompted: every query in the JSON array (`{"query", "should_trigger"}`) runs through `claude -p` three times against this working tree (`--plugin-dir`, installed copy disabled for the session), and a query passes when it fires on at least half the runs exactly if `should_trigger` says so. `evals/<skill>.json` holds each skill's set and `evals/smoke.json` is a three-query set for `debug` (`scripts/trigger-eval.sh debug evals/smoke.json`); add `--out results.json` to keep the numbers. Skills marked `disable-model-invocation: true` (flow, lite, gamify, how, cad) show Claude no description, so the script refuses them; `evals/flow.json` and `evals/gamify.json` stay for the day auto-invocation is turned back on. Cost: queries × runs sessions of `claude -p`; a positive hit on a `context: fork` skill (i:debug, i:test) is cut short as soon as the Skill call is seen, so its fork does no real work.
 
 ## Install
 

@@ -18,7 +18,8 @@ Contents: 1. Principles · 2. Label contract table · 3. Birth checklist ·
   directory the user names — by id, name or path — else in a new one;
   never in an existing directory picked by guessing that it is the same
   task. Other skills the user points at this task write their own
-  subdirectories there (`explore/`, `how/`, `game/`, notes in `research/`)
+  subdirectories there (`explore/`, `how/`, `game/`, `cad/`, notes in
+  `research/`)
   and never touch this skill's
   files. The resume hook reads only the `docs/iflow/*/iflow.md` files that
   carry the `<!-- generated-by: iflow/2 -->` marker. The plan

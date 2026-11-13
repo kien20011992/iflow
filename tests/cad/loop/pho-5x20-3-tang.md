@@ -1,0 +1,8 @@
+Nhà phố 3 tầng xây mới ở Đà Nẵng, lô 5×20 m, mặt tiền 5 m hướng ra đường, hai cạnh dài và cạnh sau sát nhà hàng xóm. Nhà xây hết chiều ngang, lùi trước 3 m (sân để xe), lùi sau 2 m (sân phơi), tức nhà sâu 15 m. Trục ngang: 1 ở 0, 2 ở 5000. Trục sâu: A ở 0 (mặt trước nhà), B ở 4000, C ở 8000, D ở 11000, E ở 15000. Tường bao 200 nằm hẳn phía trong trục biên. Tường ngăn 100 canh tim. Cột 200×300 ở mọi giao trục, phẳng mặt ngoài tường bao, cạnh 300 theo chiều sâu nhà. Tầng 1 cao 3600, tầng 2 và 3 cao 3300. Sàn tầng 1 cao hơn sân 300.
+Thang hai vế quay đầu sát tường trục 2, nằm trong ô B-C: mỗi vế rộng 900, khe giữa hai vế 100, mặt bậc 260, chiếu nghỉ sát trục C, vế lên nằm phía trục 2 và bắt đầu từ mặt tường trục B. Mỗi tầng lên 20 bậc cao chia đều, 10 bậc mỗi vế.
+Giếng trời 1000 (theo chiều ngang, sát tường trục 1) × 3000 (ô C-D), thông suốt ba tầng, tầng 1 có sàn kính đi được, tầng 2 và 3 để trống có lan can.
+Tầng 1: cửa hàng ô A-B (cửa cuốn rộng 4000 giữa mặt tiền); ô B-C là thang và một lối đi dọc tường trục 1, rộng bằng phần còn lại; bếp và ăn ô C-E, vệ sinh 1500×2000 ở góc trục 2/E. Cửa đi 900 từ bếp ra sân sau ở tường trục E, sát trục 1.
+Tầng 2: phòng khách ô A-B có cửa sổ 3000 ở mặt tiền; thang ô B-C; phòng ngủ ô D-E có cửa sổ 1200 ở tường trục E; vệ sinh chồng lên vệ sinh tầng 1; hành lang dọc giếng trời nối thang với phòng ngủ.
+Tầng 3: phòng ngủ ô A-B có cửa sổ 2400 ở mặt tiền; thang ô B-C; phòng thờ ô D-E; vệ sinh chồng lên vệ sinh tầng dưới.
+Mọi cửa đi trong nhà rộng 800, trừ cửa vệ sinh 700.
+Vẽ mặt bằng ba tầng và một mặt cắt dọc nhà đi qua thang và giếng trời, tỷ lệ 1:100, milimét, font Arial, layer mặc định của skill, hướng bắc: mặt tiền nhìn về hướng đông.

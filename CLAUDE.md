@@ -25,7 +25,7 @@ Muốn đổi một chuỗi thì sửa cả năm nơi trong cùng một commit. 
 | `<!-- generated-by: iflow/2 -->` | **Cả hai hook** chỉ đọc những `docs/iflow/*/iflow.md` có dấu này. File mất dấu sẽ bị hook bỏ qua hoàn toàn, không báo gì. **Checker** báo khi thiếu dấu. |
 | `NN-<name>.md` | **Checker** kiểm mỗi hàng có file tương ứng. |
 
-Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i:flow. Mỗi thư mục nhiệm vụ mang một id ngắn ở đuôi tên (`<việc>-a7f3`, bốn ký tự hex từ `openssl rand -hex 2`), và chỉ khi người dùng gọi tên nhiệm vụ đó thì skill khác mới ghi vào cùng thư mục, không skill nào tự đoán "cùng việc" để chui vào. Khi được gọi, i:lite ghi `research/`, i:explore ghi `explore/`, i:how ghi `how/`, i:gamify ghi `game/`; đổi tên một thư mục con hay cách đặt tên thư mục thì sửa skill ghi nó và state.md §1. Ba skill này đọc theo vai trò các mục: bức tranh, quyết định, charter, plan đã duyệt, kết quả, ghi chú, và các cột của bảng slice. Đổi vai trò hay tên một mục thì phải xem lại cả ba skill. i:how còn đọc khối kết quả mà i:lite ghi dưới plan, nên đổi khối đó cũng phải xem lại i:how. i:debug còn đọc bức tranh, phần nói plan sẽ đổi gì, các quyết định và giả định đã duyệt trong file plan của i:lite, nên đổi vai trò các phần đó cũng phải xem lại i:debug.
+Ngoài hook và checker, i:debug, i:test và i:how cũng đọc hồ sơ của i:flow. Mỗi thư mục nhiệm vụ mang một id ngắn ở đuôi tên (`<việc>-a7f3`, bốn ký tự hex từ `openssl rand -hex 2`), và chỉ khi người dùng gọi tên nhiệm vụ đó thì skill khác mới ghi vào cùng thư mục, không skill nào tự đoán "cùng việc" để chui vào. Khi được gọi, i:lite ghi `research/`, i:explore ghi `explore/`, i:how ghi `how/`, i:gamify ghi `game/`, i:cad ghi `cad/`; đổi tên một thư mục con hay cách đặt tên thư mục thì sửa skill ghi nó và state.md §1. Ba skill này đọc theo vai trò các mục: bức tranh, quyết định, charter, plan đã duyệt, kết quả, ghi chú, và các cột của bảng slice. Đổi vai trò hay tên một mục thì phải xem lại cả ba skill. i:how còn đọc khối kết quả mà i:lite ghi dưới plan, nên đổi khối đó cũng phải xem lại i:how. i:debug còn đọc bức tranh, phần nói plan sẽ đổi gì, các quyết định và giả định đã duyệt trong file plan của i:lite, nên đổi vai trò các phần đó cũng phải xem lại i:debug.
 
 ## i:flow và i:lite độc lập, không đồng bộ
 
@@ -40,6 +40,38 @@ Sau mỗi lần sửa gamify, chạy `skills/gamify/scripts/check-skill.sh`. Scr
 - Khung mới thêm vào cuối `references/thu-vien-khung.md`, đủ tám mục có nhãn. Script đếm heading `## Khung N` và soi đủ tám nhãn.
 - SKILL.md viết tiếng Anh, các file tham chiếu viết tiếng Việt.
 - Giữ SKILL.md của gamify dưới 5.000 token (hiện khoảng 15 KB). Sau khi nén hội thoại, skill không tự đọc lại SKILL.md mà trông vào việc Claude Code tự gắn lại file dưới ngưỡng này; file dài quá ngưỡng thì phần cuối, gồm các luật chung, bị cắt.
+
+## Sửa i:cad
+
+Sau mỗi lần sửa, chạy `tests/cad.sh`: không tốn API, mất vài giây. Nó kiểm các hợp đồng nêu dưới đây, mọi lời trỏ (qua `check-pointers.sh`), và trình kiểm DXF. Trước khi tag bản mới, hoặc sau khi đổi một luật của cad, chạy thêm `tests/cad/run-evals.sh --runs 1`: sáu phiên thật, một lần chạy tốn khoảng 3 đô. Script đó dựng `review.html` trong `evals-cad/results/<thời-điểm>/`, đọc trang này rồi mới kết luận. Trong các file của cad đừng viết lời trỏ kiểu "§N": script sẽ tìm heading `## N.` mà cad không dùng. Trỏ bằng link markdown và tên mục.
+
+- SKILL.md viết tiếng Anh, các file tham chiếu viết tiếng Việt. Giữ SKILL.md dưới 5.000 token (hiện khoảng 15 KB), vì sau khi nén hội thoại Claude Code chỉ gắn lại phần dưới ngưỡng này.
+- Cad chạy trong hội thoại chính vì cần `AskUserQuestion` và sống bằng hỏi đáp. Đừng thêm `context: fork`. Đừng thêm `allowed-tools`: quyền cấp qua trường này mất ở tin kế tiếp của người dùng.
+- Đừng kèm MCP server của CADCraft hay thư mục `bin/` vào plugin. Server của plugin khởi động ở mọi phiên, nên máy chưa cài CADCraft sẽ thấy lỗi kết nối cả ở phiên chỉ dùng i:flow.
+- Skill không chứa con số của luật nào và không chứa danh sách lệnh CADCraft. Luật thì mỗi dự án tự tra theo nơi xây. Lệnh thì hỏi danh mục của bản CADCraft đang cài.
+- Mỗi dòng trong `references/cadcraft.md` mang nhãn nguồn: `[tài liệu]`, `[bản X]` hoặc `[chưa thử]`. Khi một phiên chạy thật xác nhận hay bác một dòng, sửa dòng đó và đổi nhãn thành phiên bản đã chạy. Đừng thêm dòng không có nhãn.
+- Skill có một script, `scripts/dxf_check.py`: trình kiểm DXF đọc file bằng `ezdxf` và không cần biết bảng số. Nó mới được thử trên file do chính `ezdxf` dựng (`tests/cad/dxf_check_selftest.py`), chưa gặp file nào của CADCraft. Thêm một phép kiểm vào script thì thêm một bản vẽ có lỗi cài sẵn vào bài tự thử.
+- `build.py` và `check.py` dùng chung thì chưa có, có chủ ý: chưa ai chạy CADCraft qua skill này, và script viết từ tài liệu sẽ sai ở chỗ không ai thấy. Sau dự án thật đầu tiên, đưa hai script chạy được vào `skills/cad/scripts/`, bỏ phần riêng của dự án, rồi sửa `references/ve.md` trỏ tới chúng.
+- Chưa có hook hay checker cho `project.md`. Chỉ thêm khi chạy thật cho thấy Claude hay quên đánh dấu `recheck`.
+
+Các ca thử hành vi nằm ở `evals-cad/`, tách khỏi `evals/` để lệnh eval chung của repo không tốn thêm tiền:
+
+- Hai ca `cad-late-fact` và `cad-what-if` dùng chung một dự án dựng sẵn, chép thành hai file `fixture.sh`. Sửa một bên thì sửa bên kia. Đổi một nhãn của khối trạng thái hay một từ trạng thái trong SKILL.md thì sửa cả fixture. `tests/cad.sh` bắt cả hai chỗ lệch.
+- Ca mới nên cài một lỗi biết trước, ví dụ nhà rộng hơn đất hoặc phòng không có lối vào, rồi chấm việc Claude có gọi tên lỗi đó không. Đáp án biết trước thì phép chấm không phụ thuộc vào gu của người chấm.
+- Tiêu chí cho phép chấm bằng Claude phải nói được bằng một việc cụ thể thấy trong lời đáp. Tiêu chí kiểu "lời lẽ dễ hiểu" cho kết quả nhiễu: người chấm từng coi cả "cửa đi, cửa sổ" là từ chuyên môn.
+- Một phép chấm hỏng thuộc một trong ba loại, phân loại xong mới sửa: skill sai, phép chấm sai, hoặc môi trường thử sai. Ví dụ của từng loại: skill liệt kê tên gói cài đặt cho một chủ nhà; một tiêu chí hiểu "số tầng được phép" là hỏi lại "số tầng muốn xây"; phiên thử bị từ chối quyền ghi nên phép chấm "có file dự án" hỏng oan.
+- Mỗi ca phải ghi `Write` và `Edit` trong `allowed_tools`, kể cả ca đòi không ghi gì. Thiếu thì lệnh ghi bị từ chối và phép chấm đạt hay hỏng vì lý do không liên quan tới skill.
+
+Những điều chưa được chạy thật khi skill ra đời, xoá từng dòng khi đã kiểm: kích thước có bám hình khi kéo giãn trong AutoCAD không; một file do skill tạo có mở sạch trong AutoCAD không; luật tính lại việc phải làm có trụ được trong một dự án thật không.
+
+Mục "Khi tiền không đủ cho công trình hoàn chỉnh" trong `references/thiet-ke.md` viết từ bản tóm tắt của một bộ quy tắc đã hiệu chuẩn trên ca Quinta Monroy. File gốc của bộ quy tắc đó chưa được đối chiếu. Khi có file gốc, so lại mục này.
+
+Hiệu chuẩn skill bằng một ca có kết quả đã biết thì theo bốn luật, và trạng thái của ca nằm ở thư mục của ca, không nằm trong skill:
+
+1. Agent chạy thử chỉ nhận đề bài và thông tin đầu vào, không nhận kết quả, không mở thư mục chứa bản vẽ gốc.
+2. Mọi thứ đưa cho agent làm đầu vào phải suy ra được từ đề bài và tra cứu. Đầu vào chép số từ kết quả thì phép so thành tự chấm bài mình.
+3. Kết quả gốc chỉ được chỉ ra chỗ lệch. Hướng sửa skill phải suy lại từ đầu vào và tra cứu. Chỗ lệch thuộc một trong ba loại: skill thiếu hoặc sai luật, agent làm kém, hoặc vùng tự do của bài toán. Loại thứ ba không được vá: đừng ép skill sinh đúng lựa chọn của tác giả gốc.
+4. Một luật chỉ được thêm vào skill khi nó đứng được trên vài ca khác loại. Luật chỉ đúng cho một loại công trình thì nằm trong một mục có điều kiện áp dụng ghi rõ.
 
 ## Commit và push
 
