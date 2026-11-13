@@ -196,8 +196,9 @@ vào khuôn là việc của một đợt sửa skill, không phải của một
 Các khoá: `fire_resistance` bậc chịu lửa (I tới V), `s_class` cấp nguy hiểm
 cháy kết cấu (S0 tới S3), `fire_height_mm` chiều cao phòng cháy chữa cháy,
 `people_per_floor`, `area_kind` (`new` khu mới, `existing` khu hiện hữu),
-`road_district_or_above` (đường giáp lô từ cấp quận trở lên), `road_width_m`,
-`sprinkler`, `submit_date` (ngày nộp, chọn dòng luật còn hiệu lực). Thiếu khoá
+`road_area_level_or_above` (đường giáp lô từ cấp khu vực trở lên), `road_width_m`,
+`volume_m3` (khối tích nhà; nhà riêng lẻ dưới 7 tầng chỉ theo QCVN 06 khi
+từ 5.000 m³ hay cao PCCC từ 25 m), `sprinkler`, `submit_date` (ngày nộp, chọn dòng luật còn hiệu lực). Thiếu khoá
 nào thì phép kiểm luật cần nó báo "cần xem", không đoán.
 
 Cụm mang `kind` để phép kiểm luật biết nó là gì: `unit` (một căn hộ),

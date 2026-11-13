@@ -158,7 +158,13 @@
      "apartment",
      "hotel",
      "apartment_building"
-    ]
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    }
    },
    "clause": "3.4.1",
    "certainty": "goc",
@@ -182,10 +188,45 @@
      "apartment_building"
     ],
     "fire_height_max_mm": 15000,
-    "people_per_floor_max": 15
+    "people_per_floor_max": 15,
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    }
    },
    "clause": "3.4.1 (Sửa đổi 1:2023)",
    "certainty": "goc",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-ban-thang-dong",
+   "what": "Bề rộng bản thang khi có tầng đông người",
+   "check": "stair_width_min",
+   "value": 1200,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel",
+     "apartment_building"
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    },
+    "people_per_floor_over": 200
+   },
+   "clause": "3.4.1",
+   "certainty": "goc",
+   "note": "Tầng 1 không tính.",
    "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
    "effective_from": "2023-01-16",
    "read_on": "2026-11-13",
@@ -203,7 +244,13 @@
      "apartment",
      "hotel",
      "apartment_building"
-    ]
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    }
    },
    "clause": "3.4.2",
    "certainty": "goc",
@@ -227,7 +274,13 @@
      "apartment",
      "hotel",
      "apartment_building"
-    ]
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    }
    },
    "clause": "3.4.2",
    "certainty": "goc",
@@ -248,11 +301,45 @@
      "apartment",
      "hotel",
      "apartment_building"
-    ]
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    }
    },
    "clause": "3.2.9",
    "certainty": "goc",
    "note": "1,2 m khi > 50 người qua (không áp cho chung cư).",
+   "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
+   "effective_from": "2023-01-16",
+   "read_on": "2026-11-13",
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+  },
+  {
+   "id": "q06-cua-thoat-dong",
+   "what": "Bề rộng cửa thoát nạn khi đông người",
+   "check": "exit_door_width_min",
+   "value": 1200,
+   "unit": "mm",
+   "applies": {
+    "types": [
+     "house",
+     "apartment",
+     "hotel"
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    },
+    "people_per_floor_over": 50
+   },
+   "clause": "3.2.9",
+   "certainty": "goc",
+   "note": "Không áp cho chung cư.",
    "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
    "effective_from": "2023-01-16",
    "read_on": "2026-11-13",
@@ -288,7 +375,13 @@
     "types": [
      "house",
      "apartment"
-    ]
+    ],
+    "house_in_scope_if_any": {
+     "storeys_min": 7,
+     "fire_height_min_mm": 25000,
+     "volume_min_m3": 5000,
+     "basements_min": 2
+    }
    },
    "clause": "3.3.6",
    "certainty": "goc",
@@ -318,7 +411,39 @@
    "doc": "QCVN 06:2022/BXD kèm Sửa đổi 1:2023",
    "effective_from": "2023-01-16",
    "read_on": "2026-11-13",
-   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf"
+   "source": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/10/92-vbhn-bxd.signed.pdf",
+   "one_exit_hotel": {
+    "columns": [
+     "fire_height_max_mm",
+     "floor_area_max_m2",
+     "people_max",
+     "also_needs"
+    ],
+    "rows": [
+     [
+      15000,
+      300,
+      20,
+      null
+     ],
+     [
+      21000,
+      200,
+      20,
+      "chữa cháy tự động (hoặc báo cháy tự động toàn nhà) và lối thoát khẩn cấp"
+     ],
+     [
+      25000,
+      150,
+      15,
+      "cả báo cháy và chữa cháy tự động"
+     ]
+    ],
+    "not_for_fire_resistance": [
+     "V"
+    ],
+    "clause": "3.2.6.2 a (Sửa đổi 1:2023)"
+   }
   },
   {
    "id": "q06-khoang-cach-loi",
@@ -822,11 +947,11 @@
      "hotel",
      "apartment_building"
     ],
-    "road_district_or_above": true
+    "road_area_level_or_above": true
    },
    "clause": "Bảng 2.7 (2021) / Bảng 7 (2026)",
    "certainty": "goc",
-   "note": "Chỉ áp cho đường cấp quận trở lên; địa phương có thể bắt lùi hơn.",
+   "note": "Chỉ áp cho lô giáp đường cấp khu vực trở lên; địa phương có thể bắt lùi hơn.",
    "doc": "QCVN 01:2021/BXD; từ 01/01/2027 QCVN 01:2026/BXD, cùng số",
    "effective_from": "2021-07-05",
    "read_on": "2026-11-13",

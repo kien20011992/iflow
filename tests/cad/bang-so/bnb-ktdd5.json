@@ -1705,7 +1705,7 @@
    "value": "new",
    "by": "model"
   },
-  "road_district_or_above": {
+  "road_area_level_or_above": {
    "value": true,
    "by": "model"
   },
