@@ -121,20 +121,20 @@ def outlines():
 
 
 def door_block(doc, width, hinge, swing, window):
-    name = f"{'WIN' if window else 'DOOR'}_{width}_{hinge}_{swing}"
+    """Local frame: x along the wall from `from` to `to`, y to its left. A door
+    is inserted at its hinge, so the arc is centred on the block origin; a
+    window is a unit symbol scaled to the opening."""
+    name = "WIN" if window else f"DOOR_{width}_{hinge}_{swing}"
     if name in doc.blocks:
         return name
     blk = doc.blocks.new(name)
-    h = width / 2
-    blk.add_line((-h, 0), (h, 0))
-    if not window:
-        cx = -h if hinge == "start" else h
+    if window:
+        blk.add_lwpolyline(R(-0.5, -0.5, 0.5, 0.5), close=True)
+    else:
         closed = 0 if hinge == "start" else 180
         opened = 90 if swing == "left" else 270
-        a0, a1 = sorted((closed, opened))
-        if (hinge, swing) == ("start", "right"):
-            a0, a1 = 270, 360
-        blk.add_arc((cx, 0), width, a0, a1)
+        a0, a1 = (270, 360) if (hinge, swing) == ("start", "right") else sorted((closed, opened))
+        blk.add_arc((0, 0), width, a0, a1)
     blk.add_attdef("ID", (0, 0), dxfattribs={"height": 100})
     return name
 
@@ -167,9 +167,11 @@ def build(d, outl, path, extra=None):
             window = o["kind"] == "window"
             name = door_block(doc, o["width"], raw.get("hinge", "start"), raw.get("swing", "left"), window)
             ang = math.degrees(math.atan2(o["u"][1], o["u"][0]))
-            x, y = o["centre"]
-            ins = msp.add_blockref(name, (x + ox, y + oy), dxfattribs={
-                "layer": "A-GLAZ" if window else "A-DOOR", "rotation": ang})
+            x, y = o["insert"]
+            attribs = {"layer": "A-GLAZ" if window else "A-DOOR", "rotation": ang}
+            if window:
+                attribs.update(xscale=o["width"], yscale=o["wall_t"])
+            ins = msp.add_blockref(name, (x + ox, y + oy), dxfattribs=attribs)
             ins.add_attrib("ID", o["id"], (x + ox, y + oy))
         for f in d["floors"][n].get("furniture", []):
             x, y = resolve(f["at"], d["grid"])

@@ -68,6 +68,15 @@ def drawing(defect=None):
         msp.add_line((5500, 4000), (7400, 4800), dxfattribs={"layer": "A-TEXT"})
     if defect == "layer0":
         msp.add_line((0, 0), (100, 100))
+    # A door with a hidden ID tag over its own leaf: a hidden tag is never printed,
+    # so it overlaps nothing.
+    doc.layers.add("A-DOOR")
+    door = doc.blocks.new("CUA-800-T")
+    door.add_line((0, 0), (0, 800))
+    door.add_arc((0, 0), 800, 0, 90)
+    door.add_attdef("ID", (0, 0), dxfattribs={"height": 100, "flags": 1})
+    ins = msp.add_blockref("CUA-800-T", (300, 2100), dxfattribs={"layer": "A-DOOR"})
+    ins.add_attrib("ID", "o1", (300, 2100)).is_invisible = True
 
     def dim(a, b, row, text="<>"):
         msp.add_linear_dim(base=(0, row), p1=(a, 0), p2=(b, 0), text=text, dimstyle="A100",

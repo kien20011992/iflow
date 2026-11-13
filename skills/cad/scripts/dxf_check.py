@@ -262,6 +262,8 @@ def check(path, area_layer, wall_layer, want_version, object_layers=("A-FURN", "
         if e.dxftype() != "INSERT":
             continue
         for t in list(e.attribs) + [v for v in e.virtual_entities() if v.dxftype() in ("TEXT", "MTEXT")]:
+            if t.dxftype() == "ATTRIB" and t.is_invisible:
+                continue  # a hidden tag, such as the opening ID the checkers read, is never printed
             if text_of(t).strip():
                 boxes.append((text_box(t), f"nhãn {text_of(t)!r} của block {e.dxf.name} tại {at(e)}"))
     for e in dims:

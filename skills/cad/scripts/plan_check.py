@@ -96,11 +96,23 @@ def add_block(out, block, grid, tf, mirrored, prefix, d, level_name, next_level)
         a, b = w["a"], w["b"]
         length = math.hypot(b[0] - a[0], b[1] - a[1])
         ux, uy = (b[0] - a[0]) / length, (b[1] - a[1]) / length
-        along = o["offset"] + t["width"] / 2
-        shift = {"center": 0, "left": w["t"] / 2, "right": -w["t"] / 2}[w["align"]]
-        centre = (a[0] + ux * along - uy * shift, a[1] + uy * along + ux * shift)
-        out["openings"].append({"id": prefix + o["id"], "centre": centre, "u": (ux, uy),
-                                "kind": t["kind"], "wall_t": w["t"], "width": t["width"]})
+        lo, hi = {"center": (-w["t"] / 2, w["t"] / 2), "left": (0, w["t"]),
+                  "right": (-w["t"], 0)}[w["align"]]
+
+        def at(along, across):
+            return (a[0] + ux * along - uy * across, a[1] + uy * along + ux * across)
+        centre = at(o["offset"] + t["width"] / 2, (lo + hi) / 2)
+        if t["kind"] == "door":
+            # A door leaf is drawn from its hinge, on the wall face it opens toward.
+            hinge = o.get("hinge", "start")
+            swing = flip(o.get("swing", "left"), mirrored)
+            insert = at(o["offset"] + (0 if hinge == "start" else t["width"]),
+                        hi if swing == "left" else lo)
+        else:
+            insert = centre
+        out["openings"].append({"id": prefix + o["id"], "centre": centre, "insert": insert,
+                                "u": (ux, uy), "kind": t["kind"], "wall_t": w["t"],
+                                "width": t["width"]})
     for r in block.get("rooms", []):
         out["rooms"].append({"id": prefix + r["id"], "name": r["name"], "at": pt(r["at"]),
                              "use": r["use"], "need_area": r.get("need_area")})
@@ -112,6 +124,8 @@ def add_block(out, block, grid, tf, mirrored, prefix, d, level_name, next_level)
                               "up_to": up, "risers": s.get("risers"), "level": level_name})
     for key in ("voids", "shafts"):
         for v in block.get(key, []):
+            if key == "voids" and v.get("floor", "none") != "none":
+                continue  # a glass floor is walked on: part of the room below it
             a, b = pt(v["from"]), pt(v["to"])
             out[key].append({"id": prefix + v["id"], "poly": rect(a, b)})
     for i, pl in enumerate(block.get("placements", [])):
@@ -305,7 +319,7 @@ def check(dxf_path, d):
         by_id.setdefault((ins["plan"], ins["id"]), []).append(ins)
     for n in plans:
         for o in flat[n]["openings"]:
-            want = shift(o["centre"], n)
+            want = shift(o["insert"], n)
             layer = "A-GLAZ" if o["kind"] == "window" else "A-DOOR"
             cands = [i for i in by_id.get((n, o["id"]), []) if not i["used"]]
             hit = next((i for i in cands if math.dist(i["pos"], want) <= POS_TOL), None)

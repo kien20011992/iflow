@@ -210,9 +210,12 @@ bên.
 - Mỗi phòng là một đường bao khép kín trên `X-AREA`, chứa điểm `at` của
   phòng.
 - Mỗi ô cửa là một block chèn trên `A-DOOR` (cửa đi, cửa cuốn, ô trống)
-  hay `A-GLAZ` (cửa sổ), có thuộc tính `ID` bằng id của ô cửa. Điểm chèn
-  là tâm ô cửa trên đường tim tường. Cánh cửa đi là một cung trong block,
-  tâm ở bản lề, bán kính bằng bề rộng cánh.
+  hay `A-GLAZ` (cửa sổ), có thuộc tính `ID` bằng id của ô cửa. Cửa đi chèn
+  tại bản lề, trên mặt tường phía cánh mở; cánh là một cung trong block,
+  tâm ở điểm chèn, bán kính bằng bề rộng cánh. Cửa sổ, cửa cuốn và ô trống
+  chèn tại tâm ô cửa trên đường tim tường, xoay theo hướng tường và co
+  giãn theo bề rộng ô cửa và bề dày tường. Trình kiểm đọc điểm chèn và cung
+  cánh cửa, không đọc góc xoay.
 - Đối tượng nằm trong một cụm đã đặt mang id mở rộng: mỗi lần đặt viết
   `tên-cụm#n`, nối bằng `/`, rồi tới id gốc. `n` là thứ tự của lần đặt trong
   danh sách `placements` chứa nó, đếm từ 0. Lần đặt ở gốc bảng thêm chữ `g`

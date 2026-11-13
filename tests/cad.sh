@@ -7,7 +7,9 @@
 #   4. the number-table checker passes the three sample tables and names
 #      each planted defect;
 #   5. the table-against-drawing checker passes a sound drawing and names
-#      each planted defect (needs uv or ezdxf).
+#      each planted defect (needs uv or ezdxf);
+#   6. the drawing library matches hand-worked numbers, and a floor it builds
+#      through CADCraft passes both DXF checkers (skipped without cadcraft-cli).
 # Prints one line per check. Exit 0 = nothing failed.
 set -u
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -87,7 +89,10 @@ ezdxf_selftest() {  # $1 = label, $2 = self-test script
   if command -v uv > /dev/null 2>&1; then runner=(uv run -q "$2")
   elif python3 -c 'import ezdxf' 2> /dev/null; then runner=(python3 "$2")
   else skip "$1 self-test: needs uv, or a python3 with ezdxf"; return; fi
-  if out=$("${runner[@]}" 2>&1); then
+  out=$("${runner[@]}" 2>&1); local code=$?
+  if [ "$code" -eq 77 ]; then
+    skip "$1: $(printf '%s\n' "$out" | tail -1)"
+  elif [ "$code" -eq 0 ]; then
     ok "$1 self-test: $(printf '%s\n' "$out" | tail -1)"
   else
     printf '%s\n' "$out" | sed 's/^/      /'
@@ -96,6 +101,15 @@ ezdxf_selftest() {  # $1 = label, $2 = self-test script
 }
 ezdxf_selftest 'DXF checker' "$root/tests/cad/dxf_check_selftest.py"
 ezdxf_selftest 'table-against-drawing checker' "$root/tests/cad/plan_check_selftest.py"
+ezdxf_selftest 'drawing library built through CADCraft' "$root/tests/cad/lib_build_test.py"
+
+# --- the drawing library's functions, without CADCraft
+if out=$(python3 "$root/tests/cad/lib_selftest.py" 2>&1); then
+  ok "drawing library self-test: $(printf '%s\n' "$out" | tail -1)"
+else
+  printf '%s\n' "$out" | sed 's/^/      /'
+  bad 'drawing library self-test'
+fi
 
 # --- the number-table checker against the samples and planted defects
 if out=$(python3 "$root/tests/cad/params_check_selftest.py" 2>&1); then
