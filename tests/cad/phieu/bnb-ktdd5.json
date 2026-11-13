@@ -1,0 +1,66 @@
+{
+ "schema": "cad-brief/1",
+ "note": "Đề Đồ án KTDD5 2021–2022, khách sạn gia đình kiểu B&B, khu đất 2.",
+ "type": {
+  "value": "hotel",
+  "by": "user"
+ },
+ "work": {
+  "value": "new",
+  "by": "user"
+ },
+ "depth": {
+  "value": "scheme",
+  "by": "user"
+ },
+ "place": {
+  "value": {
+   "province": "Hà Nội",
+   "ward": "Nghĩa Tân",
+   "street": "Phố Tô Hiệu"
+  },
+  "by": "user"
+ },
+ "site": {
+  "pending": true
+ },
+ "limits": {
+  "value": {
+   "floors_max": 9,
+   "height_max_mm": 30000
+  },
+  "by": "user"
+ },
+ "room_types": {
+  "value": [
+   {
+    "type": "phòng đơn, WC riêng",
+    "count": 24,
+    "area_m2": 22
+   },
+   {
+    "type": "phòng nhóm, gia đình",
+    "count": 12,
+    "area_m2": 60
+   }
+  ],
+  "by": "user"
+ },
+ "stars": {
+  "value": 2,
+  "by": "model",
+  "source": "đề không nói hạng sao; B&B giá vừa, Claude chọn để thử phiếu"
+ },
+ "services": {
+  "value": [
+   "lễ tân, giữ hành lý",
+   "sinh hoạt chung",
+   "ăn sáng",
+   "đỗ xe",
+   "giặt là",
+   "kho",
+   "kỹ thuật"
+  ],
+  "by": "user"
+ }
+}

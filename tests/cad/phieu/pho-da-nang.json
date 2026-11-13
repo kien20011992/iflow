@@ -1,0 +1,100 @@
+{
+ "schema": "cad-brief/1",
+ "note": "Từ đề tests/cad/loop/pho-5x20-3-tang.md.",
+ "type": {
+  "value": "house",
+  "by": "user"
+ },
+ "work": {
+  "value": "new",
+  "by": "user"
+ },
+ "depth": {
+  "value": "construction",
+  "by": "user"
+ },
+ "place": {
+  "value": {
+   "province": "Đà Nẵng",
+   "ward": null,
+   "street": null
+  },
+  "by": "user"
+ },
+ "site": {
+  "value": {
+   "edges_mm": [
+    5000,
+    20000,
+    5000,
+    20000
+   ]
+  },
+  "by": "user",
+  "source": "đề bài: lô 5×20 m"
+ },
+ "street_edge": {
+  "value": 0,
+  "by": "user"
+ },
+ "setbacks": {
+  "value": [
+   {
+    "edge": 0,
+    "mm": 3000
+   },
+   {
+    "edge": 2,
+    "mm": 2000
+   }
+  ],
+  "by": "user"
+ },
+ "north": {
+  "value": "east",
+  "by": "user"
+ },
+ "occupants": {
+  "value": [
+   {
+    "who": "gia đình",
+    "count": 4
+   }
+  ],
+  "by": "model",
+  "source": "giả định để thử phiếu; đề không nói"
+ },
+ "rooms_needed": {
+  "value": [
+   {
+    "room": "cửa hàng",
+    "count": 1
+   },
+   {
+    "room": "bếp, ăn",
+    "count": 1
+   },
+   {
+    "room": "phòng khách",
+    "count": 1
+   },
+   {
+    "room": "phòng ngủ",
+    "count": 2
+   },
+   {
+    "room": "phòng thờ",
+    "count": 1
+   },
+   {
+    "room": "vệ sinh",
+    "count": 3
+   }
+  ],
+  "by": "user"
+ },
+ "floors_wanted": {
+  "value": 3,
+  "by": "user"
+ }
+}

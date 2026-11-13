@@ -1,0 +1,76 @@
+{
+ "schema": "cad-brief/1",
+ "note": "Đề Đồ án KTDD5 2021–2022, chung cư độc lập nhiều tầng, khu đất 1.",
+ "type": {
+  "value": "apartment_building",
+  "by": "user"
+ },
+ "work": {
+  "value": "new",
+  "by": "user"
+ },
+ "depth": {
+  "value": "scheme",
+  "by": "user"
+ },
+ "place": {
+  "value": {
+   "province": "Hà Nội",
+   "ward": "Nghĩa Tân",
+   "street": "Phố Chùa Hà"
+  },
+  "by": "user"
+ },
+ "site": {
+  "pending": true
+ },
+ "limits": {
+  "value": {
+   "floors_max": 9,
+   "height_max_mm": 30000,
+   "density_min_pct": 50,
+   "density_max_pct": 70
+  },
+  "by": "user"
+ },
+ "rules": {
+  "value": [
+   "QCVN 01:2021/BXD",
+   "QCVN 04:2021/BXD",
+   "QCVN 06:2021/BXD"
+  ],
+  "by": "user"
+ },
+ "unit_types": {
+  "value": [
+   {
+    "type": "1-1,5N",
+    "share_pct": 25,
+    "area_m2": 40
+   },
+   {
+    "type": "2N",
+    "share_pct": 60,
+    "area_m2": 60
+   },
+   {
+    "type": "2,5-3N",
+    "share_pct": 15,
+    "area_m2": 85
+   }
+  ],
+  "by": "user"
+ },
+ "floors": {
+  "value": 9,
+  "by": "user"
+ },
+ "basements": {
+  "value": 1,
+  "by": "user"
+ },
+ "podium": {
+  "value": "không có khối đế riêng; tầng 1 dịch vụ",
+  "by": "user"
+ }
+}

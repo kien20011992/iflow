@@ -9,7 +9,9 @@
 #   5. the table-against-drawing checker passes a sound drawing and names
 #      each planted defect (needs uv or ezdxf);
 #   6. the drawing library matches hand-worked numbers, and a floor it builds
-#      through CADCraft passes both DXF checkers (skipped without cadcraft-cli).
+#      through CADCraft passes both DXF checkers (skipped without cadcraft-cli);
+#   7. the input door accepts the sample brief, turns away each planted defect,
+#      judges input DXF files, and turns away images and PDFs (needs uv or ezdxf).
 # Prints one line per check. Exit 0 = nothing failed.
 set -u
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -102,6 +104,7 @@ ezdxf_selftest() {  # $1 = label, $2 = self-test script
 ezdxf_selftest 'DXF checker' "$root/tests/cad/dxf_check_selftest.py"
 ezdxf_selftest 'table-against-drawing checker' "$root/tests/cad/plan_check_selftest.py"
 ezdxf_selftest 'drawing library built through CADCraft' "$root/tests/cad/lib_build_test.py"
+ezdxf_selftest 'input door (brief form, DXF, images)' "$root/tests/cad/cua_vao_selftest.py"
 
 # --- the drawing library's functions, without CADCraft
 if out=$(python3 "$root/tests/cad/lib_selftest.py" 2>&1); then
