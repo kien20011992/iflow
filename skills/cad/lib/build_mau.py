@@ -10,6 +10,7 @@ listed at the end of the run under "Chưa vẽ" — that list goes to the handov
 Exit code: CADCraft's (0 = saved), or 1 when the table fails params_check.py.
 """
 import argparse
+import math
 import pathlib
 import sys
 
@@ -22,9 +23,14 @@ import params_check  # noqa: E402
 from bang_so import Floor, resolve  # noqa: E402
 from chay import run  # noqa: E402
 from hinh import Cells, bbox, room_outline  # noqa: E402
+from ky_hieu import (Stair, cao_do, cao_do_size, do_dac, duong_cat, free_spot, gieng_troi,  # noqa: E402
+                     hop_ky_thuat, huong_bac, lan_can, thang)
 from lenh import Lenh  # noqa: E402
-from mat_bang import (box, cot, danh_dau, hang_kich_thuoc, nhan_cua, ranh_dat, ten_phong,  # noqa: E402
-                      ten_phong_ngoai, tieu_de, truc, tuong, ve_o_cua)
+from mat_cat import mat_cat  # noqa: E402
+from hinh import inside  # noqa: E402
+from mat_bang import (box, cho_ten_phong, cot, danh_dau, hang_kich_thuoc, nhan_cua, ranh_dat,  # noqa: E402
+                      ten_phong_ngoai, tieu_de, truc, tuong, tuong_giai_doan, ve_nhan_cua, ve_o_cua,
+                      ve_ten_phong)
 
 LEVEL_TITLE = "MẶT BẰNG {name} - TL 1:{scale}"
 FACADE_REACH = 500  # mm: a wall whose outer face is this close to the building's edge is on that facade
@@ -46,10 +52,12 @@ def stair_box(s, types):
     return pts
 
 
-def ve_tang(L, d, level, origin):
-    """Draw one floor plan; return the list of things left undrawn."""
+def ve_tang(L, d, level, origin, arrivals=(), floor=None):
+    """Draw one floor plan; return the list of things left undrawn and the
+    plan's extent. `arrivals`: stairs of other floors that come up to this one;
+    `floor`: this level's Floor when the caller already built it."""
     L.origin = origin
-    f = Floor(d, level)
+    f = floor or Floor(d, level)
     m = Cells(f)
     todo = [f"{level}: tường xiên {w.id}" for w in m.skipped]
     marks_extra = [(w.rect(), f"tường xiên {w.id}") for w in m.skipped]
@@ -59,6 +67,10 @@ def ve_tang(L, d, level, origin):
         ranh_dat(L, d["site"]["outline"])
     loops = m.loops(m.wall_cells())
     tuong(L, loops)
+    tuong_giai_doan(L, f.other_walls)
+    todo += [f"{level}: ô cửa {op.id} chưa đứng khi xong việc (phá hay xây sau), chưa vẽ"
+             for op in f.skipped_openings]
+    todo += [f"{level}: {kind} {oid} ({phase}) chưa vẽ" for kind, oid, phase in f.unbuilt]
     cot(L, f.columns)
     obstacles = []
     for op in f.openings:
@@ -67,6 +79,32 @@ def ve_tang(L, d, level, origin):
         if why:
             todo.append(f"{level}: {why}")
             marks_extra.append((op.wall.rect(*op.span), why))
+
+    # The section line first: room names move off it, never the line (ve.md).
+    for sec in d.get("sections", []):
+        path = [resolve(p, d["grid"]) for p in sec["path"]]
+        if all(a[0] == b[0] or a[1] == b[1] for a, b in zip(path, path[1:])):
+            obstacles += duong_cat(L, sec, path)
+        else:
+            todo.append(f"{level}: đường cắt {sec['name']} xiên, chưa vẽ")
+    # Stairs as this floor sees them: leaving from here, arriving too, or arriving only.
+    for st, role in stair_roles(f.stairs, arrivals):
+        stair = Stair(st, d["types"])
+        if stair.supported:
+            obstacles += thang(L, stair, role)
+        else:
+            marks_extra.append((stair_box(st, d["types"]), f"thang {st['id']} ({stair.kind})"))
+    for v in f.voids:
+        obstacles += gieng_troi(L, v)
+    for rl in f.railings:
+        obstacles += lan_can(L, rl)
+    for sh in f.shafts:
+        obstacles += hop_ky_thuat(L, sh)
+    for item in f.furniture:
+        got, why = do_dac(L, item)
+        obstacles += got
+        if why:
+            marks_extra.append((box(*item["at"], 600, 600), why))
 
     rooms, small = {}, []
     for r in f.rooms:
@@ -78,20 +116,64 @@ def ve_tang(L, d, level, origin):
         if info["holes"]:
             todo.append(f"{level}: diện tích {r['name']} tính cả {info['hole_area']:.2f} m² cột hay ô trống "
                         f"đứng giữa phòng")
+    # Room labels are chosen first and drawn after the tags: when a door tag
+    # finds no spot, the label of the room it opens into steps aside (ve.md).
+    labels = {}
     for r in f.rooms:
         if r["id"] in rooms:
-            got = ten_phong(L, r, rooms[r["id"]], obstacles)
-            if got:
-                obstacles += got
+            L.pline(rooms[r["id"]]["outline"], "X-AREA")
+            plan = cho_ten_phong(L, r, rooms[r["id"]], obstacles)
+            if plan:
+                labels[r["id"]] = plan
+                obstacles += [b for *_, b in plan]
             else:
                 small.append(r)
     outlines = [i["outline"] for i in rooms.values()]
     for op in f.openings:
         ring = nhan_cua(L, op, outlines, obstacles)
-        if ring:
+        if ring is not None:
             obstacles.append(ring)
         else:
+            if op.kind == "door":  # the room the leaf opens into
+                h, o = op.hinge_point, op.open_dir
+                probes = [(h[0] + o[0] * op.width / 2, h[1] + o[1] * op.width / 2)]
+            else:  # a window: the room on either side of it
+                c, n, reach = op.centre, op.wall.n, op.wall.t / 2 + op.width / 2
+                probes = [(c[0] + n[0] * reach, c[1] + n[1] * reach), (c[0] - n[0] * reach, c[1] - n[1] * reach)]
+            rid = next((k for p in probes for k, i in rooms.items() if k in labels and inside(p, i["outline"])), None)
+            if rid:
+                # try the tag with that room's label lifted; keep the swap only
+                # when the label then finds another place in its room
+                moved = labels.pop(rid)
+                for *_, b in moved:
+                    obstacles.remove(b)
+                ring = nhan_cua(L, op, outlines, obstacles, emit=False)
+                room = next(r for r in f.rooms if r["id"] == rid)
+                plan = cho_ten_phong(L, room, rooms[rid], obstacles + ([ring] if ring else []))
+                if ring and plan:
+                    ve_nhan_cua(L, op, ring)
+                    obstacles.append(ring)
+                    labels[rid] = plan
+                    obstacles += [b for *_, b in plan]
+                else:
+                    ring = None
+                    labels[rid] = moved
+                    obstacles += [b for *_, b in moved]
+        if ring is None:
             todo.append(f"{level}: nhãn {op.label} của {op.id} không có chỗ")
+    for plan in labels.values():
+        ve_ten_phong(L, plan)
+    # The floor level, in a hall if there is one.
+    z = next(lv["elevation"] for lv in d["levels"] if lv["name"] == level)
+    w, h = cao_do_size(L, z)
+    halls = [r for r in f.rooms if r["id"] in rooms and r["use"] == "circulation"] + \
+            [r for r in f.rooms if r["id"] in rooms and r["use"] != "circulation"]
+    spot = next((p for p in (free_spot(rooms[r["id"]], w, h, obstacles, r["at"]) for r in halls) if p), None)
+    if spot:  # place the mark so the box cao_do returns is centred on the spot checked
+        s_ = L.size("text")
+        obstacles += cao_do(L, (spot[0] - (w - s_) / 2 + 0.6 * s_, spot[1] - 1.1 * s_), z)
+    else:
+        todo.append(f"{level}: ký hiệu cao độ sàn không có chỗ")
 
     # Dimensions outside the walls, then the grid rings beyond them.
     X0, Y0, X1, Y1 = bbox([p for q in loops for p in q])
@@ -133,17 +215,7 @@ def ve_tang(L, d, level, origin):
         else:
             todo.append(f"{level}: tên phòng {r['name']} không có chỗ, kể cả ngoài nhà")
     # What the library does not draw yet: clouds, after the dimensions so notes avoid them.
-    marks = [(stair_box(s, d["types"]), f"thang {s['id']}") for s in f.stairs]
-    marks += [(box(*x["at"], 600, 600), f"đồ {x['block']}") for x in f.furniture]
-    marks += [(v["rect"], "giếng trời, ô thông tầng") for v in f.voids]
-    marks += [(v["rect"], f"hộp kỹ thuật {v['id']}") for v in f.shafts]
-    marks += marks_extra
-    for rl in f.railings:
-        pts = [resolve(p, f.grid) for p in rl["points"]]
-        x0, y0, x1, y1 = bbox(pts)
-        marks.append(([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], "lan can"))
-    for pl in f.placements:
-        marks.append((box(*resolve(pl["at"], f.grid), 1000, 1000), f"cụm {pl['cluster']}"))
+    marks = list(marks_extra)
     for o in f.outside:
         marks.append((box(*o["near"], 1000, 1000), o["what"]))
     for poly, what in marks:
@@ -158,10 +230,37 @@ def ve_tang(L, d, level, origin):
     y_ring = (min(rows["bottom"], sy0 - gap) - r, max(rows["top"], sy1 + gap) + r)
     x_ring = (min(rows["left"], sx0 - gap) - r, max(rows["right"], sx1 + gap) + r)
     truc(L, grid, x_ring, y_ring)
-    name = {"ground": "TẦNG 1"}.get(next(lv["kind"] for lv in d["levels"] if lv["name"] == level), level)
+    north = d.get("site", {}).get("north_deg")
+    if north is not None:
+        huong_bac(L, (x_ring[1] + 3 * r, y_ring[0]), north)
     tieu_de(L, ((X0 + X1) / 2, y_ring[0] - r - 2 * L.size("title")),
-            LEVEL_TITLE.format(name=name if name != level else f"TẦNG {level}", scale=d["project"]["scale"]))
-    return todo, (x_ring[0] - 2 * r, y_ring[0] - 4 * L.size("title"), x_ring[1] + 2 * r, y_ring[1] + 2 * r)
+            LEVEL_TITLE.format(name=level_title(d, level), scale=d["project"]["scale"]))
+    return todo, (x_ring[0] - 2 * r, y_ring[0] - 4 * L.size("title"), x_ring[1] + 6 * r, y_ring[1] + 2 * r)
+
+
+def level_title(d, level):
+    """"TẦNG 2" for a level named L2, "TẦNG 1" for the ground level, "TẦNG HẦM B1"…"""
+    kind = next(lv["kind"] for lv in d["levels"] if lv["name"] == level)
+    if kind == "ground":
+        return "TẦNG 1"
+    if kind == "basement":
+        return f"TẦNG HẦM {level}"
+    digits = "".join(ch for ch in level if ch.isdigit())
+    return f"TẦNG {digits}" if level.upper().startswith("L") and digits else f"TẦNG {level}"
+
+
+def stair_roles(leaving, arrivals):
+    """(stair, role) pairs: a stair leaving from here is "middle" when one from
+    below arrives at the same foot, else "bottom"; an arrival with no stair
+    leaving from its foot is drawn whole, "top"."""
+    out = []
+    for st in leaving:
+        same = any(math.dist(a["start"], st["start"]) < 1 for a in arrivals)
+        out.append((st, "middle" if same else "bottom"))
+    for a in arrivals:
+        if not any(math.dist(a["start"], st["start"]) < 1 for st in leaving):
+            out.append((a, "top"))
+    return out
 
 
 def main(argv=None):
@@ -183,13 +282,27 @@ def main(argv=None):
     todo, pngs = [], []
     want = set(args.plans.split(",")) if args.plans else None
     out = pathlib.Path(args.out)
+    floors = {lv["name"]: Floor(d, lv["name"]) for lv in d["levels"]}  # unrolled once
     for dr in d["drawings"]:
         kind, _, ref = dr["id"].partition(":")
+        if want and kind == "section":
+            continue  # --plans asked for plans only: left out on purpose, not missing
+        if kind == "section":
+            sec = next(s for s in d.get("sections", []) if s["name"] == ref)
+            got, ext = mat_cat(L, d, sec, tuple(dr["origin"]), floors)
+            todo += got
+            if args.png and ext:
+                ox, oy = dr["origin"]
+                x0, y0, x1, y1 = ext
+                pngs.append((out.with_name(f"{out.stem}-{ref}.png"),
+                             [[x0 + ox, y0 + oy], [x1 + ox, y1 + oy]], (x1 - x0) > (y1 - y0)))
+            continue
         if kind != "plan" or (want and ref not in want):
             if kind != "plan":
                 todo.append(f"hình {dr['id']}")
             continue
-        got, ext = ve_tang(L, d, ref, tuple(dr["origin"]))
+        arrivals = [st for name, fl in floors.items() if name != ref for st in fl.stairs if st["up_to"] == ref]
+        got, ext = ve_tang(L, d, ref, tuple(dr["origin"]), arrivals, floors[ref])
         todo += got
         if args.png and ext:
             ox, oy = dr["origin"]

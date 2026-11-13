@@ -89,9 +89,15 @@ def add_block(out, block, grid, tf, mirrored, prefix, d, level_name, next_level)
         rec = {"id": prefix + w["id"], "a": pt(w["from"]), "b": pt(w["to"]), "t": t,
                "align": flip(w.get("align", "center"), mirrored)}
         walls[w["id"]] = rec
-        out["walls"].append(rec)
+        # a wall to be demolished, or built later, does not stand in the finished plan
+        if w.get("phase", "new") in ("new", "existing"):
+            out["walls"].append(rec)
+    standing = {id(r) for r in out["walls"]}
+    built = lambda o: o.get("phase", "new") in ("new", "existing")  # noqa: E731
     for o in block.get("openings", []):
         w = walls[o["wall"]]
+        if id(w) not in standing or not built(o):
+            continue
         t = types["openings"][o["type"]]
         a, b = w["a"], w["b"]
         length = math.hypot(b[0] - a[0], b[1] - a[1])
@@ -116,9 +122,9 @@ def add_block(out, block, grid, tf, mirrored, prefix, d, level_name, next_level)
     for r in block.get("rooms", []):
         out["rooms"].append({"id": prefix + r["id"], "name": r["name"], "at": pt(r["at"]),
                              "use": r["use"], "need_area": r.get("need_area")})
-    for c in block.get("columns", []):
+    for c in filter(built, block.get("columns", [])):
         out["columns"].append({"id": prefix + c["id"], "at": pt(c["at"])})
-    for s in block.get("stairs", []):
+    for s in filter(built, block.get("stairs", [])):
         up = next_level if s["up_to"] == "next" else s["up_to"]
         out["stairs"].append({"id": prefix + s["id"], "at": pt(s["start"]), "type": s["type"],
                               "up_to": up, "risers": s.get("risers"), "level": level_name})
@@ -537,14 +543,16 @@ def build_graph(flat, plans, room_poly, kinds):
             up = s["up_to"]
             if up not in plans:
                 continue
-            lo = room_at(n, s["at"])
-            # Upstairs the foot of the stair is often over the stair well, so
-            # the stair lands in the nearest room within a flight's reach.
-            near = [(dist_to_poly(s["at"], room_poly[(up, r["id"])]), r["id"])
-                    for r in flat[up]["rooms"] if (up, r["id"]) in room_poly]
-            near = [x for x in near if x[0] <= STAIR_REACH]
-            if lo and near:
-                link(lo, (up, min(near)[1]))
+            # The foot of a stair may sit on a wall face, and upstairs it is often
+            # over the stair well: on both floors take the nearest room within reach.
+            ends = []
+            for lv in (n, up):
+                near = [(dist_to_poly(s["at"], room_poly[(lv, r["id"])]), r["id"])
+                        for r in flat[lv]["rooms"] if (lv, r["id"]) in room_poly]
+                near = [x for x in near if x[0] <= STAIR_REACH]
+                ends.append((lv, min(near)[1]) if near else None)
+            if all(ends):
+                link(*ends)
     return graph, entries
 
 

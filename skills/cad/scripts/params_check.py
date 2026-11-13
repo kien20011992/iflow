@@ -37,6 +37,8 @@ DECIMAL_KEYS = {"need_area", "value", "north_deg"}
 PLAN_LISTS = ("walls", "columns", "openings", "stairs", "rooms", "shafts",
               "voids", "parking", "furniture", "railings", "placements", "outside")
 REQUIRED = ("schema", "project", "grid", "levels", "types", "floors", "drawings")
+STRUCTURE_KEYS = ("slab", "beam", "parapet", "footing_depth", "footing_width", "stair_waist",
+                  "rail_height")
 NEEDS_SITE = ("house", "hotel", "apartment_building")
 
 
@@ -408,6 +410,26 @@ def stage_shape(d, rep):
         org = need(dr, "origin", p, rep, "list")
         if org is not None and not (len(org) == 2 and all(is_num(c) for c in org)):
             rep.err(f"{p}.origin", "gốc hình là [x, y]")
+
+    structure = d.get("structure", {})
+    if not isinstance(structure, dict):
+        rep.err("structure", "phải là một bảng")
+        structure = {}
+    for key, entry in structure.items():
+        p = f"structure.{key}"
+        if key not in STRUCTURE_KEYS:
+            rep.err(p, f"không thuộc {', '.join(STRUCTURE_KEYS)}")
+            continue
+        if not isinstance(entry, dict) or "value" not in entry:
+            rep.err(p, "viết {\"value\": số, \"by\": …}")
+            continue
+        check_provenance(entry, p, rep)
+        v = entry["value"]
+        pair = key == "beam"
+        ok = (isinstance(v, list) and len(v) == 2 and all(is_int(x) and x > 0 for x in v)) if pair \
+            else (is_int(v) and v > 0)
+        if not ok:
+            rep.err(f"{p}.value", "[rộng, cao] milimét dương" if pair else "milimét dương")
 
     rules = d.get("rules", [])
     if not (isinstance(rules, list) and all(isinstance(r, str) for r in rules)):

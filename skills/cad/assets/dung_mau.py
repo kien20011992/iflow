@@ -40,7 +40,7 @@ LAYERS = [
     ("S-CUTS", "White", "Continuous", 0.5), ("A-ELEV", "Blue", "Continuous", 0.18),
     ("C-TOPO", "Green", "Continuous", 0.35), ("A-ANNO", "White", "Continuous", 0.18),
     ("C-PROP", "Green", "PHANTOM", 0.25), ("X-AREA", "Yellow", "Continuous", None),
-    ("A-REVS", "Magenta", "Continuous", 0.25),
+    ("A-REVS", "Magenta", "Continuous", 0.25), ("A-DEMO", "Yellow", "HIDDEN", 0.25),
 ]
 
 
@@ -98,6 +98,29 @@ def main(argv):
            + cmd("line", points=[[0.5, -0.5], [0.5, 0.5]])
            + cmd("line", points=[[-0.5, -0.1], [0.5, -0.1]])
            + cmd("line", points=[[-0.5, 0.1], [0.5, 0.1]]))
+    # Furniture and fixtures, centred on the origin; the side against the wall is +y.
+    def rect(w, h, cx=0, cy=0):
+        return cmd("pline", vertices=[[cx - w / 2, cy - h / 2], [cx + w / 2, cy - h / 2],
+                                      [cx + w / 2, cy + h / 2], [cx - w / 2, cy + h / 2]], closed=True)
+
+    def plain(name, body):
+        run(cli, units() + body + save(blocks / f"{name}.dxf"))
+
+    plain("GIUONG-DOI", rect(1600, 2000) + rect(650, 350, -375, 750) + rect(650, 350, 375, 750)
+          + cmd("line", points=[[-800, 450], [800, 450]]))
+    plain("GIUONG-DON", rect(1000, 2000) + rect(650, 350, 0, 750) + cmd("line", points=[[-500, 450], [500, 450]]))
+    plain("SOFA-3", rect(2000, 800) + cmd("line", points=[[-1000, 200], [1000, 200]])
+          + cmd("line", points=[[-800, -400], [-800, 200]]) + cmd("line", points=[[800, -400], [800, 200]]))
+    plain("BAN-AN-6", rect(900, 1400) + rect(400, 400, -650, -450) + rect(400, 400, -650, 0)
+          + rect(400, 400, -650, 450) + rect(400, 400, 650, -450) + rect(400, 400, 650, 0)
+          + rect(400, 400, 650, 450))
+    plain("BON-CAU", rect(400, 200, 0, 225) + cmd("circle", center=[0, -75], radius=180))
+    plain("LAVABO", rect(500, 400) + cmd("circle", center=[0, -20], radius=140))
+    plain("CHAU-RUA-BEP", rect(800, 450) + rect(340, 330, -190, -20) + rect(340, 330, 190, -20))
+    plain("BAN-BEP", rect(600, 2000))
+    plain("MAY-GIAT", rect(600, 600) + cmd("circle", center=[0, 0], radius=230))
+    for bak in list(HERE.glob("*.bak")) + list(blocks.glob("*.bak")):
+        bak.unlink()  # CADCraft keeps the previous file as .bak when it overwrites
     print(f"mau.dxf và {len(list(blocks.glob('*.dxf')))} block ở {HERE}")
 
 

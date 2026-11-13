@@ -21,14 +21,18 @@ def wall_side(align, t):
     return {"center": (-t / 2, t / 2), "left": (0.0, float(t)), "right": (-float(t), 0.0)}[align]
 
 
+def flip(side, mirrored):
+    return {"left": "right", "right": "left"}.get(side, side) if mirrored else side
+
+
 class Wall:
-    def __init__(self, raw, grid, types):
-        self.id = raw["id"]
+    def __init__(self, raw, pt, types, mirrored=False, prefix=""):
+        self.id = prefix + raw["id"]
         self.type = raw["type"]
-        self.a = resolve(raw["from"], grid)
-        self.b = resolve(raw["to"], grid)
+        self.a = pt(raw["from"])
+        self.b = pt(raw["to"])
         self.t = types["walls"][raw["type"]]["thickness"]
-        self.align = raw.get("align", "center")
+        self.align = flip(raw.get("align", "center"), mirrored)
         self.phase = raw.get("phase", "new")
         dx, dy = self.b[0] - self.a[0], self.b[1] - self.a[1]
         self.length = math.hypot(dx, dy)
@@ -55,16 +59,16 @@ class Wall:
 
 
 class Opening:
-    def __init__(self, raw, wall, types):
+    def __init__(self, raw, wall, types, mirrored=False, prefix=""):
         t = types["openings"][raw["type"]]
-        self.id = raw["id"]
+        self.id = prefix + raw["id"]
         self.label = raw["type"]
         self.kind = t["kind"]
         self.width = t["width"]
         self.wall = wall
         self.offset = raw["offset"]
         self.hinge = raw.get("hinge", "start")
-        self.swing = raw.get("swing", "left")
+        self.swing = flip(raw.get("swing", "left"), mirrored)
         self.centre = wall.at(self.offset + self.width / 2, (wall.lo + wall.hi) / 2)
 
     @property
@@ -102,33 +106,116 @@ class Opening:
         return pts
 
 
+DIRS = {"+x": (1, 0), "-x": (-1, 0), "+y": (0, 1), "-y": (0, -1)}
+DRAWN = ("new", "existing")  # phases standing once the work is done
+
+
+def transform(at, rotate, mirror):
+    """Point and direction maps for one placement: mirror, then rotate, then move."""
+    c, s_ = round(math.cos(math.radians(rotate))), round(math.sin(math.radians(rotate)))
+
+    def vec(v):
+        x, y = v
+        if mirror == "x":
+            x = -x
+        elif mirror == "y":
+            y = -y
+        return (c * x - s_ * y, s_ * x + c * y)
+
+    def point(p):
+        x, y = vec(p)
+        return (at[0] + x, at[1] + y)
+    return point, vec
+
+
 class Floor:
-    """One floor's objects, without clusters (those are marked, not drawn yet)."""
+    """One floor's objects in building coordinates, every placement of a cluster
+    unrolled — inside the floor, and from the table's root for this level — with
+    ids extended as references/bang-so.md says (`cụm#n/…`, `cụm#g<n>/…`).
+    Walls that are demolished or built later are kept apart in `other_walls`."""
 
     def __init__(self, d, level):
-        grid, types = d["grid"], d["types"]
-        raw = d["floors"].get(level, {})
         self.level = level
-        self.grid = grid
-        self.walls = [Wall(w, grid, types) for w in raw.get("walls", [])]
-        by_id = {w.id: w for w in self.walls}
-        self.openings = [Opening(o, by_id[o["wall"]], types) for o in raw.get("openings", [])]
-        self.rooms = [dict(r, at=resolve(r["at"], grid)) for r in raw.get("rooms", [])]
-        self.columns = []
-        for c in raw.get("columns", []):
+        self.grid = d["grid"]
+        self.types = d["types"]
+        self.d = d
+        for key in ("walls", "other_walls", "openings", "rooms", "columns", "voids", "stairs",
+                    "furniture", "railings", "outside", "shafts", "skipped_openings", "unbuilt"):
+            setattr(self, key, [])
+        names = [lv["name"] for lv in d["levels"]]
+        k = names.index(level) if level in names else -1
+        self.next_level = names[k + 1] if 0 <= k < len(names) - 1 else None
+        ident = (lambda p: p, lambda v: v)
+        if level in d["floors"]:
+            self._add(d["floors"][level], self.grid, ident, False, "")
+        for i, pl in enumerate(d.get("placements", [])):
+            if level in pl["levels"]:
+                self._place(pl, f"g{i}", self.grid, ident, False, "")
+
+    def _place(self, pl, index, grid, outer, mirrored, prefix):
+        cl = self.d["clusters"][pl["cluster"]]
+        p_in, v_in = transform(resolve(pl["at"], grid), pl.get("rotate", 0), pl.get("mirror", "none"))
+        p_out, v_out = outer
+        tf = (lambda p: p_out(p_in(p)), lambda v: v_out(v_in(v)))
+        m = mirrored != (pl.get("mirror", "none") != "none")
+        self._add(cl, cl["grid"], tf, m, f"{prefix}{pl['cluster']}#{index}/")
+
+    def _add(self, raw, grid, tf, mirrored, prefix):
+        point, vec = tf
+        pt = lambda p: point(resolve(p, grid))  # noqa: E731
+        types = self.types
+
+        def standing(key):
+            """The objects of one list that stand once the work is done; the
+            others (to be demolished, built later) are kept for the handover."""
+            out = []
+            for o in raw.get(key, []):
+                if o.get("phase", "new") in DRAWN:
+                    out.append(o)
+                else:
+                    self.unbuilt.append((key, prefix + o["id"], o["phase"]))
+            return out
+        walls = {}
+        for w in raw.get("walls", []):
+            wall = Wall(w, pt, types, mirrored, prefix)
+            walls[w["id"]] = wall
+            (self.walls if wall.phase in DRAWN else self.other_walls).append(wall)
+        for o in raw.get("openings", []):
+            op = Opening(o, walls[o["wall"]], types, mirrored, prefix)
+            standing_op = op.wall.phase in DRAWN and o.get("phase", "new") in DRAWN
+            (self.openings if standing_op else self.skipped_openings).append(op)
+        for r in raw.get("rooms", []):
+            self.rooms.append(dict(r, id=prefix + r["id"], at=pt(r["at"])))
+        for c in standing("columns"):
             w, h = types["columns"][c["type"]]["size"]
-            x, y = resolve(c["at"], grid)
-            self.columns.append({"id": c["id"], "rect": rect((x - w / 2, y - h / 2), (x + w / 2, y + h / 2))})
-        self.voids = [{"id": v["id"], "floor": v.get("floor", "none"),
-                       "rect": rect(resolve(v["from"], grid), resolve(v["to"], grid))}
-                      for v in raw.get("voids", [])]
-        self.stairs = [dict(s, start=resolve(s["start"], grid)) for s in raw.get("stairs", [])]
-        self.furniture = [dict(f, at=resolve(f["at"], grid)) for f in raw.get("furniture", [])]
-        self.railings = raw.get("railings", [])
-        self.placements = raw.get("placements", [])
-        self.outside = [dict(o, near=resolve(o["near"], grid)) for o in raw.get("outside", [])]
-        self.shafts = [{"id": s["id"], "rect": rect(resolve(s["from"], grid), resolve(s["to"], grid))}
-                       for s in raw.get("shafts", [])]
+            x, y = pt(c["at"])
+            ex, ey = vec((w / 2, h / 2))
+            self.columns.append({"id": prefix + c["id"],
+                                 "rect": rect((x - abs(ex), y - abs(ey)), (x + abs(ex), y + abs(ey)))})
+        for v in raw.get("voids", []):
+            self.voids.append({"id": prefix + v["id"], "floor": v.get("floor", "none"),
+                               "rect": rect(pt(v["from"]), pt(v["to"]))})
+        for sh in standing("shafts"):
+            self.shafts.append({"id": prefix + sh["id"], "kind": sh.get("kind"),
+                                "rect": rect(pt(sh["from"]), pt(sh["to"]))})
+        for st in standing("stairs"):
+            dx, dy = vec(DIRS[st["dir"]])
+            direction = next(k for k, v in DIRS.items() if v == (round(dx), round(dy)))
+            up = self.next_level if st["up_to"] == "next" else st["up_to"]
+            self.stairs.append(dict(st, id=prefix + st["id"], start=pt(st["start"]), dir=direction,
+                                    turn=flip(st.get("turn", "left"), mirrored), up_to=up))
+        for f in standing("furniture"):
+            # the placement turns the piece too: follow its axis through the placement
+            a = math.radians(f.get("rotate", 0))
+            ux, uy = vec((math.cos(a), math.sin(a)))
+            rot = round(math.degrees(math.atan2(uy, ux))) % 360
+            self.furniture.append(dict(f, id=prefix + f["id"], at=pt(f["at"]), rotate=rot))
+        for rl in standing("railings"):
+            self.railings.append({"id": prefix + rl["id"], "points": [pt(p) for p in rl["points"]]})
+        for o in raw.get("outside", []):
+            self.outside.append(dict(o, id=prefix + o["id"], near=pt(o["near"])))
+        for i, pl in enumerate(raw.get("placements", [])):
+            self._place(pl, i, grid, tf, mirrored, prefix)
 
 
 def rect(a, b):

@@ -63,6 +63,7 @@ Ranh đất là ngoại lệ: nó không nằm trên lưới, nên viết bằng
 | `sections` | không | Đường cắt của mặt cắt. |
 | `drawings` | có | Danh mục hình sẽ vẽ, kèm gốc của từng hình. |
 | `rules` | không | Mã các dòng luật áp dụng. |
+| `structure` | không | Số kết cấu để vẽ mặt cắt. Xem dưới. |
 
 ### Khu đất
 
@@ -183,6 +184,24 @@ Thư viện vẽ một đám mây đánh dấu ở `near` kèm `what`, và đưa
 danh sách giao cho người dùng. Script kiểm in mỗi dòng `outside` thành một
 cảnh báo, để biết bao nhiêu phần sẽ bị giao lại. Thêm một loại đối tượng mới
 vào khuôn là việc của một đợt sửa skill, không phải của một dự án.
+
+### Số kết cấu để vẽ mặt cắt
+
+```json
+"structure": {"slab": {"value": 100, "by": "default"}, "beam": {"value": [200, 300], "by": "default"}}
+```
+
+Các khoá: `slab` bề dày sàn, `beam` [rộng, cao] của dầm, `parapet` cao tường
+chắn mái, `footing_depth` và `footing_width` của móng, `stair_waist` bề dày
+bản thang, `rail_height` cao lan can. Mọi số là ước để vẽ; kỹ sư tính. Thiếu
+khoá nào thì thư viện lấy mặc định và ghi vào danh sách giao.
+
+### Tường theo giai đoạn
+
+Tường `new` và `existing` vẽ trên `A-WALL`. Tường `demolish` vẽ nét đứt trên
+`A-DEMO`, tường `future` nét đứt trên `A-FUTR`. Phòng và các phép kiểm tính
+trên nhà sau khi làm xong: tường phá và tường xây sau không ngăn phòng, ô cửa
+trên chúng không được vẽ.
 
 ### Mặt cắt và danh mục hình
 

@@ -104,6 +104,11 @@ def placement_id_not_text(d):
     return "clusters.tang-dien-hinh.placements[0].id"
 
 
+def beam_not_a_pair(d):
+    d["structure"]["beam"]["value"] = 300
+    return "structure.beam.value"
+
+
 def drawing_twice(d):
     d["drawings"].append({"id": "plan:L1", "origin": [0, 90000]})
     return "drawings[4].id"
@@ -126,6 +131,7 @@ DEFECTS = [
     ("pho-da-nang.json", placements_not_a_list),
     ("chung-cu-ktdd5.json", placement_id_not_text),
     ("pho-da-nang.json", drawing_twice),
+    ("pho-da-nang.json", beam_not_a_pair),
 ]
 
 

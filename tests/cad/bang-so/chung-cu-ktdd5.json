@@ -185,7 +185,7 @@
     "width": 1000
    },
    "DS": {
-    "kind": "door",
+    "kind": "opening",
     "width": 3000
    },
    "V12": {
@@ -997,6 +997,31 @@
       ]
      ],
      "align": "center"
+    },
+    {
+     "id": "w2",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       0
+      ],
+      [
+       "A",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "D",
+       0
+      ]
+     ],
+     "align": "center"
     }
    ],
    "openings": [
@@ -1150,6 +1175,30 @@
      "wall": "wD",
      "type": "V18",
      "offset": 44700
+    },
+    {
+     "id": "d-tt",
+     "wall": "w2",
+     "type": "D10",
+     "offset": 9000,
+     "hinge": "start",
+     "swing": "right"
+    },
+    {
+     "id": "d-tc",
+     "wall": "wC",
+     "type": "D10",
+     "offset": 19900,
+     "hinge": "start",
+     "swing": "left"
+    },
+    {
+     "id": "d-st",
+     "wall": "wB",
+     "type": "D10",
+     "offset": 19900,
+     "hinge": "start",
+     "swing": "right"
     }
    ],
    "stairs": [
@@ -1326,6 +1375,21 @@
       ],
       [
        "A",
+       4000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "tc-room",
+     "name": "Thang chính",
+     "at": [
+      [
+       "5",
+       3600
+      ],
+      [
+       "C",
        4000
       ]
      ],
@@ -1894,6 +1958,131 @@
       ]
      ],
      "align": "center"
+    },
+    {
+     "id": "wB1",
+     "type": "int",
+     "from": [
+      [
+       "2",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w3",
+     "type": "int",
+     "from": [
+      [
+       "3",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "3",
+       0
+      ],
+      [
+       "D",
+       0
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w4",
+     "type": "int",
+     "from": [
+      [
+       "4",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "4",
+       0
+      ],
+      [
+       "D",
+       0
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "w5",
+     "type": "int",
+     "from": [
+      [
+       "5",
+       0
+      ],
+      [
+       "A",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "5",
+       0
+      ],
+      [
+       "D",
+       0
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wB2",
+     "type": "int",
+     "from": [
+      [
+       "6",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "9",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "align": "center"
     }
    ],
    "openings": [
@@ -1912,6 +2101,70 @@
      "offset": 38000,
      "by": "model",
      "note": "cửa cửa hàng"
+    },
+    {
+     "id": "d-ql",
+     "wall": "wB1",
+     "type": "D10",
+     "offset": 8000,
+     "hinge": "start",
+     "swing": "left"
+    },
+    {
+     "id": "d-sh",
+     "wall": "wB1",
+     "type": "D10",
+     "offset": 15500,
+     "hinge": "start",
+     "swing": "left"
+    },
+    {
+     "id": "d-tc",
+     "wall": "w5",
+     "type": "D10",
+     "offset": 11000,
+     "hinge": "start",
+     "swing": "right"
+    },
+    {
+     "id": "d-tt",
+     "wall": "wL",
+     "type": "D10",
+     "offset": 1500,
+     "hinge": "start",
+     "swing": "left"
+    },
+    {
+     "id": "d-ch",
+     "wall": "wB2",
+     "type": "D10",
+     "offset": 3000,
+     "hinge": "start",
+     "swing": "right"
+    },
+    {
+     "id": "d-ham",
+     "wall": "w5",
+     "type": "D10",
+     "offset": 3000,
+     "hinge": "start",
+     "swing": "left"
+    },
+    {
+     "id": "d-giat",
+     "wall": "wB1",
+     "type": "D10",
+     "offset": 2000,
+     "hinge": "start",
+     "swing": "left"
+    },
+    {
+     "id": "d-kt",
+     "wall": "wB2",
+     "type": "D10",
+     "offset": 8000,
+     "hinge": "start",
+     "swing": "left"
     }
    ],
    "stairs": [
@@ -2054,11 +2307,12 @@
      "name": "Sảnh, thư báo",
      "at": [
       [
-       "4"
+       "2",
+       3000
       ],
       [
-       "B",
-       1000
+       "A",
+       4000
       ]
      ],
      "use": "circulation"
@@ -2068,7 +2322,8 @@
      "name": "Quản lý",
      "at": [
       [
-       "3"
+       "3",
+       3000
       ],
       [
        "C",
@@ -2076,14 +2331,15 @@
       ]
      ],
      "use": "service",
-     "need_area": 20
+     "need_area": 70
     },
     {
      "id": "sh",
      "name": "Sinh hoạt cộng đồng",
      "at": [
       [
-       "4"
+       "4",
+       2400
       ],
       [
        "C",
@@ -2091,17 +2347,19 @@
       ]
      ],
      "use": "shared",
-     "need_area": 60
+     "need_area": 45
     },
     {
      "id": "cht",
      "name": "Cửa hàng tiện ích",
      "at": [
       [
-       "8"
+       "8",
+       0
       ],
       [
-       "B"
+       "A",
+       4000
       ]
      ],
      "use": "shared"
@@ -2120,6 +2378,51 @@
       ]
      ],
      "use": "circulation"
+    },
+    {
+     "id": "sanh-thang",
+     "name": "Sảnh thang",
+     "at": [
+      [
+       "5",
+       3600
+      ],
+      [
+       "A",
+       6000
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "giat",
+     "name": "Giặt là",
+     "at": [
+      [
+       "2",
+       3600
+      ],
+      [
+       "C",
+       4000
+      ]
+     ],
+     "use": "service"
+    },
+    {
+     "id": "kt-kho",
+     "name": "Kỹ thuật, kho",
+     "at": [
+      [
+       "7",
+       3600
+      ],
+      [
+       "C",
+       4000
+      ]
+     ],
+     "use": "service"
     }
    ],
    "outside": [
@@ -2174,7 +2477,7 @@
      ],
      [
       "A",
-      -3000
+      -7000
      ]
     ],
     [
@@ -2184,7 +2487,7 @@
      ],
      [
       "D",
-      3000
+      7000
      ]
     ]
    ]
@@ -2195,7 +2498,7 @@
    "id": "site",
    "origin": [
     0,
-    -60000
+    -70000
    ]
   },
   {
@@ -2208,14 +2511,14 @@
   {
    "id": "plan:L1",
    "origin": [
-    70000,
+    85000,
     0
    ]
   },
   {
    "id": "plan:L2",
    "origin": [
-    140000,
+    170000,
     0
    ]
   },
@@ -2223,7 +2526,7 @@
    "id": "section:1-1",
    "origin": [
     0,
-    60000
+    75000
    ]
   }
  ],

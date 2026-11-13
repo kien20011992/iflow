@@ -23,6 +23,9 @@ def _cross(a, b, c, d):
 
 def overlaps(p, q):
     """Two polygons share some area (touching edges do not count)."""
+    a, b = bbox(p), bbox(q)
+    if a[2] <= b[0] or b[2] <= a[0] or a[3] <= b[1] or b[3] <= a[1]:
+        return False  # boxes apart: the cheap answer, most of the time
     if any(inside(v, q) for v in p) or any(inside(v, p) for v in q):
         return True
     return any(_cross(p[i - 1], p[i], q[k - 1], q[k]) for i in range(len(p)) for k in range(len(q)))
@@ -53,6 +56,13 @@ def tuong(L, loops):
         L.pline(loop, "A-WALL")
 
 
+def tuong_giai_doan(L, walls):
+    """Walls that are not standing once the work is done: to be demolished on
+    A-DEMO, to be built later on A-FUTR, both dashed by their layer."""
+    for w in walls:
+        L.pline(w.rect(), "A-DEMO" if w.phase == "demolish" else "A-FUTR")
+
+
 def cot(L, columns):
     """Columns, solid filled on A-COLS."""
     for c in columns:
@@ -78,7 +88,8 @@ def cua(L, op):
     name = door_block(op)
     rot = math.degrees(math.atan2(op.closed_dir[1], op.closed_dir[0]))
     L.insert(name, op.hinge_point, "A-DOOR", rotation=rot, attribs={"ID": op.id})
-    return [op.sector()]
+    x0, y0, x1, y1 = bbox(op.sector())  # the whole quarter square: what a reader sees as the door
+    return [[(x0, y0), (x1, y0), (x1, y1), (x0, y1)]]
 
 
 def cua_so(L, op, layer="A-GLAZ", name="CUA-SO"):
@@ -120,13 +131,17 @@ def _tag_spots(op, r, gap):
              (h[0] + c[0] * w / 2 + o[0] * (w + d), h[1] + c[1] * w / 2 + o[1] * (w + d))]
     t = op.wall.t
     outer = [(h[0] - c[0] * d - o[0] * (t + d), h[1] - c[1] * d - o[1] * (t + d)),
-             (h[0] + c[0] * (w + d) - o[0] * (t + d), h[1] + c[1] * (w + d) - o[1] * (t + d))]
+             (h[0] + c[0] * (w + d) - o[0] * (t + d), h[1] + c[1] * (w + d) - o[1] * (t + d)),
+             (h[0] + c[0] * w / 2 - o[0] * (t + d), h[1] + c[1] * w / 2 - o[1] * (t + d))]
+    outer += [(h[0] + c[0] * (w + d + k * d) - o[0] * (t + d * (1 + j)),
+               h[1] + c[1] * (w + d + k * d) - o[1] * (t + d * (1 + j))) for k in range(4) for j in range(3)]
     return inner, outer
 
 
-def nhan_cua(L, op, rooms, obstacles):
+def nhan_cua(L, op, rooms, obstacles, emit=True):
     """The tag of an opening (P1, V1…): a ring with its type name. Returns the
-    ring's box, or None when no free spot was found."""
+    ring's box, or None when no free spot was found. With emit=False nothing
+    is drawn; draw the returned ring later with ve_nhan_cua."""
     r = L.size("tag") / 2
     gap = L.size("text")
     if op.kind == "door":
@@ -140,37 +155,77 @@ def nhan_cua(L, op, rooms, obstacles):
             across = (w.hi if side > 0 else w.lo) + side * (r + gap)
             for along in (mid, op.offset - r - gap, op.offset + op.width + r + gap):
                 spots.append((w.at(along, across), True))
+    # the side the leaf does not open to: a room, or outside the house
+    h, o = op.hinge_point, op.open_dir
+    probe = (h[0] - o[0] * (op.wall.t + gap), h[1] - o[1] * (op.wall.t + gap))
+    exterior = not any(inside(probe, q) for q in rooms)
     for p, in_room in spots:
         ring = box(p[0], p[1], 2 * r, 2 * r)
         room = next((q for q in rooms if inside(p, q)), None)
-        if in_room and (room is None or not all(inside(v, room) for v in ring)):
-            continue  # this spot must lie wholly inside a room
-        if not in_room and room is not None and not all(inside(v, room) for v in ring):
-            continue
+        if room is not None and not all(inside(v, room) for v in ring):
+            continue  # a tag never straddles a room's edge
+        if room is None and (in_room or not exterior):
+            continue  # only an outside door may carry its tag outside the house
         if any(overlaps(grow(ring, gap / 2), o) for o in obstacles):
             continue
-        L.circle(p, r, "A-ANNO")
-        L.mtext(p, op.label, L.size("text"), "A-ANNO")
+        if emit:
+            ve_nhan_cua(L, op, ring)
         return ring
     return None
 
 
+def ve_nhan_cua(L, op, ring):
+    x0, y0, x1, y1 = bbox(ring)
+    p = ((x0 + x1) / 2, (y0 + y1) / 2)
+    L.circle(p, (x1 - x0) / 2, "A-ANNO")
+    L.mtext(p, op.label, L.size("text"), "A-ANNO")
+
+
 def ten_phong(L, room, info, obstacles):
-    """Room name and area as two centred MTEXTs inside the room, away from door
-    sweeps, tags and other text; the room outline on X-AREA. Returns the boxes
-    used, or None when the text does not fit anywhere in the room: then call
-    ten_phong_ngoai once the dimensions are drawn."""
+    """Room name and area as centred MTEXTs inside the room, away from door
+    sweeps, tags and other text, and the room outline on X-AREA. Returns the
+    boxes used, or None when the text does not fit anywhere in the room: then
+    call ten_phong_ngoai once the dimensions are drawn."""
+    L.pline(info["outline"], "X-AREA")
+    plan = cho_ten_phong(L, room, info, obstacles)
+    if plan is None:
+        return None
+    ve_ten_phong(L, plan)
+    return [b for *_, b in plan]
+
+
+def ve_ten_phong(L, plan):
+    for text, size, rot, at, _ in plan:
+        L.mtext(at, text, size, "A-TEXT", rotation=rot)
+
+
+def cho_ten_phong(L, room, info, obstacles):
+    """Where the room's label goes, without drawing it: a list of
+    (text, size, rotation, point, box), or None when nothing fits."""
     outline = info["outline"]
-    L.pline(outline, "X-AREA")
     m = L.size("margin")
     area_txt = f"{info['area']:.2f} m²".replace(".", ",")
-    tries = [room["at"]] + sorted(info["centres"], key=lambda p: math.dist(p, room["at"]))
+    x0, y0, x1, y1 = bbox(outline)
+    step = L.size("room")
+    lattice = [(x0 + i * step, y0 + j * step) for i in range(1, int((x1 - x0) // step))
+               for j in range(1, int((y1 - y0) // step))]
+    tries = [room["at"]] + sorted(info["centres"] + lattice, key=lambda p: math.dist(p, room["at"]))
     h2 = L.size("text")
     # In the order references/ve.md gives: two lines, smaller, one line, then
     # turned along the room's long side, reading from below.
     layouts = []
     for size in (L.size("room"), h2):
         layouts.append([(room["name"], size, 0, h2 * 0.7), (area_txt, h2, 0, -size * 0.7)])
+    # a long name broken over two lines, at the comma or the middle space
+    words = room["name"].replace(", ", ",\0").split("\0") if ", " in room["name"] else room["name"].split(" ")
+    if len(words) > 1:
+        cut = min(range(1, len(words)), key=lambda k: abs(len(" ".join(words[:k])) - len(" ".join(words[k:]))))
+        top, bottom = " ".join(words[:cut]), " ".join(words[cut:])
+        for size in (L.size("room"), h2):
+            layouts.append([(top, size, 0, h2 * 0.7 + size * 1.2), (bottom, size, 0, h2 * 0.7),
+                            (area_txt, h2, 0, -size * 0.7)])
+    tight = area_txt.replace(" m²", "m²")
+    layouts.append([(room["name"], h2, 0, h2 * 0.7), (tight, h2, 0, -h2 * 0.7)])
     layouts.append([(f"{room['name']} {area_txt}", h2, 0, 0)])
     for size in (L.size("room"), h2):
         layouts.append([(room["name"], size, 90, -h2 * 0.7), (area_txt, h2, 90, size * 0.7)])
@@ -184,9 +239,7 @@ def ten_phong(L, room, info, obstacles):
                 else:
                     placed.append((text, size, rot, (p[0], p[1] + shift), box(p[0], p[1] + shift, w, h)))
             if all(fits(b, outline, obstacles) for *_, b in placed):
-                for text, size, rot, at, _ in placed:
-                    L.mtext(at, text, size, "A-TEXT", rotation=rot)
-                return [b for *_, b in placed]
+                return placed
     return None
 
 
@@ -208,14 +261,18 @@ def ten_phong_ngoai(L, room, info, obstacles, building):
     for k in range(-40, 41):
         spots += [(start[0] + k * step, Y1 + reach), (start[0] + k * step, Y0 - reach),
                   (X1 + reach + w / 2, start[1] + k * step), (X0 - reach - w / 2, start[1] + k * step)]
+    longest = 40 * L.scale  # a leader longer than 40 mm on paper no longer reads as one
     for p in sorted(spots, key=lambda q: math.dist(q, start)):
+        if math.dist(p, start) > longest:
+            break
         nb = box(p[0], p[1] + (h + m) / 2, w, h + m)
         ab = box(p[0], p[1] - (h + m) / 2, w, h + m)
         if any(X0 < v[0] < X1 and Y0 < v[1] < Y1 for b in (nb, ab) for v in b):
             continue
         if any(overlaps(grow(b, m), o) for b in (nb, ab) for o in obstacles):
             continue
-        x0, y0, x1, y1 = bbox(nb + ab)
+        # the leader ends on the area text itself (not its margin): that is what a reader follows
+        x0, y0, x1, y1 = bbox(box(p[0], p[1] - (h + m) / 2, text_width(area_txt, h), h))
         # the leader may start anywhere inside the room: take the shortest one
         # that runs over no number, tag or dimension line
         for a in sorted([start] + info["centres"], key=lambda q: math.dist(q, p)):

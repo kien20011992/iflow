@@ -688,7 +688,7 @@
        -525
       ]
      ],
-     "rotate": 180
+     "rotate": 0
     },
     {
      "id": "f3",
@@ -703,7 +703,7 @@
        1800
       ]
      ],
-     "rotate": 90
+     "rotate": 270
     }
    ]
   },
@@ -1285,7 +1285,22 @@
        -525
       ]
      ],
-     "rotate": 180
+     "rotate": 0
+    },
+    {
+     "id": "giuong",
+     "block": "GIUONG-DOI",
+     "at": [
+      [
+       "1",
+       1500
+      ],
+      [
+       "D",
+       2700
+      ]
+     ],
+     "by": "model"
     }
    ]
   },
@@ -1848,7 +1863,23 @@
        -525
       ]
      ],
-     "rotate": 180
+     "rotate": 0
+    },
+    {
+     "id": "giuong",
+     "block": "GIUONG-DOI",
+     "at": [
+      [
+       "1",
+       1200
+      ],
+      [
+       "A",
+       1200
+      ]
+     ],
+     "rotate": 180,
+     "by": "model"
     }
    ]
   }
@@ -1934,5 +1965,38 @@
    ]
   }
  ],
- "rules": []
+ "rules": [],
+ "structure": {
+  "slab": {
+   "value": 100,
+   "by": "default"
+  },
+  "beam": {
+   "value": [
+    200,
+    300
+   ],
+   "by": "default"
+  },
+  "parapet": {
+   "value": 1000,
+   "by": "default"
+  },
+  "footing_depth": {
+   "value": 1500,
+   "by": "default"
+  },
+  "footing_width": {
+   "value": 800,
+   "by": "default"
+  },
+  "stair_waist": {
+   "value": 120,
+   "by": "default"
+  },
+  "rail_height": {
+   "value": 900,
+   "by": "default"
+  }
+ }
 }
