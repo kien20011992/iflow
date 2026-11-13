@@ -32,10 +32,13 @@ và agent dựng đã nhận ra công trình, nên điểm C của nó luôn "nh
 | can-ho-2pn-cai-tao | luyện | căn hộ | cải tạo nội thất | vuông góc | 1 / 0 | đề chữ kèm số đo hiện trạng |
 | khach-san-lo-pho | luyện | khách sạn | mới | vuông góc | 8 / 0 | đề chữ |
 | nha-o-xa-hoi-9-tang | luyện | tòa chung cư | mới | vuông góc | 9 / 0 | đề chữ |
-| nha-pho-cu-cai-tao | giữ riêng | nhà ở | cải tạo, giữ một phần kết cấu | có cạnh xiên | 4 / 0 | đề kèm bảng số đo hiện trạng |
+| nha-pho-cu-cai-tao | luyện (từng giữ riêng) | nhà ở | cải tạo, giữ một phần kết cấu | có cạnh xiên | 4 / 0 | đề kèm bảng số đo hiện trạng |
 | can-ho-goc-hai-tang | giữ riêng | căn hộ | hoàn thiện căn bàn giao thô | có tường cong | 2 / 0 | đề chữ kèm số đo |
 | khach-san-3-sao | giữ riêng | khách sạn | mới | có cạnh xiên | 12 / 1 | đề chữ kèm toạ độ góc lô |
-| chung-cu-cao-tang-2-ham | giữ riêng | tòa chung cư | mới | vuông góc | 22 / 2 | đề chữ |
+| chung-cu-cao-tang-2-ham | luyện (từng giữ riêng) | tòa chung cư | mới | vuông góc | 22 / 2 | đề chữ |
 
-Bộ giữ riêng phủ những trục bộ luyện chưa có: cạnh xiên, tường cong, tầng hầm,
-nhà trên 10 tầng, căn hai tầng, và đầu vào là bảng số đo hiện trạng.
+`nha-pho-cu-cai-tao` và `chung-cu-cao-tang-2-ham` đã dùng cho phép thử độ linh
+hoạt ngày 2026-11-13 (xem [bảng điểm](../bang-diem.md)) rồi chuyển sang bộ
+luyện, vì kết quả của chúng sẽ được đọc chi tiết để sửa thư viện. Bộ giữ riêng
+còn `can-ho-goc-hai-tang` và `khach-san-3-sao`; hai đề thay thế cho nhà ở cải
+tạo và tòa chung cư cao tầng chưa viết (dòng trong [sổ quan sát](../so-quan-sat.md)).

@@ -29,6 +29,11 @@ Loại công trình viết tắt: NO nhà ở, CH căn hộ, KS khách sạn, TC
 | 12 | Chấm thử thang chung, slice 09 | như trên | NO | Thang không ghi tổng số bậc và chiều cao bậc; số bậc trên mặt bằng chạy 1–18 nên dễ đọc là 18 bậc thay vì 20. Không có chấm tròn ở bậc đầu; nét ngắt vế là đoạn thẳng chứ không dích dắc. | hàm thư viện (ký hiệu thang) | |
 | 13 | Chấm thử thang chung, slice 09 | như trên | NO | Đường cắt mặt cắt là nét mảnh đều, không đậm hai đầu. Diện tích phòng không gạch dưới. Số bậc cao 1,8 mm trên giấy, dưới 2 mm. | hàm thư viện và file mẫu | |
 | 14 | Chấm thử thang chung, slice 09 | như trên | NO | Hồ sơ gần thi công thiếu kích thước trong phòng, kích thước lỗ cửa trong nhà và bảng thống kê cửa. | hàm thư viện (kích thước trong phòng, bảng cửa) | |
+| 15 | Phép thử linh hoạt, slice 10, hai lượt | `nha-pho-cu-cai-tao` | NO | Thư viện giao lại khoảng 45 % số thứ bảng số đòi vẽ (17 và 16 phần chưa vẽ trên 37), vượt ngưỡng hai phần năm; `plan_check.py` trượt tổng diện tích sàn ở cả hai lượt. Chi tiết trong `evidence/10-phep-thu-linh-hoat/` của chương trình, đọc được từ nay vì đề đã sang bộ luyện. | hàm thư viện hay khuôn bảng số cho nhà cải tạo có cạnh xiên: xét lại mức chi tiết | |
+| 16 | Phép thử linh hoạt, slice 10, hai lượt | `chung-cu-cao-tang-2-ham` | TC | Cả hai lượt cùng trượt ba trình kiểm: diện tích ghi trên hình (`dxf_check.py`), tới được mọi phòng (`plan_check.py`), và một hai phép luật (`luat_check.py`). Thư viện vẽ được gần hết (2–3 % bị giao lại). | đọc chi tiết rồi đưa về lớp | |
+| 17 | Phép thử linh hoạt, slice 10; bài dựng thật slice 04 | `chung-cu-cao-tang-2-ham`, bảng mẫu chung cư | TC | Chữ không tìm được chỗ: 82 và 203 chỗ ở hai lượt (22 % và 59 % số thứ bảng số đòi vẽ), bảng mẫu chung cư 41 chỗ. | hàm thư viện (đặt nhãn cửa và tên phòng ở tầng điển hình dày) | |
+| 18 | Phép thử linh hoạt, slice 10 | `chung-cu-cao-tang-2-ham` | TC | Phần phương án yếu: C được 6,5 và 11,5 trên 30. | đọc chi tiết rồi đưa về lớp | |
+| 19 | Phép thử linh hoạt, slice 10 | bộ giữ riêng | — | Hai đề giữ riêng đã dùng và chuyển sang bộ luyện: cần một agent chưa đọc skill viết hai đề thay thế (nhà ở cải tạo, tòa chung cư cao tầng) trước đợt sửa đầu tiên. | bộ đề | |
 
 ## Đếm lại các lần sửa của chín vòng đầu
 
