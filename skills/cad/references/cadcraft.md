@@ -155,6 +155,12 @@ CADCraft không.
 | Chú thích tự co giãn theo tỷ lệ | Còn thiếu nhiều phần, và đọc lẫn với AutoCAD. [tài liệu] | Không dùng. Cỡ chữ tính từ tỷ lệ. |
 | Block động | Chưa tạo được. [tài liệu] | Mỗi cỡ cửa một block thường. |
 | Kiểu nét có hình | Phần hình bị bỏ khi nạp. [tài liệu] | Chỉ dùng nét liền, đứt, chấm gạch. |
+| Mở file mẫu | `new {"template": "<file>.dxf"}` mở bản vẽ mới mang sẵn layer, kiểu nét, kiểu chữ của file mẫu. [bản 0.20.1] | Thư viện mở `assets/mau.dxf` theo cách này. |
+| Chèn block từ file | `insert {name, file, at, rotation, scale, attribs}` định nghĩa block từ model space của file DXF ở lần chèn đầu, các lần sau chỉ cần `name`. Thuộc tính trong `attribs` đọc lại đúng bằng ezdxf. [bản 0.20.1] | Ký hiệu nằm trong `assets/blocks/`, mỗi ký hiệu một file. |
+| Thuộc tính ẩn | `attdef {tag, at, height, invisible: true}` ra thuộc tính ẩn; bản chèn mang cờ ẩn theo. [bản 0.20.1] | `dxf_check.py` bỏ qua thuộc tính ẩn khi soát chữ đè. |
+| `"{last}"` trong file script | `"{last}"` chỉ chạy với `--cmd`; trong `--script-file` lệnh báo lỗi "not an object handle". [bản 0.20.1] | Danh sách lệnh dài thì chia nhiều lần chạy `--cmd`, lần sau mở file lần trước lưu (`lib/chay.py`). |
+| Lưu đè | `saveas` ghi đè một file có sẵn thì để lại bản cũ thành `<file>.bak`. [bản 0.20.1] | Dọn `.bak` sau khi dựng lại file mẫu (`assets/dung_mau.py` tự dọn). |
+| `audit` trên file đã lưu | `cadcraft-cli run <file> --cmd 'audit {}'` in `{"errors", "fixed", "issues", "message"}`. [bản 0.20.1] | Đọc `errors`; khác 0 thì bản vẽ chưa được giao. |
 
 ## Rủi ro khi mở trong AutoCAD
 

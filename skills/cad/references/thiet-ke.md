@@ -176,7 +176,7 @@ mang chữ "giả định", kèm điều gì trong số đo thật sẽ đổi n
 Dự án nhiều căn có hai cấp. `layouts.json` xếp các khối trên khu đất: số
 khối, số căn, mật độ, phần trăm đất phủ, sân chung và lối đi. Mỗi cách xếp
 còn có một khối mẫu đủ số để tính sổ. Cách được chọn đi vào `params.json`
-dưới dạng một khối lặp lại, theo [ve.md](ve.md).
+dưới dạng một cụm đặt lặp, theo [bang-so.md](bang-so.md).
 
 Chọn cách nào là chỗ xin duyệt thứ nhất trong SKILL.md.
 

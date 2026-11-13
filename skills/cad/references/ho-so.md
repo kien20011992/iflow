@@ -17,7 +17,9 @@ việc.
 | `layouts.json`, `layout-<tên>.svg` | Số của từng cách xếp đang so, và sơ đồ đúng tỷ lệ của từng cách. | Khi làm sản phẩm 4. |
 | `params.json` | Bảng số của cách xếp đã chọn. | Khi làm sản phẩm 5. |
 | `preview.py`, `preview.svg` | Script sinh sơ đồ và sơ đồ đúng tỷ lệ cho người duyệt. Script chỉ đọc `layouts.json` hoặc `params.json`, không chứa số hình học nào. | Từ sản phẩm 4. Sơ đồ sinh lại mỗi lần số đổi. |
-| `build.py`, `check.py` | Script dựng bản vẽ và script kiểm file. | Khi làm sản phẩm 7. |
+| `phieu.json` | Phiếu đề bài: các số của đề bài và nguồn của chúng, theo khuôn ở [phieu.md](phieu.md). `project.md` vẫn ghi mọi dữ kiện; phiếu chép lại số để máy kiểm. | Đầu lượt đầu, cùng `project.md`. Dự án cũ chưa có thì thôi. |
+| `build.py` | Bản chép của `lib/build_mau.py` trong skill, chỉ sửa phần riêng của dự án. | Khi làm sản phẩm 7. |
+| `check.py` | Chỉ khi dự án có phép kiểm riêng mà `dxf_check.py` và `plan_check.py` không làm. | Khi cần. |
 | `out/<tên>-NN.dxf` và ảnh | Mỗi lần dựng một số NN mới. Không ghi đè file đã giao. | Mỗi lần dựng. |
 | `review.md` | Phiếu duyệt bản vẽ, người dùng điền sau khi mở file trong AutoCAD. | Khi giao. |
 | `cadcraft-<phiên-bản>.md` | Ghi chép dò CADCraft của bản đang cài. | Lần đầu vẽ, và khi phiên bản đổi. |

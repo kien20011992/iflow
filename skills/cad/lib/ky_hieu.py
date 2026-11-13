@@ -1,7 +1,7 @@
 """Plan symbols beyond walls and openings: stairs, voids, railings, shafts,
 furniture and fixtures, level marks, the north arrow and the section line.
 Each appends CADCraft commands to a `Lenh` and returns the polygons later
-text must avoid. Rules: references/ve.md, "Một hình mặt bằng phải có gì".
+text must avoid. Each function says the drafting rule it follows.
 """
 import math
 

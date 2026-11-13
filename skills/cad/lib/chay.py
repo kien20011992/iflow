@@ -63,6 +63,7 @@ def run(cmds, out_dxf, pngs=(), template=TEMPLATE, cli=None):
         logs.append(r)
         if r.returncode != 0:
             break
-    if part.exists():
-        part.unlink()
+    for leftover in (part, part.with_name(part.name + ".bak")):  # CADCraft keeps a .bak on overwrite
+        if leftover.exists():
+            leftover.unlink()
     return r.returncode, "".join(x.stdout for x in logs), "".join(x.stderr for x in logs)

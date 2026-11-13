@@ -16,6 +16,7 @@ uv run tests/cad/lib_build_test.py
 import contextlib
 import io
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -83,6 +84,22 @@ def main():
             warned = [r["title"] for r in results if r["status"] == "warn"]
             print(f"{'ok  ' if ok else 'FAIL'} {name}: {len(results) - len(bad)}/{len(results)} phép đạt hoặc cần xem"
                   + (f"; cần xem: {', '.join(warned)}" if warned else ""))
+        # A project keeps a copy of build_mau.py as build.py and runs it from its own folder.
+        proj = pathlib.Path(tmp) / "du-an"
+        (proj / "out").mkdir(parents=True)
+        (proj / "build.py").write_text((ROOT / "skills/cad/lib/build_mau.py").read_text(encoding="utf-8"),
+                                       encoding="utf-8")
+        d = json.loads((ROOT / "tests/cad/bang-so/pho-da-nang.json").read_text(encoding="utf-8"))
+        d["drawings"] = [x for x in d["drawings"] if x["id"] == "plan:L1"]
+        (proj / "params.json").write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+        env = dict(os.environ, CAD_SKILL_DIR=str(ROOT / "skills/cad"))
+        r = subprocess.run([sys.executable, "build.py", "params.json", "out/a-01.dxf"], cwd=proj, env=env,
+                           capture_output=True, text=True)
+        ok = r.returncode == 0 and (proj / "out/a-01.dxf").exists() and not list(proj.rglob("*.bak"))
+        print(f"{'ok  ' if ok else 'FAIL'} bản chép build.py chạy từ thư mục dự án"
+              + ("" if ok else f": {r.returncode} {r.stdout[-300:]} {r.stderr[-300:]}"))
+        passed += ok
+        failed += not ok
     print(f"{passed} passed, {failed} failed")
     return 1 if failed else 0
 

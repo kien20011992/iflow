@@ -52,6 +52,13 @@ if grep -q 'scripts/dxf_check\.py' "$skill/SKILL.md" && [ -f "$skill/scripts/dxf
 then ok 'SKILL.md points at the DXF checker, and the checker exists'
 else bad 'SKILL.md and scripts/dxf_check.py no longer match'; fi
 
+# SKILL.md points at every layer below it, and each file it points at exists.
+for tool in scripts/cua_vao.py scripts/params_check.py scripts/plan_check.py lib/build_mau.py; do
+  if grep -q "$tool" "$skill/SKILL.md" && [ -f "$skill/$tool" ]
+  then ok "SKILL.md points at $tool, and it exists"
+  else bad "SKILL.md and $tool no longer match"; fi
+done
+
 if grep -q '§' "$skill"/SKILL.md "$skill"/references/*.md; then
   bad 'a cad file points with §N, which check-pointers.sh reads as a numbered heading'
 else ok 'no cad file points with §N'; fi
@@ -72,6 +79,10 @@ odd=$(grep -E '^\| [0-9] \| ' "$fixture" | awk -F'|' '{ gsub(/ /, "", $4); print
   grep -vxE 'missing|done|approved|recheck|skipped')
 if [ -z "$odd" ]; then ok 'the eval fixture uses only the five statuses'
 else bad "the eval fixture uses unknown statuses: $odd"; fi
+awk "/params.json\" <<'JSON'/{f=1; next} /^JSON\$/{f=0} f" "$fixture" > "$tmp/fixture-params.json"
+if out=$(python3 "$skill/scripts/params_check.py" "$tmp/fixture-params.json" 2>&1)
+then ok "the eval fixture's number table passes params_check.py"
+else printf '%s\n' "$out" | sed 's/^/      /'; bad "the eval fixture's number table fails params_check.py"; fi
 if diff <(grep -v 'fixture.sh is' "$fixture") <(grep -v 'fixture.sh is' "$evals/cad-what-if/fixture.sh") > /dev/null
 then ok 'the two copies of the eval fixture are the same'
 else bad 'cad-late-fact/fixture.sh and cad-what-if/fixture.sh have drifted apart'; fi

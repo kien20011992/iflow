@@ -87,21 +87,414 @@ Working with this user: trả lời ngắn, nêu con số.
 MD
 cat > "$d/params.json" <<'JSON'
 {
-  "scale": 100,
-  "drawings": ["plan:L1", "plan:L2", "plan:L3"],
-  "site": {"outline": [[0, 0], [5000, 0], [5000, 18000], [0, 18000]],
-           "setbacks": {"front": 0, "rear": 0, "left": 0, "right": 0},
-           "front": "A", "north_deg": 90},
-  "grid": {"x": {"1": 0, "2": 5000},
-           "y": {"A": 0, "B": 5000, "C": 8000, "D": 13000, "E": 18000}},
-  "levels": {"L1": 0, "L2": 3300, "L3": 6600, "roof": 9900},
-  "wall_types": {"ext": 220, "int": 110},
-  "floors": {"L1": {"rooms": [
-    {"name": "Khách và để xe", "bay": ["1-2", "A-B"], "required_area": 20},
-    {"name": "Thang và giếng trời", "bay": ["1-2", "B-C"]},
-    {"name": "Bếp ăn", "bay": ["1-2", "C-D"], "required_area": 18},
-    {"name": "Phòng ngủ ông bà và vệ sinh", "bay": ["1-2", "D-E"], "required_area": 15}
-  ]}},
-  "font": "Arial"
+ "schema": "cad-params/1",
+ "project": {
+  "name": "Nhà phố Hải Châu",
+  "type": "house",
+  "depth": "construction",
+  "scale": 100
+ },
+ "site": {
+  "outline": [
+   [
+    0,
+    0
+   ],
+   [
+    5000,
+    0
+   ],
+   [
+    5000,
+    18000
+   ],
+   [
+    0,
+    18000
+   ]
+  ],
+  "setbacks": [
+   {
+    "edge": 0,
+    "mm": 0,
+    "by": "model"
+   },
+   {
+    "edge": 1,
+    "mm": 0,
+    "by": "model"
+   },
+   {
+    "edge": 2,
+    "mm": 0,
+    "by": "model"
+   },
+   {
+    "edge": 3,
+    "mm": 0,
+    "by": "model"
+   }
+  ],
+  "front_edge": 0,
+  "north_deg": 90
+ },
+ "grid": {
+  "x": {
+   "1": 0,
+   "2": 5000
+  },
+  "y": {
+   "A": 0,
+   "B": 5000,
+   "C": 8000,
+   "D": 13000,
+   "E": 18000
+  }
+ },
+ "levels": [
+  {
+   "name": "L1",
+   "elevation": 0,
+   "height": 3300,
+   "kind": "ground"
+  },
+  {
+   "name": "L2",
+   "elevation": 3300,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "L3",
+   "elevation": 6600,
+   "height": 3300,
+   "kind": "typical"
+  },
+  {
+   "name": "Mái",
+   "elevation": 9900,
+   "height": 0,
+   "kind": "roof"
+  }
+ ],
+ "types": {
+  "walls": {
+   "ext": {
+    "thickness": 220
+   },
+   "int": {
+    "thickness": 110
+   }
+  },
+  "openings": {
+   "D9": {
+    "kind": "door",
+    "width": 900,
+    "height": 2200
+   },
+   "D8": {
+    "kind": "door",
+    "width": 800,
+    "height": 2200
+   },
+   "S": {
+    "kind": "shutter",
+    "width": 3000,
+    "height": 2800
+   }
+  }
+ },
+ "floors": {
+  "L1": {
+   "walls": [
+    {
+     "id": "wA",
+     "type": "ext",
+     "from": [
+      [
+       "1",
+       0
+      ],
+      [
+       "A",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "A",
+       0
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wE",
+     "type": "ext",
+     "from": [
+      [
+       "1",
+       0
+      ],
+      [
+       "E",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "E",
+       0
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w1",
+     "type": "ext",
+     "from": [
+      [
+       "1",
+       0
+      ],
+      [
+       "A",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "1",
+       0
+      ],
+      [
+       "E",
+       0
+      ]
+     ],
+     "align": "right"
+    },
+    {
+     "id": "w2",
+     "type": "ext",
+     "from": [
+      [
+       "2",
+       0
+      ],
+      [
+       "A",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "E",
+       0
+      ]
+     ],
+     "align": "left"
+    },
+    {
+     "id": "wB",
+     "type": "int",
+     "from": [
+      [
+       "1",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "B",
+       0
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wC",
+     "type": "int",
+     "from": [
+      [
+       "1",
+       0
+      ],
+      [
+       "C",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "C",
+       0
+      ]
+     ],
+     "align": "center"
+    },
+    {
+     "id": "wD",
+     "type": "int",
+     "from": [
+      [
+       "1",
+       0
+      ],
+      [
+       "D",
+       0
+      ]
+     ],
+     "to": [
+      [
+       "2",
+       0
+      ],
+      [
+       "D",
+       0
+      ]
+     ],
+     "align": "center"
+    }
+   ],
+   "rooms": [
+    {
+     "id": "r1",
+     "name": "Khách và để xe",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "A",
+       2500
+      ]
+     ],
+     "use": "shared",
+     "need_area": 20
+    },
+    {
+     "id": "r2",
+     "name": "Thang và giếng trời",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "B",
+       1500
+      ]
+     ],
+     "use": "circulation"
+    },
+    {
+     "id": "r3",
+     "name": "Bếp ăn",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "C",
+       2500
+      ]
+     ],
+     "use": "shared",
+     "need_area": 18
+    },
+    {
+     "id": "r4",
+     "name": "Phòng ngủ ông bà và vệ sinh",
+     "at": [
+      [
+       "1",
+       2500
+      ],
+      [
+       "D",
+       2500
+      ]
+     ],
+     "use": "private",
+     "need_area": 15
+    }
+   ],
+   "openings": [
+    {
+     "id": "o1",
+     "wall": "wA",
+     "type": "S",
+     "offset": 1000,
+     "by": "model"
+    },
+    {
+     "id": "o2",
+     "wall": "wB",
+     "type": "D9",
+     "offset": 2000,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o3",
+     "wall": "wC",
+     "type": "D9",
+     "offset": 2000,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    },
+    {
+     "id": "o4",
+     "wall": "wD",
+     "type": "D8",
+     "offset": 2000,
+     "hinge": "start",
+     "swing": "left",
+     "by": "model"
+    }
+   ]
+  }
+ },
+ "drawings": [
+  {
+   "id": "plan:L1",
+   "origin": [
+    0,
+    0
+   ]
+  }
+ ],
+ "rules": []
 }
 JSON

@@ -28,7 +28,7 @@ DOOR_WIDTHS = (600, 700, 800, 900, 1000, 1200)
 FONT = "arial.ttf"
 STYLE = "VN"
 
-# name, colour, linetype, lineweight (mm) — the default set in references/ve.md
+# name, colour, linetype, lineweight (mm) — the skill's default layer set
 LAYERS = [
     ("A-GRID", "Red", "CENTER", 0.18), ("A-WALL", "White", "Continuous", 0.5),
     ("A-COLS", "White", "Continuous", 0.5), ("A-DOOR", "Green", "Continuous", 0.25),

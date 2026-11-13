@@ -3,8 +3,8 @@
 The cut runs along grid-square segments; segments parallel to the look
 direction are the jogs of a broken cut and draw nothing. Along the cutting
 segments, s is the horizontal position on the sheet (left to right as seen
-looking the way `look` says) and z the elevation. Rules: references/ve.md,
-"Một hình mặt cắt phải có gì". Structure sizes are estimates for drawing.
+looking the way `look` says) and z the elevation. The drafting rules are
+written where they are applied. Structure sizes are estimates for drawing.
 """
 import math
 

@@ -10,7 +10,7 @@ BLOCKS = pathlib.Path(__file__).resolve().parents[1] / "assets" / "blocks"
 STYLE = "VN"
 TEXT_FACTOR = 0.7  # estimated width of one character, in text heights (as dxf_check.py)
 
-# Paper sizes in mm; multiply by the scale for model units (references/ve.md).
+# Paper sizes in mm the skill draws with; multiply by the scale for model units.
 PAPER = {"text": 2.5, "room": 3.5, "title": 5.0, "grid_text": 3.5, "grid_circle": 8.0,
          "tag": 6.0, "first_dim": 15.0, "dim_gap": 8.0, "margin": 2.0}
 

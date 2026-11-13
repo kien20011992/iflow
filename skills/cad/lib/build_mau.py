@@ -14,7 +14,14 @@ import math
 import pathlib
 import sys
 
-HERE = pathlib.Path(__file__).resolve().parent
+import os
+
+# The skill's lib/ and scripts/: beside this file inside the skill, or, for the
+# copy a project keeps as build.py, where CAD_SKILL_DIR points (the skill folder).
+_here = pathlib.Path(__file__).resolve().parent
+HERE = _here if (_here / "bang_so.py").exists() else pathlib.Path(os.environ.get("CAD_SKILL_DIR", "")) / "lib"
+if not (HERE / "bang_so.py").exists():
+    sys.exit("không thấy thư viện vẽ: chạy với CAD_SKILL_DIR=<thư mục skill cad> python3 build.py …")
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / "scripts"))
 sys.dont_write_bytecode = True  # leave no __pycache__ inside the skill
@@ -80,7 +87,7 @@ def ve_tang(L, d, level, origin, arrivals=(), floor=None):
             todo.append(f"{level}: {why}")
             marks_extra.append((op.wall.rect(*op.span), why))
 
-    # The section line first: room names move off it, never the line (ve.md).
+    # The section line first: room names move off it, never the line.
     for sec in d.get("sections", []):
         path = [resolve(p, d["grid"]) for p in sec["path"]]
         if all(a[0] == b[0] or a[1] == b[1] for a, b in zip(path, path[1:])):
@@ -117,7 +124,7 @@ def ve_tang(L, d, level, origin, arrivals=(), floor=None):
             todo.append(f"{level}: diện tích {r['name']} tính cả {info['hole_area']:.2f} m² cột hay ô trống "
                         f"đứng giữa phòng")
     # Room labels are chosen first and drawn after the tags: when a door tag
-    # finds no spot, the label of the room it opens into steps aside (ve.md).
+    # finds no spot, the label of the room it opens into steps aside.
     labels = {}
     for r in f.rooms:
         if r["id"] in rooms:

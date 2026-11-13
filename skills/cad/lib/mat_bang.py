@@ -1,7 +1,8 @@
 """Drawing functions for one floor plan. Each takes plan coordinates and
 appends CADCraft commands to a `Lenh`; the ones that place text return the
 box they used so later placements can avoid it. Layers and symbols follow
-references/ve.md and the contract in references/bang-so.md.
+the drafting rules stated in each function and the contract in
+references/bang-so.md.
 """
 import math
 
@@ -120,7 +121,7 @@ def ve_o_cua(L, op):
 
 
 def _tag_spots(op, r, gap):
-    """Where a door tag may go, in the order references/ve.md tries them: beside
+    """Where a door tag may go, in the order the drafting rule tries them: beside
     the hinge jamb, beside the far jamb, in front of the door — all on the side
     the leaf opens to, outside its sweep — then outside the door by the hinge."""
     h, c, o = op.hinge_point, op.closed_dir, op.open_dir
@@ -211,7 +212,7 @@ def cho_ten_phong(L, room, info, obstacles):
                for j in range(1, int((y1 - y0) // step))]
     tries = [room["at"]] + sorted(info["centres"] + lattice, key=lambda p: math.dist(p, room["at"]))
     h2 = L.size("text")
-    # In the order references/ve.md gives: two lines, smaller, one line, then
+    # In the order the drafting rule gives: two lines, smaller, one line, then
     # turned along the room's long side, reading from below.
     layouts = []
     for size in (L.size("room"), h2):
@@ -244,7 +245,7 @@ def cho_ten_phong(L, room, info, obstacles):
 
 
 def ten_phong_ngoai(L, room, info, obstacles, building):
-    """The last resort of references/ve.md for a room too small for its label:
+    """The last resort of the drafting rule for a room too small for its label:
     the label outside the house, clear of dimension lines, joined to the room by
     a straight leader with one end inside the room. `building` is the outer
     box (x0, y0, x1, y1) of the walls. Returns the boxes used, or None."""
